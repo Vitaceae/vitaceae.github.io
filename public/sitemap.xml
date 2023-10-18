@@ -2,19 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://example.com/post/</loc>
+    <loc>https://vitaceae.github.io/post/</loc>
     <lastmod>2023-10-18T14:52:20+08:00</lastmod>
   </url><url>
-    <loc>https://example.com/</loc>
+    <loc>https://vitaceae.github.io/</loc>
     <lastmod>2023-10-18T14:52:20+08:00</lastmod>
   </url><url>
-    <loc>https://example.com/post/test_post/</loc>
+    <loc>https://vitaceae.github.io/post/test_post/</loc>
     <lastmod>2023-10-18T14:52:20+08:00</lastmod>
   </url><url>
-    <loc>https://example.com/categories/</loc>
+    <loc>https://vitaceae.github.io/categories/</loc>
   </url><url>
-    <loc>https://example.com/series/</loc>
+    <loc>https://vitaceae.github.io/series/</loc>
   </url><url>
-    <loc>https://example.com/tags/</loc>
+    <loc>https://vitaceae.github.io/tags/</loc>
   </url>
 </urlset>

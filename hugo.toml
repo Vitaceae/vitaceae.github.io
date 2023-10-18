@@ -1,4 +1,4 @@
-baseURL = "https://example.com"
+baseURL = "https://vitaceae.github.io/"
 title = "Profile"
 theme = "erblog"
 paginate = 3
