@@ -1,4 +1,84 @@
-baseURL = 'https://example.org/'
-languageCode = 'en-us'
-title = 'My New Hugo Site'
-theme = 'ananke'
+baseURL = "https://example.com"
+title = "Profile"
+theme = "erblog"
+paginate = 3
+languageCode = "en-us"
+DefaultContentLanguage = "en-us"
+enableInlineShortcodes = true
+footnoteReturnLinkContents = "^"
+
+[params]
+    author = "Mike Chang"
+    badge = "orange"
+    quote = "red"
+#    notice = "Hello, World!"
+    notice_color = "blue"
+    index_posts_num = 5
+    google_search = true
+    # logo = "//blog.ertuil.top/avater.png"
+    bio = """
+    <p> Firmware Engineer </p>
+    <br />
+    <p>   ➢ BSP on embedded plaforms </p>
+    <p>   ➢ Linux device driver </p>
+    <p>   ➢ Linux kernel </p>
+
+    <br />
+    """
+    # html tag example: <a href="https://github.com/ertuil/erblog">link</a>
+    # copyright = "Copyright © 2008–2019, Steve Francia and the Hugo Authors; all rights reserved."
+    portrait = "./img/avatar.jpg"
+
+[[menu.main]]
+     identifier = "zone"
+     name = "Zone"
+     url = "/zone/"
+     weight = 9
+
+[[menu.main]]
+    url = "/gallery/"
+    name = "Gallery"
+    weight = 2
+
+[[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 10
+
+[[menu.footer]]
+    identifier = "none"
+    name = "none"
+    url = "/"
+    weight = 1
+
+[[menu.footer]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 2
+
+[taxonomies]
+category = "categories"
+tag = "tags"
+series = "series"
+
+[[menu.icon]]
+    url = "mailto:i70170@hotmail.com"
+    name = "envelope-o"
+    weight = 1
+
+[[menu.icon]]
+    url = "https://github.com/Vitaceae"
+    name = "github"
+    weight = 1
+
+[[menu.icon]]
+#    url = "https://twitter.com/username"
+    name = "twitter"
+    weight = 1
+
+[[menu.icon]]
+#    url = "https://www.instagram.com/username/"
+    name = "instagram"
+    weight = 1
