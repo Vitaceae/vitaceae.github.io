@@ -511,11 +511,15 @@
     <summary>Table of Contents</summary>
     <div class="inner"><nav id="TableOfContents">
   <ul>
+    <li>
+      <ul>
+        <li><a href="#gantt">Gantt</a></li>
+        <li><a href="#git-graph">Git Graph</a></li>
+      </ul>
+    </li>
     <li><a href="#mermaid-diagrams">Mermaid Diagrams</a>
       <ul>
         <li><a href="#sequence">Sequence</a></li>
-        <li><a href="#gantt">Gantt</a></li>
-        <li><a href="#git-graph">Git Graph</a></li>
         <li><a href="#state">State</a></li>
       </ul>
     </li>
@@ -546,7 +550,49 @@
 </script>
 
         <div class="content e-content">
-            <h2 id="mermaid-diagrams" >
+            <h3 id="gantt" >
+<div>
+    <a href="#gantt">
+        ##
+    </a>
+    Gantt
+</div>
+</h3>
+<pre class="mermaid">gantt
+    title A Gantt Diagram
+    dateFormat YYYY-MM-DD
+    section Section
+        A task          :a1, 2014-01-01, 30d
+        Another task    :after a1, 20d
+    section Another
+        Task in Another :2014-01-12, 12d
+        another task    :24d
+</pre>
+
+<h3 id="git-graph" >
+<div>
+    <a href="#git-graph">
+        ##
+    </a>
+    Git Graph
+</div>
+</h3>
+<pre class="mermaid">gitGraph:
+    commit "Ashish"
+    branch newbranch
+    checkout newbranch
+    commit id:"1111"
+    commit tag:"test"
+    checkout main
+    commit type: HIGHLIGHT
+    commit
+    merge newbranch
+    commit
+    branch b2
+    commit
+</pre>
+
+<h2 id="mermaid-diagrams" >
 <div>
     <a href="#mermaid-diagrams">
         #
@@ -591,48 +637,6 @@
             Bob->>Alice: Thanks for asking
         end
     end
-</pre>
-
-<h3 id="gantt" >
-<div>
-    <a href="#gantt">
-        ##
-    </a>
-    Gantt
-</div>
-</h3>
-<pre class="mermaid">gantt
-    title A Gantt Diagram
-    dateFormat YYYY-MM-DD
-    section Section
-        A task          :a1, 2014-01-01, 30d
-        Another task    :after a1, 20d
-    section Another
-        Task in Another :2014-01-12, 12d
-        another task    :24d
-</pre>
-
-<h3 id="git-graph" >
-<div>
-    <a href="#git-graph">
-        ##
-    </a>
-    Git Graph
-</div>
-</h3>
-<pre class="mermaid">gitGraph:
-    commit "Ashish"
-    branch newbranch
-    checkout newbranch
-    commit id:"1111"
-    commit tag:"test"
-    checkout main
-    commit type: HIGHLIGHT
-    commit
-    merge newbranch
-    commit
-    branch b2
-    commit
 </pre>
 
 <h3 id="state" >
@@ -766,7 +770,6 @@
     </svg>
   
 </div>
-
         </div>
 
     </article>

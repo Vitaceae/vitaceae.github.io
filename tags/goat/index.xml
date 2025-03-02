@@ -30,7 +30,49 @@
       <pubDate>Sat, 02 Mar 2024 00:00:00 +0000</pubDate>
       <author>i70170@hotmail.com (Mike Chang)</author>
       <guid>/posts/web/hugo_diagram/</guid>
-      <description>&lt;h2 id=&#34;mermaid-diagrams&#34; &gt;
+      <description>&lt;h3 id=&#34;gantt&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#gantt&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Gantt
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;pre class=&#34;mermaid&#34;&gt;gantt
+    title A Gantt Diagram
+    dateFormat YYYY-MM-DD
+    section Section
+        A task          :a1, 2014-01-01, 30d
+        Another task    :after a1, 20d
+    section Another
+        Task in Another :2014-01-12, 12d
+        another task    :24d
+&lt;/pre&gt;
+
+&lt;h3 id=&#34;git-graph&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#git-graph&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Git Graph
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;pre class=&#34;mermaid&#34;&gt;gitGraph:
+    commit &#34;Ashish&#34;
+    branch newbranch
+    checkout newbranch
+    commit id:&#34;1111&#34;
+    commit tag:&#34;test&#34;
+    checkout main
+    commit type: HIGHLIGHT
+    commit
+    merge newbranch
+    commit
+    branch b2
+    commit
+&lt;/pre&gt;
+
+&lt;h2 id=&#34;mermaid-diagrams&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#mermaid-diagrams&#34;&gt;
         #
@@ -75,48 +117,6 @@
             Bob-&gt;&gt;Alice: Thanks for asking
         end
     end
-&lt;/pre&gt;
-
-&lt;h3 id=&#34;gantt&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#gantt&#34;&gt;
-        ##
-    &lt;/a&gt;
-    Gantt
-&lt;/div&gt;
-&lt;/h3&gt;
-&lt;pre class=&#34;mermaid&#34;&gt;gantt
-    title A Gantt Diagram
-    dateFormat YYYY-MM-DD
-    section Section
-        A task          :a1, 2014-01-01, 30d
-        Another task    :after a1, 20d
-    section Another
-        Task in Another :2014-01-12, 12d
-        another task    :24d
-&lt;/pre&gt;
-
-&lt;h3 id=&#34;git-graph&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#git-graph&#34;&gt;
-        ##
-    &lt;/a&gt;
-    Git Graph
-&lt;/div&gt;
-&lt;/h3&gt;
-&lt;pre class=&#34;mermaid&#34;&gt;gitGraph:
-    commit &#34;Ashish&#34;
-    branch newbranch
-    checkout newbranch
-    commit id:&#34;1111&#34;
-    commit tag:&#34;test&#34;
-    checkout main
-    commit type: HIGHLIGHT
-    commit
-    merge newbranch
-    commit
-    branch b2
-    commit
 &lt;/pre&gt;
 
 &lt;h3 id=&#34;state&#34; &gt;
@@ -249,8 +249,7 @@
 
     &lt;/svg&gt;
   
-&lt;/div&gt;
-</description>
+&lt;/div&gt;</description>
     </item>
     
   </channel>
