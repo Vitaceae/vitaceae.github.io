@@ -1,0 +1,1731 @@
+<!DOCTYPE html>
+
+
+<html lang="en-us" data-theme="">
+<head>
+    
+        
+<meta charset="utf-8">
+<meta name="HandheldFriendly" content="True">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer-when-downgrade">
+
+<title>Web - Mike&rsquo;s Tech Notes</title>
+
+<meta name="description" content="Personal tech blog for quick references">
+
+
+
+
+
+<link rel="alternate" type="application/rss+xml" href="/categories/web/index.xml" title="Mike's Tech Notes" />
+<link rel="icon" type="image/x-icon" href="https://vitaceae.github.io/favicon.ico">
+<link rel="apple-touch-icon-precomposed" href="https://vitaceae.github.io/favicon.png">
+
+
+
+
+
+
+    
+
+
+
+    
+
+
+
+<style>
+  body {
+    visibility: hidden;
+    opacity: 0;
+  }
+</style>
+
+<noscript>
+  <style>
+    body {
+      visibility: visible;
+      opacity: 1;
+    }
+  </style>
+</noscript>
+
+
+
+
+    
+
+
+
+
+
+    
+    
+        
+    
+    
+
+    
+        <link rel="stylesheet" href="/css/style.min.44f8240afd8df81b52565c4119ac5ae247776c77fc6d7ccf6e101a6c98abfa7a.css" integrity="sha256-RPgkCv2N&#43;BtSVlxBGaxa4kd3bHf8bXzPbhAabJir&#43;no=">
+    
+
+
+
+
+
+    
+
+
+
+
+
+    
+    
+        
+    
+    
+
+    
+        <link rel="stylesheet" href="/css/style.min.c4c04b3ef88e3d619ad4c7ee5e03048422bc55c4fefdc1f07657c1133670aa22.css" integrity="sha256-xMBLPviOPWGa1MfuXgMEhCK8VcT&#43;/cHwdlfBEzZwqiI=">
+    
+
+
+
+
+
+    
+
+
+
+
+
+    
+    
+        
+    
+    
+
+    
+        <link rel="stylesheet" href="/css/style.min.21c5d8fe0a79d623b0adc1ce4bd4f6dd2c05cd939c9aaaa966ba7186b1464f4d.css" integrity="sha256-IcXY/gp51iOwrcHOS9T23SwFzZOcmqqpZrpxhrFGT00=">
+    
+
+
+
+
+
+
+
+    
+    
+      
+    
+
+    
+      
+        <link rel="stylesheet" href="/css/style.min.220fef57dded2a519c4c1295a11e3e15c4e531d51640b089d6f68e32429e6cfd.css" integrity="sha256-Ig/vV93tKlGcTBKVoR4&#43;FcTlMdUWQLCJ1vaOMkKebP0=" crossorigin="anonymous">
+      
+    
+
+    
+    
+      
+    
+
+    
+      
+        <link rel="stylesheet" href="/css/style.min.27cdeadf5ff7cf7ed35a3243b1afc90f8ed58cda71a9aadcf4f06b02b71716fa.css" integrity="sha256-J83q31/3z37TWjJDsa/JD47VjNpxqarc9PBrArcXFvo=" crossorigin="anonymous">
+      
+    
+
+
+
+
+
+
+    
+
+    
+
+
+
+
+
+    
+    
+        
+    
+    
+
+    
+        <script src="/js/script.min.08f04d96386c73c9bf4d160333f8f448c05a6e01c06770542ee0e013954ce930.js" type="text/javascript" charset="utf-8" integrity="sha256-CPBNljhsc8m/TRYDM/j0SMBabgHAZ3BULuDgE5VM6TA="></script>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+<script async defer data-website-id="6701f641-f034-45b0-8693-d2095318465a" data-cache="false" data-do-not-track="false" src="https://cloud.umami.is/script.js"></script>
+
+
+
+
+
+
+    
+</head>
+<body>
+    <a class="skip-main" href="#main">Skip to main content</a>
+    <div class="container">
+        <header class="common-header">
+            
+                <div class="header-top">
+    <div class="header-top-left">
+        <h1 class="site-title noselect">
+    <a href="/">Mike&#39;s Tech Notes</a>
+</h1>
+
+        
+
+
+
+    
+
+
+
+    
+
+
+
+    
+        <div class="theme-switcher">
+            <span class="inline-svg">
+
+    
+
+
+    
+    
+    
+    
+    
+
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-sun-high"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14.828 14.828a4 4 0 1 0 -5.656 -5.656a4 4 0 0 0 5.656 5.656z" /><path d="M6.343 17.657l-1.414 1.414" /><path d="M6.343 6.343l-1.414 -1.414" /><path d="M17.657 6.343l1.414 -1.414" /><path d="M17.657 17.657l1.414 1.414" /><path d="M4 12h-2" /><path d="M12 4v-2" /><path d="M20 12h2" /><path d="M12 20v2" /></svg>
+
+
+</span>
+
+        </div>
+    
+
+    <script>
+        const STORAGE_KEY = 'user-color-scheme'
+        const defaultTheme = "auto"
+
+        let currentTheme
+        let switchButton
+        let autoDefinedScheme = window.matchMedia('(prefers-color-scheme: dark)')
+
+        function switchTheme(e) {
+            currentTheme = (currentTheme === 'dark') ? 'light' : 'dark';
+            if (localStorage) localStorage.setItem(STORAGE_KEY, currentTheme);
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            changeGiscusTheme(currentTheme);
+            document.body.dispatchEvent(new CustomEvent(currentTheme + "-theme-set"));
+        }
+
+        const autoChangeScheme = e => {
+            currentTheme = e.matches ? 'dark' : 'light'
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            changeGiscusTheme(currentTheme);
+            document.body.dispatchEvent(new CustomEvent(currentTheme + "-theme-set"));
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            switchButton = document.querySelector('.theme-switcher')
+            currentTheme = detectCurrentScheme()
+
+            if (currentTheme === 'auto') {
+                autoChangeScheme(autoDefinedScheme);
+                autoDefinedScheme.addListener(autoChangeScheme);
+            } else {
+                document.documentElement.setAttribute('data-theme', currentTheme)
+            }
+
+            if (switchButton) {
+                switchButton.addEventListener('click', switchTheme, false)
+            }
+
+            showContent();
+        })
+
+        function detectCurrentScheme() {
+            if (localStorage !== null && localStorage.getItem(STORAGE_KEY)) {
+                return localStorage.getItem(STORAGE_KEY)
+            }
+            if (defaultTheme) {
+                return defaultTheme
+            }
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        function showContent() {
+            document.body.style.visibility = 'visible';
+            document.body.style.opacity = 1;
+        }
+
+        function changeGiscusTheme (theme) {
+            function sendMessage(message) {
+              const iframe = document.querySelector('iframe.giscus-frame');
+              if (!iframe) return;
+              iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+            }
+
+            sendMessage({
+              setConfig: {
+                theme: theme
+              }
+            });
+        }
+    </script>
+
+
+        <ul class="social-icons noselect">
+
+
+    
+        <li>
+            <a href="https://github.com/Vitaceae" title="Github" rel="me">
+            <span class="inline-svg">
+
+    
+
+
+    
+    
+    
+    
+    
+
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-github"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" /></svg>
+
+
+</span>
+
+            </a>
+        </li>
+    
+
+    
+        <li>
+            <a href="https://www.linkedin.com/in/mingke-chang-375a5684/" title="Linkedin" rel="me">
+            <span class="inline-svg">
+
+    
+
+
+    
+    
+    
+    
+    
+
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-linkedin"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" /><path d="M8 11l0 5" /><path d="M8 8l0 .01" /><path d="M12 16l0 -5" /><path d="M16 16v-3a2 2 0 0 0 -4 0" /></svg>
+
+
+</span>
+
+            </a>
+        </li>
+    
+
+    
+        <li>
+            <a href="i70170@hotmail.com" title="Email" rel="me">
+            <span class="inline-svg">
+
+    
+
+
+    
+    
+    
+    
+    
+
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-mail"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" /><path d="M3 7l9 6l9 -6" /></svg>
+
+
+</span>
+
+            </a>
+        </li>
+    
+
+
+
+
+
+
+    <li>
+            <a href="/index.xml" title="RSS" rel="me">
+            <span class="inline-svg">
+
+    
+
+
+    
+    
+    
+    
+    
+
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-rss"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M4 4a16 16 0 0 1 16 16" /><path d="M4 11a9 9 0 0 1 9 9" /></svg>
+
+
+</span>
+
+            </a>
+        </li>
+    
+
+</ul>
+
+    </div>
+    <div class="header-top-right">
+
+    </div>
+</div>
+
+
+    <nav class="noselect">
+        
+        
+        <a class="" href="https://vitaceae.github.io/" title="">Home</a>
+        
+        <a class="" href="https://vitaceae.github.io/about/" title="">About</a>
+        
+        <a class="" href="https://vitaceae.github.io/categories/" title="">Categories</a>
+        
+        <a class="" href="https://vitaceae.github.io/tags/" title="">Tags</a>
+        
+        <a class="" href="https://vitaceae.github.io/posts/" title="">Archive</a>
+        
+    </nav>
+
+
+
+
+
+
+
+
+            
+        </header>
+        <main id="main" tabindex="-1">
+            
+    <h1>Category: Web</h1>
+    <div class="post-info">
+        <a href="/categories/">To all categories</a>
+    </div>
+    
+    
+        <article class="post-list h-feed post-card">
+    <div class="post-header">
+        <header>
+            
+            
+            
+            <h1 class="p-name post-title ">
+                <a class="u-url" href="/posts/web/hugo-advanced/">Hugo Advanced</a>
+            </h1>
+        </header>
+        
+
+    </div>
+
+    
+        <div class="content post-summary p-summary">
+            <hr>
+<h2 id="icons" >
+<div>
+    <a href="#icons">
+        #
+    </a>
+    Icons
+</div>
+</h2>
+<table>
+  <thead>
+      <tr>
+          <th>name</th>
+          <th>shortcode</th>
+          <th>icon</th>
+          <th>name</th>
+          <th>shortcode</th>
+          <th>icon</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>4chan</td>
+          <td><code>{{&lt; icon &quot;4chan&quot; &gt;}}</code></td>
+          <td><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-4chan"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 11s6.054 -1.05 6 -4.5c-.038 -2.324 -2.485 -3.19 -3.016 -1.5c0 0 -.502 -2 -2.01 -2c-1.508 0 -2.984 3 -.974 8z" /><path d="M13.98 11s6.075 -1.05 6.02 -4.5c-.038 -2.324 -2.493 -3.19 -3.025 -1.5c0 0 -.505 -2 -2.017 -2c-1.513 0 -3 3 -.977 8z" /><path d="M13 13.98l.062 .309l.081 .35l.075 .29l.092 .328l.11 .358l.061 .188l.139 .392c.64 1.73 1.841 3.837 3.88 3.805c2.324 -.038 3.19 -2.493 1.5 -3.025l.148 -.045l.165 -.058a4.13 4.13 0 0 0 .098 -.039l.222 -.098c.586 -.28 1.367 -.832 1.367 -1.777c0 -1.513 -3 -3 -8 -.977z" /><path d="M10.02 13l-.309 .062l-.35 .081l-.29 .075l-.328 .092l-.358 .11l-.188 .061l-.392 .139c-1.73 .64 -3.837 1.84 -3.805 3.88c.038 2.324 2.493 3.19 3.025 1.5l.045 .148l.058 .165l.039 .098l.098 .222c.28 .586 .832 1.367 1.777 1.367c1.513 0 3 -3 .977 -8z" /><path d="M11 10.02l-.062 -.309l-.081 -.35l-.075 -.29l-.092 -.328l-.11 -.358l-.128 -.382l-.148 -.399c-.658 -1.687 -1.844 -3.634 -3.804 -3.604c-2.324 .038 -3.19 2.493 -1.5 3.025l-.148 .045l-.164 .058a4.13 4.13 0 0 0 -.1 .039l-.22 .098c-.588 .28 -1.368 .832 -1.368 1.777c0 1.513 3 3 8 .977z" /></svg>
+</td>
+          <td>leetcode</td>
+          <td><code>{{&lt; icon &quot;leetcode&quot; &gt;}}</code></td>
+          <td><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-leetcode"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 13h7.5" /><path d="M9.424 7.268l4.999 -4.999" /><path d="M16.633 16.644l-2.402 2.415a3.189 3.189 0 0 1 -4.524 0l-3.77 -3.787a3.223 3.223 0 0 1 0 -4.544l3.77 -3.787a3.189 3.189 0 0 1 4.524 0l2.302 2.313" /></svg>
+</td>
+      </tr>
+      <tr>
+          <td>spotify</td>
+          <td><code>{{&lt; icon &quot;spotify&quot; &gt;}}</code></td>
+          <td><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-spotify"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" /><path d="M8 11.973c2.5 -1.473 5.5 -.973 7.5 .527" /><path d="M9 15c1.5 -1 4 -1 5 .5" /><path d="M7 9c2 -1 6 -2 10 .5" /></svg>
+</td>
+          <td>tinder</td>
+          <td><code>{{&lt; icon &quot;tinder&quot; &gt;}}</code></td>
+          <td><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-tinder"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18.918 8.174c2.56 4.982 .501 11.656 -5.38 12.626c-7.702 1.687 -12.84 -7.716 -7.054 -13.229c.309 -.305 1.161 -1.095 1.516 -1.349c0 .528 .27 3.475 1 3.167c3 0 4 -4.222 3.587 -7.389c2.7 1.411 4.987 3.376 6.331 6.174z" /></svg>
+</td>
+      </tr>
+      <tr>
+          <td>youtube</td>
+          <td><code>{{&lt; icon &quot;youtube&quot; &gt;}}</code></td>
+          <td><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-youtube"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M2 8a4 4 0 0 1 4 -4h12a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-12a4 4 0 0 1 -4 -4v-8z" /><path d="M10 9l5 3l-5 3z" /></svg>
+</td>
+          <td>docs</td>
+          <td><code>{{&lt; icon &quot;docs&quot; &gt;}}</code></td>
+          <td><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-file-type-doc"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 3v4a1 1 0 0 0 1 1h4" /><path d="M5 12v-7a2 2 0 0 1 2 -2h7l5 5v4" /><path d="M5 15v6h1a2 2 0 0 0 2 -2v-2a2 2 0 0 0 -2 -2h-1z" /><path d="M20 16.5a1.5 1.5 0 0 0 -3 0v3a1.5 1.5 0 0 0 3 0" /><path d="M12.5 15a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1 -3 0v-3a1.5 1.5 0 0 1 1.5 -1.5z" /></svg>
+</td>
+      </tr>
+      <tr>
+          <td>linkedin</td>
+          <td><code>{{&lt; icon &quot;linkedin&quot; &gt;}}</code></td>
+          <td><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-linkedin"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" /><path d="M8 11l0 5" /><path d="M8 8l0 .01" /><path d="M12 16l0 -5" /><path d="M16 16v-3a2 2 0 0 0 -4 0" /></svg>
+</td>
+          <td>reddit</td>
+          <td><code>{{&lt; icon &quot;reddit&quot; &gt;}}</code></td>
+          <td><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-reddit"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 8c2.648 0 5.028 .826 6.675 2.14a2.5 2.5 0 0 1 2.326 4.36c0 3.59 -4.03 6.5 -9 6.5c-4.875 0 -8.845 -2.8 -9 -6.294l-1 -.206a2.5 2.5 0 0 1 2.326 -4.36c1.646 -1.313 4.026 -2.14 6.674 -2.14z" /><path d="M12 8l1 -5l6 1" /><path d="M19 4m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><circle cx="9" cy="13" r=".5" fill="currentColor" /><circle cx="15" cy="13" r=".5" fill="currentColor" /><path d="M10 17c.667 .333 1.333 .5 2 .5s1.333 -.167 2 -.5" /></svg>
+</td>
+      </tr>
+      <tr>
+          <td>steam</td>
+          <td><code>{{&lt; icon &quot;steam&quot; &gt;}}</code></td>
+          <td><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-steam"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M16.5 5a4.5 4.5 0 1 1 -.653 8.953l-4.347 3.009l0 .038a3 3 0 0 1 -2.824 3l-.176 0a3 3 0 0 1 -2.94 -2.402l-2.56 -1.098v-3.5l3.51 1.755a2.989 2.989 0 0 1 2.834 -.635l2.727 -3.818a4.5 4.5 0 0 1 4.429 -5.302z" /><circle cx="16.5" cy="9.5" r="1" fill="currentColor" /></svg>
+</td>
+          <td>tumblr</td>
+          <td><code>{{&lt; icon &quot;tumblr&quot; &gt;}}</code></td>
+          <td><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-tumblr"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 21h4v-4h-4v-6h4v-4h-4v-4h-4v1a3 3 0 0 1 -3 3h-1v4h4v6a4 4 0 0 0 4 4" /></svg>
+</td>
+      </tr>
+      <tr>
+          <td>email</td>
+          <td><code>{{&lt; icon &quot;email&quot; &gt;}}</code></td>
+          <td><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-mail"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" /><path d="M3 7l9 6l9 -6" /></svg>
+</td>
+          <td>mastodon</td>
+          <td><code>{{&lt; icon &quot;mastodon&quot; &gt;}}</code></td>
+          <td><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-mastodon"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18.648 15.254c-1.816 1.763 -6.648 1.626 -6.648 1.626a18.262 18.262 0 0 1 -3.288 -.256c1.127 1.985 4.12 2.81 8.982 2.475c-1.945 2.013 -13.598 5.257 -13.668 -7.636l-.026 -1.154c0 -3.036 .023 -4.115 1.352 -5.633c1.671 -1.91 6.648 -1.666 6.648 -1.666s4.977 -.243 6.648 1.667c1.329 1.518 1.352 2.597 1.352 5.633s-.456 4.074 -1.352 4.944z" /><path d="M12 11.204v-2.926c0 -1.258 -.895 -2.278 -2 -2.278s-2 1.02 -2 2.278v4.722m4 -4.722c0 -1.258 .895 -2.278 2 -2.278s2 1.02 2 2.278v4.722" /></svg>
+</td>
+      </tr>
+      <tr>
+          <td>rss</td>
+          <td><code>{{&lt; icon &quot;rss&quot; &gt;}}</code></td>
+          <td><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-rss"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M4 4a16 16 0 0 1 16 16" /><path d="M4 11a9 9 0 0 1 9 9" /></svg>
+</td>
+          <td>teams</td>
+          <td><code>{{&lt; icon &quot;teams&quot; &gt;}}</code></td>
+          <td><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-teams"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 7h10v10h-10z" /><path d="M6 10h4" /><path d="M8 10v4" /><path d="M8.104 17c.47 2.274 2.483 4 4.896 4a5 5 0 0 0 5 -5v-7h-5" /><path d="M18 18a4 4 0 0 0 4 -4v-5h-4" /><path d="M13.003 8.83a3 3 0 1 0 -1.833 -1.833" /><path d="M15.83 8.36a2.5 2.5 0 1 0 .594 -4.117" /></svg>
+</td>
+      </tr>
+      <tr>
+          <td>twitch</td>
+          <td><code>{{&lt; icon &quot;twitch&quot; &gt;}}</code></td>
+          <td><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-twitch"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 5v11a1 1 0 0 0 1 1h2v4l4 -4h5.584c.266 0 .52 -.105 .707 -.293l2.415 -2.414c.187 -.188 .293 -.442 .293 -.708v-8.585a1 1 0 0 0 -1 -1h-14a1 1 0 0 0 -1 1z" /><path d="M16 8l0 4" /><path d="M12 8l0 4" /></svg>
+</td>
+          <td>facebook</td>
+          <td><code>{{&lt; icon &quot;facebook&quot; &gt;}}</code></td>
+          <td><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-facebook"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" /></svg>
+</td>
+      </tr>
+      <tr>
+          <td>medium</td>
+          <td><code>{{&lt; icon &quot;medium&quot; &gt;}}</code></td>
+          <td><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-medium"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" /><path d="M8 9h1l3 3l3 -3h1" /><path d="M8 15l2 0" /><path d="M14 15l2 0" /><path d="M9 9l0 6" /><path d="M15 9l0 6" /></svg>
+</td>
+          <td>skype</td>
+          <td><code>{{&lt; icon &quot;skype&quot; &gt;}}</code></td>
+          <td><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-skype"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 3a9 9 0 0 1 8.603 11.65a4.5 4.5 0 0 1 -5.953 5.953a9 9 0 0 1 -11.253 -11.253a4.5 4.5 0 0 1 5.953 -5.954a8.987 8.987 0 0 1 2.65 -.396z" /><path d="M8 14.5c.5 2 2.358 2.5 4 2.5c2.905 0 4 -1.187 4 -2.5c0 -1.503 -1.927 -2.5 -4 -2.5s-4 -1 -4 -2.5c0 -1.313 1.095 -2.5 4 -2.5c1.642 0 3.5 .5 4 2.5" /></svg>
+</td>
+      </tr>
+      <tr>
+          <td>telegram</td>
+          <td><code>{{&lt; icon &quot;telegram&quot; &gt;}}</code></td>
+          <td><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-telegram"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 10l-4 4l6 6l4 -16l-18 7l4 2l2 6l3 -4" /></svg>
+</td>
+          <td>github</td>
+          <td><code>{{&lt; icon &quot;github&quot; &gt;}}</code></td>
+          <td><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-github"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" /></svg>
+</td>
+      </tr>
+      <tr>
+          <td>netease</td>
+          <td><code>{{&lt; icon &quot;netease-music&quot; &gt;}}</code></td>
+          <td><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-netease-music"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 4c-2.93 1.346 -5 5.046 -5 8.492c0 4.508 4 7.508 8 7.508s8 -3 8 -7c0 -3.513 -3.5 -5.513 -6 -5.513s-5 1.513 -5 4.513c0 2 1.5 3 3 3s3 -1 3 -3c0 -3.513 -2 -4.508 -2 -6.515c0 -3.504 3.5 -2.603 4 -1.502" /></svg>
+</td>
+          <td>slack</td>
+          <td><code>{{&lt; icon &quot;slack&quot; &gt;}}</code></td>
+          <td><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-slack"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 12v-6a2 2 0 0 1 4 0v6m0 -2a2 2 0 1 1 2 2h-6" /><path d="M12 12h6a2 2 0 0 1 0 4h-6m2 0a2 2 0 1 1 -2 2v-6" /><path d="M12 12v6a2 2 0 0 1 -4 0v-6m0 2a2 2 0 1 1 -2 -2h6" /><path d="M12 12h-6a2 2 0 0 1 0 -4h6m-2 0a2 2 0 1 1 2 -2v6" /></svg>
+</td>
+      </tr>
+      <tr>
+          <td>theme</td>
+          <td><code>{{&lt; icon &quot;theme-dark&quot; &gt;}}</code></td>
+          <td><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-moon"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" /></svg>
+</td>
+          <td>vk</td>
+          <td><code>{{&lt; icon &quot;vk&quot; &gt;}}</code></td>
+          <td><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-vk"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 19h-4a8 8 0 0 1 -8 -8v-5h4v5a4 4 0 0 0 4 4h0v-9h4v4.5l.03 0a4.531 4.531 0 0 0 3.97 -4.496h4l-.342 1.711a6.858 6.858 0 0 1 -3.658 4.789h0a5.34 5.34 0 0 1 3.566 4.111l.434 2.389h0h-4a4.531 4.531 0 0 0 -3.97 -4.496v4.5z" /></svg>
+</td>
+      </tr>
+      <tr>
+          <td>gitlab</td>
+          <td><code>{{&lt; icon &quot;gitlab&quot; &gt;}}</code></td>
+          <td><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-gitlab"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M21 14l-9 7l-9 -7l3 -11l3 7h6l3 -7z" /></svg>
+</td>
+          <td>notion</td>
+          <td><code>{{&lt; icon &quot;notion&quot; &gt;}}</code></td>
+          <td><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-notion"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M11 17.5v-6.5h.5l4 6h.5v-6.5" /><path d="M19.077 20.071l-11.53 .887a1 1 0 0 1 -.876 -.397l-2.471 -3.294a1 1 0 0 1 -.2 -.6v-10.741a1 1 0 0 1 .923 -.997l11.389 -.876a2 2 0 0 1 1.262 .33l1.535 1.023a2 2 0 0 1 .891 1.664v12.004a1 1 0 0 1 -.923 .997z" /><path d="M4.5 5.5l2.5 2.5" /><path d="M20 7l-13 1v12.5" /></svg>
+</td>
+      </tr>
+      <tr>
+          <td>snapchat</td>
+          <td><code>{{&lt; icon &quot;snapchat&quot; &gt;}}</code></td>
+          <td><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-snapchat"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M16.882 7.842a4.882 4.882 0 0 0 -9.764 0c0 4.273 -.213 6.409 -4.118 8.118c2 .882 2 .882 3 3c3 0 4 2 6 2s3 -2 6 -2c1 -2.118 1 -2.118 3 -3c-3.906 -1.709 -4.118 -3.845 -4.118 -8.118zm-13.882 8.119c4 -2.118 4 -4.118 1 -7.118m17 7.118c-4 -2.118 -4 -4.118 -1 -7.118" /></svg>
+</td>
+          <td>theme</td>
+          <td><code>{{&lt; icon &quot;theme-light&quot; &gt;}}</code></td>
+          <td><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-sun-high"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14.828 14.828a4 4 0 1 0 -5.656 -5.656a4 4 0 0 0 5.656 5.656z" /><path d="M6.343 17.657l-1.414 1.414" /><path d="M6.343 6.343l-1.414 -1.414" /><path d="M17.657 6.343l1.414 -1.414" /><path d="M17.657 17.657l1.414 1.414" /><path d="M4 12h-2" /><path d="M12 4v-2" /><path d="M20 12h2" /><path d="M12 20v2" /></svg>
+</td>
+      </tr>
+      <tr>
+          <td>weibo</td>
+          <td><code>{{&lt; icon &quot;weibo&quot; &gt;}}</code></td>
+          <td><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-weibo"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M19 14.127c0 3.073 -3.502 5.873 -8 5.873c-4.126 0 -8 -2.224 -8 -5.565c0 -1.78 .984 -3.737 2.7 -5.567c2.362 -2.51 5.193 -3.687 6.551 -2.238c.415 .44 .752 1.39 .749 2.062c2 -1.615 4.308 .387 3.5 2.693c1.26 .557 2.5 .538 2.5 2.742z" /><path d="M15 4h1a5 5 0 0 1 5 5v1" /></svg>
+</td>
+          <td>instagram</td>
+          <td><code>{{&lt; icon &quot;instagram&quot; &gt;}}</code></td>
+          <td><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-instagram"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z" /><path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><path d="M16.5 7.5l0 .01" /></svg>
+</td>
+      </tr>
+      <tr>
+          <td>patreon</td>
+          <td><code>{{&lt; icon &quot;patreon&quot; &gt;}}</code></td>
+          <td><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-patreon"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M20 8.408c-.003 -2.299 -1.746 -4.182 -3.79 -4.862c-2.54 -.844 -5.888 -.722 -8.312 .453c-2.939 1.425 -3.862 4.545 -3.896 7.656c-.028 2.559 .22 9.297 3.92 9.345c2.75 .036 3.159 -3.603 4.43 -5.356c.906 -1.247 2.071 -1.599 3.506 -1.963c2.465 -.627 4.146 -2.626 4.142 -5.273z" /></svg>
+</td>
+          <td>soundcloud</td>
+          <td><code>{{&lt; icon &quot;soundcloud&quot; &gt;}}</code></td>
+          <td><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-soundcloud"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M17 11h1c1.38 0 3 1.274 3 3c0 1.657 -1.5 3 -3 3l-6 0v-10c3 0 4.5 1.5 5 4z" /><path d="M9 8l0 9" /><path d="M6 17l0 -7" /><path d="M3 16l0 -2" /></svg>
+</td>
+      </tr>
+      <tr>
+          <td>tiktok</td>
+          <td><code>{{&lt; icon &quot;tiktok&quot; &gt;}}</code></td>
+          <td><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-tiktok"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M21 7.917v4.034a9.948 9.948 0 0 1 -5 -1.951v4.5a6.5 6.5 0 1 1 -8 -6.326v4.326a2.5 2.5 0 1 0 4 2v-11.5h4.083a6.005 6.005 0 0 0 4.917 4.917z" /></svg>
+</td>
+          <td>x</td>
+          <td><code>{{&lt; icon &quot;x&quot; &gt;}}</code></td>
+          <td><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-x"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 4l11.733 16h4.267l-11.733 -16z" /><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" /></svg>
+</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="emoji" >
+<div>
+    <a href="#emoji">
+        #
+    </a>
+    Emoji
+</div>
+</h2>
+<ul>
+<li>use <a href="https://gohugo.io/functions/emojify/"><code>emojify</code></a> function and <a href="https://gohugo.io/templates/shortcode-templates/#inline-shortcodes">Inline Shortcodes</a> to type emoji directly in content files
+<ul>
+<li><a href="https://gohugo.io/getting-started/configuration/">configuration</a> requirements: set <code>enableEmoji</code> to <code>true</code></li>
+<li>will enable Unicode Standard emoji characters and sequences</li>
+<li>the rendering depends on the browser/platform</li>
+<li>e.g.
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>I :heart: you
+</span></span></code></pre></div>I &#x2764;&#xfe0f; you</li>
+</ul>
+</li>
+<li><a href="http://www.emoji-cheat-sheet.com/">Emoji cheat sheet</a></li>
+<li>use a 3rd party emoji font or a font stack
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#e5c890">emoji</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#ca9ee6">font-family</span>: Android Emoji, EmojiSymbols;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+</ul>
+<hr>
+<h2 id="plugin-giscus" >
+<div>
+    <a href="#plugin-giscus">
+        #
+    </a>
+    Plugin: Giscus
+</div>
+</h2>
+<ol>
+<li>select a repo as the database of the discussions</li>
+<li>install <a href="https://github.com/apps/giscus">giscus</a> on the selected repo</li>
+<li>enable GitHub Discussions<br>
+<img src="/posts/web//inc/hugo/enable_giscus.jpg" alt="enable_giscus"/></li>
+<li><a href="https://giscus.app/">retrieve configuration from the official website</a></li>
+</ol>
+<hr>
+<h2 id="plugin-umami-cloud" >
+<div>
+    <a href="#plugin-umami-cloud">
+        #
+    </a>
+    Plugin: Umami Cloud
+</div>
+</h2>
+<ul>
+<li><a href="https://cloud.umami.is/login">Umami Cloud</a></li>
+</ul>
+<hr>
+<h2 id="rss-feed" >
+<div>
+    <a href="#rss-feed">
+        #
+    </a>
+    RSS Feed
+</div>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>rssAsSocialIcon = <span style="color:#ef9f76">true</span>
+</span></span></code></pre></div><hr>
+<h2 id="hide-post" >
+<div>
+    <a href="#hide-post">
+        #
+    </a>
+    Hide Post
+</div>
+</h2>
+<p>add <code>hidden = true</code> to the front matter of the post; available only by link</p>
+        </div>
+    
+
+    
+    
+    
+    
+    
+        <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+      document.querySelectorAll("mjx-container").forEach(function(x){
+        x.parentElement.classList += 'has-jax'})
+    });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    
+
+    
+
+    
+
+
+
+<div class="post-info noselect">
+    
+        <div class="post-date dt-published">
+            <time datetime="2024-03-03">2024-03-03</time>
+            
+        </div>
+    
+
+    <a class="post-hidden-url u-url" href="/posts/web/hugo-advanced/">/posts/web/hugo-advanced/</a>
+    <a href="https://vitaceae.github.io/" class="p-name p-author post-hidden-author h-card" rel="me">Mike</a>
+
+
+    <div class="post-taxonomies">
+        
+            <ul class="post-categories">
+                
+                    
+                    <li><a href="/categories/web/">Web</a></li>
+                
+            </ul>
+        
+        
+            <ul class="post-tags">
+                
+                    
+                    <li><a href="/tags/website/">#Website</a></li>
+                
+                    
+                    <li><a href="/tags/hugo/">#Hugo</a></li>
+                
+                    
+                    <li><a href="/tags/icons/">#Icons</a></li>
+                
+                    
+                    <li><a href="/tags/emoji/">#Emoji</a></li>
+                
+                    
+                    <li><a href="/tags/giscus/">#Giscus</a></li>
+                
+                    
+                    <li><a href="/tags/umami/">#Umami</a></li>
+                
+                    
+                    <li><a href="/tags/shortcodes/">#Shortcodes</a></li>
+                
+                    
+                    <li><a href="/tags/privacy/">#Privacy</a></li>
+                
+            </ul>
+        
+        
+    </div>
+</div>
+
+</article>
+
+    
+        <article class="post-list h-feed post-card">
+    <div class="post-header">
+        <header>
+            
+            
+            
+            <h1 class="p-name post-title ">
+                <a class="u-url" href="/posts/web/hugo_style/">Hugo-Style</a>
+            </h1>
+        </header>
+        
+
+    </div>
+
+    
+        <div class="content post-summary p-summary">
+            <hr>
+<h2 id="global-wise-style" >
+<div>
+    <a href="#global-wise-style">
+        #
+    </a>
+    global-wise style
+</div>
+</h2>
+<pre tabindex="0"><code>&lt;cust&gt;
+affected by &lt;code&gt;cust.scss&lt;/code&gt; and &lt;code&gt;cust.css&lt;/code&gt;
+&lt;/cust&gt;
+
+&lt;div class=&#34;cust-style&#34;&gt;
+example of &lt;code&gt;cust-style&lt;/code&gt;
+&lt;/div&gt;
+</code></pre><cust>
+affected by <code>cust.scss</code> and <code>cust.css</code>
+</cust>
+</br>
+<div class="cust-style">
+example of <code>cust-style</code>
+</div>
+<p>add the following line to .toml</p>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>customCSS = [<span style="color:#a6d189">&#34;custom-css/cust.scss&#34;</span>, <span style="color:#a6d189">&#34;custom-css/cust.css&#34;</span>]
+</span></span></code></pre></div><p>add <code>assets/custom-css/cust.css</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scss" data-lang="scss"><span style="display:flex;"><span><span style="color:#e5c890">.cust-style</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#8caaee">background-color</span><span style="color:#99d1db;font-weight:bold">:</span> <span style="color:#e5c890">pink</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#8caaee">color</span><span style="color:#99d1db;font-weight:bold">:</span> <span style="color:#e5c890">black</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#8caaee">padding</span><span style="color:#99d1db;font-weight:bold">:</span> <span style="color:#ef9f76">1</span><span style="color:#e78284">em</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#8caaee">border-radius</span><span style="color:#99d1db;font-weight:bold">:</span> <span style="color:#ef9f76">0</span><span style="color:#ef9f76">.3</span><span style="color:#e78284">em</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#8caaee">border</span><span style="color:#99d1db;font-weight:bold">:</span> <span style="color:#ef9f76">1</span><span style="color:#e78284">px</span> <span style="color:#81c8be">solid</span> <span style="color:#e5c890">black</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>add <code>assets/custom-css/cust.scss</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scss" data-lang="scss"><span style="display:flex;"><span><span style="color:#ca9ee6">@import</span> <span style="color:#a6d189">&#39;foundation/vars&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ca9ee6">cust</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#8caaee">display</span><span style="color:#99d1db;font-weight:bold">:</span> <span style="color:#81c8be">block</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#8caaee">font</span><span style="color:#99d1db;font-weight:bold">:</span> <span style="color:#ef9f76">100</span><span style="color:#e78284">%</span> <span style="color:#f2d5cf">$font-stack</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#8caaee">color</span><span style="color:#99d1db;font-weight:bold">:</span> <span style="color:#f2d5cf">$primary-color</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#8caaee">background-color</span><span style="color:#99d1db;font-weight:bold">:</span> <span style="color:#f2d5cf">$background-color</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#8caaee">margin-top</span><span style="color:#99d1db;font-weight:bold">:</span> <span style="color:#ef9f76">1</span><span style="color:#e78284">em</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>add <code>assets/custom-css/foundation/_vars.scss</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scss" data-lang="scss"><span style="display:flex;"><span><span style="color:#f2d5cf">$font-stack</span><span style="color:#99d1db;font-weight:bold">:</span> Helvetica<span style="color:#99d1db;font-weight:bold">,</span> <span style="color:#81c8be">sans-serif</span>;
+</span></span><span style="display:flex;"><span><span style="color:#f2d5cf">$primary-color</span><span style="color:#99d1db;font-weight:bold">:</span> <span style="color:#8caaee">rgb</span>(<span style="color:#ef9f76">255</span><span style="color:#99d1db;font-weight:bold">,</span> <span style="color:#ef9f76">255</span><span style="color:#99d1db;font-weight:bold">,</span> <span style="color:#ef9f76">168</span>);
+</span></span><span style="display:flex;"><span><span style="color:#f2d5cf">$background-color</span><span style="color:#99d1db;font-weight:bold">:</span> <span style="color:#8caaee">rgb</span>(<span style="color:#ef9f76">85</span><span style="color:#99d1db;font-weight:bold">,</span> <span style="color:#ef9f76">85</span><span style="color:#99d1db;font-weight:bold">,</span> <span style="color:#ef9f76">85</span>);
+</span></span></code></pre></div><hr>
+<h2 id="page-wise-style" >
+<div>
+    <a href="#page-wise-style">
+        #
+    </a>
+    page-wise style
+</div>
+</h2>
+<p>the current page is affected only by <code>hugo-style/style.css</code></p>
+        </div>
+    
+
+    
+    
+    
+    
+    
+
+    
+
+    
+
+
+
+<div class="post-info noselect">
+    
+        <div class="post-date dt-published">
+            <time datetime="2024-03-03">2024-03-03</time>
+            
+        </div>
+    
+
+    <a class="post-hidden-url u-url" href="/posts/web/hugo_style/">/posts/web/hugo_style/</a>
+    <a href="https://vitaceae.github.io/" class="p-name p-author post-hidden-author h-card" rel="me">Mike</a>
+
+
+    <div class="post-taxonomies">
+        
+            <ul class="post-categories">
+                
+                    
+                    <li><a href="/categories/web/">Web</a></li>
+                
+            </ul>
+        
+        
+            <ul class="post-tags">
+                
+                    
+                    <li><a href="/tags/website/">#Website</a></li>
+                
+                    
+                    <li><a href="/tags/hugo/">#Hugo</a></li>
+                
+                    
+                    <li><a href="/tags/css/">#Css</a></li>
+                
+            </ul>
+        
+        
+    </div>
+</div>
+
+</article>
+
+    
+        <article class="post-list h-feed post-card">
+    <div class="post-header">
+        <header>
+            
+            
+            
+            <h1 class="p-name post-title ">
+                <a class="u-url" href="/posts/web/hugo/">Hugo</a>
+            </h1>
+        </header>
+        
+
+    </div>
+
+    
+        <div class="content post-summary p-summary">
+            <h2 id="installation" >
+<div>
+    <a href="#installation">
+        #
+    </a>
+    Installation
+</div>
+</h2>
+<h3 id="windows" >
+<div>
+    <a href="#windows">
+        ##
+    </a>
+    Windows
+</div>
+</h3>
+<ul>
+<li>install <a href="https://docs.chocolatey.org/en-us/choco/setup/#install-with-powershellexe">chocolatey</a>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>&gt; <span style="color:#99d1db">Set-ExecutionPolicy</span> Bypass -Scope <span style="color:#ca9ee6">Process</span> -Force; [<span style="color:#e5c890">System.Net.ServicePointManager</span>]::SecurityProtocol = [<span style="color:#e5c890">System.Net.ServicePointManager</span>]::SecurityProtocol <span style="color:#99d1db;font-weight:bold">-bor</span> <span style="color:#ef9f76">3072</span>; <span style="color:#99d1db">iex </span>((<span style="color:#99d1db">New-Object</span> System.<span style="color:#ef9f76">Net</span>.WebClient).<span style="color:#ef9f76">DownloadString</span>(<span style="color:#a6d189">&#39;https://community.chocolatey.org/install.ps1&#39;</span>))
+</span></span></code></pre></div></li>
+<li>install Go stable version: to build Hugo from source and use the Hugo Modules feature
+<ul>
+<li>from <a href="https://go.dev/dl/">binary</a></li>
+<li>from choco command
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>&gt; choco install golang sass <span style="color:#99d1db">hugo-extended</span>
+</span></span></code></pre></div></li>
+</ul>
+</li>
+<li>install Dart Sass: to transpile Sass to CSS</li>
+<li>install Hugo
+<ul>
+<li>from <a href="https://github.com/gohugoio/hugo/releases/latest">prebuilt-binary</a>
+<ul>
+<li>add this directory to <code>PATH</code> variable</li>
+</ul>
+</li>
+<li>from choco command</li>
+</ul>
+</li>
+</ul>
+<h3 id="linux" >
+<div>
+    <a href="#linux">
+        ##
+    </a>
+    Linux
+</div>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo snap install hugo
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"># enable/revoke access to removable media</span>
+</span></span><span style="display:flex;"><span>$ sudo snap connect hugo:removable-media
+</span></span><span style="display:flex;"><span>$ sudo snap disconnect hugo:removable-media
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"># enable/revoke access to SSH keys</span>
+</span></span><span style="display:flex;"><span>$ sudo snap connect hugo:ssh-keys
+</span></span><span style="display:flex;"><span>$ sudo snap disconnect hugo:ssh-keys
+</span></span></code></pre></div><hr>
+<h2 id="directory-structure" >
+<div>
+    <a href="#directory-structure">
+        #
+    </a>
+    Directory structure
+</div>
+</h2>
+<ul>
+<li><a href="https://gohugo.io/content-management/organization/">Hugo: Content organization</a></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>.
+</span></span><span style="display:flex;"><span>├── archetypes  # templates for new content
+</span></span><span style="display:flex;"><span>├── assets      # pipeline which global resources typically passed through
+</span></span><span style="display:flex;"><span>│                 (images, CSS, Sass, JavaScript, and TypeScript...)
+</span></span><span style="display:flex;"><span>├── config      # (optional)site configuration
+</span></span><span style="display:flex;"><span>│   ├── _default
+</span></span><span style="display:flex;"><span>│   │   ├── hugo.toml
+</span></span><span style="display:flex;"><span>│   │   ├── languages.toml
+</span></span><span style="display:flex;"><span>│   │   ├── menus.en.toml
+</span></span><span style="display:flex;"><span>│   │   └── params.toml
+</span></span><span style="display:flex;"><span>│   ├── production
+</span></span><span style="display:flex;"><span>│   │   ├── hugo.toml
+</span></span><span style="display:flex;"><span>│   │   └── params.toml
+</span></span><span style="display:flex;"><span>│   └── staging
+</span></span><span style="display:flex;"><span>│       └── ...
+</span></span><span style="display:flex;"><span>├── content     # markup files (typically markdown)
+</span></span><span style="display:flex;"><span>├── data        # JSON, TOML, YAML, or XML; accessible as a map in the .Site.Data variable
+</span></span><span style="display:flex;"><span>├── layouts     # templates to transform content, data, and resources into a complete website
+</span></span><span style="display:flex;"><span>├── resources   # cached output from Hugo&#39;s asset pipelines
+</span></span><span style="display:flex;"><span>├── static      # files that will be copied to the public directory
+</span></span><span style="display:flex;"><span>├── themes
+</span></span><span style="display:flex;"><span>└── hugo.toml
+</span></span></code></pre></div><hr>
+<h2 id="quick-start" >
+<div>
+    <a href="#quick-start">
+        #
+    </a>
+    Quick Start
+</div>
+</h2>
+<ul>
+<li><a href="https://gohugo.io/getting-started/usage/">Hugo: Basic usage</a></li>
+<li>Windows user: run commands from PowerShell(not Windows PowerShell), WSL or Git Bash</li>
+</ul>
+<h3 id="create-a-demo-site-on-wsl" >
+<div>
+    <a href="#create-a-demo-site-on-wsl">
+        ##
+    </a>
+    Create a demo site on WSL
+</div>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ <span style="color:#f2d5cf">SITE_NAME</span><span style="color:#99d1db;font-weight:bold">=</span>hugo_site
+</span></span><span style="display:flex;"><span>$ hugo new site <span style="color:#f2d5cf">$SITE_NAME</span>
+</span></span><span style="display:flex;"><span>$ <span style="color:#99d1db">cd</span> <span style="color:#f2d5cf">$SITE_NAME</span>
+</span></span><span style="display:flex;"><span>$ git init
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"># add a new theme</span>
+</span></span><span style="display:flex;"><span>$ git submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke
+</span></span><span style="display:flex;"><span>$ <span style="color:#99d1db">echo</span> <span style="color:#a6d189">&#34;theme = &#39;ananke&#39;&#34;</span> &gt;&gt; hugo.toml
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"># write a new post; set &#39;draft = false&#39; in the .md file when done</span>
+</span></span><span style="display:flex;"><span>$ hugo new posts/new_post.md
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"># need to find the WSL&#39;s LAN IP; add an alias function in bash.rc</span>
+</span></span><span style="display:flex;"><span><span style="color:#ca9ee6">function</span> hugo_server<span style="color:#99d1db;font-weight:bold">()</span> <span style="color:#99d1db;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f2d5cf">WSL_IP</span><span style="color:#99d1db;font-weight:bold">=</span><span style="color:#ca9ee6">$(</span>ip addr show eth0 | grep <span style="color:#a6d189">&#34;inet\b&#34;</span> | awk <span style="color:#a6d189">&#39;{print $2}&#39;</span> | cut -d/ -f1<span style="color:#ca9ee6">)</span>
+</span></span><span style="display:flex;"><span>    hugo server --bind <span style="color:#f2d5cf">$WSL_IP</span> --baseURL<span style="color:#99d1db;font-weight:bold">=</span>http://<span style="color:#f2d5cf">$WSL_IP</span> -D -F --gc -w
+</span></span><span style="display:flex;"><span><span style="color:#99d1db;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"># run local web server(changes take effect on the fly)</span>
+</span></span><span style="display:flex;"><span>$ hugo_server
+</span></span></code></pre></div><h3 id="host-on-github-pages" >
+<div>
+    <a href="#host-on-github-pages">
+        ##
+    </a>
+    Host on GitHub Pages
+</div>
+</h3>
+<p>Publish to GitHub Pages (there&rsquo;s rendering problem following the official method)</p>
+        </div>
+    
+
+    
+    
+    
+    
+    
+
+    
+
+    
+
+
+
+<div class="post-info noselect">
+    
+        <div class="post-date dt-published">
+            <time datetime="2024-03-02">2024-03-02</time>
+            
+        </div>
+    
+
+    <a class="post-hidden-url u-url" href="/posts/web/hugo/">/posts/web/hugo/</a>
+    <a href="https://vitaceae.github.io/" class="p-name p-author post-hidden-author h-card" rel="me">Mike</a>
+
+
+    <div class="post-taxonomies">
+        
+            <ul class="post-categories">
+                
+                    
+                    <li><a href="/categories/web/">Web</a></li>
+                
+            </ul>
+        
+        
+            <ul class="post-tags">
+                
+                    
+                    <li><a href="/tags/website/">#Website</a></li>
+                
+                    
+                    <li><a href="/tags/hugo/">#Hugo</a></li>
+                
+            </ul>
+        
+        
+    </div>
+</div>
+
+</article>
+
+    
+        <article class="post-list h-feed post-card">
+    <div class="post-header">
+        <header>
+            
+            
+            
+                <style>
+                    .post-icon-9848cfe34545deae2c5083d3516560a7::before {
+                        display: inline-block;
+                        content: '';
+                        background: url("/posts/web/hugo_diagram/icon.svg");
+                        width: 1.2em;
+                        height: 1.2em;
+                        background-size: auto 100%;
+                        vertical-align: text-bottom;
+                    }
+                </style>
+            
+            <h1 class="p-name post-title post-icon-9848cfe34545deae2c5083d3516560a7">
+                <a class="u-url" href="/posts/web/hugo_diagram/">Hugo Diagram</a>
+            </h1>
+        </header>
+        
+
+    </div>
+
+    
+        <div class="content post-summary p-summary">
+            <h2 id="mermaid-diagrams" >
+<div>
+    <a href="#mermaid-diagrams">
+        #
+    </a>
+    Mermaid Diagrams
+</div>
+</h2>
+<ul>
+<li><a href="https://mermaid.js.org/intro/">About Mermaid</a></li>
+</ul>
+<h3 id="sequence" >
+<div>
+    <a href="#sequence">
+        ##
+    </a>
+    Sequence
+</div>
+</h3>
+<pre class="mermaid">sequenceDiagram
+    participant Alice
+    participant Bob
+    Alice->>John: Hello John, how are you?
+    loop HealthCheck
+        John->>John: Fight against hypochondria
+    end
+    Note right of John: Rational thoughts <br/>prevail!
+    John-->>Alice: Great!
+    John->>Bob: How about you?
+    Bob-->>John: Jolly good!
+</pre>
+
+<pre class="mermaid">sequenceDiagram
+    loop Daily query
+        Alice->>Bob: Hello Bob, how are you?
+        alt is sick
+            Bob->>Alice: Not so good :(
+        else is well
+            Bob->>Alice: Feeling fresh like a daisy
+        end
+
+        opt Extra response
+            Bob->>Alice: Thanks for asking
+        end
+    end
+</pre>
+
+<h3 id="gantt" >
+<div>
+    <a href="#gantt">
+        ##
+    </a>
+    Gantt
+</div>
+</h3>
+<pre class="mermaid">gantt
+    title A Gantt Diagram
+    dateFormat YYYY-MM-DD
+    section Section
+        A task          :a1, 2014-01-01, 30d
+        Another task    :after a1, 20d
+    section Another
+        Task in Another :2014-01-12, 12d
+        another task    :24d
+</pre>
+
+<h3 id="git-graph" >
+<div>
+    <a href="#git-graph">
+        ##
+    </a>
+    Git Graph
+</div>
+</h3>
+<pre class="mermaid">gitGraph:
+    commit "Ashish"
+    branch newbranch
+    checkout newbranch
+    commit id:"1111"
+    commit tag:"test"
+    checkout main
+    commit type: HIGHLIGHT
+    commit
+    merge newbranch
+    commit
+    branch b2
+    commit
+</pre>
+
+<h3 id="state" >
+<div>
+    <a href="#state">
+        ##
+    </a>
+    State
+</div>
+</h3>
+<pre class="mermaid">stateDiagram
+    [*] --> Still
+    Still --> [*]
+
+    Still --> Moving
+    Moving --> Still
+    Moving --> Crash
+    Crash --> [*]
+</pre>
+
+<h2 id="goat" >
+<div>
+    <a href="#goat">
+        #
+    </a>
+    GoAT
+</div>
+</h2>
+
+
+
+<div class="goat svg-container ">
+  
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      font-family="Menlo,Lucida Console,monospace"
+      
+        viewBox="0 0 680 121"
+      >
+      <g transform='translate(8,16)'>
+<path d='M 440,0 L 464,0' fill='none' stroke='currentColor'></path>
+<path d='M 576,0 L 584,0' fill='none' stroke='currentColor'></path>
+<path d='M 408,16 L 440,16' fill='none' stroke='currentColor'></path>
+<path d='M 552,16 L 560,16' fill='none' stroke='currentColor'></path>
+<path d='M 144,32 L 176,32' fill='none' stroke='currentColor'></path>
+<path d='M 176,32 L 208,32' fill='none' stroke='currentColor'></path>
+<path d='M 296,32 L 312,32' fill='none' stroke='currentColor'></path>
+<path d='M 312,32 L 328,32' fill='none' stroke='currentColor'></path>
+<path d='M 440,32 L 464,32' fill='none' stroke='currentColor'></path>
+<path d='M 576,32 L 584,32' fill='none' stroke='currentColor'></path>
+<path d='M 384,48 L 408,48' fill='none' stroke='currentColor'></path>
+<path d='M 512,48 L 536,48' fill='none' stroke='currentColor'></path>
+<path d='M 128,64 L 144,64' fill='none' stroke='currentColor'></path>
+<path d='M 144,64 L 160,64' fill='none' stroke='currentColor'></path>
+<path d='M 192,64 L 208,64' fill='none' stroke='currentColor'></path>
+<path d='M 208,64 L 224,64' fill='none' stroke='currentColor'></path>
+<path d='M 440,64 L 464,64' fill='none' stroke='currentColor'></path>
+<path d='M 576,64 L 584,64' fill='none' stroke='currentColor'></path>
+<path d='M 408,80 L 440,80' fill='none' stroke='currentColor'></path>
+<path d='M 552,80 L 560,80' fill='none' stroke='currentColor'></path>
+<path d='M 440,96 L 464,96' fill='none' stroke='currentColor'></path>
+<path d='M 576,96 L 584,96' fill='none' stroke='currentColor'></path>
+<path d='M 128,64 L 128,80' fill='none' stroke='currentColor'></path>
+<path d='M 144,32 L 144,64' fill='none' stroke='currentColor'></path>
+<path d='M 160,64 L 160,80' fill='none' stroke='currentColor'></path>
+<path d='M 176,0 L 176,32' fill='none' stroke='currentColor'></path>
+<path d='M 192,64 L 192,80' fill='none' stroke='currentColor'></path>
+<path d='M 208,32 L 208,64' fill='none' stroke='currentColor'></path>
+<path d='M 224,64 L 224,80' fill='none' stroke='currentColor'></path>
+<path d='M 280,48 L 280,64' fill='none' stroke='currentColor'></path>
+<path d='M 312,0 L 312,32' fill='none' stroke='currentColor'></path>
+<path d='M 344,48 L 344,64' fill='none' stroke='currentColor'></path>
+<path d='M 408,16 L 408,48' fill='none' stroke='currentColor'></path>
+<path d='M 408,48 L 408,80' fill='none' stroke='currentColor'></path>
+<path d='M 440,0 L 440,16' fill='none' stroke='currentColor'></path>
+<path d='M 440,16 L 440,32' fill='none' stroke='currentColor'></path>
+<path d='M 440,64 L 440,80' fill='none' stroke='currentColor'></path>
+<path d='M 440,80 L 440,96' fill='none' stroke='currentColor'></path>
+<path d='M 536,32 L 536,48' fill='none' stroke='currentColor'></path>
+<path d='M 536,48 L 536,64' fill='none' stroke='currentColor'></path>
+<path d='M 8,80 L 24,48' fill='none' stroke='currentColor'></path>
+<path d='M 24,48 L 48,0' fill='none' stroke='currentColor'></path>
+<path d='M 56,80 L 72,48' fill='none' stroke='currentColor'></path>
+<path d='M 624,48 L 640,16' fill='none' stroke='currentColor'></path>
+<path d='M 640,16 L 648,0' fill='none' stroke='currentColor'></path>
+<path d='M 640,80 L 648,64' fill='none' stroke='currentColor'></path>
+<path d='M 24,48 L 40,80' fill='none' stroke='currentColor'></path>
+<path d='M 48,0 L 72,48' fill='none' stroke='currentColor'></path>
+<path d='M 72,48 L 88,80' fill='none' stroke='currentColor'></path>
+<path d='M 624,48 L 640,80' fill='none' stroke='currentColor'></path>
+<path d='M 640,80 L 648,96' fill='none' stroke='currentColor'></path>
+<path d='M 640,16 L 648,32' fill='none' stroke='currentColor'></path>
+<path d='M 576,0 A 16,16 0 0,0 560,16' fill='none' stroke='currentColor'></path>
+<path d='M 552,16 A 16,16 0 0,0 536,32' fill='none' stroke='currentColor'></path>
+<path d='M 296,32 A 16,16 0 0,0 280,48' fill='none' stroke='currentColor'></path>
+<path d='M 328,32 A 16,16 0 0,1 344,48' fill='none' stroke='currentColor'></path>
+<path d='M 560,16 A 16,16 0 0,0 576,32' fill='none' stroke='currentColor'></path>
+<path d='M 280,64 A 16,16 0 0,0 264,80' fill='none' stroke='currentColor'></path>
+<path d='M 280,64 A 16,16 0 0,1 296,80' fill='none' stroke='currentColor'></path>
+<path d='M 344,64 A 16,16 0 0,0 328,80' fill='none' stroke='currentColor'></path>
+<path d='M 344,64 A 16,16 0 0,1 360,80' fill='none' stroke='currentColor'></path>
+<path d='M 576,64 A 16,16 0 0,0 560,80' fill='none' stroke='currentColor'></path>
+<path d='M 536,64 A 16,16 0 0,0 552,80' fill='none' stroke='currentColor'></path>
+<path d='M 560,80 A 16,16 0 0,0 576,96' fill='none' stroke='currentColor'></path>
+<text text-anchor='middle' x='8' y='100' fill='currentColor' style='font-size:1em'>1</text>
+<text text-anchor='middle' x='40' y='100' fill='currentColor' style='font-size:1em'>2</text>
+<text text-anchor='middle' x='56' y='100' fill='currentColor' style='font-size:1em'>3</text>
+<text text-anchor='middle' x='88' y='100' fill='currentColor' style='font-size:1em'>4</text>
+<text text-anchor='middle' x='128' y='100' fill='currentColor' style='font-size:1em'>1</text>
+<text text-anchor='middle' x='160' y='100' fill='currentColor' style='font-size:1em'>2</text>
+<text text-anchor='middle' x='192' y='100' fill='currentColor' style='font-size:1em'>3</text>
+<text text-anchor='middle' x='224' y='100' fill='currentColor' style='font-size:1em'>4</text>
+<text text-anchor='middle' x='264' y='100' fill='currentColor' style='font-size:1em'>1</text>
+<text text-anchor='middle' x='296' y='100' fill='currentColor' style='font-size:1em'>2</text>
+<text text-anchor='middle' x='328' y='100' fill='currentColor' style='font-size:1em'>3</text>
+<text text-anchor='middle' x='360' y='100' fill='currentColor' style='font-size:1em'>4</text>
+<text text-anchor='middle' x='480' y='4' fill='currentColor' style='font-size:1em'>1</text>
+<text text-anchor='middle' x='480' y='36' fill='currentColor' style='font-size:1em'>2</text>
+<text text-anchor='middle' x='480' y='68' fill='currentColor' style='font-size:1em'>3</text>
+<text text-anchor='middle' x='480' y='100' fill='currentColor' style='font-size:1em'>4</text>
+<text text-anchor='middle' x='600' y='4' fill='currentColor' style='font-size:1em'>1</text>
+<text text-anchor='middle' x='600' y='36' fill='currentColor' style='font-size:1em'>2</text>
+<text text-anchor='middle' x='600' y='68' fill='currentColor' style='font-size:1em'>3</text>
+<text text-anchor='middle' x='600' y='100' fill='currentColor' style='font-size:1em'>4</text>
+<text text-anchor='middle' x='664' y='4' fill='currentColor' style='font-size:1em'>1</text>
+<text text-anchor='middle' x='664' y='36' fill='currentColor' style='font-size:1em'>2</text>
+<text text-anchor='middle' x='664' y='68' fill='currentColor' style='font-size:1em'>3</text>
+<text text-anchor='middle' x='664' y='100' fill='currentColor' style='font-size:1em'>4</text>
+</g>
+
+    </svg>
+  
+</div>
+        </div>
+    
+
+    
+    
+    
+        
+
+    
+
+
+
+
+
+    
+    
+        
+    
+    
+
+    
+        <script src="/js/script.min.f2a82ecf59b1afe4e9c2be2c418e428efc4a96b7e9f39f7e3b9f41f13b17248c.js" type="text/javascript" charset="utf-8" integrity="sha256-8qguz1mxr&#43;Tpwr4sQY5CjvxKlrfp859&#43;O59B8TsXJIw="></script>
+    
+
+
+
+
+
+
+
+
+
+<script type="module">
+    function detectCurrentScheme3() {
+        const defaultTheme = "auto";
+        if (localStorage !== null && localStorage.getItem("user-color-scheme")) {
+            return localStorage.getItem("user-color-scheme");
+        }
+        if (defaultTheme === "dark" || defaultTheme === "light") {
+            return defaultTheme;
+        }
+        return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+    window.mermaid = mermaid;
+    window.initMermaid()
+    document.body.dispatchEvent(new CustomEvent(detectCurrentScheme3() + "-theme-set"));
+</script>
+
+    
+    
+    
+
+    
+
+    
+
+
+
+<div class="post-info noselect">
+    
+        <div class="post-date dt-published">
+            <time datetime="2024-03-02">2024-03-02</time>
+            
+        </div>
+    
+
+    <a class="post-hidden-url u-url" href="/posts/web/hugo_diagram/">/posts/web/hugo_diagram/</a>
+    <a href="https://vitaceae.github.io/" class="p-name p-author post-hidden-author h-card" rel="me">Mike</a>
+
+
+    <div class="post-taxonomies">
+        
+            <ul class="post-categories">
+                
+                    
+                    <li><a href="/categories/web/">Web</a></li>
+                
+            </ul>
+        
+        
+            <ul class="post-tags">
+                
+                    
+                    <li><a href="/tags/website/">#Website</a></li>
+                
+                    
+                    <li><a href="/tags/hugo/">#Hugo</a></li>
+                
+                    
+                    <li><a href="/tags/diagrams/">#Diagrams</a></li>
+                
+                    
+                    <li><a href="/tags/mermaid/">#Mermaid</a></li>
+                
+                    
+                    <li><a href="/tags/goat/">#GoAT</a></li>
+                
+            </ul>
+        
+        
+    </div>
+</div>
+
+</article>
+
+    
+        <article class="post-list h-feed post-card">
+    <div class="post-header">
+        <header>
+            
+            
+            
+            <h1 class="p-name post-title ">
+                <a class="u-url" href="/posts/web/website/">Website</a>
+            </h1>
+        </header>
+        
+
+    </div>
+
+    
+        <div class="content post-summary p-summary">
+            <h2 id="static-site" >
+<div>
+    <a href="#static-site">
+        #
+    </a>
+    Static Site
+</div>
+</h2>
+<p>Static Site Generator 靜態網站產生器</p>
+<ul>
+<li><code>Jekyll</code>: based on Ruby; higher build time</li>
+<li><code>Hexo</code>: based on JavaScript; less build time</li>
+<li><code>Hugo</code>: based on Go; least build time; easy-install(binary)</li>
+</ul>
+<h2 id="comments-system" >
+<div>
+    <a href="#comments-system">
+        #
+    </a>
+    Comments System
+</div>
+</h2>
+<ul>
+<li><a href="https://docs.github.com/en/discussions">Giscus</a>: powered by GitHub Discussions
+<ul>
+<li>guests use GitHub OAuth Token to post comments</li>
+</ul>
+</li>
+<li>disqus</li>
+<li>gitalk</li>
+<li>valine</li>
+<li>facebook</li>
+<li>telegram</li>
+</ul>
+<h2 id="analytics" >
+<div>
+    <a href="#analytics">
+        #
+    </a>
+    Analytics
+</div>
+</h2>
+<p><strong>Cloud-based</strong></p>
+<ul>
+<li><a href="https://cloud.umami.is/login">Umami Cloud</a></li>
+<li>Google Analytics
+<ul>
+<li>too complicated</li>
+</ul>
+</li>
+</ul>
+<p><strong>Self-host</strong></p>
+<ul>
+<li>Netlify + Neon</li>
+<li>Railway</li>
+<li>Vercel + TiDB Cloud</li>
+</ul>
+<hr>
+<h2 id="references" >
+<div>
+    <a href="#references">
+        #
+    </a>
+    References
+</div>
+</h2>
+        </div>
+    
+
+    
+    
+    
+    
+    
+
+    
+
+    
+
+
+
+<div class="post-info noselect">
+    
+        <div class="post-date dt-published">
+            <time datetime="2024-03-02">2024-03-02</time>
+            
+        </div>
+    
+
+    <a class="post-hidden-url u-url" href="/posts/web/website/">/posts/web/website/</a>
+    <a href="https://vitaceae.github.io/" class="p-name p-author post-hidden-author h-card" rel="me">Mike</a>
+
+
+    <div class="post-taxonomies">
+        
+            <ul class="post-categories">
+                
+                    
+                    <li><a href="/categories/web/">Web</a></li>
+                
+            </ul>
+        
+        
+            <ul class="post-tags">
+                
+                    
+                    <li><a href="/tags/website/">#Website</a></li>
+                
+                    
+                    <li><a href="/tags/static-site/">#Static Site</a></li>
+                
+                    
+                    <li><a href="/tags/comments-system/">#Comments System</a></li>
+                
+                    
+                    <li><a href="/tags/analytics/">#Analytics</a></li>
+                
+            </ul>
+        
+        
+    </div>
+</div>
+
+</article>
+
+    
+    
+
+
+
+        </main>
+        
+            <footer class="common-footer noselect">
+    
+    
+        <ul class="language-select">
+    
+    
+    
+        
+    
+
+    
+        
+            <li>English</li>
+        
+    
+        
+            <li><a href="/zh/">Chinese</a></li>
+        
+    
+</ul>
+
+    
+
+    <div class="common-footer-bottom">
+        
+
+        <div style="display: flex; align-items: center; gap:8px">
+            ©  Mike Chang,  2025
+            
+            <a aria-label="Check statistics data" style="display: flex; align-items: center; border-bottom: none; cursor: pointer; color: var(--pagination-link-color)" href="https://cloud.umami.is/share/biHOZBHqeGeBgHVS/vitaceae.github.io"><svg xmlns="http://www.w3.org/2000/svg"  width="16"  height="16"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-report-analytics"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" /><path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" /><path d="M9 17v-5" /><path d="M12 17v-1" /><path d="M15 17v-3" /></svg></a>
+            
+        </div>
+        <div style="display:flex;align-items: center">
+            
+            
+            
+            
+            
+            
+        </div>
+        <div>
+            Powered by <a target="_blank" rel="noopener noreferrer" href="https://gohugo.io/">Hugo</a>, theme <a target="_blank" rel="noopener noreferrer" href="https://github.com/Junyi-99/hugo-theme-anubis2">Anubis2</a>.<br>
+            
+
+        </div>
+    </div>
+
+    <p class="h-card vcard">
+
+    <a href=https://vitaceae.github.io/ class="p-name u-url url fn" rel="me">map[email:i70170@hotmail.com location:Taiwan name:Mike Chang]</a>
+
+    
+
+    
+</p>
+
+</footer>
+
+        
+    </div>
+</body>
+</html>

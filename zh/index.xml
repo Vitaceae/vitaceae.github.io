@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mike&#39;s Tech Notes</title>
+    <link>/zh/</link>
+    <description>Mike&#39;s Tech Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    
+      
+        <managingEditor>i70170@hotmail.com
+          
+            (Mike Chang)
+          
+        </managingEditor>
+      
+
+      
+    
+
+    
+    <lastBuildDate>Sun, 02 Mar 2025 00:00:00 +0000</lastBuildDate>
+    
+    <atom:link href="/zh/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>About</title>
+      <link>/zh/about/</link>
+      <pubDate>Sun, 02 Mar 2025 00:00:00 +0000</pubDate>
+      <author>i70170@hotmail.com (Mike Chang)</author>
+      <guid>/zh/about/</guid>
+      <description>&lt;p&gt;塵世中一個隨波逐流的韌體碼農。&lt;br&gt;
+本小窩用於存放工作小抄。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

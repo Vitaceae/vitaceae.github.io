@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Static Site on Mike&#39;s Tech Notes</title>
+    <link>/tags/static-site/</link>
+    <description>Mike&#39;s Tech Notes (Static Site)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    
+      
+        <managingEditor>i70170@hotmail.com
+          
+            (Mike Chang)
+          
+        </managingEditor>
+      
+
+      
+    
+
+    
+    <lastBuildDate>Sat, 02 Mar 2024 00:00:00 +0000</lastBuildDate>
+    
+    <atom:link href="/tags/static-site/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Website</title>
+      <link>/posts/web/website/</link>
+      <pubDate>Sat, 02 Mar 2024 00:00:00 +0000</pubDate>
+      <author>i70170@hotmail.com (Mike Chang)</author>
+      <guid>/posts/web/website/</guid>
+      <description>&lt;h2 id=&#34;static-site&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#static-site&#34;&gt;
+        #
+    &lt;/a&gt;
+    Static Site
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;Static Site Generator 靜態網站產生器&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Jekyll&lt;/code&gt;: based on Ruby; higher build time&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Hexo&lt;/code&gt;: based on JavaScript; less build time&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Hugo&lt;/code&gt;: based on Go; least build time; easy-install(binary)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;comments-system&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#comments-system&#34;&gt;
+        #
+    &lt;/a&gt;
+    Comments System
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.github.com/en/discussions&#34;&gt;Giscus&lt;/a&gt;: powered by GitHub Discussions
+&lt;ul&gt;
+&lt;li&gt;guests use GitHub OAuth Token to post comments&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;disqus&lt;/li&gt;
+&lt;li&gt;gitalk&lt;/li&gt;
+&lt;li&gt;valine&lt;/li&gt;
+&lt;li&gt;facebook&lt;/li&gt;
+&lt;li&gt;telegram&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;analytics&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#analytics&#34;&gt;
+        #
+    &lt;/a&gt;
+    Analytics
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Cloud-based&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://cloud.umami.is/login&#34;&gt;Umami Cloud&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Google Analytics
+&lt;ul&gt;
+&lt;li&gt;too complicated&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Self-host&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Netlify + Neon&lt;/li&gt;
+&lt;li&gt;Railway&lt;/li&gt;
+&lt;li&gt;Vercel + TiDB Cloud&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;references&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#references&#34;&gt;
+        #
+    &lt;/a&gt;
+    References
+&lt;/div&gt;
+&lt;/h2&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

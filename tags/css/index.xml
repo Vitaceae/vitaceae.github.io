@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Css on Mike&#39;s Tech Notes</title>
+    <link>/tags/css/</link>
+    <description>Mike&#39;s Tech Notes (Css)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    
+      
+        <managingEditor>i70170@hotmail.com
+          
+            (Mike Chang)
+          
+        </managingEditor>
+      
+
+      
+    
+
+    
+    <lastBuildDate>Sun, 03 Mar 2024 00:00:00 +0000</lastBuildDate>
+    
+    <atom:link href="/tags/css/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hugo-Style</title>
+      <link>/posts/web/hugo_style/</link>
+      <pubDate>Sun, 03 Mar 2024 00:00:00 +0000</pubDate>
+      <author>i70170@hotmail.com (Mike Chang)</author>
+      <guid>/posts/web/hugo_style/</guid>
+      <description>&lt;hr&gt;
+&lt;h2 id=&#34;global-wise-style&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#global-wise-style&#34;&gt;
+        #
+    &lt;/a&gt;
+    global-wise style
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;lt;cust&amp;gt;
+affected by &amp;lt;code&amp;gt;cust.scss&amp;lt;/code&amp;gt; and &amp;lt;code&amp;gt;cust.css&amp;lt;/code&amp;gt;
+&amp;lt;/cust&amp;gt;
+
+&amp;lt;div class=&amp;#34;cust-style&amp;#34;&amp;gt;
+example of &amp;lt;code&amp;gt;cust-style&amp;lt;/code&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;cust&gt;
+affected by &lt;code&gt;cust.scss&lt;/code&gt; and &lt;code&gt;cust.css&lt;/code&gt;
+&lt;/cust&gt;
+&lt;/br&gt;
+&lt;div class=&#34;cust-style&#34;&gt;
+example of &lt;code&gt;cust-style&lt;/code&gt;
+&lt;/div&gt;
+&lt;p&gt;add the following line to .toml&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;customCSS = [&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;custom-css/cust.scss&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;custom-css/cust.css&amp;#34;&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;add &lt;code&gt;assets/custom-css/cust.css&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-scss&#34; data-lang=&#34;scss&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e5c890&#34;&gt;.cust-style&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8caaee&#34;&gt;background-color&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e5c890&#34;&gt;pink&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8caaee&#34;&gt;color&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e5c890&#34;&gt;black&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8caaee&#34;&gt;padding&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;em&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8caaee&#34;&gt;border-radius&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color:#ef9f76&#34;&gt;.3&lt;/span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;em&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8caaee&#34;&gt;border&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;px&lt;/span&gt; &lt;span style=&#34;color:#81c8be&#34;&gt;solid&lt;/span&gt; &lt;span style=&#34;color:#e5c890&#34;&gt;black&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;add &lt;code&gt;assets/custom-css/cust.scss&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-scss&#34; data-lang=&#34;scss&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;@import&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#39;foundation/vars&amp;#39;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;cust&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8caaee&#34;&gt;display&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#81c8be&#34;&gt;block&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8caaee&#34;&gt;font&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;100&lt;/span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color:#f2d5cf&#34;&gt;$font-stack&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8caaee&#34;&gt;color&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#f2d5cf&#34;&gt;$primary-color&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8caaee&#34;&gt;background-color&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#f2d5cf&#34;&gt;$background-color&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8caaee&#34;&gt;margin-top&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;em&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;add &lt;code&gt;assets/custom-css/foundation/_vars.scss&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-scss&#34; data-lang=&#34;scss&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;$font-stack&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;:&lt;/span&gt; Helvetica&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#81c8be&#34;&gt;sans-serif&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;$primary-color&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;rgb&lt;/span&gt;(&lt;span style=&#34;color:#ef9f76&#34;&gt;255&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;255&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;168&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;$background-color&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;rgb&lt;/span&gt;(&lt;span style=&#34;color:#ef9f76&#34;&gt;85&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;85&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;85&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;page-wise-style&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#page-wise-style&#34;&gt;
+        #
+    &lt;/a&gt;
+    page-wise style
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;the current page is affected only by &lt;code&gt;hugo-style/style.css&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;add &lt;code&gt;hugo-style/style.css&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-css&#34; data-lang=&#34;css&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;.&lt;span style=&#34;color:#e5c890&#34;&gt;cust-style2&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ca9ee6&#34;&gt;max-width&lt;/span&gt;: &lt;span style=&#34;color:#ef9f76&#34;&gt;none&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ca9ee6&#34;&gt;padding-left&lt;/span&gt;: &lt;span style=&#34;color:#ef9f76&#34;&gt;5&lt;/span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;em&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ca9ee6&#34;&gt;padding-right&lt;/span&gt;: &lt;span style=&#34;color:#ef9f76&#34;&gt;5&lt;/span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;em&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ca9ee6&#34;&gt;background-color&lt;/span&gt;: &lt;span style=&#34;color:#ef9f76&#34;&gt;yellow&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;example:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;style&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  @&lt;span style=&#34;color:#ca9ee6&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#39;style.css&amp;#39;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;/&lt;span style=&#34;color:#ca9ee6&#34;&gt;style&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;cust-style2&amp;#34;&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;example of &amp;lt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;code&lt;/span&gt;&amp;gt;cust-style2&amp;lt;/&lt;span style=&#34;color:#ca9ee6&#34;&gt;code&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;/&lt;span style=&#34;color:#ca9ee6&#34;&gt;div&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;style&gt;
+  @import &#39;style.css&#39;;
+&lt;/style&gt;
+&lt;div class=&#34;cust-style2&#34;&gt;
+example of &lt;code&gt;cust-style2&lt;/code&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,1047 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Web on Mike&#39;s Tech Notes</title>
+    <link>/categories/web/</link>
+    <description>Mike&#39;s Tech Notes (Web)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    
+      
+        <managingEditor>i70170@hotmail.com
+          
+            (Mike Chang)
+          
+        </managingEditor>
+      
+
+      
+    
+
+    
+    <lastBuildDate>Sun, 03 Mar 2024 00:00:00 +0000</lastBuildDate>
+    
+    <atom:link href="/categories/web/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hugo Advanced</title>
+      <link>/posts/web/hugo-advanced/</link>
+      <pubDate>Sun, 03 Mar 2024 00:00:00 +0000</pubDate>
+      <author>i70170@hotmail.com (Mike Chang)</author>
+      <guid>/posts/web/hugo-advanced/</guid>
+      <description>&lt;hr&gt;
+&lt;h2 id=&#34;icons&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#icons&#34;&gt;
+        #
+    &lt;/a&gt;
+    Icons
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;name&lt;/th&gt;
+          &lt;th&gt;shortcode&lt;/th&gt;
+          &lt;th&gt;icon&lt;/th&gt;
+          &lt;th&gt;name&lt;/th&gt;
+          &lt;th&gt;shortcode&lt;/th&gt;
+          &lt;th&gt;icon&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;4chan&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;{{&amp;lt; icon &amp;quot;4chan&amp;quot; &amp;gt;}}&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;svg  xmlns=&#34;http://www.w3.org/2000/svg&#34;  width=&#34;24&#34;  height=&#34;24&#34;  viewBox=&#34;0 0 24 24&#34;  fill=&#34;none&#34;  stroke=&#34;currentColor&#34;  stroke-width=&#34;2&#34;  stroke-linecap=&#34;round&#34;  stroke-linejoin=&#34;round&#34;  class=&#34;icon icon-tabler icons-tabler-outline icon-tabler-brand-4chan&#34;&gt;&lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M14 11s6.054 -1.05 6 -4.5c-.038 -2.324 -2.485 -3.19 -3.016 -1.5c0 0 -.502 -2 -2.01 -2c-1.508 0 -2.984 3 -.974 8z&#34; /&gt;&lt;path d=&#34;M13.98 11s6.075 -1.05 6.02 -4.5c-.038 -2.324 -2.493 -3.19 -3.025 -1.5c0 0 -.505 -2 -2.017 -2c-1.513 0 -3 3 -.977 8z&#34; /&gt;&lt;path d=&#34;M13 13.98l.062 .309l.081 .35l.075 .29l.092 .328l.11 .358l.061 .188l.139 .392c.64 1.73 1.841 3.837 3.88 3.805c2.324 -.038 3.19 -2.493 1.5 -3.025l.148 -.045l.165 -.058a4.13 4.13 0 0 0 .098 -.039l.222 -.098c.586 -.28 1.367 -.832 1.367 -1.777c0 -1.513 -3 -3 -8 -.977z&#34; /&gt;&lt;path d=&#34;M10.02 13l-.309 .062l-.35 .081l-.29 .075l-.328 .092l-.358 .11l-.188 .061l-.392 .139c-1.73 .64 -3.837 1.84 -3.805 3.88c.038 2.324 2.493 3.19 3.025 1.5l.045 .148l.058 .165l.039 .098l.098 .222c.28 .586 .832 1.367 1.777 1.367c1.513 0 3 -3 .977 -8z&#34; /&gt;&lt;path d=&#34;M11 10.02l-.062 -.309l-.081 -.35l-.075 -.29l-.092 -.328l-.11 -.358l-.128 -.382l-.148 -.399c-.658 -1.687 -1.844 -3.634 -3.804 -3.604c-2.324 .038 -3.19 2.493 -1.5 3.025l-.148 .045l-.164 .058a4.13 4.13 0 0 0 -.1 .039l-.22 .098c-.588 .28 -1.368 .832 -1.368 1.777c0 1.513 3 3 8 .977z&#34; /&gt;&lt;/svg&gt;
+&lt;/td&gt;
+          &lt;td&gt;leetcode&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;{{&amp;lt; icon &amp;quot;leetcode&amp;quot; &amp;gt;}}&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;svg  xmlns=&#34;http://www.w3.org/2000/svg&#34;  width=&#34;24&#34;  height=&#34;24&#34;  viewBox=&#34;0 0 24 24&#34;  fill=&#34;none&#34;  stroke=&#34;currentColor&#34;  stroke-width=&#34;2&#34;  stroke-linecap=&#34;round&#34;  stroke-linejoin=&#34;round&#34;  class=&#34;icon icon-tabler icons-tabler-outline icon-tabler-brand-leetcode&#34;&gt;&lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M12 13h7.5&#34; /&gt;&lt;path d=&#34;M9.424 7.268l4.999 -4.999&#34; /&gt;&lt;path d=&#34;M16.633 16.644l-2.402 2.415a3.189 3.189 0 0 1 -4.524 0l-3.77 -3.787a3.223 3.223 0 0 1 0 -4.544l3.77 -3.787a3.189 3.189 0 0 1 4.524 0l2.302 2.313&#34; /&gt;&lt;/svg&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;spotify&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;{{&amp;lt; icon &amp;quot;spotify&amp;quot; &amp;gt;}}&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;svg  xmlns=&#34;http://www.w3.org/2000/svg&#34;  width=&#34;24&#34;  height=&#34;24&#34;  viewBox=&#34;0 0 24 24&#34;  fill=&#34;none&#34;  stroke=&#34;currentColor&#34;  stroke-width=&#34;2&#34;  stroke-linecap=&#34;round&#34;  stroke-linejoin=&#34;round&#34;  class=&#34;icon icon-tabler icons-tabler-outline icon-tabler-brand-spotify&#34;&gt;&lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0&#34; /&gt;&lt;path d=&#34;M8 11.973c2.5 -1.473 5.5 -.973 7.5 .527&#34; /&gt;&lt;path d=&#34;M9 15c1.5 -1 4 -1 5 .5&#34; /&gt;&lt;path d=&#34;M7 9c2 -1 6 -2 10 .5&#34; /&gt;&lt;/svg&gt;
+&lt;/td&gt;
+          &lt;td&gt;tinder&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;{{&amp;lt; icon &amp;quot;tinder&amp;quot; &amp;gt;}}&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;svg  xmlns=&#34;http://www.w3.org/2000/svg&#34;  width=&#34;24&#34;  height=&#34;24&#34;  viewBox=&#34;0 0 24 24&#34;  fill=&#34;none&#34;  stroke=&#34;currentColor&#34;  stroke-width=&#34;2&#34;  stroke-linecap=&#34;round&#34;  stroke-linejoin=&#34;round&#34;  class=&#34;icon icon-tabler icons-tabler-outline icon-tabler-brand-tinder&#34;&gt;&lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M18.918 8.174c2.56 4.982 .501 11.656 -5.38 12.626c-7.702 1.687 -12.84 -7.716 -7.054 -13.229c.309 -.305 1.161 -1.095 1.516 -1.349c0 .528 .27 3.475 1 3.167c3 0 4 -4.222 3.587 -7.389c2.7 1.411 4.987 3.376 6.331 6.174z&#34; /&gt;&lt;/svg&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;youtube&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;{{&amp;lt; icon &amp;quot;youtube&amp;quot; &amp;gt;}}&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;svg  xmlns=&#34;http://www.w3.org/2000/svg&#34;  width=&#34;24&#34;  height=&#34;24&#34;  viewBox=&#34;0 0 24 24&#34;  fill=&#34;none&#34;  stroke=&#34;currentColor&#34;  stroke-width=&#34;2&#34;  stroke-linecap=&#34;round&#34;  stroke-linejoin=&#34;round&#34;  class=&#34;icon icon-tabler icons-tabler-outline icon-tabler-brand-youtube&#34;&gt;&lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M2 8a4 4 0 0 1 4 -4h12a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-12a4 4 0 0 1 -4 -4v-8z&#34; /&gt;&lt;path d=&#34;M10 9l5 3l-5 3z&#34; /&gt;&lt;/svg&gt;
+&lt;/td&gt;
+          &lt;td&gt;docs&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;{{&amp;lt; icon &amp;quot;docs&amp;quot; &amp;gt;}}&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;svg  xmlns=&#34;http://www.w3.org/2000/svg&#34;  width=&#34;24&#34;  height=&#34;24&#34;  viewBox=&#34;0 0 24 24&#34;  fill=&#34;none&#34;  stroke=&#34;currentColor&#34;  stroke-width=&#34;2&#34;  stroke-linecap=&#34;round&#34;  stroke-linejoin=&#34;round&#34;  class=&#34;icon icon-tabler icons-tabler-outline icon-tabler-file-type-doc&#34;&gt;&lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M14 3v4a1 1 0 0 0 1 1h4&#34; /&gt;&lt;path d=&#34;M5 12v-7a2 2 0 0 1 2 -2h7l5 5v4&#34; /&gt;&lt;path d=&#34;M5 15v6h1a2 2 0 0 0 2 -2v-2a2 2 0 0 0 -2 -2h-1z&#34; /&gt;&lt;path d=&#34;M20 16.5a1.5 1.5 0 0 0 -3 0v3a1.5 1.5 0 0 0 3 0&#34; /&gt;&lt;path d=&#34;M12.5 15a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1 -3 0v-3a1.5 1.5 0 0 1 1.5 -1.5z&#34; /&gt;&lt;/svg&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;linkedin&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;{{&amp;lt; icon &amp;quot;linkedin&amp;quot; &amp;gt;}}&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;svg  xmlns=&#34;http://www.w3.org/2000/svg&#34;  width=&#34;24&#34;  height=&#34;24&#34;  viewBox=&#34;0 0 24 24&#34;  fill=&#34;none&#34;  stroke=&#34;currentColor&#34;  stroke-width=&#34;2&#34;  stroke-linecap=&#34;round&#34;  stroke-linejoin=&#34;round&#34;  class=&#34;icon icon-tabler icons-tabler-outline icon-tabler-brand-linkedin&#34;&gt;&lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z&#34; /&gt;&lt;path d=&#34;M8 11l0 5&#34; /&gt;&lt;path d=&#34;M8 8l0 .01&#34; /&gt;&lt;path d=&#34;M12 16l0 -5&#34; /&gt;&lt;path d=&#34;M16 16v-3a2 2 0 0 0 -4 0&#34; /&gt;&lt;/svg&gt;
+&lt;/td&gt;
+          &lt;td&gt;reddit&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;{{&amp;lt; icon &amp;quot;reddit&amp;quot; &amp;gt;}}&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;svg  xmlns=&#34;http://www.w3.org/2000/svg&#34;  width=&#34;24&#34;  height=&#34;24&#34;  viewBox=&#34;0 0 24 24&#34;  fill=&#34;none&#34;  stroke=&#34;currentColor&#34;  stroke-width=&#34;2&#34;  stroke-linecap=&#34;round&#34;  stroke-linejoin=&#34;round&#34;  class=&#34;icon icon-tabler icons-tabler-outline icon-tabler-brand-reddit&#34;&gt;&lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M12 8c2.648 0 5.028 .826 6.675 2.14a2.5 2.5 0 0 1 2.326 4.36c0 3.59 -4.03 6.5 -9 6.5c-4.875 0 -8.845 -2.8 -9 -6.294l-1 -.206a2.5 2.5 0 0 1 2.326 -4.36c1.646 -1.313 4.026 -2.14 6.674 -2.14z&#34; /&gt;&lt;path d=&#34;M12 8l1 -5l6 1&#34; /&gt;&lt;path d=&#34;M19 4m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0&#34; /&gt;&lt;circle cx=&#34;9&#34; cy=&#34;13&#34; r=&#34;.5&#34; fill=&#34;currentColor&#34; /&gt;&lt;circle cx=&#34;15&#34; cy=&#34;13&#34; r=&#34;.5&#34; fill=&#34;currentColor&#34; /&gt;&lt;path d=&#34;M10 17c.667 .333 1.333 .5 2 .5s1.333 -.167 2 -.5&#34; /&gt;&lt;/svg&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;steam&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;{{&amp;lt; icon &amp;quot;steam&amp;quot; &amp;gt;}}&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;svg  xmlns=&#34;http://www.w3.org/2000/svg&#34;  width=&#34;24&#34;  height=&#34;24&#34;  viewBox=&#34;0 0 24 24&#34;  fill=&#34;none&#34;  stroke=&#34;currentColor&#34;  stroke-width=&#34;2&#34;  stroke-linecap=&#34;round&#34;  stroke-linejoin=&#34;round&#34;  class=&#34;icon icon-tabler icons-tabler-outline icon-tabler-brand-steam&#34;&gt;&lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M16.5 5a4.5 4.5 0 1 1 -.653 8.953l-4.347 3.009l0 .038a3 3 0 0 1 -2.824 3l-.176 0a3 3 0 0 1 -2.94 -2.402l-2.56 -1.098v-3.5l3.51 1.755a2.989 2.989 0 0 1 2.834 -.635l2.727 -3.818a4.5 4.5 0 0 1 4.429 -5.302z&#34; /&gt;&lt;circle cx=&#34;16.5&#34; cy=&#34;9.5&#34; r=&#34;1&#34; fill=&#34;currentColor&#34; /&gt;&lt;/svg&gt;
+&lt;/td&gt;
+          &lt;td&gt;tumblr&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;{{&amp;lt; icon &amp;quot;tumblr&amp;quot; &amp;gt;}}&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;svg  xmlns=&#34;http://www.w3.org/2000/svg&#34;  width=&#34;24&#34;  height=&#34;24&#34;  viewBox=&#34;0 0 24 24&#34;  fill=&#34;none&#34;  stroke=&#34;currentColor&#34;  stroke-width=&#34;2&#34;  stroke-linecap=&#34;round&#34;  stroke-linejoin=&#34;round&#34;  class=&#34;icon icon-tabler icons-tabler-outline icon-tabler-brand-tumblr&#34;&gt;&lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M14 21h4v-4h-4v-6h4v-4h-4v-4h-4v1a3 3 0 0 1 -3 3h-1v4h4v6a4 4 0 0 0 4 4&#34; /&gt;&lt;/svg&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;email&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;{{&amp;lt; icon &amp;quot;email&amp;quot; &amp;gt;}}&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;svg  xmlns=&#34;http://www.w3.org/2000/svg&#34;  width=&#34;24&#34;  height=&#34;24&#34;  viewBox=&#34;0 0 24 24&#34;  fill=&#34;none&#34;  stroke=&#34;currentColor&#34;  stroke-width=&#34;2&#34;  stroke-linecap=&#34;round&#34;  stroke-linejoin=&#34;round&#34;  class=&#34;icon icon-tabler icons-tabler-outline icon-tabler-mail&#34;&gt;&lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z&#34; /&gt;&lt;path d=&#34;M3 7l9 6l9 -6&#34; /&gt;&lt;/svg&gt;
+&lt;/td&gt;
+          &lt;td&gt;mastodon&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;{{&amp;lt; icon &amp;quot;mastodon&amp;quot; &amp;gt;}}&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;svg  xmlns=&#34;http://www.w3.org/2000/svg&#34;  width=&#34;24&#34;  height=&#34;24&#34;  viewBox=&#34;0 0 24 24&#34;  fill=&#34;none&#34;  stroke=&#34;currentColor&#34;  stroke-width=&#34;2&#34;  stroke-linecap=&#34;round&#34;  stroke-linejoin=&#34;round&#34;  class=&#34;icon icon-tabler icons-tabler-outline icon-tabler-brand-mastodon&#34;&gt;&lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M18.648 15.254c-1.816 1.763 -6.648 1.626 -6.648 1.626a18.262 18.262 0 0 1 -3.288 -.256c1.127 1.985 4.12 2.81 8.982 2.475c-1.945 2.013 -13.598 5.257 -13.668 -7.636l-.026 -1.154c0 -3.036 .023 -4.115 1.352 -5.633c1.671 -1.91 6.648 -1.666 6.648 -1.666s4.977 -.243 6.648 1.667c1.329 1.518 1.352 2.597 1.352 5.633s-.456 4.074 -1.352 4.944z&#34; /&gt;&lt;path d=&#34;M12 11.204v-2.926c0 -1.258 -.895 -2.278 -2 -2.278s-2 1.02 -2 2.278v4.722m4 -4.722c0 -1.258 .895 -2.278 2 -2.278s2 1.02 2 2.278v4.722&#34; /&gt;&lt;/svg&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;rss&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;{{&amp;lt; icon &amp;quot;rss&amp;quot; &amp;gt;}}&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;svg  xmlns=&#34;http://www.w3.org/2000/svg&#34;  width=&#34;24&#34;  height=&#34;24&#34;  viewBox=&#34;0 0 24 24&#34;  fill=&#34;none&#34;  stroke=&#34;currentColor&#34;  stroke-width=&#34;2&#34;  stroke-linecap=&#34;round&#34;  stroke-linejoin=&#34;round&#34;  class=&#34;icon icon-tabler icons-tabler-outline icon-tabler-rss&#34;&gt;&lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M5 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0&#34; /&gt;&lt;path d=&#34;M4 4a16 16 0 0 1 16 16&#34; /&gt;&lt;path d=&#34;M4 11a9 9 0 0 1 9 9&#34; /&gt;&lt;/svg&gt;
+&lt;/td&gt;
+          &lt;td&gt;teams&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;{{&amp;lt; icon &amp;quot;teams&amp;quot; &amp;gt;}}&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;svg  xmlns=&#34;http://www.w3.org/2000/svg&#34;  width=&#34;24&#34;  height=&#34;24&#34;  viewBox=&#34;0 0 24 24&#34;  fill=&#34;none&#34;  stroke=&#34;currentColor&#34;  stroke-width=&#34;2&#34;  stroke-linecap=&#34;round&#34;  stroke-linejoin=&#34;round&#34;  class=&#34;icon icon-tabler icons-tabler-outline icon-tabler-brand-teams&#34;&gt;&lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3 7h10v10h-10z&#34; /&gt;&lt;path d=&#34;M6 10h4&#34; /&gt;&lt;path d=&#34;M8 10v4&#34; /&gt;&lt;path d=&#34;M8.104 17c.47 2.274 2.483 4 4.896 4a5 5 0 0 0 5 -5v-7h-5&#34; /&gt;&lt;path d=&#34;M18 18a4 4 0 0 0 4 -4v-5h-4&#34; /&gt;&lt;path d=&#34;M13.003 8.83a3 3 0 1 0 -1.833 -1.833&#34; /&gt;&lt;path d=&#34;M15.83 8.36a2.5 2.5 0 1 0 .594 -4.117&#34; /&gt;&lt;/svg&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;twitch&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;{{&amp;lt; icon &amp;quot;twitch&amp;quot; &amp;gt;}}&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;svg  xmlns=&#34;http://www.w3.org/2000/svg&#34;  width=&#34;24&#34;  height=&#34;24&#34;  viewBox=&#34;0 0 24 24&#34;  fill=&#34;none&#34;  stroke=&#34;currentColor&#34;  stroke-width=&#34;2&#34;  stroke-linecap=&#34;round&#34;  stroke-linejoin=&#34;round&#34;  class=&#34;icon icon-tabler icons-tabler-outline icon-tabler-brand-twitch&#34;&gt;&lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M4 5v11a1 1 0 0 0 1 1h2v4l4 -4h5.584c.266 0 .52 -.105 .707 -.293l2.415 -2.414c.187 -.188 .293 -.442 .293 -.708v-8.585a1 1 0 0 0 -1 -1h-14a1 1 0 0 0 -1 1z&#34; /&gt;&lt;path d=&#34;M16 8l0 4&#34; /&gt;&lt;path d=&#34;M12 8l0 4&#34; /&gt;&lt;/svg&gt;
+&lt;/td&gt;
+          &lt;td&gt;facebook&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;{{&amp;lt; icon &amp;quot;facebook&amp;quot; &amp;gt;}}&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;svg  xmlns=&#34;http://www.w3.org/2000/svg&#34;  width=&#34;24&#34;  height=&#34;24&#34;  viewBox=&#34;0 0 24 24&#34;  fill=&#34;none&#34;  stroke=&#34;currentColor&#34;  stroke-width=&#34;2&#34;  stroke-linecap=&#34;round&#34;  stroke-linejoin=&#34;round&#34;  class=&#34;icon icon-tabler icons-tabler-outline icon-tabler-brand-facebook&#34;&gt;&lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3&#34; /&gt;&lt;/svg&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;medium&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;{{&amp;lt; icon &amp;quot;medium&amp;quot; &amp;gt;}}&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;svg  xmlns=&#34;http://www.w3.org/2000/svg&#34;  width=&#34;24&#34;  height=&#34;24&#34;  viewBox=&#34;0 0 24 24&#34;  fill=&#34;none&#34;  stroke=&#34;currentColor&#34;  stroke-width=&#34;2&#34;  stroke-linecap=&#34;round&#34;  stroke-linejoin=&#34;round&#34;  class=&#34;icon icon-tabler icons-tabler-outline icon-tabler-brand-medium&#34;&gt;&lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z&#34; /&gt;&lt;path d=&#34;M8 9h1l3 3l3 -3h1&#34; /&gt;&lt;path d=&#34;M8 15l2 0&#34; /&gt;&lt;path d=&#34;M14 15l2 0&#34; /&gt;&lt;path d=&#34;M9 9l0 6&#34; /&gt;&lt;path d=&#34;M15 9l0 6&#34; /&gt;&lt;/svg&gt;
+&lt;/td&gt;
+          &lt;td&gt;skype&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;{{&amp;lt; icon &amp;quot;skype&amp;quot; &amp;gt;}}&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;svg  xmlns=&#34;http://www.w3.org/2000/svg&#34;  width=&#34;24&#34;  height=&#34;24&#34;  viewBox=&#34;0 0 24 24&#34;  fill=&#34;none&#34;  stroke=&#34;currentColor&#34;  stroke-width=&#34;2&#34;  stroke-linecap=&#34;round&#34;  stroke-linejoin=&#34;round&#34;  class=&#34;icon icon-tabler icons-tabler-outline icon-tabler-brand-skype&#34;&gt;&lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M12 3a9 9 0 0 1 8.603 11.65a4.5 4.5 0 0 1 -5.953 5.953a9 9 0 0 1 -11.253 -11.253a4.5 4.5 0 0 1 5.953 -5.954a8.987 8.987 0 0 1 2.65 -.396z&#34; /&gt;&lt;path d=&#34;M8 14.5c.5 2 2.358 2.5 4 2.5c2.905 0 4 -1.187 4 -2.5c0 -1.503 -1.927 -2.5 -4 -2.5s-4 -1 -4 -2.5c0 -1.313 1.095 -2.5 4 -2.5c1.642 0 3.5 .5 4 2.5&#34; /&gt;&lt;/svg&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;telegram&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;{{&amp;lt; icon &amp;quot;telegram&amp;quot; &amp;gt;}}&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;svg  xmlns=&#34;http://www.w3.org/2000/svg&#34;  width=&#34;24&#34;  height=&#34;24&#34;  viewBox=&#34;0 0 24 24&#34;  fill=&#34;none&#34;  stroke=&#34;currentColor&#34;  stroke-width=&#34;2&#34;  stroke-linecap=&#34;round&#34;  stroke-linejoin=&#34;round&#34;  class=&#34;icon icon-tabler icons-tabler-outline icon-tabler-brand-telegram&#34;&gt;&lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M15 10l-4 4l6 6l4 -16l-18 7l4 2l2 6l3 -4&#34; /&gt;&lt;/svg&gt;
+&lt;/td&gt;
+          &lt;td&gt;github&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;{{&amp;lt; icon &amp;quot;github&amp;quot; &amp;gt;}}&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;svg  xmlns=&#34;http://www.w3.org/2000/svg&#34;  width=&#34;24&#34;  height=&#34;24&#34;  viewBox=&#34;0 0 24 24&#34;  fill=&#34;none&#34;  stroke=&#34;currentColor&#34;  stroke-width=&#34;2&#34;  stroke-linecap=&#34;round&#34;  stroke-linejoin=&#34;round&#34;  class=&#34;icon icon-tabler icons-tabler-outline icon-tabler-brand-github&#34;&gt;&lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5&#34; /&gt;&lt;/svg&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;netease&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;{{&amp;lt; icon &amp;quot;netease-music&amp;quot; &amp;gt;}}&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;svg  xmlns=&#34;http://www.w3.org/2000/svg&#34;  width=&#34;24&#34;  height=&#34;24&#34;  viewBox=&#34;0 0 24 24&#34;  fill=&#34;none&#34;  stroke=&#34;currentColor&#34;  stroke-width=&#34;2&#34;  stroke-linecap=&#34;round&#34;  stroke-linejoin=&#34;round&#34;  class=&#34;icon icon-tabler icons-tabler-outline icon-tabler-brand-netease-music&#34;&gt;&lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M9 4c-2.93 1.346 -5 5.046 -5 8.492c0 4.508 4 7.508 8 7.508s8 -3 8 -7c0 -3.513 -3.5 -5.513 -6 -5.513s-5 1.513 -5 4.513c0 2 1.5 3 3 3s3 -1 3 -3c0 -3.513 -2 -4.508 -2 -6.515c0 -3.504 3.5 -2.603 4 -1.502&#34; /&gt;&lt;/svg&gt;
+&lt;/td&gt;
+          &lt;td&gt;slack&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;{{&amp;lt; icon &amp;quot;slack&amp;quot; &amp;gt;}}&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;svg  xmlns=&#34;http://www.w3.org/2000/svg&#34;  width=&#34;24&#34;  height=&#34;24&#34;  viewBox=&#34;0 0 24 24&#34;  fill=&#34;none&#34;  stroke=&#34;currentColor&#34;  stroke-width=&#34;2&#34;  stroke-linecap=&#34;round&#34;  stroke-linejoin=&#34;round&#34;  class=&#34;icon icon-tabler icons-tabler-outline icon-tabler-brand-slack&#34;&gt;&lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M12 12v-6a2 2 0 0 1 4 0v6m0 -2a2 2 0 1 1 2 2h-6&#34; /&gt;&lt;path d=&#34;M12 12h6a2 2 0 0 1 0 4h-6m2 0a2 2 0 1 1 -2 2v-6&#34; /&gt;&lt;path d=&#34;M12 12v6a2 2 0 0 1 -4 0v-6m0 2a2 2 0 1 1 -2 -2h6&#34; /&gt;&lt;path d=&#34;M12 12h-6a2 2 0 0 1 0 -4h6m-2 0a2 2 0 1 1 2 -2v6&#34; /&gt;&lt;/svg&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;theme&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;{{&amp;lt; icon &amp;quot;theme-dark&amp;quot; &amp;gt;}}&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;svg  xmlns=&#34;http://www.w3.org/2000/svg&#34;  width=&#34;24&#34;  height=&#34;24&#34;  viewBox=&#34;0 0 24 24&#34;  fill=&#34;none&#34;  stroke=&#34;currentColor&#34;  stroke-width=&#34;2&#34;  stroke-linecap=&#34;round&#34;  stroke-linejoin=&#34;round&#34;  class=&#34;icon icon-tabler icons-tabler-outline icon-tabler-moon&#34;&gt;&lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z&#34; /&gt;&lt;/svg&gt;
+&lt;/td&gt;
+          &lt;td&gt;vk&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;{{&amp;lt; icon &amp;quot;vk&amp;quot; &amp;gt;}}&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;svg  xmlns=&#34;http://www.w3.org/2000/svg&#34;  width=&#34;24&#34;  height=&#34;24&#34;  viewBox=&#34;0 0 24 24&#34;  fill=&#34;none&#34;  stroke=&#34;currentColor&#34;  stroke-width=&#34;2&#34;  stroke-linecap=&#34;round&#34;  stroke-linejoin=&#34;round&#34;  class=&#34;icon icon-tabler icons-tabler-outline icon-tabler-brand-vk&#34;&gt;&lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M14 19h-4a8 8 0 0 1 -8 -8v-5h4v5a4 4 0 0 0 4 4h0v-9h4v4.5l.03 0a4.531 4.531 0 0 0 3.97 -4.496h4l-.342 1.711a6.858 6.858 0 0 1 -3.658 4.789h0a5.34 5.34 0 0 1 3.566 4.111l.434 2.389h0h-4a4.531 4.531 0 0 0 -3.97 -4.496v4.5z&#34; /&gt;&lt;/svg&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;gitlab&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;{{&amp;lt; icon &amp;quot;gitlab&amp;quot; &amp;gt;}}&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;svg  xmlns=&#34;http://www.w3.org/2000/svg&#34;  width=&#34;24&#34;  height=&#34;24&#34;  viewBox=&#34;0 0 24 24&#34;  fill=&#34;none&#34;  stroke=&#34;currentColor&#34;  stroke-width=&#34;2&#34;  stroke-linecap=&#34;round&#34;  stroke-linejoin=&#34;round&#34;  class=&#34;icon icon-tabler icons-tabler-outline icon-tabler-brand-gitlab&#34;&gt;&lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M21 14l-9 7l-9 -7l3 -11l3 7h6l3 -7z&#34; /&gt;&lt;/svg&gt;
+&lt;/td&gt;
+          &lt;td&gt;notion&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;{{&amp;lt; icon &amp;quot;notion&amp;quot; &amp;gt;}}&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;svg  xmlns=&#34;http://www.w3.org/2000/svg&#34;  width=&#34;24&#34;  height=&#34;24&#34;  viewBox=&#34;0 0 24 24&#34;  fill=&#34;none&#34;  stroke=&#34;currentColor&#34;  stroke-width=&#34;2&#34;  stroke-linecap=&#34;round&#34;  stroke-linejoin=&#34;round&#34;  class=&#34;icon icon-tabler icons-tabler-outline icon-tabler-brand-notion&#34;&gt;&lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M11 17.5v-6.5h.5l4 6h.5v-6.5&#34; /&gt;&lt;path d=&#34;M19.077 20.071l-11.53 .887a1 1 0 0 1 -.876 -.397l-2.471 -3.294a1 1 0 0 1 -.2 -.6v-10.741a1 1 0 0 1 .923 -.997l11.389 -.876a2 2 0 0 1 1.262 .33l1.535 1.023a2 2 0 0 1 .891 1.664v12.004a1 1 0 0 1 -.923 .997z&#34; /&gt;&lt;path d=&#34;M4.5 5.5l2.5 2.5&#34; /&gt;&lt;path d=&#34;M20 7l-13 1v12.5&#34; /&gt;&lt;/svg&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;snapchat&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;{{&amp;lt; icon &amp;quot;snapchat&amp;quot; &amp;gt;}}&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;svg  xmlns=&#34;http://www.w3.org/2000/svg&#34;  width=&#34;24&#34;  height=&#34;24&#34;  viewBox=&#34;0 0 24 24&#34;  fill=&#34;none&#34;  stroke=&#34;currentColor&#34;  stroke-width=&#34;2&#34;  stroke-linecap=&#34;round&#34;  stroke-linejoin=&#34;round&#34;  class=&#34;icon icon-tabler icons-tabler-outline icon-tabler-brand-snapchat&#34;&gt;&lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M16.882 7.842a4.882 4.882 0 0 0 -9.764 0c0 4.273 -.213 6.409 -4.118 8.118c2 .882 2 .882 3 3c3 0 4 2 6 2s3 -2 6 -2c1 -2.118 1 -2.118 3 -3c-3.906 -1.709 -4.118 -3.845 -4.118 -8.118zm-13.882 8.119c4 -2.118 4 -4.118 1 -7.118m17 7.118c-4 -2.118 -4 -4.118 -1 -7.118&#34; /&gt;&lt;/svg&gt;
+&lt;/td&gt;
+          &lt;td&gt;theme&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;{{&amp;lt; icon &amp;quot;theme-light&amp;quot; &amp;gt;}}&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;svg  xmlns=&#34;http://www.w3.org/2000/svg&#34;  width=&#34;24&#34;  height=&#34;24&#34;  viewBox=&#34;0 0 24 24&#34;  fill=&#34;none&#34;  stroke=&#34;currentColor&#34;  stroke-width=&#34;2&#34;  stroke-linecap=&#34;round&#34;  stroke-linejoin=&#34;round&#34;  class=&#34;icon icon-tabler icons-tabler-outline icon-tabler-sun-high&#34;&gt;&lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M14.828 14.828a4 4 0 1 0 -5.656 -5.656a4 4 0 0 0 5.656 5.656z&#34; /&gt;&lt;path d=&#34;M6.343 17.657l-1.414 1.414&#34; /&gt;&lt;path d=&#34;M6.343 6.343l-1.414 -1.414&#34; /&gt;&lt;path d=&#34;M17.657 6.343l1.414 -1.414&#34; /&gt;&lt;path d=&#34;M17.657 17.657l1.414 1.414&#34; /&gt;&lt;path d=&#34;M4 12h-2&#34; /&gt;&lt;path d=&#34;M12 4v-2&#34; /&gt;&lt;path d=&#34;M20 12h2&#34; /&gt;&lt;path d=&#34;M12 20v2&#34; /&gt;&lt;/svg&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;weibo&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;{{&amp;lt; icon &amp;quot;weibo&amp;quot; &amp;gt;}}&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;svg  xmlns=&#34;http://www.w3.org/2000/svg&#34;  width=&#34;24&#34;  height=&#34;24&#34;  viewBox=&#34;0 0 24 24&#34;  fill=&#34;none&#34;  stroke=&#34;currentColor&#34;  stroke-width=&#34;2&#34;  stroke-linecap=&#34;round&#34;  stroke-linejoin=&#34;round&#34;  class=&#34;icon icon-tabler icons-tabler-outline icon-tabler-brand-weibo&#34;&gt;&lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M19 14.127c0 3.073 -3.502 5.873 -8 5.873c-4.126 0 -8 -2.224 -8 -5.565c0 -1.78 .984 -3.737 2.7 -5.567c2.362 -2.51 5.193 -3.687 6.551 -2.238c.415 .44 .752 1.39 .749 2.062c2 -1.615 4.308 .387 3.5 2.693c1.26 .557 2.5 .538 2.5 2.742z&#34; /&gt;&lt;path d=&#34;M15 4h1a5 5 0 0 1 5 5v1&#34; /&gt;&lt;/svg&gt;
+&lt;/td&gt;
+          &lt;td&gt;instagram&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;{{&amp;lt; icon &amp;quot;instagram&amp;quot; &amp;gt;}}&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;svg  xmlns=&#34;http://www.w3.org/2000/svg&#34;  width=&#34;24&#34;  height=&#34;24&#34;  viewBox=&#34;0 0 24 24&#34;  fill=&#34;none&#34;  stroke=&#34;currentColor&#34;  stroke-width=&#34;2&#34;  stroke-linecap=&#34;round&#34;  stroke-linejoin=&#34;round&#34;  class=&#34;icon icon-tabler icons-tabler-outline icon-tabler-brand-instagram&#34;&gt;&lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z&#34; /&gt;&lt;path d=&#34;M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0&#34; /&gt;&lt;path d=&#34;M16.5 7.5l0 .01&#34; /&gt;&lt;/svg&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;patreon&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;{{&amp;lt; icon &amp;quot;patreon&amp;quot; &amp;gt;}}&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;svg  xmlns=&#34;http://www.w3.org/2000/svg&#34;  width=&#34;24&#34;  height=&#34;24&#34;  viewBox=&#34;0 0 24 24&#34;  fill=&#34;none&#34;  stroke=&#34;currentColor&#34;  stroke-width=&#34;2&#34;  stroke-linecap=&#34;round&#34;  stroke-linejoin=&#34;round&#34;  class=&#34;icon icon-tabler icons-tabler-outline icon-tabler-brand-patreon&#34;&gt;&lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M20 8.408c-.003 -2.299 -1.746 -4.182 -3.79 -4.862c-2.54 -.844 -5.888 -.722 -8.312 .453c-2.939 1.425 -3.862 4.545 -3.896 7.656c-.028 2.559 .22 9.297 3.92 9.345c2.75 .036 3.159 -3.603 4.43 -5.356c.906 -1.247 2.071 -1.599 3.506 -1.963c2.465 -.627 4.146 -2.626 4.142 -5.273z&#34; /&gt;&lt;/svg&gt;
+&lt;/td&gt;
+          &lt;td&gt;soundcloud&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;{{&amp;lt; icon &amp;quot;soundcloud&amp;quot; &amp;gt;}}&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;svg  xmlns=&#34;http://www.w3.org/2000/svg&#34;  width=&#34;24&#34;  height=&#34;24&#34;  viewBox=&#34;0 0 24 24&#34;  fill=&#34;none&#34;  stroke=&#34;currentColor&#34;  stroke-width=&#34;2&#34;  stroke-linecap=&#34;round&#34;  stroke-linejoin=&#34;round&#34;  class=&#34;icon icon-tabler icons-tabler-outline icon-tabler-brand-soundcloud&#34;&gt;&lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M17 11h1c1.38 0 3 1.274 3 3c0 1.657 -1.5 3 -3 3l-6 0v-10c3 0 4.5 1.5 5 4z&#34; /&gt;&lt;path d=&#34;M9 8l0 9&#34; /&gt;&lt;path d=&#34;M6 17l0 -7&#34; /&gt;&lt;path d=&#34;M3 16l0 -2&#34; /&gt;&lt;/svg&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;tiktok&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;{{&amp;lt; icon &amp;quot;tiktok&amp;quot; &amp;gt;}}&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;svg  xmlns=&#34;http://www.w3.org/2000/svg&#34;  width=&#34;24&#34;  height=&#34;24&#34;  viewBox=&#34;0 0 24 24&#34;  fill=&#34;none&#34;  stroke=&#34;currentColor&#34;  stroke-width=&#34;2&#34;  stroke-linecap=&#34;round&#34;  stroke-linejoin=&#34;round&#34;  class=&#34;icon icon-tabler icons-tabler-outline icon-tabler-brand-tiktok&#34;&gt;&lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M21 7.917v4.034a9.948 9.948 0 0 1 -5 -1.951v4.5a6.5 6.5 0 1 1 -8 -6.326v4.326a2.5 2.5 0 1 0 4 2v-11.5h4.083a6.005 6.005 0 0 0 4.917 4.917z&#34; /&gt;&lt;/svg&gt;
+&lt;/td&gt;
+          &lt;td&gt;x&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;{{&amp;lt; icon &amp;quot;x&amp;quot; &amp;gt;}}&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;svg  xmlns=&#34;http://www.w3.org/2000/svg&#34;  width=&#34;24&#34;  height=&#34;24&#34;  viewBox=&#34;0 0 24 24&#34;  fill=&#34;none&#34;  stroke=&#34;currentColor&#34;  stroke-width=&#34;2&#34;  stroke-linecap=&#34;round&#34;  stroke-linejoin=&#34;round&#34;  class=&#34;icon icon-tabler icons-tabler-outline icon-tabler-brand-x&#34;&gt;&lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M4 4l11.733 16h4.267l-11.733 -16z&#34; /&gt;&lt;path d=&#34;M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772&#34; /&gt;&lt;/svg&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;emoji&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#emoji&#34;&gt;
+        #
+    &lt;/a&gt;
+    Emoji
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;use &lt;a href=&#34;https://gohugo.io/functions/emojify/&#34;&gt;&lt;code&gt;emojify&lt;/code&gt;&lt;/a&gt; function and &lt;a href=&#34;https://gohugo.io/templates/shortcode-templates/#inline-shortcodes&#34;&gt;Inline Shortcodes&lt;/a&gt; to type emoji directly in content files
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://gohugo.io/getting-started/configuration/&#34;&gt;configuration&lt;/a&gt; requirements: set &lt;code&gt;enableEmoji&lt;/code&gt; to &lt;code&gt;true&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;will enable Unicode Standard emoji characters and sequences&lt;/li&gt;
+&lt;li&gt;the rendering depends on the browser/platform&lt;/li&gt;
+&lt;li&gt;e.g.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;I :heart: you
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;I &amp;#x2764;&amp;#xfe0f; you&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.emoji-cheat-sheet.com/&#34;&gt;Emoji cheat sheet&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;use a 3rd party emoji font or a font stack
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-css&#34; data-lang=&#34;css&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;.&lt;span style=&#34;color:#e5c890&#34;&gt;emoji&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ca9ee6&#34;&gt;font-family&lt;/span&gt;: Android Emoji, EmojiSymbols;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;plugin-giscus&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#plugin-giscus&#34;&gt;
+        #
+    &lt;/a&gt;
+    Plugin: Giscus
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;select a repo as the database of the discussions&lt;/li&gt;
+&lt;li&gt;install &lt;a href=&#34;https://github.com/apps/giscus&#34;&gt;giscus&lt;/a&gt; on the selected repo&lt;/li&gt;
+&lt;li&gt;enable GitHub Discussions&lt;br&gt;
+&lt;img src=&#34;https://vitaceae.github.io/posts/web//inc/hugo/enable_giscus.jpg&#34; alt=&#34;enable_giscus&#34;/&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://giscus.app/&#34;&gt;retrieve configuration from the official website&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;plugin-umami-cloud&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#plugin-umami-cloud&#34;&gt;
+        #
+    &lt;/a&gt;
+    Plugin: Umami Cloud
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://cloud.umami.is/login&#34;&gt;Umami Cloud&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;rss-feed&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#rss-feed&#34;&gt;
+        #
+    &lt;/a&gt;
+    RSS Feed
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;rssAsSocialIcon = &lt;span style=&#34;color:#ef9f76&#34;&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;hide-post&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#hide-post&#34;&gt;
+        #
+    &lt;/a&gt;
+    Hide Post
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;add &lt;code&gt;hidden = true&lt;/code&gt; to the front matter of the post; available only by link&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;rich-content&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#rich-content&#34;&gt;
+        #
+    &lt;/a&gt;
+    Rich Content
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://gohugo.io/about/privacy/&#34;&gt;Privacy Config&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Simple Shortcodes: provides media embeds with static and no-JS versions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;youtube-privacy-enhanced&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#youtube-privacy-enhanced&#34;&gt;
+        ##
+    &lt;/a&gt;
+    YouTube Privacy Enhanced
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;to embed &lt;code&gt;https://www.youtube.com/watch?v=s-0ganwG284&lt;/code&gt;, use &lt;code&gt;{{&amp;lt; youtube s-0ganwG284 &amp;gt;}}&lt;/code&gt;&lt;/p&gt;
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+      &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; allowfullscreen=&#34;allowfullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube.com/embed/s-0ganwG284?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;&gt;&lt;/iframe&gt;
+    &lt;/div&gt;
+
+&lt;h3 id=&#34;x&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#x&#34;&gt;
+        ##
+    &lt;/a&gt;
+    X
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;{{&amp;lt; x user=&amp;quot;DesignReviewed&amp;quot; id=&amp;quot;1895566669281636846&amp;quot; &amp;gt;}}&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote class=&#34;twitter-tweet&#34;&gt;&lt;p lang=&#34;zxx&#34; dir=&#34;ltr&#34;&gt;&lt;a href=&#34;https://t.co/Ja8HQTFpf7&#34;&gt;pic.twitter.com/Ja8HQTFpf7&lt;/a&gt;&lt;/p&gt;&amp;mdash; Donald J. Trump (@realDonaldTrump) &lt;a href=&#34;https://twitter.com/realDonaldTrump/status/1895566669281636846?ref_src=twsrc%5Etfw&#34;&gt;February 28, 2025&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
+
+
+&lt;h3 id=&#34;vimeo&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#vimeo&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Vimeo
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;{{&amp;lt; vimeo_simple 572521128 &amp;gt;}}&lt;/code&gt;&lt;/p&gt;
+&lt;style&gt;
+.__h_video {
+   position: relative;
+   padding-bottom: 56.23%;
+   height: 0;
+   overflow: hidden;
+   width: 100%;
+   background: #000;
+}
+.__h_video img {
+   width: 100%;
+   height: auto;
+   color: #000;
+}
+.__h_video .play {
+   height: 72px;
+   width: 72px;
+   left: 50%;
+   top: 50%;
+   margin-left: -36px;
+   margin-top: -36px;
+   position: absolute;
+   cursor: pointer;
+}
+&lt;/style&gt;&lt;div class=&#34;s_video_simple __h_video&#34;&gt;
+          &lt;a href=&#34;https://vimeo.com/5.72521128e&amp;#43;08&#34; rel=&#34;noopener&#34; target=&#34;_blank&#34;&gt;
+            &lt;img src=&#34;https://i.vimeocdn.com/video/1244087881-4978d076496e628dbccafaafce3724647520ac2e3e4ea66e8f1dd3d95427ef79-d_640&#34; srcset=&#34;https://i.vimeocdn.com/video/1244087881-4978d076496e628dbccafaafce3724647520ac2e3e4ea66e8f1dd3d95427ef79-d_640 1x, https://i.vimeocdn.com/video/1244087881-4978d076496e628dbccafaafce3724647520ac2e3e4ea66e8f1dd3d95427ef79-d_640 2x&#34; alt=&#34;Online Video Tutorial&#34;&gt;
+            &lt;div class=&#34;play&#34;&gt;
+              &lt;svg version=&#34;1&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 61 61&#34;&gt;&lt;circle cx=&#34;30.5&#34; cy=&#34;30.5&#34; r=&#34;30.5&#34; opacity=&#34;.8&#34; fill=&#34;#000&#34;&gt;&lt;/circle&gt;&lt;path d=&#34;M25.3 19.2c-2.1-1.2-3.8-.2-3.8 2.2v18.1c0 2.4 1.7 3.4 3.8 2.2l16.6-9.1c2.1-1.2 2.1-3.2 0-4.4l-16.6-9z&#34; fill=&#34;#fff&#34;&gt;&lt;/path&gt;&lt;/svg&gt;
+            &lt;/div&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;svg-placeholder&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#svg-placeholder&#34;&gt;
+        #
+    &lt;/a&gt;
+    SVG Placeholder
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;&lt;svg class=&#34;canon&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34; overflow=&#34;visible&#34; viewBox=&#34;0 0 496 373&#34; height=&#34;373&#34; width=&#34;496&#34;&gt;&lt;g fill=&#34;none&#34;&gt;
+&lt;path stroke=&#34;#000&#34; stroke-width=&#34;.75&#34; d=&#34;M.599 372.348L495.263 1.206M.312.633l494.95 370.853M.312 372.633L247.643.92M248.502.92l246.76 370.566M330.828 123.869V1.134M330.396 1.134L165.104 124.515&#34;&gt;&lt;/path&gt;
+&lt;path stroke=&#34;#ED1C24&#34; stroke-width=&#34;.75&#34; d=&#34;M275.73 41.616h166.224v249.05H275.73zM54.478 41.616h166.225v249.052H54.478z&#34;&gt;&lt;/path&gt;
+&lt;path stroke=&#34;#000&#34; stroke-width=&#34;.75&#34; d=&#34;M.479.375h495v372h-495zM247.979.875v372&#34;&gt;&lt;/path&gt;
+&lt;ellipse cx=&#34;498.729&#34; cy=&#34;177.625&#34; rx=&#34;.75&#34; ry=&#34;1.25&#34;&gt;&lt;/ellipse&gt;
+&lt;ellipse cx=&#34;247.229&#34; cy=&#34;377.375&#34; rx=&#34;.75&#34; ry=&#34;1.25&#34;&gt;&lt;/ellipse&gt;
+&lt;/g&gt;&lt;/svg&gt;&lt;/p&gt;
+&lt;p&gt;note: don&amp;rsquo;t know how to convert .svg from &lt;a href=&#34;https://en.wikipedia.org/wiki/Canons_of_page_construction#Van_de_Graaf_canon&#34;&gt;here&lt;/a&gt; to inline code&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;math-notation&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#math-notation&#34;&gt;
+        #
+    &lt;/a&gt;
+    Math Notation
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;add &lt;code&gt;math = true&lt;/code&gt; to the front matter of the post&lt;/li&gt;
+&lt;li&gt;use the 3rd party JavaScript libraries(MathJax)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;inline&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#inline&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Inline
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;golden ratio $$ \varphi = \dfrac{1+\sqrt5}{2}= 1.6180339887… $$
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;golden ratio $$ \varphi = \dfrac{1+\sqrt5}{2}= 1.6180339887… $$&lt;/p&gt;
+&lt;h3 id=&#34;block&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#block&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Block
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$$
+ 1+\frac{a} {1+\frac{b} {1+\frac{c} {1+\cdots} } }
+$$
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;$$
+1+\frac{a} {1+\frac{b} {1+\frac{c} {1+\cdots} } }
+$$&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;multiline-codes&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#multiline-codes&#34;&gt;
+        #
+    &lt;/a&gt;
+    Multiline Codes
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;linenos=table|inline&lt;/code&gt;: generate a copy-and-paste button&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;hl_lines=[$range1,$range2,$range3,...]&lt;/code&gt;: highlight lines&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;linenostart=$val&lt;/code&gt;: index of the first line&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;anchorlinenos=true&lt;/code&gt;: create links to lines&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex; background-color:#51576d&#34;&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#838ba7&#34; id=&#34;hl-5-199&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-5-199&#34;&gt;199&lt;/a&gt;&lt;/span&gt;&lt;span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;main&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#838ba7&#34; id=&#34;hl-5-200&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-5-200&#34;&gt;200&lt;/a&gt;&lt;/span&gt;&lt;span&gt;    &lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; a &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;1&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#838ba7&#34; id=&#34;hl-5-201&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-5-201&#34;&gt;201&lt;/a&gt;&lt;/span&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex; background-color:#51576d&#34;&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#838ba7&#34; id=&#34;hl-5-202&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-5-202&#34;&gt;202&lt;/a&gt;&lt;/span&gt;&lt;span&gt;    &lt;span style=&#34;color:#ca9ee6&#34;&gt;if&lt;/span&gt; (a &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;999&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex; background-color:#51576d&#34;&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#838ba7&#34; id=&#34;hl-5-203&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-5-203&#34;&gt;203&lt;/a&gt;&lt;/span&gt;&lt;span&gt;        &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;// todo~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex; background-color:#51576d&#34;&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#838ba7&#34; id=&#34;hl-5-204&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-5-204&#34;&gt;204&lt;/a&gt;&lt;/span&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#838ba7&#34; id=&#34;hl-5-205&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-5-205&#34;&gt;205&lt;/a&gt;&lt;/span&gt;&lt;span&gt;    &lt;span style=&#34;color:#ca9ee6&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;0&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#838ba7&#34; id=&#34;hl-5-206&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-5-206&#34;&gt;206&lt;/a&gt;&lt;/span&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;problems&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#problems&#34;&gt;
+        #
+    &lt;/a&gt;
+    Problems
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Error: &amp;hellip; parse failed: template: partials/giscus.html:1: unexpected unclosed action in command&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;need Hugo v0.81.0+&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;references&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#references&#34;&gt;
+        #
+    &lt;/a&gt;
+    References
+&lt;/div&gt;
+&lt;/h2&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Hugo-Style</title>
+      <link>/posts/web/hugo_style/</link>
+      <pubDate>Sun, 03 Mar 2024 00:00:00 +0000</pubDate>
+      <author>i70170@hotmail.com (Mike Chang)</author>
+      <guid>/posts/web/hugo_style/</guid>
+      <description>&lt;hr&gt;
+&lt;h2 id=&#34;global-wise-style&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#global-wise-style&#34;&gt;
+        #
+    &lt;/a&gt;
+    global-wise style
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;lt;cust&amp;gt;
+affected by &amp;lt;code&amp;gt;cust.scss&amp;lt;/code&amp;gt; and &amp;lt;code&amp;gt;cust.css&amp;lt;/code&amp;gt;
+&amp;lt;/cust&amp;gt;
+
+&amp;lt;div class=&amp;#34;cust-style&amp;#34;&amp;gt;
+example of &amp;lt;code&amp;gt;cust-style&amp;lt;/code&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;cust&gt;
+affected by &lt;code&gt;cust.scss&lt;/code&gt; and &lt;code&gt;cust.css&lt;/code&gt;
+&lt;/cust&gt;
+&lt;/br&gt;
+&lt;div class=&#34;cust-style&#34;&gt;
+example of &lt;code&gt;cust-style&lt;/code&gt;
+&lt;/div&gt;
+&lt;p&gt;add the following line to .toml&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;customCSS = [&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;custom-css/cust.scss&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;custom-css/cust.css&amp;#34;&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;add &lt;code&gt;assets/custom-css/cust.css&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-scss&#34; data-lang=&#34;scss&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e5c890&#34;&gt;.cust-style&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8caaee&#34;&gt;background-color&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e5c890&#34;&gt;pink&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8caaee&#34;&gt;color&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e5c890&#34;&gt;black&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8caaee&#34;&gt;padding&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;em&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8caaee&#34;&gt;border-radius&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color:#ef9f76&#34;&gt;.3&lt;/span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;em&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8caaee&#34;&gt;border&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;px&lt;/span&gt; &lt;span style=&#34;color:#81c8be&#34;&gt;solid&lt;/span&gt; &lt;span style=&#34;color:#e5c890&#34;&gt;black&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;add &lt;code&gt;assets/custom-css/cust.scss&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-scss&#34; data-lang=&#34;scss&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;@import&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#39;foundation/vars&amp;#39;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;cust&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8caaee&#34;&gt;display&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#81c8be&#34;&gt;block&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8caaee&#34;&gt;font&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;100&lt;/span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color:#f2d5cf&#34;&gt;$font-stack&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8caaee&#34;&gt;color&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#f2d5cf&#34;&gt;$primary-color&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8caaee&#34;&gt;background-color&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#f2d5cf&#34;&gt;$background-color&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8caaee&#34;&gt;margin-top&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;em&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;add &lt;code&gt;assets/custom-css/foundation/_vars.scss&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-scss&#34; data-lang=&#34;scss&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;$font-stack&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;:&lt;/span&gt; Helvetica&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#81c8be&#34;&gt;sans-serif&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;$primary-color&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;rgb&lt;/span&gt;(&lt;span style=&#34;color:#ef9f76&#34;&gt;255&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;255&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;168&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;$background-color&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;rgb&lt;/span&gt;(&lt;span style=&#34;color:#ef9f76&#34;&gt;85&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;85&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;85&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;page-wise-style&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#page-wise-style&#34;&gt;
+        #
+    &lt;/a&gt;
+    page-wise style
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;the current page is affected only by &lt;code&gt;hugo-style/style.css&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;add &lt;code&gt;hugo-style/style.css&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-css&#34; data-lang=&#34;css&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;.&lt;span style=&#34;color:#e5c890&#34;&gt;cust-style2&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ca9ee6&#34;&gt;max-width&lt;/span&gt;: &lt;span style=&#34;color:#ef9f76&#34;&gt;none&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ca9ee6&#34;&gt;padding-left&lt;/span&gt;: &lt;span style=&#34;color:#ef9f76&#34;&gt;5&lt;/span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;em&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ca9ee6&#34;&gt;padding-right&lt;/span&gt;: &lt;span style=&#34;color:#ef9f76&#34;&gt;5&lt;/span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;em&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ca9ee6&#34;&gt;background-color&lt;/span&gt;: &lt;span style=&#34;color:#ef9f76&#34;&gt;yellow&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;example:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;style&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  @&lt;span style=&#34;color:#ca9ee6&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#39;style.css&amp;#39;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;/&lt;span style=&#34;color:#ca9ee6&#34;&gt;style&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;cust-style2&amp;#34;&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;example of &amp;lt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;code&lt;/span&gt;&amp;gt;cust-style2&amp;lt;/&lt;span style=&#34;color:#ca9ee6&#34;&gt;code&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;/&lt;span style=&#34;color:#ca9ee6&#34;&gt;div&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;style&gt;
+  @import &#39;style.css&#39;;
+&lt;/style&gt;
+&lt;div class=&#34;cust-style2&#34;&gt;
+example of &lt;code&gt;cust-style2&lt;/code&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Hugo</title>
+      <link>/posts/web/hugo/</link>
+      <pubDate>Sat, 02 Mar 2024 00:00:00 +0000</pubDate>
+      <author>i70170@hotmail.com (Mike Chang)</author>
+      <guid>/posts/web/hugo/</guid>
+      <description>&lt;h2 id=&#34;installation&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#installation&#34;&gt;
+        #
+    &lt;/a&gt;
+    Installation
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;h3 id=&#34;windows&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#windows&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Windows
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;install &lt;a href=&#34;https://docs.chocolatey.org/en-us/choco/setup/#install-with-powershellexe&#34;&gt;chocolatey&lt;/a&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; &lt;span style=&#34;color:#99d1db&#34;&gt;Set-ExecutionPolicy&lt;/span&gt; Bypass -Scope &lt;span style=&#34;color:#ca9ee6&#34;&gt;Process&lt;/span&gt; -Force; [&lt;span style=&#34;color:#e5c890&#34;&gt;System.Net.ServicePointManager&lt;/span&gt;]::SecurityProtocol = [&lt;span style=&#34;color:#e5c890&#34;&gt;System.Net.ServicePointManager&lt;/span&gt;]::SecurityProtocol &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;-bor&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;3072&lt;/span&gt;; &lt;span style=&#34;color:#99d1db&#34;&gt;iex &lt;/span&gt;((&lt;span style=&#34;color:#99d1db&#34;&gt;New-Object&lt;/span&gt; System.&lt;span style=&#34;color:#ef9f76&#34;&gt;Net&lt;/span&gt;.WebClient).&lt;span style=&#34;color:#ef9f76&#34;&gt;DownloadString&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#39;https://community.chocolatey.org/install.ps1&amp;#39;&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;install Go stable version: to build Hugo from source and use the Hugo Modules feature
+&lt;ul&gt;
+&lt;li&gt;from &lt;a href=&#34;https://go.dev/dl/&#34;&gt;binary&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;from choco command
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; choco install golang sass &lt;span style=&#34;color:#99d1db&#34;&gt;hugo-extended&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;install Dart Sass: to transpile Sass to CSS&lt;/li&gt;
+&lt;li&gt;install Hugo
+&lt;ul&gt;
+&lt;li&gt;from &lt;a href=&#34;https://github.com/gohugoio/hugo/releases/latest&#34;&gt;prebuilt-binary&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;add this directory to &lt;code&gt;PATH&lt;/code&gt; variable&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;from choco command&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;linux&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#linux&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Linux
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo snap install hugo
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# enable/revoke access to removable media&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo snap connect hugo:removable-media
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo snap disconnect hugo:removable-media
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# enable/revoke access to SSH keys&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo snap connect hugo:ssh-keys
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo snap disconnect hugo:ssh-keys
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;directory-structure&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#directory-structure&#34;&gt;
+        #
+    &lt;/a&gt;
+    Directory structure
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://gohugo.io/content-management/organization/&#34;&gt;Hugo: Content organization&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── archetypes  # templates for new content
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── assets      # pipeline which global resources typically passed through
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│                 (images, CSS, Sass, JavaScript, and TypeScript...)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── config      # (optional)site configuration
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│   ├── _default
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│   │   ├── hugo.toml
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│   │   ├── languages.toml
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│   │   ├── menus.en.toml
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│   │   └── params.toml
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│   ├── production
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│   │   ├── hugo.toml
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│   │   └── params.toml
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│   └── staging
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│       └── ...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── content     # markup files (typically markdown)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── data        # JSON, TOML, YAML, or XML; accessible as a map in the .Site.Data variable
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── layouts     # templates to transform content, data, and resources into a complete website
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── resources   # cached output from Hugo&amp;#39;s asset pipelines
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── static      # files that will be copied to the public directory
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── themes
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;└── hugo.toml
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;quick-start&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#quick-start&#34;&gt;
+        #
+    &lt;/a&gt;
+    Quick Start
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://gohugo.io/getting-started/usage/&#34;&gt;Hugo: Basic usage&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Windows user: run commands from PowerShell(not Windows PowerShell), WSL or Git Bash&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;create-a-demo-site-on-wsl&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#create-a-demo-site-on-wsl&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Create a demo site on WSL
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ &lt;span style=&#34;color:#f2d5cf&#34;&gt;SITE_NAME&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;hugo_site
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ hugo new site &lt;span style=&#34;color:#f2d5cf&#34;&gt;$SITE_NAME&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ &lt;span style=&#34;color:#99d1db&#34;&gt;cd&lt;/span&gt; &lt;span style=&#34;color:#f2d5cf&#34;&gt;$SITE_NAME&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git init
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# add a new theme&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ &lt;span style=&#34;color:#99d1db&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;theme = &amp;#39;ananke&amp;#39;&amp;#34;&lt;/span&gt; &amp;gt;&amp;gt; hugo.toml
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# write a new post; set &amp;#39;draft = false&amp;#39; in the .md file when done&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ hugo new posts/new_post.md
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# need to find the WSL&amp;#39;s LAN IP; add an alias function in bash.rc&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;function&lt;/span&gt; hugo_server&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f2d5cf&#34;&gt;WSL_IP&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;$(&lt;/span&gt;ip addr show eth0 | grep &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;inet\b&amp;#34;&lt;/span&gt; | awk &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#39;{print $2}&amp;#39;&lt;/span&gt; | cut -d/ -f1&lt;span style=&#34;color:#ca9ee6&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    hugo server --bind &lt;span style=&#34;color:#f2d5cf&#34;&gt;$WSL_IP&lt;/span&gt; --baseURL&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;http://&lt;span style=&#34;color:#f2d5cf&#34;&gt;$WSL_IP&lt;/span&gt; -D -F --gc -w
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# run local web server(changes take effect on the fly)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ hugo_server
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;host-on-github-pages&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#host-on-github-pages&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Host on GitHub Pages
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;Publish to GitHub Pages (there&amp;rsquo;s rendering problem following the official method)&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;add &lt;a href=&#34;https://vitaceae.github.io/inc/hugo/hugo.yaml&#34;&gt;.github/workflows/hugo.yaml&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;create a repo named &lt;code&gt;github_user_name&lt;/code&gt;.github.io&lt;/li&gt;
+&lt;li&gt;run &lt;code&gt;hugo&lt;/code&gt; and push the contents in &lt;code&gt;public&lt;/code&gt; to the repo&lt;/li&gt;
+&lt;li&gt;GitHub repo::Settings::Pages::Github Actions::&lt;code&gt;Deploy from a branch&lt;/code&gt;&lt;br&gt;
+&lt;img src=&#34;https://vitaceae.github.io/posts/web//inc/hugo/publish_to_github_pages.png&#34; alt=&#34;publish_to_github_pages&#34;/&gt;&lt;/li&gt;
+&lt;li&gt;run https://&lt;code&gt;github_user_name&lt;/code&gt;.github.io in web browser&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;references&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#references&#34;&gt;
+        #
+    &lt;/a&gt;
+    References
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://gohugo.io/&#34;&gt;Official: Hugo&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://gohugo.io/installation/windows/&#34;&gt;Official: Install Hugo on Windows&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://gohugo.io/installation/linux/&#34;&gt;Official: Install Hugo on Linux&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://gohugo.io/getting-started/directory-structure/&#34;&gt;Official: Directory structure&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://gohugo.io/hosting-and-deployment/hosting-on-github/&#34;&gt;Official: Host on GitHub Pages&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://themes.gohugo.io/&#34;&gt;Official: Hugo themes&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Hugo Diagram</title>
+      <link>/posts/web/hugo_diagram/</link>
+      <pubDate>Sat, 02 Mar 2024 00:00:00 +0000</pubDate>
+      <author>i70170@hotmail.com (Mike Chang)</author>
+      <guid>/posts/web/hugo_diagram/</guid>
+      <description>&lt;h2 id=&#34;mermaid-diagrams&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#mermaid-diagrams&#34;&gt;
+        #
+    &lt;/a&gt;
+    Mermaid Diagrams
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://mermaid.js.org/intro/&#34;&gt;About Mermaid&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;sequence&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#sequence&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Sequence
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;pre class=&#34;mermaid&#34;&gt;sequenceDiagram
+    participant Alice
+    participant Bob
+    Alice-&gt;&gt;John: Hello John, how are you?
+    loop HealthCheck
+        John-&gt;&gt;John: Fight against hypochondria
+    end
+    Note right of John: Rational thoughts &lt;br/&gt;prevail!
+    John--&gt;&gt;Alice: Great!
+    John-&gt;&gt;Bob: How about you?
+    Bob--&gt;&gt;John: Jolly good!
+&lt;/pre&gt;
+
+&lt;pre class=&#34;mermaid&#34;&gt;sequenceDiagram
+    loop Daily query
+        Alice-&gt;&gt;Bob: Hello Bob, how are you?
+        alt is sick
+            Bob-&gt;&gt;Alice: Not so good :(
+        else is well
+            Bob-&gt;&gt;Alice: Feeling fresh like a daisy
+        end
+
+        opt Extra response
+            Bob-&gt;&gt;Alice: Thanks for asking
+        end
+    end
+&lt;/pre&gt;
+
+&lt;h3 id=&#34;gantt&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#gantt&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Gantt
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;pre class=&#34;mermaid&#34;&gt;gantt
+    title A Gantt Diagram
+    dateFormat YYYY-MM-DD
+    section Section
+        A task          :a1, 2014-01-01, 30d
+        Another task    :after a1, 20d
+    section Another
+        Task in Another :2014-01-12, 12d
+        another task    :24d
+&lt;/pre&gt;
+
+&lt;h3 id=&#34;git-graph&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#git-graph&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Git Graph
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;pre class=&#34;mermaid&#34;&gt;gitGraph:
+    commit &#34;Ashish&#34;
+    branch newbranch
+    checkout newbranch
+    commit id:&#34;1111&#34;
+    commit tag:&#34;test&#34;
+    checkout main
+    commit type: HIGHLIGHT
+    commit
+    merge newbranch
+    commit
+    branch b2
+    commit
+&lt;/pre&gt;
+
+&lt;h3 id=&#34;state&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#state&#34;&gt;
+        ##
+    &lt;/a&gt;
+    State
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;pre class=&#34;mermaid&#34;&gt;stateDiagram
+    [*] --&gt; Still
+    Still --&gt; [*]
+
+    Still --&gt; Moving
+    Moving --&gt; Still
+    Moving --&gt; Crash
+    Crash --&gt; [*]
+&lt;/pre&gt;
+
+&lt;h2 id=&#34;goat&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#goat&#34;&gt;
+        #
+    &lt;/a&gt;
+    GoAT
+&lt;/div&gt;
+&lt;/h2&gt;
+
+
+
+&lt;div class=&#34;goat svg-container &#34;&gt;
+  
+    &lt;svg
+      xmlns=&#34;http://www.w3.org/2000/svg&#34;
+      font-family=&#34;Menlo,Lucida Console,monospace&#34;
+      
+        viewBox=&#34;0 0 680 121&#34;
+      &gt;
+      &lt;g transform=&#39;translate(8,16)&#39;&gt;
+&lt;path d=&#39;M 440,0 L 464,0&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 576,0 L 584,0&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 408,16 L 440,16&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 552,16 L 560,16&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 144,32 L 176,32&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 176,32 L 208,32&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 296,32 L 312,32&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 312,32 L 328,32&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 440,32 L 464,32&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 576,32 L 584,32&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 384,48 L 408,48&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 512,48 L 536,48&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 128,64 L 144,64&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 144,64 L 160,64&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 192,64 L 208,64&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 208,64 L 224,64&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 440,64 L 464,64&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 576,64 L 584,64&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 408,80 L 440,80&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 552,80 L 560,80&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 440,96 L 464,96&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 576,96 L 584,96&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 128,64 L 128,80&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 144,32 L 144,64&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 160,64 L 160,80&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 176,0 L 176,32&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 192,64 L 192,80&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 208,32 L 208,64&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 224,64 L 224,80&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 280,48 L 280,64&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 312,0 L 312,32&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 344,48 L 344,64&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 408,16 L 408,48&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 408,48 L 408,80&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 440,0 L 440,16&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 440,16 L 440,32&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 440,64 L 440,80&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 440,80 L 440,96&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 536,32 L 536,48&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 536,48 L 536,64&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 8,80 L 24,48&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 24,48 L 48,0&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 56,80 L 72,48&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 624,48 L 640,16&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 640,16 L 648,0&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 640,80 L 648,64&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 24,48 L 40,80&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 48,0 L 72,48&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 72,48 L 88,80&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 624,48 L 640,80&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 640,80 L 648,96&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 640,16 L 648,32&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 576,0 A 16,16 0 0,0 560,16&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 552,16 A 16,16 0 0,0 536,32&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 296,32 A 16,16 0 0,0 280,48&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 328,32 A 16,16 0 0,1 344,48&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 560,16 A 16,16 0 0,0 576,32&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 280,64 A 16,16 0 0,0 264,80&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 280,64 A 16,16 0 0,1 296,80&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 344,64 A 16,16 0 0,0 328,80&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 344,64 A 16,16 0 0,1 360,80&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 576,64 A 16,16 0 0,0 560,80&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 536,64 A 16,16 0 0,0 552,80&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 560,80 A 16,16 0 0,0 576,96&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;8&#39; y=&#39;100&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;1&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;40&#39; y=&#39;100&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;2&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;56&#39; y=&#39;100&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;3&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;88&#39; y=&#39;100&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;4&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;128&#39; y=&#39;100&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;1&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;160&#39; y=&#39;100&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;2&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;192&#39; y=&#39;100&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;3&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;224&#39; y=&#39;100&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;4&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;264&#39; y=&#39;100&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;1&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;296&#39; y=&#39;100&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;2&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;328&#39; y=&#39;100&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;3&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;360&#39; y=&#39;100&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;4&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;480&#39; y=&#39;4&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;1&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;480&#39; y=&#39;36&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;2&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;480&#39; y=&#39;68&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;3&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;480&#39; y=&#39;100&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;4&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;600&#39; y=&#39;4&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;1&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;600&#39; y=&#39;36&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;2&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;600&#39; y=&#39;68&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;3&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;600&#39; y=&#39;100&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;4&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;664&#39; y=&#39;4&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;1&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;664&#39; y=&#39;36&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;2&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;664&#39; y=&#39;68&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;3&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;664&#39; y=&#39;100&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;4&lt;/text&gt;
+&lt;/g&gt;
+
+    &lt;/svg&gt;
+  
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Website</title>
+      <link>/posts/web/website/</link>
+      <pubDate>Sat, 02 Mar 2024 00:00:00 +0000</pubDate>
+      <author>i70170@hotmail.com (Mike Chang)</author>
+      <guid>/posts/web/website/</guid>
+      <description>&lt;h2 id=&#34;static-site&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#static-site&#34;&gt;
+        #
+    &lt;/a&gt;
+    Static Site
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;Static Site Generator 靜態網站產生器&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Jekyll&lt;/code&gt;: based on Ruby; higher build time&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Hexo&lt;/code&gt;: based on JavaScript; less build time&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Hugo&lt;/code&gt;: based on Go; least build time; easy-install(binary)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;comments-system&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#comments-system&#34;&gt;
+        #
+    &lt;/a&gt;
+    Comments System
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.github.com/en/discussions&#34;&gt;Giscus&lt;/a&gt;: powered by GitHub Discussions
+&lt;ul&gt;
+&lt;li&gt;guests use GitHub OAuth Token to post comments&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;disqus&lt;/li&gt;
+&lt;li&gt;gitalk&lt;/li&gt;
+&lt;li&gt;valine&lt;/li&gt;
+&lt;li&gt;facebook&lt;/li&gt;
+&lt;li&gt;telegram&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;analytics&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#analytics&#34;&gt;
+        #
+    &lt;/a&gt;
+    Analytics
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Cloud-based&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://cloud.umami.is/login&#34;&gt;Umami Cloud&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Google Analytics
+&lt;ul&gt;
+&lt;li&gt;too complicated&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Self-host&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Netlify + Neon&lt;/li&gt;
+&lt;li&gt;Railway&lt;/li&gt;
+&lt;li&gt;Vercel + TiDB Cloud&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;references&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#references&#34;&gt;
+        #
+    &lt;/a&gt;
+    References
+&lt;/div&gt;
+&lt;/h2&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
