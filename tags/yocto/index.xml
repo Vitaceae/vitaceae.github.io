@@ -1,0 +1,1339 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Yocto on Mike&#39;s Cheatsheet</title>
+    <link>/tags/yocto/</link>
+    <description>Mike&#39;s Cheatsheet (Yocto)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    
+      
+        <managingEditor>i70170@hotmail.com
+          
+            (Mike Chang)
+          
+        </managingEditor>
+      
+
+      
+    
+
+    
+    <lastBuildDate>Tue, 19 Mar 2024 00:00:00 +0000</lastBuildDate>
+    
+    <atom:link href="/tags/yocto/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Build Tools</title>
+      <link>/posts/dev_platform/build_tools/</link>
+      <pubDate>Tue, 19 Mar 2024 00:00:00 +0000</pubDate>
+      <author>i70170@hotmail.com (Mike Chang)</author>
+      <guid>/posts/dev_platform/build_tools/</guid>
+      <description>&lt;h2 id=&#34;build-tools&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#build-tools&#34;&gt;
+        #
+    &lt;/a&gt;
+    Build Tools
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;目的&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;編譯/交叉編譯應用程式&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;將應用程式包裝成套件&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;測試 binary ecosystem&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;部署 image&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://buildroot.org/&#34;&gt;Buildroot&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;建置客製化且最精簡的嵌入式 Linux 系統&lt;/li&gt;
+&lt;li&gt;支援 bootloader(e.g. U-Boot), Linux kernel(zImage or bzImage), BusyBox 管理&lt;/li&gt;
+&lt;li&gt;套件管理器: 無; 建構期配置所需套件&lt;/li&gt;
+&lt;li&gt;recipe 數量: 約 700&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://openwrt.org/&#34;&gt;OpenWRT&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;建置用於 router 和嵌入式網路設備的 Linux 發行版&lt;/li&gt;
+&lt;li&gt;套件管理器: opkg&lt;/li&gt;
+&lt;li&gt;提供豐富的網路和 router 相關函式庫以及驅動&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.yoctoproject.org/&#34;&gt;Yocto/OpenEmbedded&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;適合產生 distribution&lt;/li&gt;
+&lt;li&gt;套件管理器: 無; 建構期配置所需套件&lt;/li&gt;
+&lt;li&gt;提供各式通用函式庫以及驅動&lt;/li&gt;
+&lt;li&gt;recipe 數量: 約 8000&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;references&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#references&#34;&gt;
+        ##
+    &lt;/a&gt;
+    References
+&lt;/div&gt;
+&lt;/h3&gt;</description>
+    </item>
+    
+    <item>
+      <title>Rockchip Development Platform</title>
+      <link>/posts/dev_platform/rockchip/</link>
+      <pubDate>Tue, 19 Mar 2024 00:00:00 +0000</pubDate>
+      <author>i70170@hotmail.com (Mike Chang)</author>
+      <guid>/posts/dev_platform/rockchip/</guid>
+      <description>&lt;h2 id=&#34;rockchip-development-platform&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#rockchip-development-platform&#34;&gt;
+        #
+    &lt;/a&gt;
+    Rockchip Development Platform
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;firefly-docs: official design documents&lt;/li&gt;
+&lt;li&gt;firefly-tools
+&lt;ul&gt;
+&lt;li&gt;DriverAssistant: Windows USB driver&lt;/li&gt;
+&lt;li&gt;AndroidTool: Windows download tool&lt;/li&gt;
+&lt;li&gt;LinuxUpgradeTool: Linux download tool&lt;/li&gt;
+&lt;li&gt;Android8.1UpgradeTool&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;build-images&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#build-images&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Build Images
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;h4 id=&#34;get-sdk&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#get-sdk&#34;&gt;
+        ###
+    &lt;/a&gt;
+    Get SDK
+&lt;/div&gt;
+&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo apt update
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo apt install -y repo git python
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ &lt;span style=&#34;color:#f2d5cf&#34;&gt;WORK_DIR&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;~/work/firefly_px30
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ mkdir -p &lt;span style=&#34;color:#f2d5cf&#34;&gt;$WORK_DIR&lt;/span&gt;; &lt;span style=&#34;color:#99d1db&#34;&gt;cd&lt;/span&gt; &lt;span style=&#34;color:#f2d5cf&#34;&gt;$WORK_DIR&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# full SDK: px30_linux_release.xml&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# BSP(basic repositories and compile tools): px30_linux_bsp_release.xml&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ repo init &lt;span style=&#34;color:#8caaee&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;&lt;/span&gt;    --repo-url https://gitlab.com/firefly-linux/git-repo.git &lt;span style=&#34;color:#8caaee&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;&lt;/span&gt;    -u https://gitlab.com/firefly-linux/manifests.git &lt;span style=&#34;color:#8caaee&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;&lt;/span&gt;    -b master &lt;span style=&#34;color:#8caaee&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;&lt;/span&gt;    -m px30_linux_release.xml
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# sync&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ .repo/repo/repo sync -c --no-tags
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ .repo/repo/repo start firefly --all
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# update&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ .repo/repo/repo sync -c --no-tags
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;setup-environment&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#setup-environment&#34;&gt;
+        ###
+    &lt;/a&gt;
+    Setup Environment
+&lt;/div&gt;
+&lt;/h4&gt;
+&lt;p&gt;ubuntu 16.04&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo apt-get install &lt;span style=&#34;color:#8caaee&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;&lt;/span&gt;    repo git-core gitk git-gui gcc-arm-linux-gnueabihf u-boot-tools &lt;span style=&#34;color:#8caaee&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;&lt;/span&gt;    device-tree-compiler gcc-aarch64-linux-gnu mtools parted libudev-dev &lt;span style=&#34;color:#8caaee&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;&lt;/span&gt;    libusb-1.0-0-dev python-linaro-image-tools linaro-image-tools autoconf &lt;span style=&#34;color:#8caaee&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;&lt;/span&gt;    autotools-dev libsigsegv2 m4 intltool libdrm-dev curl sed make binutils &lt;span style=&#34;color:#8caaee&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;&lt;/span&gt;    build-essential gcc g++ bash patch gzip bzip2 perl tar cpio python unzip &lt;span style=&#34;color:#8caaee&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;&lt;/span&gt;    rsync file bc wget libncurses5 libqt4-dev libglib2.0-dev libgtk2.0-dev &lt;span style=&#34;color:#8caaee&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;&lt;/span&gt;    libglade2-dev cvs git mercurial rsync openssh-client subversion asciidoc &lt;span style=&#34;color:#8caaee&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;&lt;/span&gt;    w3m dblatex graphviz python-matplotlib libc6:i386 libssl-dev texinfo &lt;span style=&#34;color:#8caaee&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;&lt;/span&gt;    liblz4-tool genext2fs lib32stdc++6 expect expect-dev fakeroot
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git config core.symlinks &lt;span style=&#34;color:#99d1db&#34;&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git config core.fileMode &lt;span style=&#34;color:#99d1db&#34;&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git config core.ignorecase &lt;span style=&#34;color:#99d1db&#34;&gt;false&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;compilation&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#compilation&#34;&gt;
+        ###
+    &lt;/a&gt;
+    Compilation
+&lt;/div&gt;
+&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;System Parameters&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Description&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;System Parameters&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Uboot defconfig&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;RK_UBOOT_DEFCONFIG=evb-px30&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Kernel defconfig&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;RK_KERNEL_DEFCONFIG=px30_linux_defconfig&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Kernel dts&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;RK_KERNEL_DTS=px30-firefly-lvds&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;GPT table&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;RK_PARAMETER=parameter-ubuntu.txt&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;packagefile(update.img)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;RK_PACKAGE_FILE=px30-ubuntu-package-file&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;Artifacts&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;artifacts&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;symlink&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;real path&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;boot.img&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;rockdev/boot.img&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;kernel/boot.img&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;idbloader.img&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;rockdev/idbloader.img&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;u-boot/idbloader.img&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;MiniLoaderAll.bin&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;rockdev/MiniLoaderAll.bin&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;u-boot/px30_loader_v1.14.122.bin&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;misc.img&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;rockdev/misc.img&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;device/rockchip/rockimg/wipe_all-misc.img&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;oem.img&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;rockdev/oem.img&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;parameter.txt&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;rockdev/parameter.txt&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;device/rockchip/px30/parameter.txt&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;recovery.img&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;rockdev/recovery.img&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;buildroot/output/rockchip_px30_recovery/images/recovery.img&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;rootfs.img&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;rockdev/rootfs.img&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;buildroot/output/rockchip_px30_64/images/rootfs.ext2&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;trust.img&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;rockdev/trust.img&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;u-boot/trust.img&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;uboot.img&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;rockdev/uboot.img&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;u-boot/uboot.img&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;userdata.img&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;rockdev/userdata.img&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Build commands&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# Select the board configuration&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#   px30-ubuntu.mk: Ubuntu, MIPI&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#   px30-lvds-ubuntu.mk: Ubuntu, LVDS&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#   (the soft link points to device/rockchip/px30/*.mk)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ ./build.sh px30-lvds-ubuntu.mk
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# Build target: all | kernel | uboot | recovery | updateimg &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ ./build.sh all
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# confirm the links in rockdev/ and tools/linux/Linux_Pack_Firmware/rockdev/package-file&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ ./mkfirmware.sh
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# clean build&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ ./build.sh cleanall
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h3 id=&#34;storage-partitions&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#storage-partitions&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Storage Partitions
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Partition&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Image&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;uboot&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;uboot.img&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;trust&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;trust.img(from uboot recipe)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;misc&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;misc.img(optional for recovery mode)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;boot&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;boot.img(kernel image; device tree)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;recovery&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;recovery.img(optional)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;backup&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;reserved&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;oem&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;factory data(/oem)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;rootfs&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;rootfs.img(read-only)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;userdata&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;app data(optional; rw; /userdata)&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;partition table: device/rockchip/px30/parameter.txt
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;CMDLINE: &lt;span style=&#34;color:#f2d5cf&#34;&gt;mtdparts&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;rk29xxnand:0x00002000@0x00004000&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;(&lt;/span&gt;uboot&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;)&lt;/span&gt;,0x00002000@0x00006000&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;(&lt;/span&gt;trust&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;)&lt;/span&gt;,...
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;package-file
+&lt;ul&gt;
+&lt;li&gt;tools/linux/Linux_Pack_Firmware/rockdev/px30-ubuntu-package-file&lt;/li&gt;
+&lt;li&gt;MUST be consistent with &lt;code&gt;parameter.txt&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;image-tools&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#image-tools&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Image Tools
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;h4 id=&#34;windows&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#windows&#34;&gt;
+        ###
+    &lt;/a&gt;
+    Windows
+&lt;/div&gt;
+&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;Install &lt;code&gt;DriverAssitant&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Connect to the device via USB cable&lt;/li&gt;
+&lt;li&gt;Hold &lt;code&gt;RECOVERY&lt;/code&gt; button and then power on; release &lt;code&gt;RECOVERY&lt;/code&gt; button after 2 sec.&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;AndroidTool.exe&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://vitaceae.github.io/posts/dev_platform/./inc/px30-android-tool.png&#34; alt=&#34;AndroidTool&#34;/&gt;&lt;/p&gt;
+&lt;h4 id=&#34;linux&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#linux&#34;&gt;
+        ###
+    &lt;/a&gt;
+    Linux
+&lt;/div&gt;
+&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ &lt;span style=&#34;color:#99d1db&#34;&gt;cd&lt;/span&gt; Linux_Upgrade_Tool
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo mv upgrade_tool /usr/local/bin
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo chown root:root /usr/local/bin/upgrade_tool
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo chmod a+x /usr/local/bin/upgrade_tool
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h3 id=&#34;boot-flow&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#boot-flow&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Boot Flow
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://vitaceae.github.io/posts/dev_platform/inc/rockchip/rockchip-boot-flow.jpg&#34; alt=&#34;rockchip-boot-flow&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;系統初始化&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;power-on initialization&lt;/li&gt;
+&lt;li&gt;run BootRom code on SRAM&lt;/li&gt;
+&lt;li&gt;verify bootloader&lt;/li&gt;
+&lt;li&gt;load and run bootloader
+&lt;ul&gt;
+&lt;li&gt;initialize DDR SDRAM&lt;/li&gt;
+&lt;li&gt;shadow bootloader to DDR memory&lt;/li&gt;
+&lt;li&gt;load and run Linux kernel&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Boot mode&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Normal&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Loader&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;connect USB cable to device, hold recovery key and then power-on&lt;/li&gt;
+&lt;li&gt;to upgrade firmware
+&lt;ul&gt;
+&lt;li&gt;full image: &lt;code&gt;update.img&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;partition images: &lt;code&gt;kernel.img&lt;/code&gt;, &lt;code&gt;rootfs.img&lt;/code&gt;, &lt;code&gt;recovery.img&lt;/code&gt;&amp;hellip;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;MaskRom&lt;/code&gt;
++ used when bootloader is corrupted&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;custom-changes&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#custom-changes&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Custom Changes
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;h4 id=&#34;change-board-config&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#change-board-config&#34;&gt;
+        ###
+    &lt;/a&gt;
+    Change Board config
+&lt;/div&gt;
+&lt;/h4&gt;
+&lt;p&gt;在 device/Rockchip/rk3326/Boardconfig.mk 中確認指定的 dts&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#export RK_KERNEL_DTS=rk3326-evb-lp3-v10-linux&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#export RK_KERNEL_DTS=rk3326-evb-ai-va-v11-linux&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;使用腳本修改 board type, 間接更改 soft link 對象&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ ./build.sh px30-lvds-ubuntu.mk
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;修改 Ubuntu 分割區配置: device/rockchip/px30/parameter-ubuntu.txt&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;-CMDLINE: &lt;span style=&#34;color:#f2d5cf&#34;&gt;mtdparts&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;rk29xxnand:0x00002000@0x00004000&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;(&lt;/span&gt;uboot&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;)&lt;/span&gt;,0x00002000@0x00006000&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;(&lt;/span&gt;trust&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;)&lt;/span&gt;,0x00002000@0x00008000&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;(&lt;/span&gt;misc&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;)&lt;/span&gt;,0x00010000@0x0000a000&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;(&lt;/span&gt;boot&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;)&lt;/span&gt;,0x00010000@0x0001a000&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;(&lt;/span&gt;recovery&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;)&lt;/span&gt;,0x00010000@0x0002a000&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;(&lt;/span&gt;backup&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;)&lt;/span&gt;,0x00020000@0x0003a000&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;(&lt;/span&gt;oem&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;)&lt;/span&gt;,0x00c00000@0x0005a000&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;(&lt;/span&gt;rootfs&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;)&lt;/span&gt;,-@0x00c5a000&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;(&lt;/span&gt;userdata:grow&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;+CMDLINE: &lt;span style=&#34;color:#f2d5cf&#34;&gt;mtdparts&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;rk29xxnand:0x00002000@0x00004000&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;(&lt;/span&gt;uboot&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;)&lt;/span&gt;,0x00002000@0x00006000&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;(&lt;/span&gt;trust&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;)&lt;/span&gt;,0x00002000@0x00008000&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;(&lt;/span&gt;misc&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;)&lt;/span&gt;,0x00010000@0x0000a000&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;(&lt;/span&gt;boot&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;)&lt;/span&gt;,0x00010000@0x0001a000&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;(&lt;/span&gt;recovery&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;)&lt;/span&gt;,0x00010000@0x0002a000&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;(&lt;/span&gt;backup&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;)&lt;/span&gt;,0x00600000@0x0005a000&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;(&lt;/span&gt;rootfs&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;)&lt;/span&gt;,-@0x0065a000&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;(&lt;/span&gt;userdata:grow&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;enable-pdm-mic&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#enable-pdm-mic&#34;&gt;
+        ###
+    &lt;/a&gt;
+    Enable PDM Mic
+&lt;/div&gt;
+&lt;/h4&gt;
+&lt;p&gt;PDM_CLK1 和 PDM_CLK0_M0 輸出 clock waveforms 正常, 但 PDM_SDI0 ~ PDM_SDI3 無作用&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ aplay -l
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;**** List of PLAYBACK Hardware Devices ****
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;card 0: rockchiprk809co &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;[&lt;/span&gt;rockchip,rk809-codec&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;]&lt;/span&gt;, device 0: ff070000.i2s-rk817-hifi rk817-hifi-0 &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;[]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  Subdevices: 1/1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  Subdevice &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#0: subdevice #0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ arecord -l
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;**** List of CAPTURE Hardware Devices ****
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;card 0: rockchiprk809co &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;[&lt;/span&gt;rockchip,rk809-codec&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;]&lt;/span&gt;, device 0: ff070000.i2s-rk817-hifi rk817-hifi-0 &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;[]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  Subdevices: 1/1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  Subdevice &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#0: subdevice #0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;card 0: rockchiprk809co &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;[&lt;/span&gt;rockchip,rk809-codec&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;]&lt;/span&gt;, device 1: ff0a0000.pdm-rk817-voice rk817-voice-1 &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;[]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  Subdevices: 1/1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  Subdevice &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#0: subdevice #0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ arecord -Dhw:0,1 -d &lt;span style=&#34;color:#ef9f76&#34;&gt;5&lt;/span&gt; -t wav -r &lt;span style=&#34;color:#ef9f76&#34;&gt;48000&lt;/span&gt; -f S32_LE -c &lt;span style=&#34;color:#ef9f76&#34;&gt;8&lt;/span&gt; &amp;gt; test.wav
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;splash-logo&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#splash-logo&#34;&gt;
+        ###
+    &lt;/a&gt;
+    Splash Logo
+&lt;/div&gt;
+&lt;/h4&gt;
+&lt;p&gt;變更 boot 階段背景圖片: 修改 kernel/logo.bmp 及 kernel/logo_kernel.bmp&lt;/p&gt;
+&lt;h4 id=&#34;configuration&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#configuration&#34;&gt;
+        ###
+    &lt;/a&gt;
+    Configuration
+&lt;/div&gt;
+&lt;/h4&gt;
+&lt;p&gt;支援 POSIX message queue: 修改 kernel/arch/arm64/configs/px30_linux_defconfig&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;CONFIG_POSIX_MQUEUE&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;y
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h3 id=&#34;problems&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#problems&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Problems
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;E: Unable to locate package repo&lt;/p&gt;&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ mkdir ~/bin
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ curl https://storage.googleapis.com/git-repo-downloads/repo &amp;gt; ~/bin/repo
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ chmod a+x ~/bin/repo
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ &lt;span style=&#34;color:#99d1db&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#f2d5cf&#34;&gt;PATH&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;~/bin:&lt;span style=&#34;color:#f2d5cf&#34;&gt;$PATH&lt;/span&gt; &amp;gt;&amp;gt; ~/.bashrc
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;rockchip-vop ff470000.vop: [drm:vop_isr] ERROR WIN1_EMPTY irq err&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;bandwidth not enough&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;disable &lt;code&gt;dmc&lt;/code&gt;, 關閉 DDR 變頻功能&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt;dmc {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    center&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;-&lt;/span&gt;supply &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&amp;amp;&lt;/span&gt;vdd_logic&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    status &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;disabled&amp;#34;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;};
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;若問題消失表示 DDR 頻率正確, 開啟 dmc 並調整 &lt;code&gt;vop-dclk-mode&lt;/code&gt; 值: 0 | 1 | 2&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;vop&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;-&lt;/span&gt;dclk&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;-&lt;/span&gt;mode &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#ef9f76&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;若問題仍然存在表示 DDR 頻率異常, 須調整成最大支援頻率&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;/*system status freq(KHz)*/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SYS_STATUS_NORMAL &lt;span style=&#34;color:#ef9f76&#34;&gt;856000&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;dmc 參數說明(.dts)&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;auto-freq-en=1 時
+&lt;ul&gt;
+&lt;li&gt;upthreshold: 超過指定值(使用率)時升頻&lt;/li&gt;
+&lt;li&gt;downdifferential: 低於指定值(使用率)時降頻&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;auto-freq-en=0 時
+&lt;ul&gt;
+&lt;li&gt;除特殊條件外, 使用 system-status-freq 中的 SYS_STATUS_NORMAL(kHz)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;references&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#references&#34;&gt;
+        ##
+    &lt;/a&gt;
+    References
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;http://opensource.rock-chips.com/wiki_Main_Page&#34;&gt;Rockchip Wiki&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://gitlab.com/firefly-linux/&#34;&gt;Firefly Official Repo&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;http://en.t-firefly.com/product/coreboard/core_px30_jd4&#34;&gt;Firefly: Core-PX30-JD4&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;http://en.t-firefly.com/doc/download/page/id/63.html&#34;&gt;Firefly: Download Page&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://wiki.t-firefly.com/en/Core-PX30-JD4/getting_started.html&#34;&gt;Firefly: PX30 Getting start&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://wiki.t-firefly.com/en/Core-PX30-JD4/prepare_compile_linux.html&#34;&gt;Firefly: build environment&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://wiki.t-firefly.com/en/Core-PX30-JD4/ubuntu_compile.html&#34;&gt;Firefly: build Ubuntu&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://wiki.t-firefly.com/en/Core-PX30-JD4/buildroot_compile.html&#34;&gt;Firefly: build Buildroot&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Yocto Componet - Bitbake</title>
+      <link>/posts/dev_platform/bitbake/</link>
+      <pubDate>Tue, 19 Mar 2024 00:00:00 +0000</pubDate>
+      <author>i70170@hotmail.com (Mike Chang)</author>
+      <guid>/posts/dev_platform/bitbake/</guid>
+      <description>&lt;h2 id=&#34;yocto-componet---bitbake&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#yocto-componet---bitbake&#34;&gt;
+        #
+    &lt;/a&gt;
+    Yocto Componet - Bitbake
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;h3 id=&#34;create-a-package&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#create-a-package&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Create a Package
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;inc/bitbake/hello_bitbake-1.0&#34;&gt;Example: hello bitbake&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;package-description&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#package-description&#34;&gt;
+        ###
+    &lt;/a&gt;
+    Package description
+&lt;/div&gt;
+&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;參考 &lt;a href=&#34;https://docs.yoctoproject.org/dev/contributor-guide/recipe-style-guide.html#recipe-license-fields&#34;&gt;Yocto Project: Recipe License Fields&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;DESCRIPTION&lt;/li&gt;
+&lt;li&gt;HOMEPAGE&lt;/li&gt;
+&lt;li&gt;LICENSE&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;define-dependencies&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#define-dependencies&#34;&gt;
+        ###
+    &lt;/a&gt;
+    Define dependencies
+&lt;/div&gt;
+&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# 編譯期依賴&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;DEPENDS&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;gtk+&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#執行期依賴; 依賴套件會加入 image&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;RDEPENDS&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;cool-ttf-fonts&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;select-source-loction&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#select-source-loction&#34;&gt;
+        ###
+    &lt;/a&gt;
+    Select source loction
+&lt;/div&gt;
+&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# supported protocol: http, ftp, git, svn, file&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# 版本資訊 ${P}: ${PN}-${PV}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#   ${PN} 套件名 ${PV} 套件版本&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;SRC_URI&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;http://0.0.0.0/test/&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;P&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;.tar.bz2&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# derived from shell command: md5sum $file_name&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SRC_URI&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;[&lt;/span&gt;md5sum&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;00000000001111111111222222222233&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# derived from shell command: sha256sum $file_name&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SRC_URI&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;[&lt;/span&gt;sha256sum&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;0000000000111111111122222222223333333333444444444455555555556666&amp;#34;&lt;/span&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;select-build-system&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#select-build-system&#34;&gt;
+        ###
+    &lt;/a&gt;
+    Select build system
+&lt;/div&gt;
+&lt;/h4&gt;
+&lt;p&gt;autotools: 先執行 configure script 再執行 make&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;inherit autotools
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h3 id=&#34;hints&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#hints&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Hints
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;h4 id=&#34;find-recipes&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#find-recipes&#34;&gt;
+        ###
+    &lt;/a&gt;
+    Find recipes
+&lt;/div&gt;
+&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ find -name &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;*busybox*.bb*&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;dump-environment&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#dump-environment&#34;&gt;
+        ###
+    &lt;/a&gt;
+    Dump environment
+&lt;/div&gt;
+&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ bitbake -e | grep -w &lt;span style=&#34;color:#f2d5cf&#34;&gt;$MY_ENV&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# locate package recipe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# e.g. bitbake -e lk | grep ^S=&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#      S=&amp;#34;work/build/../src/bsp/lk&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ bitbake -e &lt;span style=&#34;color:#f2d5cf&#34;&gt;$PKG_NAME&lt;/span&gt; | grep ^S&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# locate package/image recipe working dir&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ bitbake -e &amp;lt;target&amp;gt; | grep ^WORKDIR&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;development-shell&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#development-shell&#34;&gt;
+        ###
+    &lt;/a&gt;
+    Development shell
+&lt;/div&gt;
+&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ bitbake -c devshell &amp;lt;target&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;search-path&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#search-path&#34;&gt;
+        ###
+    &lt;/a&gt;
+    Search path
+&lt;/div&gt;
+&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ bitbake -e ota_upgrade| grep ^FILESPATH&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; | sed &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#39;s/:/\n/g&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# find cross toolchain path&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ bitbake -c devshell __recipe_name; &lt;span style=&#34;color:#99d1db&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#f2d5cf&#34;&gt;$CC&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;show-debug-information&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#show-debug-information&#34;&gt;
+        ###
+    &lt;/a&gt;
+    Show Debug Information
+&lt;/div&gt;
+&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ bitbake -D &lt;span style=&#34;color:#f2d5cf&#34;&gt;$target&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ bitbake -DD &lt;span style=&#34;color:#f2d5cf&#34;&gt;$target&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ bitbake -DDD &lt;span style=&#34;color:#f2d5cf&#34;&gt;$target&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h3 id=&#34;recipe&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#recipe&#34;&gt;
+        ##
+    &lt;/a&gt;
+    recipe
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;bitbake-layers: 建立 layer; 修改 bblayers.conf; 查看 layer 包含的 recipes&lt;/li&gt;
+&lt;li&gt;recipetool: 建立/修改 recipe; 產生 .bb 及 .bbappend&lt;/li&gt;
+&lt;li&gt;devtool: 開發測試; 不更改設定產生獨立 workspace layer, 與既有 layers 整合測試後新增/更新 layer
+&lt;ul&gt;
+&lt;li&gt;目標 layer 需存在於 bblayer.conf 中&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;example-core-image-miniaml&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#example-core-image-miniaml&#34;&gt;
+        ###
+    &lt;/a&gt;
+    Example: core-image-miniaml
+&lt;/div&gt;
+&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ . oe-init-build-env
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# 產生必要系統檔&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ bitbake core-image-minimal
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# 在 build 建立 layer&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ bitbake-layers create-layer meta-layer
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# 將 layer 加入 bblayers.conf&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ bitbake-layers add-layer meta-layer
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bitbake-cookerdaemon.log  cache  conf  downloads  meta-layer  sstate-cache  tmp
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;generate-recipe&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#generate-recipe&#34;&gt;
+        ###
+    &lt;/a&gt;
+    Generate Recipe
+&lt;/div&gt;
+&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;devtool&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;package: GIFLIB&lt;/li&gt;
+&lt;li&gt;dependencies: autotool, configure, Makefile&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ devtool add giflib git://git.code.sf.net/p/giflib/code
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ devtool build giflib
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ devtool build-image core-image-minimal
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# 將 giflib recipe 加入 meta-layer&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ devtool finish giflib meta-layer
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;recipetool&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://yi-jyun.blogspot.com/2018/02/yocto-2-recipe.html&#34;&gt;yocto recipe : (1) 撰寫 recipe&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;複製 &lt;a href=&#34;inc/bitbake/example-recipetool&#34;&gt;Example: recipetool&lt;/a&gt; 到 meta-layer/recipes-myproject/myproject/files&lt;/p&gt;
+&lt;p&gt;NOTE: yocto 預設附檔目錄: files&lt;/p&gt;
+&lt;p&gt;根據 myproject.bb.mod 修改&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ bitbake myproject
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;add-recipe-to-image&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#add-recipe-to-image&#34;&gt;
+        #
+    &lt;/a&gt;
+    Add Recipe to Image
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;修改 build/&lt;code&gt;local.conf&lt;/code&gt;:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;# 不推薦寫法: IMAGE_INSTALL += &amp;#34; [recipe_basename]&amp;#34;
+IMAGE_INSTALL_append = &amp;#34; [recipe_basename]&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;僅關聯特定 image 的 recipe:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;IMAGE_INSTALL_append_pn-core-image-minimal = &amp;#34; [recipe_basename]&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;bbappend&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#bbappend&#34;&gt;
+        #
+    &lt;/a&gt;
+    .bbappend
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;.bb 用於描述 recipe, 會因 patch 或 task 不同而需修改, 可使用 .bbappend 擴充而不修改 .bb&lt;/p&gt;
+&lt;p&gt;使用情境&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;recipe 已存在於 yocto 基本 meta layer
+&lt;ul&gt;
+&lt;li&gt;e.g. u-boot_2017.01.bb&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;layer 共用 recipe&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;package: giflib(giflib-5.1.4.tar.bz2)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ . oe-init-build-env
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# move &amp;#39;giflib-5.1.4.tar.bz2&amp;#39; here&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ mkdir 3rd-pkgs; &lt;span style=&#34;color:#99d1db&#34;&gt;cd&lt;/span&gt; 3rd-pkgs/
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ bitbake-layers create-layer meta-custom
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ bitbake-layers add-layer meta-custom
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ &lt;span style=&#34;color:#99d1db&#34;&gt;cd&lt;/span&gt; meta-custom/recipes-example; rm -rf example/; mkdir giflib; &lt;span style=&#34;color:#99d1db&#34;&gt;cd&lt;/span&gt; ../../
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ recipetool create -o meta-custom/recipes-example/giflib/giflib_5.1.4.bb  3rd-pkgs/giflib-5.1.4.tar.bz2
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;以 devtool 產生 .bbappend 並存放於 meta-custom-devtool-patch layer:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ bitbake-layers create-layer meta-custom-devtool-patch
+$ bitbake-layers add-layer meta-custom-devtool-patch
+$ mkdir meta-custom-devtool-patch/recipes-example/giflib
+
+# 使用 devtool 會產生 workspace layer 並複製到 workspace/source
+# 以下修改 util/giffix.c
+
+$ devtool modify giflib
+NOTE: Source tree extracted to /media/disk1-1/Github/poky/build/workspace/sources/giflib
+NOTE: Recipe giflib now set up to build from /media/disk1-1/Github/poky/build/workspace/sources/giflib
+
+int main(int argc, char **argv)
+{
+    ...
+    printf(&amp;#34;hello !!! (devtool)\n&amp;#34;);
+    ...
+}
+
+$ devtool finish giflib meta-custom-devtool-patch
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;手動產生 .bbappend 並存放於 meta-custom-manual-patch layer:&lt;/p&gt;
+&lt;p&gt;NOTE: yocto 預設搜尋 giflib/giflib, 修改 FILEPATHS(.bb) 或 FILESEXTRAPATHS(.bbappend)&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ bitbake-layers create-layer meta-custom-manual-patch
+$ bitbake-layers add-layer meta-custom-manual-patch
+$ mkdir meta-custom-manual-patch/recipes-example/giflib/ meta-custom-manual-patch/recipes-example/giflib/giflib
+
+# 手動複製 giflib 並修改 util/giffix.c
+
+$ cd 3rd-pkgs; cp -fa giflib-5.1.4 giflib-5.1.4_modify
+$ diff -Naur giflib-5.1.4/util/giffix.c giflib-5.1.4_modify/util/giffix.c &amp;gt; 00_giflib_util_giffix.patch
+$ cd ..; mv 3rd-pkgs/00_giflib_util_giffix.patch meta-custom-manual-patch/recipes-example/giflib/giflib/
+
+int main(int argc, char **argv)
+{
+    ...
+    printf(&amp;#34;hellow !! (manual)\n&amp;#34;);
+    ...
+}
+
+# 建立 giflib_5.1.4.bbappend
+$ vim meta-custom-manual-patch/recipes-example/giflib/giflib_5.1.4.bbappend
+
+FILESEXTRAPATHS_prepend := &amp;#34;${THISDIR}/${PN}:&amp;#34;
+SRC_URI_append = &amp;#34;\
+    file://00_giflib_util_giffix.patch \
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;h1 id=&#34;oe-task-order&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#oe-task-order&#34;&gt;
+        ##
+    &lt;/a&gt;
+    OE Task Order
+&lt;/div&gt;
+&lt;/h1&gt;
+&lt;p&gt;build/&amp;hellip;/&lt;code&gt;log.task_order&lt;/code&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;do_setscene&lt;/li&gt;
+&lt;li&gt;do_fetch&lt;/li&gt;
+&lt;li&gt;do_unpack&lt;/li&gt;
+&lt;li&gt;do_patch&lt;/li&gt;
+&lt;li&gt;do_configure&lt;/li&gt;
+&lt;li&gt;do_qa_configure&lt;/li&gt;
+&lt;li&gt;do_compile&lt;/li&gt;
+&lt;li&gt;do_stage&lt;/li&gt;
+&lt;li&gt;do_install&lt;/li&gt;
+&lt;li&gt;do_package&lt;/li&gt;
+&lt;li&gt;do_populate_staging&lt;/li&gt;
+&lt;li&gt;do_package_write_deb&lt;/li&gt;
+&lt;li&gt;do_package_write&lt;/li&gt;
+&lt;li&gt;do_distribute_sources&lt;/li&gt;
+&lt;li&gt;do_qa_staging&lt;/li&gt;
+&lt;li&gt;do_build&lt;/li&gt;
+&lt;li&gt;do_rebuild&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;do_cleansstate&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;移除某個對象的所有外部輸出文件以及共享狀態(sstate)緩存內容（不包括遠程鏡像共享內容）。&lt;/li&gt;
+&lt;li&gt;$ bitbake -ccleansstaterecipe&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;do_cleanall&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;刪除目標對象的所有外部輸出文件，共享狀態緩存，以及下載的源文件（想重新執行do_fetch 過程）。&lt;/li&gt;
+&lt;li&gt;$ bitbake -c cleanallrecipe&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;do_fetch&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;下載源文件，它用SRC_URI變量以及 不同的變量名前綴來決定適當的下載模式，如調用本地文件：
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;  SRC_URI =&amp;#34; \
+      file://0001-ccsp-gwprovapp-port-for-puma7-atom.patch;patch=1
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;do_unpack&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;提取sourcecode中的內容放到${WORKDIR}所指定的工作目錄中。變量S指定了被提取出的sourcecode的最終歸屬位置。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;do_patch&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;定位patch文件，並且將他們運用到sourcecode中。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;do_populate_lic&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在構建image的時候爲recipe寫license。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;do_configure&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;配置源數據是否打開或者關閉，那些將要被build的軟件的build-time和一些配置選項。do_configure,運行是當前的工作目錄切換到${B}（自行定義的工作目錄）。&lt;/li&gt;
+&lt;li&gt;此任務的默認行爲是當發現一個makefile的CLEANBROKEN沒有被設置爲“1”，將運行oe_runmake clean。其他情況do_configure 不做任何操作。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;do_compile&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;編譯sourcecode，並且運行時也會將當前的工作目錄切換到${B}。&lt;/li&gt;
+&lt;li&gt;如果發現makefile其默認運行oe_runmake，如果沒有找到,do_compile 不做其他操作。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;do_install&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;拷貝將要打包的文件到保持區域${D}。其運行時將當前工作路徑切換至編譯目錄${B}。do_install 以及其他那些直接或者間接依賴與安裝文件的任務（如do_package,do_package_write_*, do_rootfs），都運行在fakeroot的權限下。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;do_package&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;分析保持區域${D} 的內容，並根據可獲得的數據包package和文件file，將其內容分割成多個子集。&lt;/li&gt;
+&lt;li&gt;do_package 與do_packagedata 任務相關聯，並且保存了一些重要的元數據。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;do_packagedata&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;保存由do_package所產生的源數據到PKGDATA_DIR目錄下，使得內容變成全局變量。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;每項任務可添加 &lt;code&gt;_append&lt;/code&gt; &lt;code&gt;_prepend&lt;/code&gt; 後綴&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;do_configure_prepend ()&lt;/li&gt;
+&lt;li&gt;do_compile_append ()&lt;/li&gt;
+&lt;li&gt;python do_compile_prepend ()&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;除 python 前的函數都使用 shell 語法定義&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;do_compile 之類函數定義於 openembedded 的 classes; 顯示 oe 基於 bitbake 架構完成&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;meta/poky/meta/classes/kernel.bbclass
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;EXPORT_FUNCTIONS do_compile do_install do_configure
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;使用 &lt;code&gt;addtask&lt;/code&gt; 調整 task 間順序&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;addtask assemble_fitimage before do_install after do_compile&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;MIRRORS_prepend () 修改 .bb 的 mirror&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;recipe-task&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#recipe-task&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Recipe Task
+&lt;/div&gt;
+&lt;/h1&gt;
+&lt;h2 id=&#34;list-recipe-tasks&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#list-recipe-tasks&#34;&gt;
+        #
+    &lt;/a&gt;
+    List Recipe Tasks
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ bitbake &amp;lt;recipe name&amp;gt; -c listtasks
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;function-in-a-task&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#function-in-a-task&#34;&gt;
+        #
+    &lt;/a&gt;
+    Function in a Task
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;need to be prefixed with &lt;code&gt;do_&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Function Types:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;shell function&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;do_shell_msg &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    bbwarn &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#39;hello&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;BitBake-style Python functions&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;python do_py_msg () {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#81c8be&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;time&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    bb&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;.&lt;/span&gt;warn( &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;hello &lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;%s&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;%&lt;/span&gt; ( time&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;.&lt;/span&gt;strftime(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#39;%Y%m&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;%d&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#39;&lt;/span&gt;, time&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;.&lt;/span&gt;gmtime())))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;adddeleteinsertignore-task&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#adddeleteinsertignore-task&#34;&gt;
+        #
+    &lt;/a&gt;
+    Add/Delete/Insert/Ignore Task
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# Add&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;addtask task &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;[&lt;/span&gt;before task&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;[&lt;/span&gt;after task&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# e.g. &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;addtask do_msg before do_configure after do_fetch
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# Insert: [task function name]_append() or [task function name]_prepend()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;do_msg_prepend &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    bbwarn &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#39;before&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;do_msg_append &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    bbwarn &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#39;before&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;do_msg &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    bbwarn &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#39;kkk&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;addtask do_msg
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# Delete: add dependent tasks will be deleted&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;deltask do_configure
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# Ignore&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;do_task_name&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;[&lt;/span&gt;noexec&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;1&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a href=&#34;http://yi-jyun.blogspot.com/2018/05/yocto-5-recipes-task.html&#34;&gt;recipe&amp;rsquo;s task&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;others&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#others&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Others
+&lt;/div&gt;
+&lt;/h1&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;bitbake-layers show-recipes
+bitbake-layers show-recipes | grep u-boot
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;skip-recipes&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#skip-recipes&#34;&gt;
+        #
+    &lt;/a&gt;
+    Skip Recipes
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;BBMASK&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;+=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;path_to_recipe&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;access files in a folder&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;FILESEXTRAPATHS_prepend :&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;THISDIR&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;/files&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# to use&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SRC_URI_append &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;file://my_file&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Modifying Rootfs Directly:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ROOTFS_POSTPROCESS_COMMAND: calls the given functions after bitbake has created the rootfs&lt;/li&gt;
+&lt;li&gt;ROOTFS_POSTINSTALL_COMMAND: calls the given functions after bitbake has installed packages&lt;/li&gt;
+&lt;li&gt;ROOTFS_POSTUNINSTALL_COMMAND: calls the given functions after bitbake has uninstalled packages&lt;/li&gt;
+&lt;li&gt;ROOTFS_PREPROCESS_COMMAND: calls the given functions before OE creates the rootfs&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;my_function&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    //
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;ROOTFS_POSTPROCESS_COMMAND&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;+=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34; my_function; &amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Adding Packages to SDK&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# add to recipe or local.conf&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;IMAGE_INSTALL_append&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34; cppzmq-dev&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;TOOLCHAIN_TARGET_TASK_append&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34; cppzmq-dev&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# inherit the following classes&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;BBCLASSEXTEND&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;native nativesdk&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# add package to TOOLCHAIN_HOST_TASK&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# append to nativesdk-packagegroup-sdk-host recipe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;RDEPENDS_&lt;span style=&#34;color:#a6d189&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;PN&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;}&lt;/span&gt; +&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34; \
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;    nativesdk-zeromq-dev \
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h1 id=&#34;bb&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#bb&#34;&gt;
+        ##
+    &lt;/a&gt;
+    .bb
+&lt;/div&gt;
+&lt;/h1&gt;
+&lt;h2 id=&#34;add-user-service&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#add-user-service&#34;&gt;
+        #
+    &lt;/a&gt;
+    Add User Service
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;SRC_URI&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;+=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;file://mai-hald-user.service&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;SRC_URI&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;+=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;file://mai-hald-user.sh&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;FILES_&lt;span style=&#34;color:#a6d189&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;PN&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;}&lt;/span&gt; +&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;systemd_user_unitdir&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;do_install&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        install -d &lt;span style=&#34;color:#a6d189&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;D&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;}${&lt;/span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;systemd_user_unitdir&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;}&lt;/span&gt;/default.target.wants
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        install -m &lt;span style=&#34;color:#ef9f76&#34;&gt;0644&lt;/span&gt; -p -D &lt;span style=&#34;color:#a6d189&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;WORKDIR&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;}&lt;/span&gt;/mai-hald-user.service &lt;span style=&#34;color:#a6d189&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;D&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;}${&lt;/span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;systemd_user_unitdir&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;}&lt;/span&gt;/mai-hald-user.service
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        mkdir -p &lt;span style=&#34;color:#a6d189&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;D&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;}&lt;/span&gt;/etc/systemd/user/default.target.wants/
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ln -sf &lt;span style=&#34;color:#a6d189&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;systemd_user_unitdir&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;}&lt;/span&gt;/mai-hald-user.service &lt;span style=&#34;color:#a6d189&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;D&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;}&lt;/span&gt;/etc/systemd/user/default.target.wants/mai-hald-user.service
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        install -m &lt;span style=&#34;color:#ef9f76&#34;&gt;0755&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;WORKDIR&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;}&lt;/span&gt;/mai-hald-user.sh &lt;span style=&#34;color:#a6d189&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;D&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;}${&lt;/span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;base_bindir&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h1 id=&#34;references&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#references&#34;&gt;
+        ##
+    &lt;/a&gt;
+    References
+&lt;/div&gt;
+&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://docs.yoctoproject.org/dev/contributor-guide/recipe-style-guide.html#recipe-license-fields&#34;&gt;Yocto Project: Recipe License Fields&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Yocto Development Platform</title>
+      <link>/posts/dev_platform/yocto/</link>
+      <pubDate>Tue, 19 Mar 2024 00:00:00 +0000</pubDate>
+      <author>i70170@hotmail.com (Mike Chang)</author>
+      <guid>/posts/dev_platform/yocto/</guid>
+      <description>&lt;h2 id=&#34;yocto-development-platform&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#yocto-development-platform&#34;&gt;
+        #
+    &lt;/a&gt;
+    Yocto Development Platform
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Prerequisites:
+&lt;ul&gt;
+&lt;li&gt;Yocto 3.0+&lt;/li&gt;
+&lt;li&gt;Git 1.8.3.1+&lt;/li&gt;
+&lt;li&gt;tar 1.27+&lt;/li&gt;
+&lt;li&gt;Python 3.4.0+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://vitaceae.github.io/posts/dev_platform/./inc/yocto/yocto_core_components.jpg&#34; alt=&#34;Yocto Core Components&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Core components&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;BitBake&lt;/code&gt;: like GNU Make, used to parse scripts&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;OpenEmbedded-Core&lt;/code&gt;: handles metadata
+&lt;ul&gt;
+&lt;li&gt;meta-yocto&lt;/li&gt;
+&lt;li&gt;meta-yocto-bsp&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Poky&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;BSP layer (layer names start with the string &amp;ldquo;meta-&amp;rdquo;)
+&lt;ul&gt;
+&lt;li&gt;meta-raspberry&lt;/li&gt;
+&lt;li&gt;meta-fsl-arm&lt;/li&gt;
+&lt;li&gt;&amp;hellip;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;set-up-build-host&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#set-up-build-host&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Set up Build Host
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;todo&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.yoctoproject.org/dev-manual/start.html#setting-up-a-native-linux-host&#34;&gt;Native Linux Machine(recommended)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;[Machine Using &lt;a href=&#34;https://github.com/crops/poky-container&#34;&gt;CROPS&lt;/a&gt;](&lt;a href=&#34;https://docs.yoctoproject.org/dev-manual/start.html#setting-up-to-use-cross-platforms-crops&#34;&gt;https://docs.yoctoproject.org/dev-manual/start.html#setting-up-to-use-cross-platforms-crops&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.yoctoproject.org/dev-manual/start.html#setting-up-to-use-windows-subsystem-for-linux-wsl-2&#34;&gt;WSL2&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;quick-build&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#quick-build&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Quick Build
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;todo: &lt;a href=&#34;https://docs.yoctoproject.org/brief-yoctoprojectqs/index.html&#34;&gt;Yocto Project Quick Build&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;others&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#others&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Others
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;h4 id=&#34;change-module-version&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#change-module-version&#34;&gt;
+        ###
+    &lt;/a&gt;
+    Change Module Version
+&lt;/div&gt;
+&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;修改 &lt;code&gt;qt5-git.inc&lt;/code&gt;: meta/meta-qt5/recipes-qt/qt5/qt5-git.inc:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-make&#34; data-lang=&#34;make&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;QT_MODULE_BRANCH&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;?=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;5.8&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;PV&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;5.8.0+git&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;SRCPV&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;修改最上層 &lt;code&gt;bblayers.conf&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ bitbake -s | grep &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;qtbase*&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;lib32-qtbase                        :5.8.0+gitAUTOINC+49dc9aa409-r0
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;nativesdk-qtbase                    :5.8.0+gitAUTOINC+49dc9aa409-r0
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;qtbase                              :5.8.0+gitAUTOINC+49dc9aa409-r0
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;qtbase-native                       :5.8.0+gitAUTOINC+49dc9aa409-r0
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;從 &lt;a href=&#34;https://github.com/meta-qt5/meta-qt5/&#34;&gt;Github&lt;/a&gt; clone 特定 branch&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# qt 5.9.8 = rocko&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git clone https://github.com/meta-qt5/meta-qt5.git -b rocko
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;disable-systemd&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#disable-systemd&#34;&gt;
+        ###
+    &lt;/a&gt;
+    Disable systemd
+&lt;/div&gt;
+&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SYSTEMD_AUTO_ENABLE_&lt;span style=&#34;color:#a6d189&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;PN&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;}&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;disable&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h3 id=&#34;problems&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#problems&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Problems
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ModuleNotFoundError: No module named &amp;lsquo;commands&amp;rsquo; (yocto/python3)&lt;/p&gt;&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;- import commands
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;+ import subprocess
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;undefined reference to &amp;lsquo;std::__cxx11::&amp;hellip;&amp;rsquo;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;# build/conf/local.conf
+
+LD_CXXFLAGS_append = &amp;#34; -D_GLIBCXX_USE_CXX11_ABI=0&amp;#34;
+TARGET_CXXFLAGS_append = &amp;#34; -D_GLIBCXX_USE_CXX11_ABI=0&amp;#34;
+CXXFLAGS_append = &amp;#34; -D_GLIBCXX_USE_CXX11_ABI=0&amp;#34;
+
+BUILD_CXXFLAGS_remove_pn-gcc-runtime = &amp;#34;-D_GLIBCXX_USE_CXX11_ABI=0&amp;#34;
+TARGET_CXXFLAGS_remove_pn-gcc-runtime = &amp;#34;-D_GLIBCXX_USE_CXX11_ABI=0&amp;#34; CXXFLAGS_remove_pn-gcc-runtime = &amp;#34;-D_GLIBCXX_USE_CXX11_ABI=0&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;ERROR:  OE-core&amp;rsquo;s config sanity checker detected a potential misconfiguration.
+&amp;hellip;
+ERROR: Execution of event handler &amp;lsquo;check_sanity_eventhandler&amp;rsquo; failed&lt;/p&gt;&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ touch conf/sanity.conf
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;ERROR: No space left on device or exceeds fs.inotify.max_user_watches?
+ERROR: To check max_user_watches: sysctl -n fs.inotify.max_user_watches.
+ERROR: To modify max_user_watches: sysctl -n -w fs.inotify.max_user_watches=&lt;value&gt;.
+ERROR: Root privilege is required to modify max_user_watches.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sysctl -n fs.inotify.max_user_watches
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ef9f76&#34;&gt;524288&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo sysctl -n -w fs.inotify.max_user_watches&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ef9f76&#34;&gt;1048576&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;error: &amp;ldquo;_FORTIFY_SOURCE&amp;rdquo; redefined&lt;/p&gt;&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;- &lt;span style=&#34;color:#f2d5cf&#34;&gt;HOST_GLOBAL_CFLAGS&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;+=&lt;/span&gt; -D_FORTIFY_SOURCE&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ef9f76&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;+ &lt;span style=&#34;color:#f2d5cf&#34;&gt;HOST_GLOBAL_CFLAGS&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;+=&lt;/span&gt; -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ef9f76&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h3 id=&#34;references&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#references&#34;&gt;
+        ##
+    &lt;/a&gt;
+    References
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.yoctoproject.org/docs/&#34;&gt;Yocto Project: Documentation&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://docs.yoctoproject.org/brief-yoctoprojectqs/index.html&#34;&gt;Yocto Project: Quick Build&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://docs.yoctoproject.org/bsp-guide/bsp.html#preparing-your-build-host-to-work-with-bsp-layers&#34;&gt;Yocto Project: Preparing Your Build Host to Work With BSP Layers&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://docs.yoctoproject.org/kernel-dev/common.html#preparing-the-build-host-to-work-on-the-kernel&#34;&gt;Yocto Project: Preparing Your Build Host to Work on the Kernel&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://docs.yoctoproject.org/bitbake.html&#34;&gt;Bitbake: User Manual&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

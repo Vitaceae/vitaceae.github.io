@@ -28,8 +28,17 @@
           href="https://vitaceae.github.io/about/"
         />
       </url><url>
+        <loc>https://vitaceae.github.io/tags/bitbake/</loc>
+        <lastmod>2024-03-19T00:00:00+00:00</lastmod>
+      </url><url>
+        <loc>https://vitaceae.github.io/posts/dev_platform/build_tools/</loc>
+        <lastmod>2024-03-19T00:00:00+00:00</lastmod>
+      </url><url>
+        <loc>https://vitaceae.github.io/tags/buildroot/</loc>
+        <lastmod>2024-03-19T00:00:00+00:00</lastmod>
+      </url><url>
         <loc>https://vitaceae.github.io/categories/</loc>
-        <lastmod>2024-03-03T00:00:00+00:00</lastmod>
+        <lastmod>2024-03-19T00:00:00+00:00</lastmod>
         <xhtml:link
           rel="alternate"
           hreflang="zh"
@@ -40,6 +49,61 @@
           hreflang="en"
           href="https://vitaceae.github.io/categories/"
         />
+      </url><url>
+        <loc>https://vitaceae.github.io/categories/dev-platform/</loc>
+        <lastmod>2024-03-19T00:00:00+00:00</lastmod>
+      </url><url>
+        <loc>https://vitaceae.github.io/tags/index/</loc>
+        <lastmod>2024-03-19T00:00:00+00:00</lastmod>
+      </url><url>
+        <loc>https://vitaceae.github.io/tags/openwrt/</loc>
+        <lastmod>2024-03-19T00:00:00+00:00</lastmod>
+      </url><url>
+        <loc>https://vitaceae.github.io/posts/</loc>
+        <lastmod>2024-03-19T00:00:00+00:00</lastmod>
+      </url><url>
+        <loc>https://vitaceae.github.io/tags/rockchip/</loc>
+        <lastmod>2024-03-19T00:00:00+00:00</lastmod>
+      </url><url>
+        <loc>https://vitaceae.github.io/posts/dev_platform/rockchip/</loc>
+        <lastmod>2024-03-19T00:00:00+00:00</lastmod>
+      </url><url>
+        <loc>https://vitaceae.github.io/tags/</loc>
+        <lastmod>2024-03-19T00:00:00+00:00</lastmod>
+        <xhtml:link
+          rel="alternate"
+          hreflang="zh"
+          href="https://vitaceae.github.io/zh/tags/"
+        />
+        <xhtml:link
+          rel="alternate"
+          hreflang="en"
+          href="https://vitaceae.github.io/tags/"
+        />
+      </url><url>
+        <loc>https://vitaceae.github.io/tags/todo/</loc>
+        <lastmod>2024-03-19T00:00:00+00:00</lastmod>
+      </url><url>
+        <loc>https://vitaceae.github.io/tags/yocto/</loc>
+        <lastmod>2024-03-19T00:00:00+00:00</lastmod>
+      </url><url>
+        <loc>https://vitaceae.github.io/posts/dev_platform/bitbake/</loc>
+        <lastmod>2024-03-19T00:00:00+00:00</lastmod>
+      </url><url>
+        <loc>https://vitaceae.github.io/posts/dev_platform/yocto/</loc>
+        <lastmod>2024-03-19T00:00:00+00:00</lastmod>
+      </url><url>
+        <loc>https://vitaceae.github.io/tags/analytics/</loc>
+        <lastmod>2024-03-18T00:00:00+00:00</lastmod>
+      </url><url>
+        <loc>https://vitaceae.github.io/posts/web/analytics_tools/</loc>
+        <lastmod>2024-03-18T00:00:00+00:00</lastmod>
+      </url><url>
+        <loc>https://vitaceae.github.io/categories/web/</loc>
+        <lastmod>2024-03-18T00:00:00+00:00</lastmod>
+      </url><url>
+        <loc>https://vitaceae.github.io/tags/website/</loc>
+        <lastmod>2024-03-18T00:00:00+00:00</lastmod>
       </url><url>
         <loc>https://vitaceae.github.io/tags/css/</loc>
         <lastmod>2024-03-03T00:00:00+00:00</lastmod>
@@ -62,42 +126,14 @@
         <loc>https://vitaceae.github.io/tags/icons/</loc>
         <lastmod>2024-03-03T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>https://vitaceae.github.io/tags/index/</loc>
-        <lastmod>2024-03-03T00:00:00+00:00</lastmod>
-      </url><url>
-        <loc>https://vitaceae.github.io/posts/</loc>
-        <lastmod>2024-03-03T00:00:00+00:00</lastmod>
-      </url><url>
         <loc>https://vitaceae.github.io/tags/privacy/</loc>
         <lastmod>2024-03-03T00:00:00+00:00</lastmod>
       </url><url>
         <loc>https://vitaceae.github.io/tags/shortcodes/</loc>
         <lastmod>2024-03-03T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>https://vitaceae.github.io/tags/</loc>
-        <lastmod>2024-03-03T00:00:00+00:00</lastmod>
-        <xhtml:link
-          rel="alternate"
-          hreflang="zh"
-          href="https://vitaceae.github.io/zh/tags/"
-        />
-        <xhtml:link
-          rel="alternate"
-          hreflang="en"
-          href="https://vitaceae.github.io/tags/"
-        />
-      </url><url>
         <loc>https://vitaceae.github.io/tags/umami/</loc>
         <lastmod>2024-03-03T00:00:00+00:00</lastmod>
-      </url><url>
-        <loc>https://vitaceae.github.io/categories/web/</loc>
-        <lastmod>2024-03-03T00:00:00+00:00</lastmod>
-      </url><url>
-        <loc>https://vitaceae.github.io/tags/website/</loc>
-        <lastmod>2024-03-03T00:00:00+00:00</lastmod>
-      </url><url>
-        <loc>https://vitaceae.github.io/tags/analytics/</loc>
-        <lastmod>2024-03-02T00:00:00+00:00</lastmod>
       </url><url>
         <loc>https://vitaceae.github.io/tags/comments-system/</loc>
         <lastmod>2024-03-02T00:00:00+00:00</lastmod>

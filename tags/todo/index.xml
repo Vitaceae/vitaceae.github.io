@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Todo on Mike&#39;s Cheatsheet</title>
+    <link>/tags/todo/</link>
+    <description>Mike&#39;s Cheatsheet (Todo)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    
+      
+        <managingEditor>i70170@hotmail.com
+          
+            (Mike Chang)
+          
+        </managingEditor>
+      
+
+      
+    
+
+    
+    <lastBuildDate>Tue, 19 Mar 2024 00:00:00 +0000</lastBuildDate>
+    
+    <atom:link href="/tags/todo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Yocto Development Platform</title>
+      <link>/posts/dev_platform/yocto/</link>
+      <pubDate>Tue, 19 Mar 2024 00:00:00 +0000</pubDate>
+      <author>i70170@hotmail.com (Mike Chang)</author>
+      <guid>/posts/dev_platform/yocto/</guid>
+      <description>&lt;h2 id=&#34;yocto-development-platform&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#yocto-development-platform&#34;&gt;
+        #
+    &lt;/a&gt;
+    Yocto Development Platform
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Prerequisites:
+&lt;ul&gt;
+&lt;li&gt;Yocto 3.0+&lt;/li&gt;
+&lt;li&gt;Git 1.8.3.1+&lt;/li&gt;
+&lt;li&gt;tar 1.27+&lt;/li&gt;
+&lt;li&gt;Python 3.4.0+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://vitaceae.github.io/posts/dev_platform/./inc/yocto/yocto_core_components.jpg&#34; alt=&#34;Yocto Core Components&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Core components&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;BitBake&lt;/code&gt;: like GNU Make, used to parse scripts&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;OpenEmbedded-Core&lt;/code&gt;: handles metadata
+&lt;ul&gt;
+&lt;li&gt;meta-yocto&lt;/li&gt;
+&lt;li&gt;meta-yocto-bsp&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Poky&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;BSP layer (layer names start with the string &amp;ldquo;meta-&amp;rdquo;)
+&lt;ul&gt;
+&lt;li&gt;meta-raspberry&lt;/li&gt;
+&lt;li&gt;meta-fsl-arm&lt;/li&gt;
+&lt;li&gt;&amp;hellip;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;set-up-build-host&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#set-up-build-host&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Set up Build Host
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;todo&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.yoctoproject.org/dev-manual/start.html#setting-up-a-native-linux-host&#34;&gt;Native Linux Machine(recommended)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;[Machine Using &lt;a href=&#34;https://github.com/crops/poky-container&#34;&gt;CROPS&lt;/a&gt;](&lt;a href=&#34;https://docs.yoctoproject.org/dev-manual/start.html#setting-up-to-use-cross-platforms-crops&#34;&gt;https://docs.yoctoproject.org/dev-manual/start.html#setting-up-to-use-cross-platforms-crops&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.yoctoproject.org/dev-manual/start.html#setting-up-to-use-windows-subsystem-for-linux-wsl-2&#34;&gt;WSL2&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;quick-build&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#quick-build&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Quick Build
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;todo: &lt;a href=&#34;https://docs.yoctoproject.org/brief-yoctoprojectqs/index.html&#34;&gt;Yocto Project Quick Build&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;others&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#others&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Others
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;h4 id=&#34;change-module-version&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#change-module-version&#34;&gt;
+        ###
+    &lt;/a&gt;
+    Change Module Version
+&lt;/div&gt;
+&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;修改 &lt;code&gt;qt5-git.inc&lt;/code&gt;: meta/meta-qt5/recipes-qt/qt5/qt5-git.inc:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-make&#34; data-lang=&#34;make&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;QT_MODULE_BRANCH&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;?=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;5.8&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;PV&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;5.8.0+git&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;SRCPV&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;修改最上層 &lt;code&gt;bblayers.conf&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ bitbake -s | grep &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;qtbase*&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;lib32-qtbase                        :5.8.0+gitAUTOINC+49dc9aa409-r0
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;nativesdk-qtbase                    :5.8.0+gitAUTOINC+49dc9aa409-r0
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;qtbase                              :5.8.0+gitAUTOINC+49dc9aa409-r0
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;qtbase-native                       :5.8.0+gitAUTOINC+49dc9aa409-r0
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;從 &lt;a href=&#34;https://github.com/meta-qt5/meta-qt5/&#34;&gt;Github&lt;/a&gt; clone 特定 branch&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# qt 5.9.8 = rocko&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git clone https://github.com/meta-qt5/meta-qt5.git -b rocko
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;disable-systemd&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#disable-systemd&#34;&gt;
+        ###
+    &lt;/a&gt;
+    Disable systemd
+&lt;/div&gt;
+&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SYSTEMD_AUTO_ENABLE_&lt;span style=&#34;color:#a6d189&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;PN&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;}&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;disable&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h3 id=&#34;problems&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#problems&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Problems
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ModuleNotFoundError: No module named &amp;lsquo;commands&amp;rsquo; (yocto/python3)&lt;/p&gt;&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;- import commands
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;+ import subprocess
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;undefined reference to &amp;lsquo;std::__cxx11::&amp;hellip;&amp;rsquo;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;# build/conf/local.conf
+
+LD_CXXFLAGS_append = &amp;#34; -D_GLIBCXX_USE_CXX11_ABI=0&amp;#34;
+TARGET_CXXFLAGS_append = &amp;#34; -D_GLIBCXX_USE_CXX11_ABI=0&amp;#34;
+CXXFLAGS_append = &amp;#34; -D_GLIBCXX_USE_CXX11_ABI=0&amp;#34;
+
+BUILD_CXXFLAGS_remove_pn-gcc-runtime = &amp;#34;-D_GLIBCXX_USE_CXX11_ABI=0&amp;#34;
+TARGET_CXXFLAGS_remove_pn-gcc-runtime = &amp;#34;-D_GLIBCXX_USE_CXX11_ABI=0&amp;#34; CXXFLAGS_remove_pn-gcc-runtime = &amp;#34;-D_GLIBCXX_USE_CXX11_ABI=0&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;ERROR:  OE-core&amp;rsquo;s config sanity checker detected a potential misconfiguration.
+&amp;hellip;
+ERROR: Execution of event handler &amp;lsquo;check_sanity_eventhandler&amp;rsquo; failed&lt;/p&gt;&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ touch conf/sanity.conf
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;ERROR: No space left on device or exceeds fs.inotify.max_user_watches?
+ERROR: To check max_user_watches: sysctl -n fs.inotify.max_user_watches.
+ERROR: To modify max_user_watches: sysctl -n -w fs.inotify.max_user_watches=&lt;value&gt;.
+ERROR: Root privilege is required to modify max_user_watches.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sysctl -n fs.inotify.max_user_watches
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ef9f76&#34;&gt;524288&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo sysctl -n -w fs.inotify.max_user_watches&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ef9f76&#34;&gt;1048576&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;error: &amp;ldquo;_FORTIFY_SOURCE&amp;rdquo; redefined&lt;/p&gt;&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;- &lt;span style=&#34;color:#f2d5cf&#34;&gt;HOST_GLOBAL_CFLAGS&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;+=&lt;/span&gt; -D_FORTIFY_SOURCE&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ef9f76&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;+ &lt;span style=&#34;color:#f2d5cf&#34;&gt;HOST_GLOBAL_CFLAGS&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;+=&lt;/span&gt; -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ef9f76&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h3 id=&#34;references&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#references&#34;&gt;
+        ##
+    &lt;/a&gt;
+    References
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.yoctoproject.org/docs/&#34;&gt;Yocto Project: Documentation&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://docs.yoctoproject.org/brief-yoctoprojectqs/index.html&#34;&gt;Yocto Project: Quick Build&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://docs.yoctoproject.org/bsp-guide/bsp.html#preparing-your-build-host-to-work-with-bsp-layers&#34;&gt;Yocto Project: Preparing Your Build Host to Work With BSP Layers&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://docs.yoctoproject.org/kernel-dev/common.html#preparing-the-build-host-to-work-on-the-kernel&#34;&gt;Yocto Project: Preparing Your Build Host to Work on the Kernel&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://docs.yoctoproject.org/bitbake.html&#34;&gt;Bitbake: User Manual&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

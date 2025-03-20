@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rockchip on Mike&#39;s Cheatsheet</title>
+    <link>/tags/rockchip/</link>
+    <description>Mike&#39;s Cheatsheet (Rockchip)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    
+      
+        <managingEditor>i70170@hotmail.com
+          
+            (Mike Chang)
+          
+        </managingEditor>
+      
+
+      
+    
+
+    
+    <lastBuildDate>Tue, 19 Mar 2024 00:00:00 +0000</lastBuildDate>
+    
+    <atom:link href="/tags/rockchip/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Rockchip Development Platform</title>
+      <link>/posts/dev_platform/rockchip/</link>
+      <pubDate>Tue, 19 Mar 2024 00:00:00 +0000</pubDate>
+      <author>i70170@hotmail.com (Mike Chang)</author>
+      <guid>/posts/dev_platform/rockchip/</guid>
+      <description>&lt;h2 id=&#34;rockchip-development-platform&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#rockchip-development-platform&#34;&gt;
+        #
+    &lt;/a&gt;
+    Rockchip Development Platform
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;firefly-docs: official design documents&lt;/li&gt;
+&lt;li&gt;firefly-tools
+&lt;ul&gt;
+&lt;li&gt;DriverAssistant: Windows USB driver&lt;/li&gt;
+&lt;li&gt;AndroidTool: Windows download tool&lt;/li&gt;
+&lt;li&gt;LinuxUpgradeTool: Linux download tool&lt;/li&gt;
+&lt;li&gt;Android8.1UpgradeTool&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;build-images&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#build-images&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Build Images
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;h4 id=&#34;get-sdk&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#get-sdk&#34;&gt;
+        ###
+    &lt;/a&gt;
+    Get SDK
+&lt;/div&gt;
+&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo apt update
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo apt install -y repo git python
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ &lt;span style=&#34;color:#f2d5cf&#34;&gt;WORK_DIR&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;~/work/firefly_px30
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ mkdir -p &lt;span style=&#34;color:#f2d5cf&#34;&gt;$WORK_DIR&lt;/span&gt;; &lt;span style=&#34;color:#99d1db&#34;&gt;cd&lt;/span&gt; &lt;span style=&#34;color:#f2d5cf&#34;&gt;$WORK_DIR&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# full SDK: px30_linux_release.xml&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# BSP(basic repositories and compile tools): px30_linux_bsp_release.xml&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ repo init &lt;span style=&#34;color:#8caaee&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;&lt;/span&gt;    --repo-url https://gitlab.com/firefly-linux/git-repo.git &lt;span style=&#34;color:#8caaee&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;&lt;/span&gt;    -u https://gitlab.com/firefly-linux/manifests.git &lt;span style=&#34;color:#8caaee&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;&lt;/span&gt;    -b master &lt;span style=&#34;color:#8caaee&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;&lt;/span&gt;    -m px30_linux_release.xml
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# sync&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ .repo/repo/repo sync -c --no-tags
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ .repo/repo/repo start firefly --all
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# update&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ .repo/repo/repo sync -c --no-tags
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;setup-environment&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#setup-environment&#34;&gt;
+        ###
+    &lt;/a&gt;
+    Setup Environment
+&lt;/div&gt;
+&lt;/h4&gt;
+&lt;p&gt;ubuntu 16.04&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo apt-get install &lt;span style=&#34;color:#8caaee&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;&lt;/span&gt;    repo git-core gitk git-gui gcc-arm-linux-gnueabihf u-boot-tools &lt;span style=&#34;color:#8caaee&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;&lt;/span&gt;    device-tree-compiler gcc-aarch64-linux-gnu mtools parted libudev-dev &lt;span style=&#34;color:#8caaee&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;&lt;/span&gt;    libusb-1.0-0-dev python-linaro-image-tools linaro-image-tools autoconf &lt;span style=&#34;color:#8caaee&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;&lt;/span&gt;    autotools-dev libsigsegv2 m4 intltool libdrm-dev curl sed make binutils &lt;span style=&#34;color:#8caaee&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;&lt;/span&gt;    build-essential gcc g++ bash patch gzip bzip2 perl tar cpio python unzip &lt;span style=&#34;color:#8caaee&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;&lt;/span&gt;    rsync file bc wget libncurses5 libqt4-dev libglib2.0-dev libgtk2.0-dev &lt;span style=&#34;color:#8caaee&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;&lt;/span&gt;    libglade2-dev cvs git mercurial rsync openssh-client subversion asciidoc &lt;span style=&#34;color:#8caaee&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;&lt;/span&gt;    w3m dblatex graphviz python-matplotlib libc6:i386 libssl-dev texinfo &lt;span style=&#34;color:#8caaee&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;&lt;/span&gt;    liblz4-tool genext2fs lib32stdc++6 expect expect-dev fakeroot
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git config core.symlinks &lt;span style=&#34;color:#99d1db&#34;&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git config core.fileMode &lt;span style=&#34;color:#99d1db&#34;&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git config core.ignorecase &lt;span style=&#34;color:#99d1db&#34;&gt;false&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;compilation&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#compilation&#34;&gt;
+        ###
+    &lt;/a&gt;
+    Compilation
+&lt;/div&gt;
+&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;System Parameters&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Description&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;System Parameters&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Uboot defconfig&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;RK_UBOOT_DEFCONFIG=evb-px30&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Kernel defconfig&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;RK_KERNEL_DEFCONFIG=px30_linux_defconfig&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Kernel dts&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;RK_KERNEL_DTS=px30-firefly-lvds&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;GPT table&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;RK_PARAMETER=parameter-ubuntu.txt&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;packagefile(update.img)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;RK_PACKAGE_FILE=px30-ubuntu-package-file&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;Artifacts&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;artifacts&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;symlink&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;real path&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;boot.img&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;rockdev/boot.img&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;kernel/boot.img&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;idbloader.img&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;rockdev/idbloader.img&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;u-boot/idbloader.img&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;MiniLoaderAll.bin&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;rockdev/MiniLoaderAll.bin&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;u-boot/px30_loader_v1.14.122.bin&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;misc.img&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;rockdev/misc.img&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;device/rockchip/rockimg/wipe_all-misc.img&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;oem.img&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;rockdev/oem.img&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;parameter.txt&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;rockdev/parameter.txt&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;device/rockchip/px30/parameter.txt&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;recovery.img&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;rockdev/recovery.img&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;buildroot/output/rockchip_px30_recovery/images/recovery.img&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;rootfs.img&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;rockdev/rootfs.img&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;buildroot/output/rockchip_px30_64/images/rootfs.ext2&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;trust.img&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;rockdev/trust.img&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;u-boot/trust.img&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;uboot.img&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;rockdev/uboot.img&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;u-boot/uboot.img&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;userdata.img&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;rockdev/userdata.img&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Build commands&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# Select the board configuration&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#   px30-ubuntu.mk: Ubuntu, MIPI&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#   px30-lvds-ubuntu.mk: Ubuntu, LVDS&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#   (the soft link points to device/rockchip/px30/*.mk)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ ./build.sh px30-lvds-ubuntu.mk
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# Build target: all | kernel | uboot | recovery | updateimg &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ ./build.sh all
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# confirm the links in rockdev/ and tools/linux/Linux_Pack_Firmware/rockdev/package-file&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ ./mkfirmware.sh
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# clean build&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ ./build.sh cleanall
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h3 id=&#34;storage-partitions&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#storage-partitions&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Storage Partitions
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Partition&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Image&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;uboot&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;uboot.img&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;trust&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;trust.img(from uboot recipe)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;misc&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;misc.img(optional for recovery mode)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;boot&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;boot.img(kernel image; device tree)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;recovery&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;recovery.img(optional)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;backup&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;reserved&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;oem&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;factory data(/oem)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;rootfs&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;rootfs.img(read-only)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;userdata&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;app data(optional; rw; /userdata)&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;partition table: device/rockchip/px30/parameter.txt
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;CMDLINE: &lt;span style=&#34;color:#f2d5cf&#34;&gt;mtdparts&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;rk29xxnand:0x00002000@0x00004000&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;(&lt;/span&gt;uboot&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;)&lt;/span&gt;,0x00002000@0x00006000&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;(&lt;/span&gt;trust&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;)&lt;/span&gt;,...
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;package-file
+&lt;ul&gt;
+&lt;li&gt;tools/linux/Linux_Pack_Firmware/rockdev/px30-ubuntu-package-file&lt;/li&gt;
+&lt;li&gt;MUST be consistent with &lt;code&gt;parameter.txt&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;image-tools&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#image-tools&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Image Tools
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;h4 id=&#34;windows&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#windows&#34;&gt;
+        ###
+    &lt;/a&gt;
+    Windows
+&lt;/div&gt;
+&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;Install &lt;code&gt;DriverAssitant&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Connect to the device via USB cable&lt;/li&gt;
+&lt;li&gt;Hold &lt;code&gt;RECOVERY&lt;/code&gt; button and then power on; release &lt;code&gt;RECOVERY&lt;/code&gt; button after 2 sec.&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;AndroidTool.exe&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://vitaceae.github.io/posts/dev_platform/./inc/px30-android-tool.png&#34; alt=&#34;AndroidTool&#34;/&gt;&lt;/p&gt;
+&lt;h4 id=&#34;linux&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#linux&#34;&gt;
+        ###
+    &lt;/a&gt;
+    Linux
+&lt;/div&gt;
+&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ &lt;span style=&#34;color:#99d1db&#34;&gt;cd&lt;/span&gt; Linux_Upgrade_Tool
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo mv upgrade_tool /usr/local/bin
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo chown root:root /usr/local/bin/upgrade_tool
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo chmod a+x /usr/local/bin/upgrade_tool
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h3 id=&#34;boot-flow&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#boot-flow&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Boot Flow
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://vitaceae.github.io/posts/dev_platform/inc/rockchip/rockchip-boot-flow.jpg&#34; alt=&#34;rockchip-boot-flow&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;系統初始化&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;power-on initialization&lt;/li&gt;
+&lt;li&gt;run BootRom code on SRAM&lt;/li&gt;
+&lt;li&gt;verify bootloader&lt;/li&gt;
+&lt;li&gt;load and run bootloader
+&lt;ul&gt;
+&lt;li&gt;initialize DDR SDRAM&lt;/li&gt;
+&lt;li&gt;shadow bootloader to DDR memory&lt;/li&gt;
+&lt;li&gt;load and run Linux kernel&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Boot mode&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Normal&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Loader&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;connect USB cable to device, hold recovery key and then power-on&lt;/li&gt;
+&lt;li&gt;to upgrade firmware
+&lt;ul&gt;
+&lt;li&gt;full image: &lt;code&gt;update.img&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;partition images: &lt;code&gt;kernel.img&lt;/code&gt;, &lt;code&gt;rootfs.img&lt;/code&gt;, &lt;code&gt;recovery.img&lt;/code&gt;&amp;hellip;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;MaskRom&lt;/code&gt;
++ used when bootloader is corrupted&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;custom-changes&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#custom-changes&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Custom Changes
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;h4 id=&#34;change-board-config&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#change-board-config&#34;&gt;
+        ###
+    &lt;/a&gt;
+    Change Board config
+&lt;/div&gt;
+&lt;/h4&gt;
+&lt;p&gt;在 device/Rockchip/rk3326/Boardconfig.mk 中確認指定的 dts&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#export RK_KERNEL_DTS=rk3326-evb-lp3-v10-linux&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#export RK_KERNEL_DTS=rk3326-evb-ai-va-v11-linux&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;使用腳本修改 board type, 間接更改 soft link 對象&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ ./build.sh px30-lvds-ubuntu.mk
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;修改 Ubuntu 分割區配置: device/rockchip/px30/parameter-ubuntu.txt&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;-CMDLINE: &lt;span style=&#34;color:#f2d5cf&#34;&gt;mtdparts&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;rk29xxnand:0x00002000@0x00004000&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;(&lt;/span&gt;uboot&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;)&lt;/span&gt;,0x00002000@0x00006000&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;(&lt;/span&gt;trust&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;)&lt;/span&gt;,0x00002000@0x00008000&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;(&lt;/span&gt;misc&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;)&lt;/span&gt;,0x00010000@0x0000a000&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;(&lt;/span&gt;boot&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;)&lt;/span&gt;,0x00010000@0x0001a000&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;(&lt;/span&gt;recovery&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;)&lt;/span&gt;,0x00010000@0x0002a000&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;(&lt;/span&gt;backup&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;)&lt;/span&gt;,0x00020000@0x0003a000&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;(&lt;/span&gt;oem&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;)&lt;/span&gt;,0x00c00000@0x0005a000&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;(&lt;/span&gt;rootfs&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;)&lt;/span&gt;,-@0x00c5a000&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;(&lt;/span&gt;userdata:grow&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;+CMDLINE: &lt;span style=&#34;color:#f2d5cf&#34;&gt;mtdparts&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;rk29xxnand:0x00002000@0x00004000&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;(&lt;/span&gt;uboot&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;)&lt;/span&gt;,0x00002000@0x00006000&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;(&lt;/span&gt;trust&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;)&lt;/span&gt;,0x00002000@0x00008000&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;(&lt;/span&gt;misc&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;)&lt;/span&gt;,0x00010000@0x0000a000&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;(&lt;/span&gt;boot&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;)&lt;/span&gt;,0x00010000@0x0001a000&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;(&lt;/span&gt;recovery&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;)&lt;/span&gt;,0x00010000@0x0002a000&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;(&lt;/span&gt;backup&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;)&lt;/span&gt;,0x00600000@0x0005a000&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;(&lt;/span&gt;rootfs&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;)&lt;/span&gt;,-@0x0065a000&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;(&lt;/span&gt;userdata:grow&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;enable-pdm-mic&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#enable-pdm-mic&#34;&gt;
+        ###
+    &lt;/a&gt;
+    Enable PDM Mic
+&lt;/div&gt;
+&lt;/h4&gt;
+&lt;p&gt;PDM_CLK1 和 PDM_CLK0_M0 輸出 clock waveforms 正常, 但 PDM_SDI0 ~ PDM_SDI3 無作用&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ aplay -l
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;**** List of PLAYBACK Hardware Devices ****
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;card 0: rockchiprk809co &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;[&lt;/span&gt;rockchip,rk809-codec&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;]&lt;/span&gt;, device 0: ff070000.i2s-rk817-hifi rk817-hifi-0 &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;[]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  Subdevices: 1/1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  Subdevice &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#0: subdevice #0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ arecord -l
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;**** List of CAPTURE Hardware Devices ****
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;card 0: rockchiprk809co &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;[&lt;/span&gt;rockchip,rk809-codec&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;]&lt;/span&gt;, device 0: ff070000.i2s-rk817-hifi rk817-hifi-0 &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;[]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  Subdevices: 1/1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  Subdevice &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#0: subdevice #0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;card 0: rockchiprk809co &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;[&lt;/span&gt;rockchip,rk809-codec&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;]&lt;/span&gt;, device 1: ff0a0000.pdm-rk817-voice rk817-voice-1 &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;[]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  Subdevices: 1/1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  Subdevice &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#0: subdevice #0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ arecord -Dhw:0,1 -d &lt;span style=&#34;color:#ef9f76&#34;&gt;5&lt;/span&gt; -t wav -r &lt;span style=&#34;color:#ef9f76&#34;&gt;48000&lt;/span&gt; -f S32_LE -c &lt;span style=&#34;color:#ef9f76&#34;&gt;8&lt;/span&gt; &amp;gt; test.wav
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;splash-logo&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#splash-logo&#34;&gt;
+        ###
+    &lt;/a&gt;
+    Splash Logo
+&lt;/div&gt;
+&lt;/h4&gt;
+&lt;p&gt;變更 boot 階段背景圖片: 修改 kernel/logo.bmp 及 kernel/logo_kernel.bmp&lt;/p&gt;
+&lt;h4 id=&#34;configuration&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#configuration&#34;&gt;
+        ###
+    &lt;/a&gt;
+    Configuration
+&lt;/div&gt;
+&lt;/h4&gt;
+&lt;p&gt;支援 POSIX message queue: 修改 kernel/arch/arm64/configs/px30_linux_defconfig&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;CONFIG_POSIX_MQUEUE&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;y
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h3 id=&#34;problems&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#problems&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Problems
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;E: Unable to locate package repo&lt;/p&gt;&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ mkdir ~/bin
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ curl https://storage.googleapis.com/git-repo-downloads/repo &amp;gt; ~/bin/repo
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ chmod a+x ~/bin/repo
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ &lt;span style=&#34;color:#99d1db&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#f2d5cf&#34;&gt;PATH&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;~/bin:&lt;span style=&#34;color:#f2d5cf&#34;&gt;$PATH&lt;/span&gt; &amp;gt;&amp;gt; ~/.bashrc
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;rockchip-vop ff470000.vop: [drm:vop_isr] ERROR WIN1_EMPTY irq err&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;bandwidth not enough&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;disable &lt;code&gt;dmc&lt;/code&gt;, 關閉 DDR 變頻功能&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt;dmc {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    center&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;-&lt;/span&gt;supply &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&amp;amp;&lt;/span&gt;vdd_logic&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    status &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;disabled&amp;#34;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;};
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;若問題消失表示 DDR 頻率正確, 開啟 dmc 並調整 &lt;code&gt;vop-dclk-mode&lt;/code&gt; 值: 0 | 1 | 2&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;vop&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;-&lt;/span&gt;dclk&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;-&lt;/span&gt;mode &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#ef9f76&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;若問題仍然存在表示 DDR 頻率異常, 須調整成最大支援頻率&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;/*system status freq(KHz)*/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SYS_STATUS_NORMAL &lt;span style=&#34;color:#ef9f76&#34;&gt;856000&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;dmc 參數說明(.dts)&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;auto-freq-en=1 時
+&lt;ul&gt;
+&lt;li&gt;upthreshold: 超過指定值(使用率)時升頻&lt;/li&gt;
+&lt;li&gt;downdifferential: 低於指定值(使用率)時降頻&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;auto-freq-en=0 時
+&lt;ul&gt;
+&lt;li&gt;除特殊條件外, 使用 system-status-freq 中的 SYS_STATUS_NORMAL(kHz)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;references&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#references&#34;&gt;
+        ##
+    &lt;/a&gt;
+    References
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;http://opensource.rock-chips.com/wiki_Main_Page&#34;&gt;Rockchip Wiki&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://gitlab.com/firefly-linux/&#34;&gt;Firefly Official Repo&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;http://en.t-firefly.com/product/coreboard/core_px30_jd4&#34;&gt;Firefly: Core-PX30-JD4&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;http://en.t-firefly.com/doc/download/page/id/63.html&#34;&gt;Firefly: Download Page&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://wiki.t-firefly.com/en/Core-PX30-JD4/getting_started.html&#34;&gt;Firefly: PX30 Getting start&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://wiki.t-firefly.com/en/Core-PX30-JD4/prepare_compile_linux.html&#34;&gt;Firefly: build environment&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://wiki.t-firefly.com/en/Core-PX30-JD4/ubuntu_compile.html&#34;&gt;Firefly: build Ubuntu&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://wiki.t-firefly.com/en/Core-PX30-JD4/buildroot_compile.html&#34;&gt;Firefly: build Buildroot&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

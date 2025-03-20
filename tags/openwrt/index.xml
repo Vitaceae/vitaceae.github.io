@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Openwrt on Mike&#39;s Cheatsheet</title>
+    <link>/tags/openwrt/</link>
+    <description>Mike&#39;s Cheatsheet (Openwrt)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    
+      
+        <managingEditor>i70170@hotmail.com
+          
+            (Mike Chang)
+          
+        </managingEditor>
+      
+
+      
+    
+
+    
+    <lastBuildDate>Tue, 19 Mar 2024 00:00:00 +0000</lastBuildDate>
+    
+    <atom:link href="/tags/openwrt/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Build Tools</title>
+      <link>/posts/dev_platform/build_tools/</link>
+      <pubDate>Tue, 19 Mar 2024 00:00:00 +0000</pubDate>
+      <author>i70170@hotmail.com (Mike Chang)</author>
+      <guid>/posts/dev_platform/build_tools/</guid>
+      <description>&lt;h2 id=&#34;build-tools&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#build-tools&#34;&gt;
+        #
+    &lt;/a&gt;
+    Build Tools
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;目的&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;編譯/交叉編譯應用程式&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;將應用程式包裝成套件&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;測試 binary ecosystem&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;部署 image&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://buildroot.org/&#34;&gt;Buildroot&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;建置客製化且最精簡的嵌入式 Linux 系統&lt;/li&gt;
+&lt;li&gt;支援 bootloader(e.g. U-Boot), Linux kernel(zImage or bzImage), BusyBox 管理&lt;/li&gt;
+&lt;li&gt;套件管理器: 無; 建構期配置所需套件&lt;/li&gt;
+&lt;li&gt;recipe 數量: 約 700&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://openwrt.org/&#34;&gt;OpenWRT&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;建置用於 router 和嵌入式網路設備的 Linux 發行版&lt;/li&gt;
+&lt;li&gt;套件管理器: opkg&lt;/li&gt;
+&lt;li&gt;提供豐富的網路和 router 相關函式庫以及驅動&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.yoctoproject.org/&#34;&gt;Yocto/OpenEmbedded&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;適合產生 distribution&lt;/li&gt;
+&lt;li&gt;套件管理器: 無; 建構期配置所需套件&lt;/li&gt;
+&lt;li&gt;提供各式通用函式庫以及驅動&lt;/li&gt;
+&lt;li&gt;recipe 數量: 約 8000&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;references&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#references&#34;&gt;
+        ##
+    &lt;/a&gt;
+    References
+&lt;/div&gt;
+&lt;/h3&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

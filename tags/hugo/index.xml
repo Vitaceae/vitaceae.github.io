@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Hugo on Mike&#39;s Tech Notes</title>
+    <title>Hugo on Mike&#39;s Cheatsheet</title>
     <link>/tags/hugo/</link>
-    <description>Mike&#39;s Tech Notes (Hugo)</description>
+    <description>Mike&#39;s Cheatsheet (Hugo)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     

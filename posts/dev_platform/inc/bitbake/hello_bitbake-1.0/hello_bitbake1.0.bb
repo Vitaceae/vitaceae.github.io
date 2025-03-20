@@ -1,0 +1,9 @@
+DESCRIPTION = "Hello Bitbake"
+HOMEPAGE = "https://vitaceae.github.io/"
+LICENSE = "Proprietary"
+LIC_FILES_CHKSUM = "file://COPYING;md5=dcb2a5c2b6d6fea1a0835c08d71ad817"
+
+SRC_URI = "http://my-url/${P}.tar.xz"
+SRC_URI[md5sum] = "00000000001111111111222222222233"
+SRC_URI[sha256sum] = "0000000000111111111122222222223333333333444444444455555555556666"
+inherit autotools
