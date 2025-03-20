@@ -628,12 +628,21 @@
 </div>
 </h2>
 <ol>
-<li>select a repo as the database of the discussions</li>
-<li>install <a href="https://github.com/apps/giscus">giscus</a> on the selected repo</li>
-<li>enable GitHub Discussions<br>
-<img src="/posts/web//inc/hugo/enable_giscus.jpg" alt="enable_giscus"/></li>
-<li><a href="https://giscus.app/">retrieve configuration from the official website</a></li>
+<li>Select a repo as the database of the comments system</li>
+<li>Install <a href="https://github.com/apps/giscus">giscus</a> on the selected repo
+<img src="/posts/web//inc/hugo/install_giscus.jpg" alt="Install Giscus"/></li>
+<li>Enable GitHub Discussions<br>
+<img src="/posts/web//inc/hugo/enable_giscus.jpg" alt="Enable Giscus"/></li>
+<li><a href="https://giscus.app/">Configure Giscus parameters</a>
+<img src="/posts/web//inc/hugo/configure_giscus.jpg" alt="Configure Giscus"/></li>
 </ol>
+<p>Add the configure parameters to .toml</p>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f2d5cf">GiscusRepo</span> <span style="color:#99d1db;font-weight:bold">=</span> <span style="color:#a6d189">&#34;Vitaceae/vitaceae.github.io&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f2d5cf">GiscusRepoId</span> <span style="color:#99d1db;font-weight:bold">=</span> <span style="color:#a6d189">&#34;R_kgDOOLku4g&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f2d5cf">GiscusDiscussionCategory</span> <span style="color:#99d1db;font-weight:bold">=</span> <span style="color:#a6d189">&#34;General&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f2d5cf">GiscusCategoryId</span> <span style="color:#99d1db;font-weight:bold">=</span> <span style="color:#a6d189">&#34;DIC_kwDOOLku4s4CoQfG&#34;</span>
+</span></span><span style="display:flex;"><span>...
+</span></span></code></pre></div><p>Take the theme anubis2 for example, the parameters will be used in layouts/partials/giscus.html and embedded to each .html files</p>
 <hr>
 <h2 id="plugin-umami-cloud" >
 <div>
@@ -815,14 +824,14 @@ $$</p>
 <li><code>linenostart=$val</code>: index of the first line</li>
 <li><code>anchorlinenos=true</code>: create links to lines</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-c" data-lang="c"><span style="display:flex; background-color:#51576d"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#838ba7" id="hl-5-199"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-199">199</a></span><span><span style="color:#e78284">int</span> <span style="color:#8caaee">main</span>() {
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#838ba7" id="hl-5-200"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-200">200</a></span><span>    <span style="color:#e78284">int</span> a <span style="color:#99d1db;font-weight:bold">=</span> <span style="color:#ef9f76">1</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#838ba7" id="hl-5-201"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-201">201</a></span><span>
-</span></span><span style="display:flex; background-color:#51576d"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#838ba7" id="hl-5-202"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-202">202</a></span><span>    <span style="color:#ca9ee6">if</span> (a <span style="color:#99d1db;font-weight:bold">==</span> <span style="color:#ef9f76">999</span>)
-</span></span><span style="display:flex; background-color:#51576d"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#838ba7" id="hl-5-203"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-203">203</a></span><span>        <span style="color:#737994;font-style:italic">// todo~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-</span></span></span><span style="display:flex; background-color:#51576d"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#838ba7" id="hl-5-204"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-204">204</a></span><span><span style="color:#737994;font-style:italic"></span>    }
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#838ba7" id="hl-5-205"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-205">205</a></span><span>    <span style="color:#ca9ee6">return</span> <span style="color:#ef9f76">0</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#838ba7" id="hl-5-206"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-206">206</a></span><span>}
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-c" data-lang="c"><span style="display:flex; background-color:#51576d"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#838ba7" id="hl-6-199"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-199">199</a></span><span><span style="color:#e78284">int</span> <span style="color:#8caaee">main</span>() {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#838ba7" id="hl-6-200"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-200">200</a></span><span>    <span style="color:#e78284">int</span> a <span style="color:#99d1db;font-weight:bold">=</span> <span style="color:#ef9f76">1</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#838ba7" id="hl-6-201"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-201">201</a></span><span>
+</span></span><span style="display:flex; background-color:#51576d"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#838ba7" id="hl-6-202"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-202">202</a></span><span>    <span style="color:#ca9ee6">if</span> (a <span style="color:#99d1db;font-weight:bold">==</span> <span style="color:#ef9f76">999</span>)
+</span></span><span style="display:flex; background-color:#51576d"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#838ba7" id="hl-6-203"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-203">203</a></span><span>        <span style="color:#737994;font-style:italic">// todo~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+</span></span></span><span style="display:flex; background-color:#51576d"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#838ba7" id="hl-6-204"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-204">204</a></span><span><span style="color:#737994;font-style:italic"></span>    }
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#838ba7" id="hl-6-205"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-205">205</a></span><span>    <span style="color:#ca9ee6">return</span> <span style="color:#ef9f76">0</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#838ba7" id="hl-6-206"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-206">206</a></span><span>}
 </span></span></code></pre></div><hr>
 <h2 id="icons" >
 <div>
@@ -1111,16 +1120,16 @@ $$</p>
         let giscusAttributes = {
                 src: "https://giscus.app/client.js",
                 "data-repo": "Vitaceae\/vitaceae.github.io",
-                "data-repo-id": "R_kgDOKgS0EA",
-                "data-category": "Announcements",
-                "data-category-id": "DIC_kwDOKgS0EM4Cnd0t",
+                "data-repo-id": "R_kgDOOLku4g",
+                "data-category": "General",
+                "data-category-id": "DIC_kwDOOLku4s4CoQfG",
                 "data-mapping": "pathname",
                 "data-strict": "0",
                 "data-reactions-enabled": "1",
                 "data-emit-metadata": "0",
                 "data-input-position": "bottom",
                 "data-theme": giscusTheme,
-                "data-lang": "en",
+                "data-lang": "zh-TW",
                 crossorigin: "anonymous",
                 lazyload: "false",
                 async: true,
