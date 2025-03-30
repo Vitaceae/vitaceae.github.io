@@ -19,10 +19,965 @@
     
 
     
-    <lastBuildDate>Tue, 19 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 27 Mar 2024 00:00:00 +0000</lastBuildDate>
     
     <atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>C Programming Optimization</title>
+      <link>/posts/prog/c/c_optimization/</link>
+      <pubDate>Wed, 27 Mar 2024 00:00:00 +0000</pubDate>
+      <author>i70170@hotmail.com (Mike Chang)</author>
+      <guid>/posts/prog/c/c_optimization/</guid>
+      <description>&lt;hr&gt;
+&lt;h2 id=&#34;arithmetic&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#arithmetic&#34;&gt;
+        #
+    &lt;/a&gt;
+    Arithmetic
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;data dependencies
+&lt;ul&gt;
+&lt;li&gt;avoid waiting for results&lt;/li&gt;
+&lt;li&gt;use multiple variables to get partial results instead of using a single one&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;multiplication
+&lt;ul&gt;
+&lt;li&gt;time cost ~ 3 times more than addition&lt;/li&gt;
+&lt;li&gt;use &lt;code&gt;shift&lt;/code&gt; for (2^n)&lt;/li&gt;
+&lt;li&gt;use &lt;code&gt;shift&lt;/code&gt; and addition for (2^n - 1)&lt;/li&gt;
+&lt;li&gt;use &lt;code&gt;lea&lt;/code&gt;, Load Effective Address&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;division
+&lt;ul&gt;
+&lt;li&gt;use &lt;code&gt;shift&lt;/code&gt; for (2^n)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;references&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#references&#34;&gt;
+        #
+    &lt;/a&gt;
+    References
+&lt;/div&gt;
+&lt;/h2&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>C Programming Syntax</title>
+      <link>/posts/prog/c/c_syntax/</link>
+      <pubDate>Wed, 27 Mar 2024 00:00:00 +0000</pubDate>
+      <author>i70170@hotmail.com (Mike Chang)</author>
+      <guid>/posts/prog/c/c_syntax/</guid>
+      <description>&lt;h2 id=&#34;union&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#union&#34;&gt;
+        #
+    &lt;/a&gt;
+    union
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;成員共用記憶體空間; 最大成員決定結構大小&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;union&lt;/span&gt; foo {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ca9ee6&#34;&gt;struct&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        unsinged &lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#99d1db&#34;&gt;d1&lt;/span&gt;: &lt;span style=&#34;color:#ef9f76&#34;&gt;4&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#e78284&#34;&gt;unsigned&lt;/span&gt; &lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#99d1db&#34;&gt;d2&lt;/span&gt;: &lt;span style=&#34;color:#ef9f76&#34;&gt;2&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#e78284&#34;&gt;unsigned&lt;/span&gt; &lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#99d1db&#34;&gt;reserved&lt;/span&gt;: &lt;span style=&#34;color:#ef9f76&#34;&gt;26&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    } s;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e78284&#34;&gt;unsigned&lt;/span&gt; &lt;span style=&#34;color:#e78284&#34;&gt;char&lt;/span&gt; c;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;typedef&lt;/span&gt; &lt;span style=&#34;color:#ca9ee6&#34;&gt;union&lt;/span&gt; foo               foo_u
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&amp;hellip;&lt;/p&gt;
+&lt;p&gt;Initialization&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//undefined behavior
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;foo_u bar &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; {&lt;span style=&#34;color:#ef9f76&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ef9f76&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ef9f76&#34;&gt;5&lt;/span&gt;};
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//correct
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;foo_u bar;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bar.s.d1 &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;1&lt;/span&gt;, bar.s.d2 &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;2&lt;/span&gt;, bar.s.reserved &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;5&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//certain versions allow the following
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;foo_u bar &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; {.s.d1 &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;1&lt;/span&gt;, s.d2 &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;2&lt;/span&gt;, .s.reserved &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;5&lt;/span&gt;};
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;struct&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#struct&#34;&gt;
+        #
+    &lt;/a&gt;
+    struct
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;h3 id=&#34;padding&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#padding&#34;&gt;
+        ##
+    &lt;/a&gt;
+    padding
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;對齊邊界(compiler-dependent)&lt;/li&gt;
+&lt;li&gt;gcc 可使用修飾詞 &lt;code&gt;__attribute__((packed))&lt;/code&gt; 避免填充&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;同資料型態: no padding&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;struct&lt;/span&gt; m1 {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e78284&#34;&gt;char&lt;/span&gt; c1;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e78284&#34;&gt;char&lt;/span&gt; c2;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e78284&#34;&gt;char&lt;/span&gt; c3;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//sizeof(struct m1) 為 3
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;不同資料型態&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;struct&lt;/span&gt; m1 {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e78284&#34;&gt;char&lt;/span&gt; a;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; b;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e78284&#34;&gt;char&lt;/span&gt; c;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;};
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//a(1) + pad(3) + b(4) + c(1) + pad(3) = 12
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;struct&lt;/span&gt; m2 {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e78284&#34;&gt;char&lt;/span&gt; a;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e78284&#34;&gt;char&lt;/span&gt; b;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; c;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;};
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//a(1) + b(1) + pad(2) + c(4) = 8
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;struct&lt;/span&gt; m3 {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; a;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e78284&#34;&gt;char&lt;/span&gt; b;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e78284&#34;&gt;char&lt;/span&gt; c;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;};
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//a(4) + b(1) + c(1) + pad(2) = 8
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;建議同資料型態並列, 由大而小或由小而大進行宣告&lt;/p&gt;
+&lt;p&gt;bit-field padding&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//size equals 4
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#ca9ee6&#34;&gt;struct&lt;/span&gt; s {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#e78284&#34;&gt;unsigned&lt;/span&gt; &lt;span style=&#34;color:#99d1db&#34;&gt;a&lt;/span&gt;: &lt;span style=&#34;color:#ef9f76&#34;&gt;1&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#e78284&#34;&gt;unsigned&lt;/span&gt; &lt;span style=&#34;color:#99d1db&#34;&gt;b&lt;/span&gt;: &lt;span style=&#34;color:#ef9f76&#34;&gt;2&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        };
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//size equals 4
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#ca9ee6&#34;&gt;struct&lt;/span&gt; s1 {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#e78284&#34;&gt;unsigned&lt;/span&gt; &lt;span style=&#34;color:#99d1db&#34;&gt;a&lt;/span&gt;: &lt;span style=&#34;color:#ef9f76&#34;&gt;1&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#99d1db&#34;&gt;b&lt;/span&gt;: &lt;span style=&#34;color:#ef9f76&#34;&gt;1&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        };
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//ieee754; unsigned int 與 unsigned char 資料型態大小不同; padding 成 64 bits
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#ca9ee6&#34;&gt;struct&lt;/span&gt; _754 {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#e78284&#34;&gt;unsigned&lt;/span&gt; &lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#99d1db&#34;&gt;mantissa&lt;/span&gt;: &lt;span style=&#34;color:#ef9f76&#34;&gt;23&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#e78284&#34;&gt;unsigned&lt;/span&gt; &lt;span style=&#34;color:#e78284&#34;&gt;char&lt;/span&gt; &lt;span style=&#34;color:#99d1db&#34;&gt;exponment&lt;/span&gt;: &lt;span style=&#34;color:#ef9f76&#34;&gt;8&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#e78284&#34;&gt;unsigned&lt;/span&gt; &lt;span style=&#34;color:#e78284&#34;&gt;char&lt;/span&gt; &lt;span style=&#34;color:#99d1db&#34;&gt;sign&lt;/span&gt;: &lt;span style=&#34;color:#ef9f76&#34;&gt;1&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        };
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;preprocess&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#preprocess&#34;&gt;
+        #
+    &lt;/a&gt;
+    Preprocess
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;h3 id=&#34;show-macro-content&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#show-macro-content&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Show macro content
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#define STR_HELPER(x)   #x
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#define STR(x)          STR_HELPER(x)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#pragma message &amp;#34;Content of CERTAIN_MACRO: &amp;#34; STR(CERTAIN_MACRO)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;expand-macro&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#expand-macro&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Expand macro
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;將 macro 定義放在 .c 開頭&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;g++ -E xxx.c
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;references&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#references&#34;&gt;
+        #
+    &lt;/a&gt;
+    References
+&lt;/div&gt;
+&lt;/h2&gt;</description>
+    </item>
+    
+    <item>
+      <title>CGI in C</title>
+      <link>/posts/prog/web/cgi_in_c/</link>
+      <pubDate>Tue, 26 Mar 2024 00:00:00 +0000</pubDate>
+      <author>i70170@hotmail.com (Mike Chang)</author>
+      <guid>/posts/prog/web/cgi_in_c/</guid>
+      <description>&lt;p&gt;&lt;code&gt;CGI&lt;/code&gt;, Common Gateway Interface 協定: 外部應用程式與 Web 伺服器溝通的協議。CGI 在伺服器端執行並回傳動態生成的結果。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;將執行檔放在 Web server(IIS, Apache, &amp;hellip;) 具執行權限的目錄下
+&lt;ul&gt;
+&lt;li&gt;Apache 主機參考 httpd.conf 設定, 常見預設值為 &lt;strong&gt;/usr/lib/cgi-bin/&lt;/strong&gt; 以及 &lt;strong&gt;/var/www/cgi.index&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;IIS 主機啟動 IIS Service 並設定目錄權限&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;html 發送請求透過表單函數 GET/POST
+&lt;ul&gt;
+&lt;li&gt;GET 的 url 會改變, 能查看參數, 參數以 &lt;em&gt;&amp;amp;&lt;/em&gt; 區隔, 無法傳送大量資料且較不安全&lt;/li&gt;
+&lt;li&gt;POST 傳送完整表單, 可傳送大量資料且較安全&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&amp;hellip;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;enable-cgi-on-apache2&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#enable-cgi-on-apache2&#34;&gt;
+        #
+    &lt;/a&gt;
+    Enable CGI on Apache2
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ vi /etc/apache2/sites-enabled/000-default.conf  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ScriptAlias /cgi-bin/ /usr/lib/cgi-bin/
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &amp;lt;Directory &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;/usr/lib/cgi-bin&amp;#34;&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        AllowOverride All
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        Options +ExecCGI -MultiViews +SymLinksIfOwnerMatch
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        Order allow,deny
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        Allow from all
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &amp;lt;/Directory&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ a2enmod cgid
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo systemctl restart apache2
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# 編譯後複製到 /usr/lib/cgi-bin/ 目錄下&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ gcc hello.c -o hello
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo mv hello /usr/lib/cgi-bin/
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# test on WSL terminal&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ curl localhost/cgi-bin/hello.cgi
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# test on browser&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# explore http://[my-inet]/cgi-bin/hello.cgi&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;example-hello-cgi&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#example-hello-cgi&#34;&gt;
+        #
+    &lt;/a&gt;
+    Example: Hello CGI
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#737994;font-weight:bold;font-style:italic&#34;&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#737994;font-weight:bold;font-style:italic&#34;&gt;&amp;lt;stdlib.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;main&lt;/span&gt;(&lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; argc, &lt;span style=&#34;color:#e78284&#34;&gt;char&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt; argv[],&lt;span style=&#34;color:#e78284&#34;&gt;char&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;envp[])
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8caaee&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;Content-type: text/html&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\n\n&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8caaee&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;Hello CGI&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;example-取得環境參數&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#example-%e5%8f%96%e5%be%97%e7%92%b0%e5%a2%83%e5%8f%83%e6%95%b8&#34;&gt;
+        #
+    &lt;/a&gt;
+    Example: 取得環境參數
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#737994;font-weight:bold;font-style:italic&#34;&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;main&lt;/span&gt;(&lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; argc, &lt;span style=&#34;color:#e78284&#34;&gt;char&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt; argv[], &lt;span style=&#34;color:#e78284&#34;&gt;char&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;envp[])
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8caaee&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;Content-type: text/html&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\n\n&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ca9ee6&#34;&gt;for&lt;/span&gt; (&lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;0&lt;/span&gt;; envp[i] &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#99d1db&#34;&gt;NULL&lt;/span&gt;; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;++&lt;/span&gt;i) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#8caaee&#34;&gt;printf&lt;/span&gt;(envp[i]);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#8caaee&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&amp;lt;br&amp;gt;&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    } 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;example-getpost&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#example-getpost&#34;&gt;
+        #
+    &lt;/a&gt;
+    Example: GET/POST
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;h3 id=&#34;indexhtml&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#indexhtml&#34;&gt;
+        ##
+    &lt;/a&gt;
+    index.html
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;html&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;head&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &amp;lt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;title&lt;/span&gt;&amp;gt;CGI Testing&amp;lt;/&lt;span style=&#34;color:#ca9ee6&#34;&gt;title&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;/&lt;span style=&#34;color:#ca9ee6&#34;&gt;head&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;body&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &amp;lt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;table&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;width&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;200&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;height&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;180&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;border&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;0&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;style&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;font-size:12px&amp;#34;&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &amp;lt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;tr&lt;/span&gt;&amp;gt;&amp;lt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;td&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &amp;lt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;style&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;font-weight:bold; font-size:15px&amp;#34;&lt;/span&gt;&amp;gt;CGI Method: GET&amp;lt;/&lt;span style=&#34;color:#ca9ee6&#34;&gt;div&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &amp;lt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;form&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;method&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;get&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;action&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;./cgi-bin/get&amp;#34;&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &amp;lt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;txt&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;size&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;3&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;a&amp;#34;&lt;/span&gt;&amp;gt;+
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &amp;lt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;txt&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;size&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;3&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;b&amp;#34;&lt;/span&gt;&amp;gt;=
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &amp;lt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;submit&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;sum&amp;#34;&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &amp;lt;/&lt;span style=&#34;color:#ca9ee6&#34;&gt;form&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &amp;lt;/&lt;span style=&#34;color:#ca9ee6&#34;&gt;td&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color:#ca9ee6&#34;&gt;tr&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &amp;lt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;tr&lt;/span&gt;&amp;gt;&amp;lt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;td&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &amp;lt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;style&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;font-weight:bold; font-size:15px&amp;#34;&lt;/span&gt;&amp;gt;CGI Method: POST&amp;lt;/&lt;span style=&#34;color:#ca9ee6&#34;&gt;div&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &amp;lt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;form&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;method&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;post&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;action&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;./cgi-bin/post&amp;#34;&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &amp;lt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;txt&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;size&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;3&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;m&amp;#34;&lt;/span&gt;&amp;gt;*
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &amp;lt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;txt&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;size&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;3&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;n&amp;#34;&lt;/span&gt;&amp;gt;=
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &amp;lt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;submit&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;product&amp;#34;&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &amp;lt;/&lt;span style=&#34;color:#ca9ee6&#34;&gt;form&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &amp;lt;/&lt;span style=&#34;color:#ca9ee6&#34;&gt;td&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color:#ca9ee6&#34;&gt;tr&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &amp;lt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;tr&lt;/span&gt;&amp;gt;&amp;lt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;td&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &amp;lt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;inputtype&lt;/span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;=&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;button&lt;/span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;Back&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;onclick&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#39;javascript:window.location=&amp;#34;./index.html&amp;#34;&amp;#39;&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &amp;lt;/&lt;span style=&#34;color:#ca9ee6&#34;&gt;td&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color:#ca9ee6&#34;&gt;tr&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &amp;lt;/&lt;span style=&#34;color:#ca9ee6&#34;&gt;table&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;/&lt;span style=&#34;color:#ca9ee6&#34;&gt;body&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;/&lt;span style=&#34;color:#ca9ee6&#34;&gt;html&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;get&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#get&#34;&gt;
+        ##
+    &lt;/a&gt;
+    GET
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#737994;font-weight:bold;font-style:italic&#34;&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#737994;font-weight:bold;font-style:italic&#34;&gt;&amp;lt;stdlib.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;main&lt;/span&gt;(&lt;span style=&#34;color:#e78284&#34;&gt;void&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e78284&#34;&gt;char&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;data;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e78284&#34;&gt;char&lt;/span&gt; a[&lt;span style=&#34;color:#ef9f76&#34;&gt;10&lt;/span&gt;], b[&lt;span style=&#34;color:#ef9f76&#34;&gt;10&lt;/span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8caaee&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;Content-Type:text/html&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\n\n&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8caaee&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&amp;lt;HTML&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8caaee&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&amp;lt;HEAD&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;lt;TITLE &amp;gt;Get Method&amp;lt;/TITLE&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;lt;/HEAD&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8caaee&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&amp;lt;BODY&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8caaee&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&amp;lt;div style=&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;font-size:12px&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    data &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;getenv&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;QUERY_STRING&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8caaee&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;data:%s&amp;#34;&lt;/span&gt;,data);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ca9ee6&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#8caaee&#34;&gt;sscanf&lt;/span&gt;(data,&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;a=%[^&amp;amp;]&amp;amp;b=%s&amp;#34;&lt;/span&gt;, a, b) &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;2&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#8caaee&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&amp;lt;DIV STYLE=&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;COLOR:RED&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;gt;Error: null parameters&amp;lt; /DIV&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    } &lt;span style=&#34;color:#ca9ee6&#34;&gt;else&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#8caaee&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&amp;lt;DIV STYLE=&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;COLOR:GREEN; font-size:15px;font-weight:bold&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;gt;a + b =%d&amp;lt;/DIV&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#8caaee&#34;&gt;atoi&lt;/span&gt;(a) &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;atoi&lt;/span&gt;(b));
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8caaee&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&amp;lt;HR COLOR=&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;blue&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt; align=&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;left&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;width=&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;100&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;gt;&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8caaee&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&amp;lt;input type=&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;button&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt; value=&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;Back&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt; onclick=&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;javascript:window.location=&amp;#39;../index.html&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;gt;&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8caaee&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8caaee&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&amp;lt;/BODY&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8caaee&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&amp;lt;/HTML&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ca9ee6&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;0&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;post&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#post&#34;&gt;
+        ##
+    &lt;/a&gt;
+    POST
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#737994;font-weight:bold;font-style:italic&#34;&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#737994;font-weight:bold;font-style:italic&#34;&gt;&amp;lt;stdlib.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;main&lt;/span&gt;(&lt;span style=&#34;color:#e78284&#34;&gt;void&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; len;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e78284&#34;&gt;char&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;lenstr, poststr[&lt;span style=&#34;color:#ef9f76&#34;&gt;20&lt;/span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e78284&#34;&gt;char&lt;/span&gt; m[&lt;span style=&#34;color:#ef9f76&#34;&gt;10&lt;/span&gt;],n[&lt;span style=&#34;color:#ef9f76&#34;&gt;10&lt;/span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8caaee&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;Content-Type:text/html&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\n\n&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8caaee&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&amp;lt;HTML&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8caaee&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&amp;lt;HEAD&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;lt;TITLE &amp;gt;post Method&amp;lt;/TITLE&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;lt;/HEAD&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8caaee&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&amp;lt;BODY&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8caaee&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&amp;lt;div style=&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;font-size:12px&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    lenstr &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;getenv&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;CONTENT_LENGTH&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ca9ee6&#34;&gt;if&lt;/span&gt; (lenstr &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#99d1db&#34;&gt;NULL&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#8caaee&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&amp;lt;DIV STYLE=&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;COLOR:RED&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;gt;Error: null parameters&amp;lt; /DIV&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    } &lt;span style=&#34;color:#ca9ee6&#34;&gt;else&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        len &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;atoi&lt;/span&gt;(lenstr);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#8caaee&#34;&gt;fgets&lt;/span&gt;(poststr,len&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#ef9f76&#34;&gt;1&lt;/span&gt;,stdin);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#8caaee&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;%s&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&lt;/span&gt;,poststr);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ca9ee6&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#8caaee&#34;&gt;sscanf&lt;/span&gt;(poststr,&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;m=%[^&amp;amp;]&amp;amp;n=%s&amp;#34;&lt;/span&gt;,m,n) &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;2&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#8caaee&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&amp;lt;DIV STYLE=&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;COLOR:RED&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;gt;Error: invalid parameters&amp;lt; /DIV&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        } &lt;span style=&#34;color:#ca9ee6&#34;&gt;else&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#8caaee&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&amp;lt;DIV STYLE=&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;COLOR:GREEN; font-size:15px;font-weight:bold&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;gt;m*n=%d&amp;lt;/DIV&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#8caaee&#34;&gt;atoi&lt;/span&gt;(m) &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;atoi&lt;/span&gt;(n));
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#8caaee&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&amp;lt;HR COLOR=&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;blue&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt; align=&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;left&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;width=&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;100&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;gt;&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#8caaee&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&amp;lt;input type=&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;button&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt; value=&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;Back&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt; onclick=&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;javascript:window.location=&amp;#39;../index.html&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;gt;&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#8caaee&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#8caaee&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&amp;lt;/BODY&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#8caaee&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&amp;lt;/HTML&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#8caaee&#34;&gt;fflush&lt;/span&gt;(stdout);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ca9ee6&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;0&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;references&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#references&#34;&gt;
+        #
+    &lt;/a&gt;
+    References
+&lt;/div&gt;
+&lt;/h2&gt;</description>
+    </item>
+    
+    <item>
+      <title>Set up LAMP and LEMP Stack</title>
+      <link>/posts/web/setup_lamp_lemp/</link>
+      <pubDate>Tue, 26 Mar 2024 00:00:00 +0000</pubDate>
+      <author>i70170@hotmail.com (Mike Chang)</author>
+      <guid>/posts/web/setup_lamp_lemp/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;測試環境: Ubuntu 24.04.2 on WSL&lt;/li&gt;
+&lt;li&gt;LAMP: Linux OS, Apache web server, MySQL database, PHP programming language&lt;/li&gt;
+&lt;li&gt;LEMP: Linux OS, Nginx web server, MySQL database, PHP programming language
+&lt;ul&gt;
+&lt;li&gt;中文圈或稱為 LNMP&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;lamp-install-apache&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#lamp-install-apache&#34;&gt;
+        #
+    &lt;/a&gt;
+    LAMP: Install Apache
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;&amp;hellip;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo apt update &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo apt upgrade
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo apt install apache2
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo systemctl start apache2
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# grant access to .htaccess&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo a2enmod rewrite
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo systemctl restart apache2
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo vi /etc/apache2/sites-enabled/000-default.conf
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;Directory /var/www/html&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    AllowOverride All
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;/Directory&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;lemp-install-nginx&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#lemp-install-nginx&#34;&gt;
+        #
+    &lt;/a&gt;
+    LEMP: Install Nginx
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo apt install nginx
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo systemctl start nginx
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# grant access to .htaccess: uncomment &amp;#34;location ~ /\.ht&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo vi /etc/nginx/sites-available/default
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        location ~ /&lt;span style=&#34;color:#8caaee&#34;&gt;\.&lt;/span&gt;ht &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;               deny all;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo systemctl restart nginx
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;install-php&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#install-php&#34;&gt;
+        #
+    &lt;/a&gt;
+    Install PHP
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# to retrieve packages of newer versions&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo add-apt-repository ppa:ondrej/php
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo apt update &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo apt upgrade
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# LAMP: php7.3, LEMP: php8.1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ &lt;span style=&#34;color:#f2d5cf&#34;&gt;VPHP&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;php7.3
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo apt install &lt;span style=&#34;color:#f2d5cf&#34;&gt;$VPHP&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo apt install php-pear &lt;span style=&#34;color:#f2d5cf&#34;&gt;$VPHP&lt;/span&gt;-curl &lt;span style=&#34;color:#f2d5cf&#34;&gt;$VPHP&lt;/span&gt;-dev &lt;span style=&#34;color:#f2d5cf&#34;&gt;$VPHP&lt;/span&gt;-gd &lt;span style=&#34;color:#f2d5cf&#34;&gt;$VPHP&lt;/span&gt;-mbstring &lt;span style=&#34;color:#f2d5cf&#34;&gt;$VPHP&lt;/span&gt;-zip &lt;span style=&#34;color:#f2d5cf&#34;&gt;$VPHP&lt;/span&gt;-mysql &lt;span style=&#34;color:#f2d5cf&#34;&gt;$VPHP&lt;/span&gt;-xml &lt;span style=&#34;color:#f2d5cf&#34;&gt;$VPHP&lt;/span&gt;-fpm
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo apt install &lt;span style=&#34;color:#f2d5cf&#34;&gt;$VPHP&lt;/span&gt;-intl
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# LAMP&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo a2enmod &lt;span style=&#34;color:#f2d5cf&#34;&gt;$VPHP&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo systemctl restart apache2
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# LEMP&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#   1. uncomment and modify the php-fpm version to 8.1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#   2. add index.php&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo vi /etc/nginx/sites-available/default
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        location ~ &lt;span style=&#34;color:#8caaee&#34;&gt;\.&lt;/span&gt;php$ &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                include snippets/fastcgi-php.conf;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#    &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#       # With php-fpm (or other unix sockets):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                fastcgi_pass unix:/var/run/php/php8.1-fpm.sock;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#       # With php-cgi (or other tcp sockets):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#       fastcgi_pass 127.0.0.1:9000;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# Add index.php to the list if you are using PHP&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        index index.php index.html index.htm index.nginx-debian.html;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo systemctl start php8.1-fpm
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;multi-version-php&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#multi-version-php&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Multi version PHP
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;Configuring Apache HTTP to Use the FastCGI Process Manager&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;actions: 處理 CGI scripts based on media type or request method.&lt;/li&gt;
+&lt;li&gt;fcgid: 替代 mod_cgi, 處理 concurrent requests 效率更高&lt;/li&gt;
+&lt;li&gt;alias: 映射 host filesystem 目錄或 recirect URL&lt;/li&gt;
+&lt;li&gt;proxy_fcgi: 允許 Apache forward request 給 PHP-FPM&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# disable the PHP modules related to mpm_prefork&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo a2dismod php7.3 php8.1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo a2dismod mpm_prefork
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo systemctl restart apache2
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# enable event MPM module&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo a2enmod mpm_event
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo apt install php-fpm libapache2-mod-fcgid
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo a2enmod actions fcgid &lt;span style=&#34;color:#99d1db&#34;&gt;alias&lt;/span&gt; proxy_fcgi
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo a2enconf php7.3-fpm php8.1-fpm
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo systemctl reload apache2
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# test configuration&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ cat /etc/apache2/conf-enabled/php7.3-fpm.conf
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo apachectl configtest
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo systemctl restart apache2
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# check if mpm, proxy are active&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# sudo apachectl -M | grep &amp;#39;proxy&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;建立使用不同 PHP 版本的測試站台&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo mkdir /var/www/site1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo chown -R www-data:www-data /var/www/site1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo chmod -R &lt;span style=&#34;color:#ef9f76&#34;&gt;755&lt;/span&gt; /var/www/site1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo vi /var/www/site1/info.php
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;?php phpinfo&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;()&lt;/span&gt;; ?&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo vi /etc/apache2/sites-available/site1.conf
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;VirtualHost *:8081&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     ServerAdmin admin@localhost
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     DocumentRoot /var/www/site1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     DirectoryIndex info.php
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     &amp;lt;Directory /var/www/site1&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        Options Indexes FollowSymLinks MultiViews
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        AllowOverride All
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        Order allow,deny
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        allow from all
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     &amp;lt;/Directory&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &amp;lt;FilesMatch &lt;span style=&#34;color:#8caaee&#34;&gt;\.&lt;/span&gt;php$&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      SetHandler &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;proxy:unix:/run/php/php7.3-fpm.sock|fcgi://localhost&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &amp;lt;/FilesMatch&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     ErrorLog &lt;span style=&#34;color:#a6d189&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;APACHE_LOG_DIR&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;}&lt;/span&gt;/site1.error.log
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     CustomLog &lt;span style=&#34;color:#a6d189&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;APACHE_LOG_DIR&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;}&lt;/span&gt;/site1.access.log combined
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;/VirtualHost&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo apachectl configtest
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo a2ensite site1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# listen to the new ports&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo vi /etc/apache2/ports.conf
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Listen &lt;span style=&#34;color:#ef9f76&#34;&gt;8081&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo systemctl reload apache2
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo systemctl daemon-reload
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# disable the default site&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#$ sudo a2dissite 000-default.conf&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#$ sudo systemctl restart apache2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;以類似步驟建立 site2: .conf 使用 php8.1-fpm, 監聽 port 8082&lt;/p&gt;
+&lt;p&gt;http://localhost:8081/info.php&lt;br&gt;
+http://localhost:8082/info.php&lt;/p&gt;
+&lt;p&gt;連結顯示不同 PHP 版本&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;install-mariadb&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#install-mariadb&#34;&gt;
+        #
+    &lt;/a&gt;
+    Install mariadb
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo apt-get install mariadb-server mariadb-client
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo systemctl start mysql
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo mysql_secure_installation
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Enter current password &lt;span style=&#34;color:#ca9ee6&#34;&gt;for&lt;/span&gt; root &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;(&lt;/span&gt;enter &lt;span style=&#34;color:#ca9ee6&#34;&gt;for&lt;/span&gt; none&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;)&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Set root password? &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;[&lt;/span&gt;Y/n&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;]&lt;/span&gt; y
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;New password: ****
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Re-enter new password: ****
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Remove anonymous users? &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;[&lt;/span&gt;Y/n&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;]&lt;/span&gt; y
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Disallow root login remotely? &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;[&lt;/span&gt;Y/n&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;]&lt;/span&gt; y
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Remove &lt;span style=&#34;color:#99d1db&#34;&gt;test&lt;/span&gt; database and access to it? &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;[&lt;/span&gt;Y/n&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;]&lt;/span&gt; y
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Reload privilege tables now? &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;[&lt;/span&gt;Y/n&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;]&lt;/span&gt; y
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# login db; create an administrator account &amp;#39;php_my_admin&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo mysql -u root -p
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;MariaDB &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;[(&lt;/span&gt;none&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;)]&lt;/span&gt;&amp;gt; CREATE USER &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#39;php_my_admin&amp;#39;&lt;/span&gt;@&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#39;%&amp;#39;&lt;/span&gt; IDENTIFIED BY &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#39;****&amp;#39;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;MariaDB &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;[(&lt;/span&gt;none&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;)]&lt;/span&gt;&amp;gt; GRANT ALL PRIVILEGES ON *.* TO &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#39;php_my_admin&amp;#39;&lt;/span&gt;@&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#39;%&amp;#39;&lt;/span&gt; WITH GRANT OPTION;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;MariaDB &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;[(&lt;/span&gt;none&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;)]&lt;/span&gt;&amp;gt; FLUSH TABLES;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;install-phpmyadmin&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#install-phpmyadmin&#34;&gt;
+        #
+    &lt;/a&gt;
+    Install phpmyadmin
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;LAMP&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo apt-get install phpmyadmin
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo ln -s /usr/share/phpmyadmin /var/www/html/phpmyadmin
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;LEMP&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ &lt;span style=&#34;color:#f2d5cf&#34;&gt;PMA_VER&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;5.0.2
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ &lt;span style=&#34;color:#f2d5cf&#34;&gt;PMA_ARCHIVE&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;phpMyAdmin-&lt;span style=&#34;color:#f2d5cf&#34;&gt;$PMA_VER&lt;/span&gt;-all-languages
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ wget https://files.phpmyadmin.net/phpMyAdmin/&lt;span style=&#34;color:#f2d5cf&#34;&gt;$PMA_VER&lt;/span&gt;/&lt;span style=&#34;color:#f2d5cf&#34;&gt;$PMA_ARCHIVE&lt;/span&gt;.zip
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ unzip &lt;span style=&#34;color:#f2d5cf&#34;&gt;$PMA_ARCHIVE&lt;/span&gt;.zip
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ mv &lt;span style=&#34;color:#f2d5cf&#34;&gt;$PMA_ARCHIVE&lt;/span&gt; pma
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# change the salt value&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ cp pma/config.sample.inc.php pma/config.inc.php
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo vi config.inc.php
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;$cfg&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#39;blowfish_secret&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#39;****&amp;#39;&lt;/span&gt;; /* YOU MUST FILL IN THIS FOR COOKIE AUTH */
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo ln -s ~/pma /var/www/html/pma/
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;install-php-composer&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#install-php-composer&#34;&gt;
+        #
+    &lt;/a&gt;
+    Install PHP Composer
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo curl -s https://getcomposer.org/installer | php
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo mv composer.phar /usr/local/bin/composer
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;lemp-deploy-codeigniter&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#lemp-deploy-codeigniter&#34;&gt;
+        #
+    &lt;/a&gt;
+    LEMP: Deploy Codeigniter
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;Codeigniter3&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo vi /etc/nginx/sites-available/default
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;location /&lt;span style=&#34;color:#f2d5cf&#34;&gt;$PROJ_DIR&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        try_files &lt;span style=&#34;color:#f2d5cf&#34;&gt;$uri&lt;/span&gt; &lt;span style=&#34;color:#f2d5cf&#34;&gt;$uri&lt;/span&gt;/ /&lt;span style=&#34;color:#f2d5cf&#34;&gt;$PROJ_DIR&lt;/span&gt;/index.php?/&lt;span style=&#34;color:#f2d5cf&#34;&gt;$request_uri&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Codeigniter4&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo vi /etc/nginx/sites-available/default
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;location /&lt;span style=&#34;color:#f2d5cf&#34;&gt;$PROJ_DIR&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        try_files &lt;span style=&#34;color:#f2d5cf&#34;&gt;$uri&lt;/span&gt; &lt;span style=&#34;color:#f2d5cf&#34;&gt;$uri&lt;/span&gt;/ /&lt;span style=&#34;color:#f2d5cf&#34;&gt;$PROJ_DIR&lt;/span&gt;/index.php?/&lt;span style=&#34;color:#f2d5cf&#34;&gt;$request_uri&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;run-apache-and-nginx-simultaneously&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#run-apache-and-nginx-simultaneously&#34;&gt;
+        #
+    &lt;/a&gt;
+    Run Apache and Nginx simultaneously
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;Nginx 做為前端: 擅於處理 concurrent requests, 適合 Proxy 任務, 佔用較少系統資源&lt;br&gt;
+Apache 做為後端: 處理 Concurrent Queue 時效能優於 FastCGI(Nginx 需要類似方式執行 php); mod_php 處理動態 PHP 頁面時也比 php-cgi 穩定且效率高&lt;br&gt;
+故使用 Nginx 接收 client request, 除了動態頁面交由 Apache 處理再透過 Nginx 回傳, 其餘自己處理; 或使用 Nginx 做為 Proxy, 請求都由 Apache, Tomcat 處理&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo vi /etc/apache2/ports.conf
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;- Listen &lt;span style=&#34;color:#ef9f76&#34;&gt;80&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;+ Listen &lt;span style=&#34;color:#ef9f76&#34;&gt;8080&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo vi /etc/nginx/sites-available/default
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    listen &lt;span style=&#34;color:#ef9f76&#34;&gt;80&lt;/span&gt; default_server;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;references&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#references&#34;&gt;
+        #
+    &lt;/a&gt;
+    References
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.digitalocean.com/community/tutorials/how-to-configure-apache-http-with-mpm-event-and-php-fpm-on-ubuntu-18-04&#34;&gt;How To Configure Apache HTTP with MPM Event and PHP-FPM on Ubuntu 18.04&lt;/a&gt;&lt;br&gt;
+[Installing and Configuring FastCGI and PHP-FPM on Ubuntu 18.04](Installing and Configuring FastCGI and PHP-FPM on Ubuntu 18.04)&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>C Programming</title>
+      <link>/posts/prog/c/c/</link>
+      <pubDate>Thu, 21 Mar 2024 00:00:00 +0000</pubDate>
+      <author>i70170@hotmail.com (Mike Chang)</author>
+      <guid>/posts/prog/c/c/</guid>
+      <description>&lt;hr&gt;
+&lt;h2 id=&#34;data-io&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#data-io&#34;&gt;
+        #
+    &lt;/a&gt;
+    Data I/O
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;h3 id=&#34;use-fgets-over-scanf&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#use-fgets-over-scanf&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Use fgets() over scanf()
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;scanf() 使用者不需管理 buffer size (預設值 100 bytes?), 但可能導致 buffer overflow 或 stack overflow&lt;/li&gt;
+&lt;li&gt;scanf() 惡意使用者可能插入 function pointer 或 executable code&lt;/li&gt;
+&lt;li&gt;fgets() 相對強健(robust), *nix 系統上的資料來源可以是 sockets, streams 或實際檔案&lt;/li&gt;
+&lt;li&gt;fgets() 需指定緩衝區長度, 可避免溢出式攻擊&lt;/li&gt;
+&lt;li&gt;fgets() I/O 問題可使用 ferror() 做為 error-handling&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&amp;hellip;&lt;/p&gt;
+&lt;h3 id=&#34;clear-input-buffer&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#clear-input-buffer&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Clear Input Buffer
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//platform-dependent
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;fseek&lt;/span&gt;(stdin, &lt;span style=&#34;color:#ef9f76&#34;&gt;0&lt;/span&gt;, SEEK_END);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//portable
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;char&lt;/span&gt; c &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#99d1db&#34;&gt;NULL&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;while&lt;/span&gt; ((c &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;getchar&lt;/span&gt;()) &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#39;\n&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; c &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;!=&lt;/span&gt; EOF) {;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;/*do nothing*/&lt;/span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;floating-point&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#floating-point&#34;&gt;
+        #
+    &lt;/a&gt;
+    Floating Point
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;format&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;precision&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;bytes&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;range&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Significant Figures&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;float&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;single&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;4&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;±3.4e-38~±3.4e+38&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;7-1&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;double&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;double&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;8&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;±1.79E-308 ~ ±1.79E+308&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;16-1&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;long double&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;long-double&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;16&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;±1.79E-308 ~ ±1.79E+308&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;19-1&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;sign(S) 符號數
+&lt;ul&gt;
+&lt;li&gt;1 bit: 0=positive, 1=negative&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;exponent(E) 指數
+&lt;ul&gt;
+&lt;li&gt;8 bits for biasing
+&lt;ul&gt;
+&lt;li&gt;exponents are signed values to represent both tiny and huge values&lt;/li&gt;
+&lt;li&gt;2&amp;rsquo;s complement makes comparison harder&lt;/li&gt;
+&lt;li&gt;add the bias when storing(unsigned); subtract the bias when interpreting&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;mantissa(M) 尾數
+&lt;ul&gt;
+&lt;li&gt;23 bits&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;NaN, Not a Number
+&lt;ul&gt;
+&lt;li&gt;E: all 1&lt;/li&gt;
+&lt;li&gt;M: not all 0&lt;/li&gt;
+&lt;li&gt;Quiet NaNs, QNaNs, 不確定值(0/0; Inf x 0)&lt;/li&gt;
+&lt;li&gt;Signaling NaNs, SNaNs, 無效操作&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Zero
+&lt;ul&gt;
+&lt;li&gt;E: all 0&lt;/li&gt;
+&lt;li&gt;M: all 0&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Infinite
+&lt;ul&gt;
+&lt;li&gt;E: all 1&lt;/li&gt;
+&lt;li&gt;M: all 0&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;subnormal, denormal, denormalized number
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -Inf    -Normalized   -Denormal    +Denormal   +Normalized    +Inf
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ├───┼─────────────┼────────────┼───────────┼─────────────┼───┤
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;NaN                                ^                               NaN
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                 -0 +0
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;E: all 0&lt;/li&gt;
+&lt;li&gt;M: not all 0&lt;/li&gt;
+&lt;li&gt;超過規格化表示範圍, 即 UFL, UnderFlow Level, 最小可表示數&lt;/li&gt;
+&lt;li&gt;ALU 僅能計算正規數, 非正規數一般觸發硬體中斷處理&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;example of a 32-bit float&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     S   E                M
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ├──┼────────────────┼──────────────────────────────────────────────┤
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    31 30               22                                             0
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    1b 8b               23b
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;NaN, Not a Number
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     x  1 1 1 1 1 1 1 1  n n n n n n n n n n n n n n n n n n n n n n n
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Zero
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     x  0 0 0 0 0 0 0 0  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Infinite
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     x  1 1 1 1 1 1 1 1  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;subnormal
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     x  0 0 0 0 0 0 0 0  n n n n n n n n n n n n n n n n n n n n n n n
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;convert 7.25 from decimal to binary:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     0  1 0 0 0 0 0 0 1  1 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     1. 7d = 111b
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     2. 0.25d = 0.01b:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            0.25 * 2 = 0.5  ...no carry, 1st digit is 0
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            0.5 * 2 = 1     ...with carry, 2nd digit is 1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    3. 7.25d = 111.01b
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    4. S=0 for positive
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    5. 111.01 shifts right by 2 places: 1.1101(IEEE standard: start by 1)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            E = (bias 127) + (2) = 129d = 10000001b
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    6. M = 1101000...b
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;convert from binary expression to dec: 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    S = 0, +1d
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    E = 10000001b=129d, 129 - 127 = 2d
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    M = 0.1101b + 1b = 1.1101b = 1d + 0.5d + 0.25d + 0.0625d = 1.8125d
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    S * M * 2^E = +1 * 1.8125 * 4 = 7.25d
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;system-call&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#system-call&#34;&gt;
+        #
+    &lt;/a&gt;
+    System Call
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;declaration&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;system&lt;/span&gt;(&lt;span style=&#34;color:#ca9ee6&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#e78284&#34;&gt;char&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;command);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;usage&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;char&lt;/span&gt; cmd[&lt;span style=&#34;color:#ef9f76&#34;&gt;64&lt;/span&gt;] &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; {&lt;span style=&#34;color:#ef9f76&#34;&gt;0&lt;/span&gt;};
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;sprintf&lt;/span&gt;(cmd, &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;dirname %s | xargs mkdir -p&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;/home/user/work&amp;#34;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;system&lt;/span&gt;(cmd);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;function-pointer&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#function-pointer&#34;&gt;
+        #
+    &lt;/a&gt;
+    Function pointer
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;Function pointer as input parameter&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;void&lt;/span&gt; (&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;foo[&lt;span style=&#34;color:#ef9f76&#34;&gt;10&lt;/span&gt;])(&lt;span style=&#34;color:#e78284&#34;&gt;void&lt;/span&gt; (&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;)());
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;/* equivalent */&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;typedef&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;void&lt;/span&gt; (&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;fptr_param)();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;typedef&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;void&lt;/span&gt; (&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;fptr)(fptr_param);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;fptr foo[&lt;span style=&#34;color:#ef9f76&#34;&gt;10&lt;/span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;references&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#references&#34;&gt;
+        #
+    &lt;/a&gt;
+    References
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;http://open-std.org/&#34;&gt;Open Standards&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;http://www.open-std.org/jtc1/sc22/wg14/www/standards&#34;&gt;Open Standards: C - Approved standards&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Programming Languages</title>
+      <link>/posts/prog/programming/</link>
+      <pubDate>Wed, 20 Mar 2024 00:00:00 +0000</pubDate>
+      <author>i70170@hotmail.com (Mike Chang)</author>
+      <guid>/posts/prog/programming/</guid>
+      <description>&lt;p&gt;Summary of the programming languages used so far.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Build Tools</title>
@@ -569,599 +1524,6 @@
 &lt;a href=&#34;https://wiki.t-firefly.com/en/Core-PX30-JD4/prepare_compile_linux.html&#34;&gt;Firefly: build environment&lt;/a&gt;&lt;br&gt;
 &lt;a href=&#34;https://wiki.t-firefly.com/en/Core-PX30-JD4/ubuntu_compile.html&#34;&gt;Firefly: build Ubuntu&lt;/a&gt;&lt;br&gt;
 &lt;a href=&#34;https://wiki.t-firefly.com/en/Core-PX30-JD4/buildroot_compile.html&#34;&gt;Firefly: build Buildroot&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Yocto Componet - Bitbake</title>
-      <link>/posts/dev_platform/bitbake/</link>
-      <pubDate>Tue, 19 Mar 2024 00:00:00 +0000</pubDate>
-      <author>i70170@hotmail.com (Mike Chang)</author>
-      <guid>/posts/dev_platform/bitbake/</guid>
-      <description>&lt;h2 id=&#34;yocto-componet---bitbake&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#yocto-componet---bitbake&#34;&gt;
-        #
-    &lt;/a&gt;
-    Yocto Componet - Bitbake
-&lt;/div&gt;
-&lt;/h2&gt;
-&lt;h3 id=&#34;create-a-package&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#create-a-package&#34;&gt;
-        ##
-    &lt;/a&gt;
-    Create a Package
-&lt;/div&gt;
-&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&#34;inc/bitbake/hello_bitbake-1.0&#34;&gt;Example: hello bitbake&lt;/a&gt;&lt;/p&gt;
-&lt;h4 id=&#34;package-description&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#package-description&#34;&gt;
-        ###
-    &lt;/a&gt;
-    Package description
-&lt;/div&gt;
-&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;參考 &lt;a href=&#34;https://docs.yoctoproject.org/dev/contributor-guide/recipe-style-guide.html#recipe-license-fields&#34;&gt;Yocto Project: Recipe License Fields&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;DESCRIPTION&lt;/li&gt;
-&lt;li&gt;HOMEPAGE&lt;/li&gt;
-&lt;li&gt;LICENSE&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&#34;define-dependencies&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#define-dependencies&#34;&gt;
-        ###
-    &lt;/a&gt;
-    Define dependencies
-&lt;/div&gt;
-&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# 編譯期依賴&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;DEPENDS&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;gtk+&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#執行期依賴; 依賴套件會加入 image&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;RDEPENDS&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;cool-ttf-fonts&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;select-source-loction&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#select-source-loction&#34;&gt;
-        ###
-    &lt;/a&gt;
-    Select source loction
-&lt;/div&gt;
-&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# supported protocol: http, ftp, git, svn, file&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# 版本資訊 ${P}: ${PN}-${PV}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#   ${PN} 套件名 ${PV} 套件版本&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;SRC_URI&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;http://0.0.0.0/test/&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;P&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;.tar.bz2&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# derived from shell command: md5sum $file_name&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SRC_URI&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;[&lt;/span&gt;md5sum&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;00000000001111111111222222222233&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# derived from shell command: sha256sum $file_name&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SRC_URI&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;[&lt;/span&gt;sha256sum&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;0000000000111111111122222222223333333333444444444455555555556666&amp;#34;&lt;/span&gt;  
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;select-build-system&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#select-build-system&#34;&gt;
-        ###
-    &lt;/a&gt;
-    Select build system
-&lt;/div&gt;
-&lt;/h4&gt;
-&lt;p&gt;autotools: 先執行 configure script 再執行 make&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;inherit autotools
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
-&lt;h3 id=&#34;hints&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#hints&#34;&gt;
-        ##
-    &lt;/a&gt;
-    Hints
-&lt;/div&gt;
-&lt;/h3&gt;
-&lt;h4 id=&#34;find-recipes&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#find-recipes&#34;&gt;
-        ###
-    &lt;/a&gt;
-    Find recipes
-&lt;/div&gt;
-&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ find -name &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;*busybox*.bb*&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;dump-environment&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#dump-environment&#34;&gt;
-        ###
-    &lt;/a&gt;
-    Dump environment
-&lt;/div&gt;
-&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ bitbake -e | grep -w &lt;span style=&#34;color:#f2d5cf&#34;&gt;$MY_ENV&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# locate package recipe&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# e.g. bitbake -e lk | grep ^S=&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#      S=&amp;#34;work/build/../src/bsp/lk&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ bitbake -e &lt;span style=&#34;color:#f2d5cf&#34;&gt;$PKG_NAME&lt;/span&gt; | grep ^S&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# locate package/image recipe working dir&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ bitbake -e &amp;lt;target&amp;gt; | grep ^WORKDIR&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;development-shell&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#development-shell&#34;&gt;
-        ###
-    &lt;/a&gt;
-    Development shell
-&lt;/div&gt;
-&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ bitbake -c devshell &amp;lt;target&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;search-path&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#search-path&#34;&gt;
-        ###
-    &lt;/a&gt;
-    Search path
-&lt;/div&gt;
-&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ bitbake -e ota_upgrade| grep ^FILESPATH&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; | sed &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#39;s/:/\n/g&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# find cross toolchain path&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ bitbake -c devshell __recipe_name; &lt;span style=&#34;color:#99d1db&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#f2d5cf&#34;&gt;$CC&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;show-debug-information&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#show-debug-information&#34;&gt;
-        ###
-    &lt;/a&gt;
-    Show Debug Information
-&lt;/div&gt;
-&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ bitbake -D &lt;span style=&#34;color:#f2d5cf&#34;&gt;$target&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ bitbake -DD &lt;span style=&#34;color:#f2d5cf&#34;&gt;$target&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ bitbake -DDD &lt;span style=&#34;color:#f2d5cf&#34;&gt;$target&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
-&lt;h3 id=&#34;recipe&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#recipe&#34;&gt;
-        ##
-    &lt;/a&gt;
-    recipe
-&lt;/div&gt;
-&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;bitbake-layers: 建立 layer; 修改 bblayers.conf; 查看 layer 包含的 recipes&lt;/li&gt;
-&lt;li&gt;recipetool: 建立/修改 recipe; 產生 .bb 及 .bbappend&lt;/li&gt;
-&lt;li&gt;devtool: 開發測試; 不更改設定產生獨立 workspace layer, 與既有 layers 整合測試後新增/更新 layer
-&lt;ul&gt;
-&lt;li&gt;目標 layer 需存在於 bblayer.conf 中&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&#34;example-core-image-miniaml&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#example-core-image-miniaml&#34;&gt;
-        ###
-    &lt;/a&gt;
-    Example: core-image-miniaml
-&lt;/div&gt;
-&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ . oe-init-build-env
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# 產生必要系統檔&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ bitbake core-image-minimal
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# 在 build 建立 layer&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ bitbake-layers create-layer meta-layer
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# 將 layer 加入 bblayers.conf&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ bitbake-layers add-layer meta-layer
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ ls
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bitbake-cookerdaemon.log  cache  conf  downloads  meta-layer  sstate-cache  tmp
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;generate-recipe&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#generate-recipe&#34;&gt;
-        ###
-    &lt;/a&gt;
-    Generate Recipe
-&lt;/div&gt;
-&lt;/h4&gt;
-&lt;p&gt;&lt;strong&gt;devtool&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;package: GIFLIB&lt;/li&gt;
-&lt;li&gt;dependencies: autotool, configure, Makefile&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ devtool add giflib git://git.code.sf.net/p/giflib/code
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ devtool build giflib
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ devtool build-image core-image-minimal
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# 將 giflib recipe 加入 meta-layer&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ devtool finish giflib meta-layer
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;recipetool&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://yi-jyun.blogspot.com/2018/02/yocto-2-recipe.html&#34;&gt;yocto recipe : (1) 撰寫 recipe&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;複製 &lt;a href=&#34;inc/bitbake/example-recipetool&#34;&gt;Example: recipetool&lt;/a&gt; 到 meta-layer/recipes-myproject/myproject/files&lt;/p&gt;
-&lt;p&gt;NOTE: yocto 預設附檔目錄: files&lt;/p&gt;
-&lt;p&gt;根據 myproject.bb.mod 修改&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ bitbake myproject
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;add-recipe-to-image&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#add-recipe-to-image&#34;&gt;
-        #
-    &lt;/a&gt;
-    Add Recipe to Image
-&lt;/div&gt;
-&lt;/h2&gt;
-&lt;p&gt;修改 build/&lt;code&gt;local.conf&lt;/code&gt;:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;# 不推薦寫法: IMAGE_INSTALL += &amp;#34; [recipe_basename]&amp;#34;
-IMAGE_INSTALL_append = &amp;#34; [recipe_basename]&amp;#34;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;僅關聯特定 image 的 recipe:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;IMAGE_INSTALL_append_pn-core-image-minimal = &amp;#34; [recipe_basename]&amp;#34;
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;bbappend&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#bbappend&#34;&gt;
-        #
-    &lt;/a&gt;
-    .bbappend
-&lt;/div&gt;
-&lt;/h2&gt;
-&lt;p&gt;.bb 用於描述 recipe, 會因 patch 或 task 不同而需修改, 可使用 .bbappend 擴充而不修改 .bb&lt;/p&gt;
-&lt;p&gt;使用情境&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;recipe 已存在於 yocto 基本 meta layer
-&lt;ul&gt;
-&lt;li&gt;e.g. u-boot_2017.01.bb&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;layer 共用 recipe&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;package: giflib(giflib-5.1.4.tar.bz2)&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ . oe-init-build-env
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# move &amp;#39;giflib-5.1.4.tar.bz2&amp;#39; here&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ mkdir 3rd-pkgs; &lt;span style=&#34;color:#99d1db&#34;&gt;cd&lt;/span&gt; 3rd-pkgs/
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ bitbake-layers create-layer meta-custom
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ bitbake-layers add-layer meta-custom
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ &lt;span style=&#34;color:#99d1db&#34;&gt;cd&lt;/span&gt; meta-custom/recipes-example; rm -rf example/; mkdir giflib; &lt;span style=&#34;color:#99d1db&#34;&gt;cd&lt;/span&gt; ../../
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ recipetool create -o meta-custom/recipes-example/giflib/giflib_5.1.4.bb  3rd-pkgs/giflib-5.1.4.tar.bz2
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;以 devtool 產生 .bbappend 並存放於 meta-custom-devtool-patch layer:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ bitbake-layers create-layer meta-custom-devtool-patch
-$ bitbake-layers add-layer meta-custom-devtool-patch
-$ mkdir meta-custom-devtool-patch/recipes-example/giflib
-
-# 使用 devtool 會產生 workspace layer 並複製到 workspace/source
-# 以下修改 util/giffix.c
-
-$ devtool modify giflib
-NOTE: Source tree extracted to /media/disk1-1/Github/poky/build/workspace/sources/giflib
-NOTE: Recipe giflib now set up to build from /media/disk1-1/Github/poky/build/workspace/sources/giflib
-
-int main(int argc, char **argv)
-{
-    ...
-    printf(&amp;#34;hello !!! (devtool)\n&amp;#34;);
-    ...
-}
-
-$ devtool finish giflib meta-custom-devtool-patch
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;手動產生 .bbappend 並存放於 meta-custom-manual-patch layer:&lt;/p&gt;
-&lt;p&gt;NOTE: yocto 預設搜尋 giflib/giflib, 修改 FILEPATHS(.bb) 或 FILESEXTRAPATHS(.bbappend)&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ bitbake-layers create-layer meta-custom-manual-patch
-$ bitbake-layers add-layer meta-custom-manual-patch
-$ mkdir meta-custom-manual-patch/recipes-example/giflib/ meta-custom-manual-patch/recipes-example/giflib/giflib
-
-# 手動複製 giflib 並修改 util/giffix.c
-
-$ cd 3rd-pkgs; cp -fa giflib-5.1.4 giflib-5.1.4_modify
-$ diff -Naur giflib-5.1.4/util/giffix.c giflib-5.1.4_modify/util/giffix.c &amp;gt; 00_giflib_util_giffix.patch
-$ cd ..; mv 3rd-pkgs/00_giflib_util_giffix.patch meta-custom-manual-patch/recipes-example/giflib/giflib/
-
-int main(int argc, char **argv)
-{
-    ...
-    printf(&amp;#34;hellow !! (manual)\n&amp;#34;);
-    ...
-}
-
-# 建立 giflib_5.1.4.bbappend
-$ vim meta-custom-manual-patch/recipes-example/giflib/giflib_5.1.4.bbappend
-
-FILESEXTRAPATHS_prepend := &amp;#34;${THISDIR}/${PN}:&amp;#34;
-SRC_URI_append = &amp;#34;\
-    file://00_giflib_util_giffix.patch \
-&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
-&lt;h1 id=&#34;oe-task-order&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#oe-task-order&#34;&gt;
-        ##
-    &lt;/a&gt;
-    OE Task Order
-&lt;/div&gt;
-&lt;/h1&gt;
-&lt;p&gt;build/&amp;hellip;/&lt;code&gt;log.task_order&lt;/code&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;do_setscene&lt;/li&gt;
-&lt;li&gt;do_fetch&lt;/li&gt;
-&lt;li&gt;do_unpack&lt;/li&gt;
-&lt;li&gt;do_patch&lt;/li&gt;
-&lt;li&gt;do_configure&lt;/li&gt;
-&lt;li&gt;do_qa_configure&lt;/li&gt;
-&lt;li&gt;do_compile&lt;/li&gt;
-&lt;li&gt;do_stage&lt;/li&gt;
-&lt;li&gt;do_install&lt;/li&gt;
-&lt;li&gt;do_package&lt;/li&gt;
-&lt;li&gt;do_populate_staging&lt;/li&gt;
-&lt;li&gt;do_package_write_deb&lt;/li&gt;
-&lt;li&gt;do_package_write&lt;/li&gt;
-&lt;li&gt;do_distribute_sources&lt;/li&gt;
-&lt;li&gt;do_qa_staging&lt;/li&gt;
-&lt;li&gt;do_build&lt;/li&gt;
-&lt;li&gt;do_rebuild&lt;/li&gt;
-&lt;/ol&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;do_cleansstate&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;移除某個對象的所有外部輸出文件以及共享狀態(sstate)緩存內容（不包括遠程鏡像共享內容）。&lt;/li&gt;
-&lt;li&gt;$ bitbake -ccleansstaterecipe&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;do_cleanall&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;刪除目標對象的所有外部輸出文件，共享狀態緩存，以及下載的源文件（想重新執行do_fetch 過程）。&lt;/li&gt;
-&lt;li&gt;$ bitbake -c cleanallrecipe&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;do_fetch&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;下載源文件，它用SRC_URI變量以及 不同的變量名前綴來決定適當的下載模式，如調用本地文件：
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;  SRC_URI =&amp;#34; \
-      file://0001-ccsp-gwprovapp-port-for-puma7-atom.patch;patch=1
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;do_unpack&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;提取sourcecode中的內容放到${WORKDIR}所指定的工作目錄中。變量S指定了被提取出的sourcecode的最終歸屬位置。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;do_patch&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;定位patch文件，並且將他們運用到sourcecode中。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;do_populate_lic&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;在構建image的時候爲recipe寫license。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;do_configure&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;配置源數據是否打開或者關閉，那些將要被build的軟件的build-time和一些配置選項。do_configure,運行是當前的工作目錄切換到${B}（自行定義的工作目錄）。&lt;/li&gt;
-&lt;li&gt;此任務的默認行爲是當發現一個makefile的CLEANBROKEN沒有被設置爲“1”，將運行oe_runmake clean。其他情況do_configure 不做任何操作。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;do_compile&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;編譯sourcecode，並且運行時也會將當前的工作目錄切換到${B}。&lt;/li&gt;
-&lt;li&gt;如果發現makefile其默認運行oe_runmake，如果沒有找到,do_compile 不做其他操作。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;do_install&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;拷貝將要打包的文件到保持區域${D}。其運行時將當前工作路徑切換至編譯目錄${B}。do_install 以及其他那些直接或者間接依賴與安裝文件的任務（如do_package,do_package_write_*, do_rootfs），都運行在fakeroot的權限下。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;do_package&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;分析保持區域${D} 的內容，並根據可獲得的數據包package和文件file，將其內容分割成多個子集。&lt;/li&gt;
-&lt;li&gt;do_package 與do_packagedata 任務相關聯，並且保存了一些重要的元數據。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;do_packagedata&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;保存由do_package所產生的源數據到PKGDATA_DIR目錄下，使得內容變成全局變量。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;每項任務可添加 &lt;code&gt;_append&lt;/code&gt; &lt;code&gt;_prepend&lt;/code&gt; 後綴&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;do_configure_prepend ()&lt;/li&gt;
-&lt;li&gt;do_compile_append ()&lt;/li&gt;
-&lt;li&gt;python do_compile_prepend ()&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;除 python 前的函數都使用 shell 語法定義&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;do_compile 之類函數定義於 openembedded 的 classes; 顯示 oe 基於 bitbake 架構完成&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;meta/poky/meta/classes/kernel.bbclass
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;EXPORT_FUNCTIONS do_compile do_install do_configure
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;使用 &lt;code&gt;addtask&lt;/code&gt; 調整 task 間順序&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;addtask assemble_fitimage before do_install after do_compile&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;MIRRORS_prepend () 修改 .bb 的 mirror&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h1 id=&#34;recipe-task&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#recipe-task&#34;&gt;
-        ##
-    &lt;/a&gt;
-    Recipe Task
-&lt;/div&gt;
-&lt;/h1&gt;
-&lt;h2 id=&#34;list-recipe-tasks&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#list-recipe-tasks&#34;&gt;
-        #
-    &lt;/a&gt;
-    List Recipe Tasks
-&lt;/div&gt;
-&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ bitbake &amp;lt;recipe name&amp;gt; -c listtasks
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;function-in-a-task&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#function-in-a-task&#34;&gt;
-        #
-    &lt;/a&gt;
-    Function in a Task
-&lt;/div&gt;
-&lt;/h2&gt;
-&lt;p&gt;need to be prefixed with &lt;code&gt;do_&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Function Types:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;shell function&lt;/li&gt;
-&lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;do_shell_msg &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    bbwarn &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#39;hello&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;2&#34;&gt;
-&lt;li&gt;BitBake-style Python functions&lt;/li&gt;
-&lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;python do_py_msg () {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#81c8be&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;time&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    bb&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;.&lt;/span&gt;warn( &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;hello &lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;%s&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;%&lt;/span&gt; ( time&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;.&lt;/span&gt;strftime(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#39;%Y%m&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;%d&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#39;&lt;/span&gt;, time&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;.&lt;/span&gt;gmtime())))
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;adddeleteinsertignore-task&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#adddeleteinsertignore-task&#34;&gt;
-        #
-    &lt;/a&gt;
-    Add/Delete/Insert/Ignore Task
-&lt;/div&gt;
-&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# Add&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;addtask task &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;[&lt;/span&gt;before task&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;[&lt;/span&gt;after task&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# e.g. &lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;addtask do_msg before do_configure after do_fetch
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# Insert: [task function name]_append() or [task function name]_prepend()&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;do_msg_prepend &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    bbwarn &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#39;before&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;do_msg_append &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    bbwarn &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#39;before&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;do_msg &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    bbwarn &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#39;kkk&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;addtask do_msg
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# Delete: add dependent tasks will be deleted&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;deltask do_configure
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# Ignore&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;do_task_name&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;[&lt;/span&gt;noexec&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;1&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a href=&#34;http://yi-jyun.blogspot.com/2018/05/yocto-5-recipes-task.html&#34;&gt;recipe&amp;rsquo;s task&lt;/a&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;h1 id=&#34;others&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#others&#34;&gt;
-        ##
-    &lt;/a&gt;
-    Others
-&lt;/div&gt;
-&lt;/h1&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;bitbake-layers show-recipes
-bitbake-layers show-recipes | grep u-boot
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;skip-recipes&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#skip-recipes&#34;&gt;
-        #
-    &lt;/a&gt;
-    Skip Recipes
-&lt;/div&gt;
-&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;BBMASK&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;+=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;path_to_recipe&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;access files in a folder&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;FILESEXTRAPATHS_prepend :&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;THISDIR&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;/files&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# to use&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SRC_URI_append &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;file://my_file&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Modifying Rootfs Directly:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;ROOTFS_POSTPROCESS_COMMAND: calls the given functions after bitbake has created the rootfs&lt;/li&gt;
-&lt;li&gt;ROOTFS_POSTINSTALL_COMMAND: calls the given functions after bitbake has installed packages&lt;/li&gt;
-&lt;li&gt;ROOTFS_POSTUNINSTALL_COMMAND: calls the given functions after bitbake has uninstalled packages&lt;/li&gt;
-&lt;li&gt;ROOTFS_PREPROCESS_COMMAND: calls the given functions before OE creates the rootfs&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;my_function&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    //
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;ROOTFS_POSTPROCESS_COMMAND&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;+=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34; my_function; &amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Adding Packages to SDK&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# add to recipe or local.conf&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;IMAGE_INSTALL_append&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34; cppzmq-dev&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;TOOLCHAIN_TARGET_TASK_append&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34; cppzmq-dev&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# inherit the following classes&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;BBCLASSEXTEND&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;native nativesdk&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# add package to TOOLCHAIN_HOST_TASK&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# append to nativesdk-packagegroup-sdk-host recipe&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;RDEPENDS_&lt;span style=&#34;color:#a6d189&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;PN&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;}&lt;/span&gt; +&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34; \
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;    nativesdk-zeromq-dev \
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
-&lt;h1 id=&#34;bb&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#bb&#34;&gt;
-        ##
-    &lt;/a&gt;
-    .bb
-&lt;/div&gt;
-&lt;/h1&gt;
-&lt;h2 id=&#34;add-user-service&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#add-user-service&#34;&gt;
-        #
-    &lt;/a&gt;
-    Add User Service
-&lt;/div&gt;
-&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;SRC_URI&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;+=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;file://mai-hald-user.service&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;SRC_URI&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;+=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;file://mai-hald-user.sh&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;FILES_&lt;span style=&#34;color:#a6d189&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;PN&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;}&lt;/span&gt; +&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;systemd_user_unitdir&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; 
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;do_install&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        install -d &lt;span style=&#34;color:#a6d189&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;D&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;}${&lt;/span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;systemd_user_unitdir&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;}&lt;/span&gt;/default.target.wants
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        install -m &lt;span style=&#34;color:#ef9f76&#34;&gt;0644&lt;/span&gt; -p -D &lt;span style=&#34;color:#a6d189&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;WORKDIR&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;}&lt;/span&gt;/mai-hald-user.service &lt;span style=&#34;color:#a6d189&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;D&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;}${&lt;/span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;systemd_user_unitdir&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;}&lt;/span&gt;/mai-hald-user.service
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        mkdir -p &lt;span style=&#34;color:#a6d189&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;D&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;}&lt;/span&gt;/etc/systemd/user/default.target.wants/
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ln -sf &lt;span style=&#34;color:#a6d189&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;systemd_user_unitdir&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;}&lt;/span&gt;/mai-hald-user.service &lt;span style=&#34;color:#a6d189&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;D&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;}&lt;/span&gt;/etc/systemd/user/default.target.wants/mai-hald-user.service
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        install -m &lt;span style=&#34;color:#ef9f76&#34;&gt;0755&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;WORKDIR&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;}&lt;/span&gt;/mai-hald-user.sh &lt;span style=&#34;color:#a6d189&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;D&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;}${&lt;/span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;base_bindir&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
-&lt;h1 id=&#34;references&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#references&#34;&gt;
-        ##
-    &lt;/a&gt;
-    References
-&lt;/div&gt;
-&lt;/h1&gt;
-&lt;p&gt;&lt;a href=&#34;https://docs.yoctoproject.org/dev/contributor-guide/recipe-style-guide.html#recipe-license-fields&#34;&gt;Yocto Project: Recipe License Fields&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>

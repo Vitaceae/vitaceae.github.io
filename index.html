@@ -451,7 +451,7 @@
             
             
             <h1 class="p-name post-title ">
-                <a class="u-url" href="/posts/dev_platform/build_tools/">Build Tools</a>
+                <a class="u-url" href="/posts/prog/c/c_optimization/">C Programming Optimization</a>
             </h1>
         </header>
         
@@ -460,156 +460,45 @@
 
     
         <div class="content post-summary p-summary">
-            <h2 id="build-tools" >
+            <hr>
+<h2 id="arithmetic" >
 <div>
-    <a href="#build-tools">
+    <a href="#arithmetic">
         #
     </a>
-    Build Tools
-</div>
-</h2>
-<p><strong>目的</strong></p>
-<ul>
-<li>
-<p>編譯/交叉編譯應用程式</p>
-</li>
-<li>
-<p>將應用程式包裝成套件</p>
-</li>
-<li>
-<p>測試 binary ecosystem</p>
-</li>
-<li>
-<p>部署 image</p>
-</li>
-<li>
-<p><a href="https://buildroot.org/">Buildroot</a></p>
-<ul>
-<li>建置客製化且最精簡的嵌入式 Linux 系統</li>
-<li>支援 bootloader(e.g. U-Boot), Linux kernel(zImage or bzImage), BusyBox 管理</li>
-<li>套件管理器: 無; 建構期配置所需套件</li>
-<li>recipe 數量: 約 700</li>
-</ul>
-</li>
-<li>
-<p><a href="https://openwrt.org/">OpenWRT</a></p>
-<ul>
-<li>建置用於 router 和嵌入式網路設備的 Linux 發行版</li>
-<li>套件管理器: opkg</li>
-<li>提供豐富的網路和 router 相關函式庫以及驅動</li>
-</ul>
-</li>
-<li>
-<p><a href="https://www.yoctoproject.org/">Yocto/OpenEmbedded</a></p>
-<ul>
-<li>適合產生 distribution</li>
-<li>套件管理器: 無; 建構期配置所需套件</li>
-<li>提供各式通用函式庫以及驅動</li>
-<li>recipe 數量: 約 8000</li>
-</ul>
-</li>
-</ul>
-        </div>
-    
-
-    
-    
-    
-    
-    
-
-    
-
-    
-
-
-
-<div class="post-info noselect">
-    
-        <div class="post-date dt-published">
-            <time datetime="2024-03-19">2024-03-19</time>
-            
-        </div>
-    
-
-    <a class="post-hidden-url u-url" href="/posts/dev_platform/build_tools/">/posts/dev_platform/build_tools/</a>
-    <a href="https://vitaceae.github.io/" class="p-name p-author post-hidden-author h-card" rel="me">Mike</a>
-
-
-    <div class="post-taxonomies">
-        
-            <ul class="post-categories">
-                
-                    
-                    <li><a href="/categories/dev-platform/">Dev-Platform</a></li>
-                
-            </ul>
-        
-        
-            <ul class="post-tags">
-                
-                    
-                    <li><a href="/tags/yocto/">#Yocto</a></li>
-                
-                    
-                    <li><a href="/tags/buildroot/">#Buildroot</a></li>
-                
-                    
-                    <li><a href="/tags/openwrt/">#Openwrt</a></li>
-                
-            </ul>
-        
-        
-    </div>
-</div>
-
-</article>
-
-        
-            <article class="post-list h-feed post-card">
-    <div class="post-header">
-        <header>
-            
-            
-            
-            <h1 class="p-name post-title ">
-                <a class="u-url" href="/posts/dev_platform/rockchip/">Rockchip Development Platform</a>
-            </h1>
-        </header>
-        
-
-    </div>
-
-    
-        <div class="content post-summary p-summary">
-            <h2 id="rockchip-development-platform" >
-<div>
-    <a href="#rockchip-development-platform">
-        #
-    </a>
-    Rockchip Development Platform
+    Arithmetic
 </div>
 </h2>
 <ul>
-<li>firefly-docs: official design documents</li>
-<li>firefly-tools
+<li>data dependencies
 <ul>
-<li>DriverAssistant: Windows USB driver</li>
-<li>AndroidTool: Windows download tool</li>
-<li>LinuxUpgradeTool: Linux download tool</li>
-<li>Android8.1UpgradeTool</li>
+<li>avoid waiting for results</li>
+<li>use multiple variables to get partial results instead of using a single one</li>
+</ul>
+</li>
+<li>multiplication
+<ul>
+<li>time cost ~ 3 times more than addition</li>
+<li>use <code>shift</code> for (2^n)</li>
+<li>use <code>shift</code> and addition for (2^n - 1)</li>
+<li>use <code>lea</code>, Load Effective Address</li>
+</ul>
+</li>
+<li>division
+<ul>
+<li>use <code>shift</code> for (2^n)</li>
 </ul>
 </li>
 </ul>
 <hr>
-<h3 id="build-images" >
+<h2 id="references" >
 <div>
-    <a href="#build-images">
-        ##
+    <a href="#references">
+        #
     </a>
-    Build Images
+    References
 </div>
-</h3>
+</h2>
         </div>
     
 
@@ -628,12 +517,12 @@
 <div class="post-info noselect">
     
         <div class="post-date dt-published">
-            <time datetime="2024-03-19">2024-03-19</time>
+            <time datetime="2024-03-27">2024-03-27</time>
             
         </div>
     
 
-    <a class="post-hidden-url u-url" href="/posts/dev_platform/rockchip/">/posts/dev_platform/rockchip/</a>
+    <a class="post-hidden-url u-url" href="/posts/prog/c/c_optimization/">/posts/prog/c/c_optimization/</a>
     <a href="https://vitaceae.github.io/" class="p-name p-author post-hidden-author h-card" rel="me">Mike</a>
 
 
@@ -642,7 +531,7 @@
             <ul class="post-categories">
                 
                     
-                    <li><a href="/categories/dev-platform/">Dev-Platform</a></li>
+                    <li><a href="/categories/programming/">Programming</a></li>
                 
             </ul>
         
@@ -650,10 +539,7 @@
             <ul class="post-tags">
                 
                     
-                    <li><a href="/tags/rockchip/">#Rockchip</a></li>
-                
-                    
-                    <li><a href="/tags/yocto/">#Yocto</a></li>
+                    <li><a href="/tags/c-prog/">#C-Prog</a></li>
                 
             </ul>
         
@@ -671,7 +557,7 @@
             
             
             <h1 class="p-name post-title ">
-                <a class="u-url" href="/posts/dev_platform/bitbake/">Yocto Componet - Bitbake</a>
+                <a class="u-url" href="/posts/prog/c/c_syntax/">C Programming Syntax</a>
             </h1>
         </header>
         
@@ -680,348 +566,26 @@
 
     
         <div class="content post-summary p-summary">
-            <h2 id="yocto-componet---bitbake" >
+            <h2 id="union" >
 <div>
-    <a href="#yocto-componet---bitbake">
+    <a href="#union">
         #
     </a>
-    Yocto Componet - Bitbake
+    union
 </div>
 </h2>
-<h3 id="create-a-package" >
-<div>
-    <a href="#create-a-package">
-        ##
-    </a>
-    Create a Package
-</div>
-</h3>
-<p><a href="inc/bitbake/hello_bitbake-1.0">Example: hello bitbake</a></p>
-<h4 id="package-description" >
-<div>
-    <a href="#package-description">
-        ###
-    </a>
-    Package description
-</div>
-</h4>
-<ul>
-<li>參考 <a href="https://docs.yoctoproject.org/dev/contributor-guide/recipe-style-guide.html#recipe-license-fields">Yocto Project: Recipe License Fields</a>
-<ul>
-<li>DESCRIPTION</li>
-<li>HOMEPAGE</li>
-<li>LICENSE</li>
-</ul>
-</li>
-</ul>
-        </div>
-    
-
-    
-    
-    
-    
-    
-
-    
-
-    
-
-
-
-<div class="post-info noselect">
-    
-        <div class="post-date dt-published">
-            <time datetime="2024-03-19">2024-03-19</time>
-            
-        </div>
-    
-
-    <a class="post-hidden-url u-url" href="/posts/dev_platform/bitbake/">/posts/dev_platform/bitbake/</a>
-    <a href="https://vitaceae.github.io/" class="p-name p-author post-hidden-author h-card" rel="me">Mike</a>
-
-
-    <div class="post-taxonomies">
-        
-            <ul class="post-categories">
-                
-                    
-                    <li><a href="/categories/dev-platform/">Dev-Platform</a></li>
-                
-            </ul>
-        
-        
-            <ul class="post-tags">
-                
-                    
-                    <li><a href="/tags/yocto/">#Yocto</a></li>
-                
-                    
-                    <li><a href="/tags/bitbake/">#Bitbake</a></li>
-                
-            </ul>
-        
-        
-    </div>
-</div>
-
-</article>
-
-        
-            <article class="post-list h-feed post-card">
-    <div class="post-header">
-        <header>
-            
-            
-            
-            <h1 class="p-name post-title ">
-                <a class="u-url" href="/posts/dev_platform/yocto/">Yocto Development Platform</a>
-            </h1>
-        </header>
-        
-
-    </div>
-
-    
-        <div class="content post-summary p-summary">
-            <h2 id="yocto-development-platform" >
-<div>
-    <a href="#yocto-development-platform">
-        #
-    </a>
-    Yocto Development Platform
-</div>
-</h2>
-<ul>
-<li>Prerequisites:
-<ul>
-<li>Yocto 3.0+</li>
-<li>Git 1.8.3.1+</li>
-<li>tar 1.27+</li>
-<li>Python 3.4.0+</li>
-</ul>
-</li>
-</ul>
-<p><img src="/posts/dev_platform/./inc/yocto/yocto_core_components.jpg" alt="Yocto Core Components"/></p>
-<p><strong>Core components</strong></p>
-<ul>
-<li><code>BitBake</code>: like GNU Make, used to parse scripts</li>
-<li><code>OpenEmbedded-Core</code>: handles metadata
-<ul>
-<li>meta-yocto</li>
-<li>meta-yocto-bsp</li>
-</ul>
-</li>
-<li><code>Poky</code></li>
-<li>BSP layer (layer names start with the string &ldquo;meta-&rdquo;)
-<ul>
-<li>meta-raspberry</li>
-<li>meta-fsl-arm</li>
-<li>&hellip;</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h3 id="set-up-build-host" >
-<div>
-    <a href="#set-up-build-host">
-        ##
-    </a>
-    Set up Build Host
-</div>
-</h3>
-        </div>
-    
-
-    
-    
-    
-    
-    
-
-    
-
-    
-
-
-
-<div class="post-info noselect">
-    
-        <div class="post-date dt-published">
-            <time datetime="2024-03-19">2024-03-19</time>
-            
-        </div>
-    
-
-    <a class="post-hidden-url u-url" href="/posts/dev_platform/yocto/">/posts/dev_platform/yocto/</a>
-    <a href="https://vitaceae.github.io/" class="p-name p-author post-hidden-author h-card" rel="me">Mike</a>
-
-
-    <div class="post-taxonomies">
-        
-            <ul class="post-categories">
-                
-                    
-                    <li><a href="/categories/dev-platform/">Dev-Platform</a></li>
-                
-            </ul>
-        
-        
-            <ul class="post-tags">
-                
-                    
-                    <li><a href="/tags/yocto/">#Yocto</a></li>
-                
-                    
-                    <li><a href="/tags/todo/">#Todo</a></li>
-                
-            </ul>
-        
-        
-    </div>
-</div>
-
-</article>
-
-        
-            <article class="post-list h-feed post-card">
-    <div class="post-header">
-        <header>
-            
-            
-            
-            <h1 class="p-name post-title ">
-                <a class="u-url" href="/posts/web/analytics_tools/">Analytics Tools</a>
-            </h1>
-        </header>
-        
-
-    </div>
-
-    
-        <div class="content post-summary p-summary">
-            <h2 id="website-analytics-tools" >
-<div>
-    <a href="#website-analytics-tools">
-        #
-    </a>
-    Website Analytics Tools
-</div>
-</h2>
-<table>
-  <thead>
-      <tr>
-          <th style="text-align: center">Platform</th>
-          <th style="text-align: center">hosting</th>
-          <th style="text-align: center">charge</th>
-          <th style="text-align: center">data retention</th>
-          <th style="text-align: center">site limit</th>
-          <th style="text-align: center">user-friendly</th>
-          <th style="text-align: left">others</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td style="text-align: center">Umami</td>
-          <td style="text-align: center">cloud</td>
-          <td style="text-align: center">free</td>
-          <td style="text-align: center">1 year</td>
-          <td style="text-align: center">3</td>
-          <td style="text-align: center">v</td>
-          <td></td>
-      </tr>
-      <tr>
-          <td style="text-align: center">Google Analytics</td>
-          <td style="text-align: center">cloud</td>
-          <td style="text-align: center">free</td>
-          <td style="text-align: center"></td>
-          <td style="text-align: center"></td>
-          <td style="text-align: center"></td>
-          <td style="text-align: left">資料過於複雜, 減少依賴邪惡 Google</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">Netlify + Neon</td>
-          <td style="text-align: center">self</td>
-          <td style="text-align: center">free</td>
-          <td style="text-align: center">unlimited</td>
-          <td style="text-align: center"></td>
-          <td style="text-align: center">x</td>
-          <td></td>
-      </tr>
-      <tr>
-          <td style="text-align: center">Railway</td>
-          <td style="text-align: center">self</td>
-          <td style="text-align: center">$5+/month</td>
-          <td style="text-align: center">unlimited</td>
-          <td style="text-align: center"></td>
-          <td style="text-align: center">v</td>
-          <td></td>
-      </tr>
-      <tr>
-          <td style="text-align: center">Vercel + TiDB Cloud</td>
-          <td style="text-align: center">self</td>
-          <td style="text-align: center">free</td>
-          <td style="text-align: center">unlimited</td>
-          <td style="text-align: center">unlimited</td>
-          <td style="text-align: center">x</td>
-          <td style="text-align: left">custom domain name; free 5GB storage</td>
-      </tr>
-  </tbody>
-</table>
-<ul>
-<li><a href="https://cloud.umami.is/">Umami Cloud</a>
-<ul>
-<li><a href="https://cloud.umami.is/settings/websites">管理統計站台</a></li>
-</ul>
-</li>
-<li>GA, Google Analytics</li>
-<li><a href="https://www.netlify.com/">Netlify</a> + <a href="https://neon.tech/">Neon</a>
-<ul>
-<li>Netlify 不支援部署資料庫, 故需要 Neon 部署 PostgreSQL</li>
-<li><a href="https://umami.is/docs/guides/running-on-netlify">Umami: Running on Netlify</a></li>
-<li><a href="https://umami.is/docs/guides/running-on-neon">Umami: Running on Neon Postgres</a></li>
-</ul>
-</li>
-<li><a href="https://railway.app/">Railway</a>
-<ul>
-<li><a href="https://umami.is/docs/guides/running-on-railway">Umami: Running on Railway</a></li>
-</ul>
-</li>
-<li><a href="https://vercel.com/">Vercel</a> + <a href="https://tidbcloud.com/">TiDB Cloud</a>
-<ul>
-<li><a href="https://docs.pingcap.com/tidbcloud/integrate-tidbcloud-with-vercel/">TiDB: Integrate TiDB Cloud with Vercel</a></li>
-<li><a href="https://umami.is/docs/guides/running-on-vercel">Umami: Running on Vercel</a></li>
-</ul>
-</li>
-</ul>
-<h3 id="hugo-做法" >
-<div>
-    <a href="#hugo-%e5%81%9a%e6%b3%95">
-        ##
-    </a>
-    Hugo 做法
-</div>
-</h3>
-<ol>
-<li>在主題模板的 layouts/partials/head.html 中插入</li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#737994;font-style:italic">&lt;!--
-</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic">{% ... %} template tags
-</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic">{{ ... }} template variables
-</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic">以下敘述判斷 .toml 檔案中 params.UmamiAnalytics 的 enabled 值決定是否引入外部 html
-</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic">--&gt;</span>
+<p>成員共用記憶體空間; 最大成員決定結構大小</p>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#ca9ee6">union</span> foo {
+</span></span><span style="display:flex;"><span>    <span style="color:#ca9ee6">struct</span> {
+</span></span><span style="display:flex;"><span>        unsinged <span style="color:#e78284">int</span> <span style="color:#99d1db">d1</span>: <span style="color:#ef9f76">4</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#e78284">unsigned</span> <span style="color:#e78284">int</span> <span style="color:#99d1db">d2</span>: <span style="color:#ef9f76">2</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#e78284">unsigned</span> <span style="color:#e78284">int</span> <span style="color:#99d1db">reserved</span>: <span style="color:#ef9f76">26</span>;
+</span></span><span style="display:flex;"><span>    } s;
+</span></span><span style="display:flex;"><span>    <span style="color:#e78284">unsigned</span> <span style="color:#e78284">char</span> c;
+</span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>{{ if (.Site.Params.UmamiAnalytics.enabled ) }}
-</span></span><span style="display:flex;"><span>    {{ partial &#34;umami_analytics.html&#34; . }}
-</span></span><span style="display:flex;"><span>{{ end }}
-</span></span></code></pre></div><h3 id="update-history" >
-<div>
-    <a href="#update-history">
-        ##
-    </a>
-    Update History
-</div>
-</h3>
+</span></span><span style="display:flex;"><span><span style="color:#ca9ee6">typedef</span> <span style="color:#ca9ee6">union</span> foo               foo_u
+</span></span></code></pre></div><p>&hellip;</p>
         </div>
     
 
@@ -1029,30 +593,6 @@
     
     
     
-    
-        <script>
-  MathJax = {
-    tex: {
-      inlineMath: [['$', '$'], ['\\(', '\\)']],
-      displayMath: [['$$','$$'], ['\\[', '\\]']],
-      processEscapes: true,
-      processEnvironments: true
-    },
-    options: {
-      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
-    }
-  };
-
-  window.addEventListener('load', (event) => {
-      document.querySelectorAll("mjx-container").forEach(function(x){
-        x.parentElement.classList += 'has-jax'})
-    });
-
-</script>
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script type="text/javascript" id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
     
 
     
@@ -1064,12 +604,181 @@
 <div class="post-info noselect">
     
         <div class="post-date dt-published">
-            <time datetime="2024-03-18">2024-03-18</time>
+            <time datetime="2024-03-27">2024-03-27</time>
             
         </div>
     
 
-    <a class="post-hidden-url u-url" href="/posts/web/analytics_tools/">/posts/web/analytics_tools/</a>
+    <a class="post-hidden-url u-url" href="/posts/prog/c/c_syntax/">/posts/prog/c/c_syntax/</a>
+    <a href="https://vitaceae.github.io/" class="p-name p-author post-hidden-author h-card" rel="me">Mike</a>
+
+
+    <div class="post-taxonomies">
+        
+            <ul class="post-categories">
+                
+                    
+                    <li><a href="/categories/programming/">Programming</a></li>
+                
+            </ul>
+        
+        
+            <ul class="post-tags">
+                
+                    
+                    <li><a href="/tags/c-prog/">#C-Prog</a></li>
+                
+            </ul>
+        
+        
+    </div>
+</div>
+
+</article>
+
+        
+            <article class="post-list h-feed post-card">
+    <div class="post-header">
+        <header>
+            
+            
+            
+            <h1 class="p-name post-title ">
+                <a class="u-url" href="/posts/prog/web/cgi_in_c/">CGI in C</a>
+            </h1>
+        </header>
+        
+
+    </div>
+
+    
+        <div class="content post-summary p-summary">
+            <p><code>CGI</code>, Common Gateway Interface 協定: 外部應用程式與 Web 伺服器溝通的協議。CGI 在伺服器端執行並回傳動態生成的結果。</p>
+<ol>
+<li>將執行檔放在 Web server(IIS, Apache, &hellip;) 具執行權限的目錄下
+<ul>
+<li>Apache 主機參考 httpd.conf 設定, 常見預設值為 <strong>/usr/lib/cgi-bin/</strong> 以及 <strong>/var/www/cgi.index</strong></li>
+<li>IIS 主機啟動 IIS Service 並設定目錄權限</li>
+</ul>
+</li>
+<li>html 發送請求透過表單函數 GET/POST
+<ul>
+<li>GET 的 url 會改變, 能查看參數, 參數以 <em>&amp;</em> 區隔, 無法傳送大量資料且較不安全</li>
+<li>POST 傳送完整表單, 可傳送大量資料且較安全</li>
+</ul>
+</li>
+</ol>
+<p>&hellip;</p>
+        </div>
+    
+
+    
+    
+    
+    
+    
+
+    
+
+    
+
+
+
+<div class="post-info noselect">
+    
+        <div class="post-date dt-published">
+            <time datetime="2024-03-26">2024-03-26</time>
+            
+        </div>
+    
+
+    <a class="post-hidden-url u-url" href="/posts/prog/web/cgi_in_c/">/posts/prog/web/cgi_in_c/</a>
+    <a href="https://vitaceae.github.io/" class="p-name p-author post-hidden-author h-card" rel="me">Mike</a>
+
+
+    <div class="post-taxonomies">
+        
+            <ul class="post-categories">
+                
+                    
+                    <li><a href="/categories/web-prog/">Web-Prog</a></li>
+                
+            </ul>
+        
+        
+            <ul class="post-tags">
+                
+                    
+                    <li><a href="/tags/cgi/">#Cgi</a></li>
+                
+            </ul>
+        
+        
+    </div>
+</div>
+
+</article>
+
+        
+            <article class="post-list h-feed post-card">
+    <div class="post-header">
+        <header>
+            
+            
+            
+            <h1 class="p-name post-title ">
+                <a class="u-url" href="/posts/web/setup_lamp_lemp/">Set up LAMP and LEMP Stack</a>
+            </h1>
+        </header>
+        
+
+    </div>
+
+    
+        <div class="content post-summary p-summary">
+            <ul>
+<li>測試環境: Ubuntu 24.04.2 on WSL</li>
+<li>LAMP: Linux OS, Apache web server, MySQL database, PHP programming language</li>
+<li>LEMP: Linux OS, Nginx web server, MySQL database, PHP programming language
+<ul>
+<li>中文圈或稱為 LNMP</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="lamp-install-apache" >
+<div>
+    <a href="#lamp-install-apache">
+        #
+    </a>
+    LAMP: Install Apache
+</div>
+</h2>
+<p>&hellip;</p>
+        </div>
+    
+
+    
+    
+    
+    
+    
+
+    
+
+    
+
+
+
+<div class="post-info noselect">
+    
+        <div class="post-date dt-published">
+            <time datetime="2024-03-26">2024-03-26</time>
+            
+        </div>
+    
+
+    <a class="post-hidden-url u-url" href="/posts/web/setup_lamp_lemp/">/posts/web/setup_lamp_lemp/</a>
     <a href="https://vitaceae.github.io/" class="p-name p-author post-hidden-author h-card" rel="me">Mike</a>
 
 
@@ -1086,10 +795,105 @@
             <ul class="post-tags">
                 
                     
-                    <li><a href="/tags/website/">#Website</a></li>
+                    <li><a href="/tags/lamp/">#LAMP</a></li>
                 
                     
-                    <li><a href="/tags/analytics/">#Analytics</a></li>
+                    <li><a href="/tags/lnmp/">#LNMP</a></li>
+                
+                    
+                    <li><a href="/tags/lemp/">#LEMP</a></li>
+                
+            </ul>
+        
+        
+    </div>
+</div>
+
+</article>
+
+        
+            <article class="post-list h-feed post-card">
+    <div class="post-header">
+        <header>
+            
+            
+            
+            <h1 class="p-name post-title ">
+                <a class="u-url" href="/posts/prog/c/c/">C Programming</a>
+            </h1>
+        </header>
+        
+
+    </div>
+
+    
+        <div class="content post-summary p-summary">
+            <hr>
+<h2 id="data-io" >
+<div>
+    <a href="#data-io">
+        #
+    </a>
+    Data I/O
+</div>
+</h2>
+<h3 id="use-fgets-over-scanf" >
+<div>
+    <a href="#use-fgets-over-scanf">
+        ##
+    </a>
+    Use fgets() over scanf()
+</div>
+</h3>
+<ol>
+<li>scanf() 使用者不需管理 buffer size (預設值 100 bytes?), 但可能導致 buffer overflow 或 stack overflow</li>
+<li>scanf() 惡意使用者可能插入 function pointer 或 executable code</li>
+<li>fgets() 相對強健(robust), *nix 系統上的資料來源可以是 sockets, streams 或實際檔案</li>
+<li>fgets() 需指定緩衝區長度, 可避免溢出式攻擊</li>
+<li>fgets() I/O 問題可使用 ferror() 做為 error-handling</li>
+</ol>
+<p>&hellip;</p>
+        </div>
+    
+
+    
+    
+    
+    
+    
+
+    
+
+    
+
+
+
+<div class="post-info noselect">
+    
+        <div class="post-date dt-published">
+            <time datetime="2024-03-21">2024-03-21</time>
+            
+        </div>
+    
+
+    <a class="post-hidden-url u-url" href="/posts/prog/c/c/">/posts/prog/c/c/</a>
+    <a href="https://vitaceae.github.io/" class="p-name p-author post-hidden-author h-card" rel="me">Mike</a>
+
+
+    <div class="post-taxonomies">
+        
+            <ul class="post-categories">
+                
+                    
+                    <li><a href="/categories/programming/">Programming</a></li>
+                
+            </ul>
+        
+        
+            <ul class="post-tags">
+                
+                    
+                    <li><a href="/tags/c-prog/">#C-Prog</a></li>
                 
             </ul>
         
@@ -1123,23 +927,6 @@
         
             <footer class="common-footer noselect">
     
-    
-        <ul class="language-select">
-    
-    
-    
-
-    
-        
-            <li>English</li>
-        
-    
-        
-            <li><a href="/zh/">Chinese</a></li>
-        
-    
-</ul>
-
     
 
     <div class="common-footer-bottom">

@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+
+
+<html lang="en-us" data-theme="">
+<head>
+    
+        
+<meta charset="utf-8">
+<meta name="HandheldFriendly" content="True">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer-when-downgrade">
+
+<title>CGI in C - Mike&rsquo;s Cheatsheet</title>
+
+<meta name="description" content="Web Programming: CGI in C">
+
+
+
+
+
+<link rel="icon" type="image/x-icon" href="https://vitaceae.github.io/favicon.ico">
+<link rel="apple-touch-icon-precomposed" href="https://vitaceae.github.io/favicon.png">
+
+
+
+
+
+
+    
+
+
+
+    
+
+
+
+<style>
+  body {
+    visibility: hidden;
+    opacity: 0;
+  }
+</style>
+
+<noscript>
+  <style>
+    body {
+      visibility: visible;
+      opacity: 1;
+    }
+  </style>
+</noscript>
+
+
+
+
+    
+
+
+
+
+
+    
+    
+        
+    
+    
+
+    
+        <link rel="stylesheet" href="/css/style.min.44f8240afd8df81b52565c4119ac5ae247776c77fc6d7ccf6e101a6c98abfa7a.css" integrity="sha256-RPgkCv2N&#43;BtSVlxBGaxa4kd3bHf8bXzPbhAabJir&#43;no=">
+    
+
+
+
+
+
+    
+
+
+
+
+
+    
+    
+        
+    
+    
+
+    
+        <link rel="stylesheet" href="/css/style.min.c4c04b3ef88e3d619ad4c7ee5e03048422bc55c4fefdc1f07657c1133670aa22.css" integrity="sha256-xMBLPviOPWGa1MfuXgMEhCK8VcT&#43;/cHwdlfBEzZwqiI=">
+    
+
+
+
+
+
+    
+
+
+
+
+
+    
+    
+        
+    
+    
+
+    
+        <link rel="stylesheet" href="/css/style.min.21c5d8fe0a79d623b0adc1ce4bd4f6dd2c05cd939c9aaaa966ba7186b1464f4d.css" integrity="sha256-IcXY/gp51iOwrcHOS9T23SwFzZOcmqqpZrpxhrFGT00=">
+    
+
+
+
+
+
+
+
+    
+    
+      
+    
+
+    
+      
+        <link rel="stylesheet" href="/css/style.min.220fef57dded2a519c4c1295a11e3e15c4e531d51640b089d6f68e32429e6cfd.css" integrity="sha256-Ig/vV93tKlGcTBKVoR4&#43;FcTlMdUWQLCJ1vaOMkKebP0=" crossorigin="anonymous">
+      
+    
+
+    
+    
+      
+    
+
+    
+      
+        <link rel="stylesheet" href="/css/style.min.27cdeadf5ff7cf7ed35a3243b1afc90f8ed58cda71a9aadcf4f06b02b71716fa.css" integrity="sha256-J83q31/3z37TWjJDsa/JD47VjNpxqarc9PBrArcXFvo=" crossorigin="anonymous">
+      
+    
+
+
+
+
+
+
+    
+
+    
+
+
+
+
+
+    
+    
+        
+    
+    
+
+    
+        <script src="/js/script.min.08f04d96386c73c9bf4d160333f8f448c05a6e01c06770542ee0e013954ce930.js" type="text/javascript" charset="utf-8" integrity="sha256-CPBNljhsc8m/TRYDM/j0SMBabgHAZ3BULuDgE5VM6TA="></script>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+<script async defer data-website-id="6701f641-f034-45b0-8693-d2095318465a" data-cache="false" data-do-not-track="false" src="https://cloud.umami.is/script.js"></script>
+
+
+
+
+
+
+    
+</head>
+<body>
+    <a class="skip-main" href="#main">Skip to main content</a>
+    <div class="container">
+        <header class="common-header">
+            
+                <div class="header-top">
+    <div class="header-top-left">
+        <h1 class="site-title noselect">
+    <a href="/">Mike&#39;s Cheatsheet</a>
+</h1>
+
+        
+
+
+
+    
+
+
+
+    
+
+
+
+    
+        <div class="theme-switcher">
+            <span class="inline-svg">
+
+    
+
+
+    
+    
+    
+    
+    
+
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-sun-high"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14.828 14.828a4 4 0 1 0 -5.656 -5.656a4 4 0 0 0 5.656 5.656z" /><path d="M6.343 17.657l-1.414 1.414" /><path d="M6.343 6.343l-1.414 -1.414" /><path d="M17.657 6.343l1.414 -1.414" /><path d="M17.657 17.657l1.414 1.414" /><path d="M4 12h-2" /><path d="M12 4v-2" /><path d="M20 12h2" /><path d="M12 20v2" /></svg>
+
+
+</span>
+
+        </div>
+    
+
+    <script>
+        const STORAGE_KEY = 'user-color-scheme'
+        const defaultTheme = "auto"
+
+        let currentTheme
+        let switchButton
+        let autoDefinedScheme = window.matchMedia('(prefers-color-scheme: dark)')
+
+        function switchTheme(e) {
+            currentTheme = (currentTheme === 'dark') ? 'light' : 'dark';
+            if (localStorage) localStorage.setItem(STORAGE_KEY, currentTheme);
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            changeGiscusTheme(currentTheme);
+            document.body.dispatchEvent(new CustomEvent(currentTheme + "-theme-set"));
+        }
+
+        const autoChangeScheme = e => {
+            currentTheme = e.matches ? 'dark' : 'light'
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            changeGiscusTheme(currentTheme);
+            document.body.dispatchEvent(new CustomEvent(currentTheme + "-theme-set"));
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            switchButton = document.querySelector('.theme-switcher')
+            currentTheme = detectCurrentScheme()
+
+            if (currentTheme === 'auto') {
+                autoChangeScheme(autoDefinedScheme);
+                autoDefinedScheme.addListener(autoChangeScheme);
+            } else {
+                document.documentElement.setAttribute('data-theme', currentTheme)
+            }
+
+            if (switchButton) {
+                switchButton.addEventListener('click', switchTheme, false)
+            }
+
+            showContent();
+        })
+
+        function detectCurrentScheme() {
+            if (localStorage !== null && localStorage.getItem(STORAGE_KEY)) {
+                return localStorage.getItem(STORAGE_KEY)
+            }
+            if (defaultTheme) {
+                return defaultTheme
+            }
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        function showContent() {
+            document.body.style.visibility = 'visible';
+            document.body.style.opacity = 1;
+        }
+
+        function changeGiscusTheme (theme) {
+            function sendMessage(message) {
+              const iframe = document.querySelector('iframe.giscus-frame');
+              if (!iframe) return;
+              iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+            }
+
+            sendMessage({
+              setConfig: {
+                theme: theme
+              }
+            });
+        }
+    </script>
+
+
+        <ul class="social-icons noselect">
+
+
+    
+        <li>
+            <a href="https://github.com/Vitaceae" title="Github" rel="me">
+            <span class="inline-svg">
+
+    
+
+
+    
+    
+    
+    
+    
+
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-github"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" /></svg>
+
+
+</span>
+
+            </a>
+        </li>
+    
+
+    
+        <li>
+            <a href="https://www.linkedin.com/in/mingke-chang-375a5684/" title="Linkedin" rel="me">
+            <span class="inline-svg">
+
+    
+
+
+    
+    
+    
+    
+    
+
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-linkedin"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" /><path d="M8 11l0 5" /><path d="M8 8l0 .01" /><path d="M12 16l0 -5" /><path d="M16 16v-3a2 2 0 0 0 -4 0" /></svg>
+
+
+</span>
+
+            </a>
+        </li>
+    
+
+    
+        <li>
+            <a href="i70170@hotmail.com" title="Email" rel="me">
+            <span class="inline-svg">
+
+    
+
+
+    
+    
+    
+    
+    
+
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-mail"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" /><path d="M3 7l9 6l9 -6" /></svg>
+
+
+</span>
+
+            </a>
+        </li>
+    
+
+
+
+
+
+
+    <li>
+            <a href="/index.xml" title="RSS" rel="me">
+            <span class="inline-svg">
+
+    
+
+
+    
+    
+    
+    
+    
+
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-rss"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M4 4a16 16 0 0 1 16 16" /><path d="M4 11a9 9 0 0 1 9 9" /></svg>
+
+
+</span>
+
+            </a>
+        </li>
+    
+
+</ul>
+
+    </div>
+    <div class="header-top-right">
+
+    </div>
+</div>
+
+
+    <nav class="noselect">
+        
+        
+        <a class="" href="https://vitaceae.github.io/" title="">Home</a>
+        
+        <a class="" href="https://vitaceae.github.io/about/" title="">About</a>
+        
+        <a class="" href="https://vitaceae.github.io/categories/" title="">Categories</a>
+        
+        <a class="" href="https://vitaceae.github.io/tags/" title="">Tags</a>
+        
+        <a class="" href="https://vitaceae.github.io/posts/" title="">Archive</a>
+        
+    </nav>
+
+
+
+
+
+
+
+
+            
+        </header>
+        <main id="main" tabindex="-1">
+            
+    
+
+    <article class="post h-entry">
+        <div class="post-header">
+            <header>
+                <h1 class="p-name post-title">CGI in C</h1>
+                
+
+            </header>
+            
+
+    
+
+
+
+<div class="post-info noselect">
+    
+        <div class="post-date dt-published">
+            <time datetime="2024-03-26">2024-03-26</time>
+            
+        </div>
+    
+
+    <a class="post-hidden-url u-url" href="/posts/prog/web/cgi_in_c/">/posts/prog/web/cgi_in_c/</a>
+    <a href="https://vitaceae.github.io/" class="p-name p-author post-hidden-author h-card" rel="me">Mike</a>
+
+
+    <div class="post-taxonomies">
+        
+            <ul class="post-categories">
+                
+                    
+                    <li><a href="/categories/web-prog/">Web-Prog</a></li>
+                
+            </ul>
+        
+        
+            <ul class="post-tags">
+                
+                    
+                    <li><a href="/tags/cgi/">#Cgi</a></li>
+                
+            </ul>
+        
+        
+    </div>
+</div>
+
+        </div>
+        
+
+  
+  
+
+
+
+
+  
+  
+  
+  <details class="toc noselect">
+    <summary>Table of Contents</summary>
+    <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#enable-cgi-on-apache2">Enable CGI on Apache2</a></li>
+    <li><a href="#example-hello-cgi">Example: Hello CGI</a></li>
+    <li><a href="#example-取得環境參數">Example: 取得環境參數</a></li>
+    <li><a href="#example-getpost">Example: GET/POST</a>
+      <ul>
+        <li><a href="#indexhtml">index.html</a></li>
+        <li><a href="#get">GET</a></li>
+        <li><a href="#post">POST</a></li>
+      </ul>
+    </li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav></div>
+  </details>
+  
+
+
+
+<script>
+  var toc = document.querySelector(".toc");
+  if (toc) {
+    toc.addEventListener("click", function () {
+      if (event.target.tagName !== "A") {
+        event.preventDefault();
+        if (this.open) {
+          this.open = false;
+          this.classList.remove("expanded");
+        } else {
+          this.open = true;
+          this.classList.add("expanded");
+        }
+      }
+    });
+  }
+</script>
+
+        <div class="content e-content">
+            <p><code>CGI</code>, Common Gateway Interface 協定: 外部應用程式與 Web 伺服器溝通的協議。CGI 在伺服器端執行並回傳動態生成的結果。</p>
+<ol>
+<li>將執行檔放在 Web server(IIS, Apache, &hellip;) 具執行權限的目錄下
+<ul>
+<li>Apache 主機參考 httpd.conf 設定, 常見預設值為 <strong>/usr/lib/cgi-bin/</strong> 以及 <strong>/var/www/cgi.index</strong></li>
+<li>IIS 主機啟動 IIS Service 並設定目錄權限</li>
+</ul>
+</li>
+<li>html 發送請求透過表單函數 GET/POST
+<ul>
+<li>GET 的 url 會改變, 能查看參數, 參數以 <em>&amp;</em> 區隔, 無法傳送大量資料且較不安全</li>
+<li>POST 傳送完整表單, 可傳送大量資料且較安全</li>
+</ul>
+</li>
+</ol>
+<p>&hellip;</p>
+<hr>
+<h2 id="enable-cgi-on-apache2" >
+<div>
+    <a href="#enable-cgi-on-apache2">
+        #
+    </a>
+    Enable CGI on Apache2
+</div>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ vi /etc/apache2/sites-enabled/000-default.conf  
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ScriptAlias /cgi-bin/ /usr/lib/cgi-bin/
+</span></span><span style="display:flex;"><span>    &lt;Directory <span style="color:#a6d189">&#34;/usr/lib/cgi-bin&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>        AllowOverride All
+</span></span><span style="display:flex;"><span>        Options +ExecCGI -MultiViews +SymLinksIfOwnerMatch
+</span></span><span style="display:flex;"><span>        Order allow,deny
+</span></span><span style="display:flex;"><span>        Allow from all
+</span></span><span style="display:flex;"><span>    &lt;/Directory&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ a2enmod cgid
+</span></span><span style="display:flex;"><span>$ sudo systemctl restart apache2
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"># 編譯後複製到 /usr/lib/cgi-bin/ 目錄下</span>
+</span></span><span style="display:flex;"><span>$ gcc hello.c -o hello
+</span></span><span style="display:flex;"><span>$ sudo mv hello /usr/lib/cgi-bin/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"># test on WSL terminal</span>
+</span></span><span style="display:flex;"><span>$ curl localhost/cgi-bin/hello.cgi
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"># test on browser</span>
+</span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"># explore http://[my-inet]/cgi-bin/hello.cgi</span>
+</span></span></code></pre></div><hr>
+<h2 id="example-hello-cgi" >
+<div>
+    <a href="#example-hello-cgi">
+        #
+    </a>
+    Example: Hello CGI
+</div>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#737994;font-style:italic">#include</span> <span style="color:#737994;font-weight:bold;font-style:italic">&lt;stdio.h&gt;</span><span style="color:#737994;font-style:italic">
+</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic">#include</span> <span style="color:#737994;font-weight:bold;font-style:italic">&lt;stdlib.h&gt;</span><span style="color:#737994;font-style:italic">
+</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"></span>
+</span></span><span style="display:flex;"><span><span style="color:#e78284">int</span> <span style="color:#8caaee">main</span>(<span style="color:#e78284">int</span> argc, <span style="color:#e78284">char</span><span style="color:#99d1db;font-weight:bold">*</span> argv[],<span style="color:#e78284">char</span> <span style="color:#99d1db;font-weight:bold">*</span>envp[])
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#8caaee">printf</span>(<span style="color:#a6d189">&#34;Content-type: text/html</span><span style="color:#8caaee">\n\n</span><span style="color:#a6d189">&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#8caaee">printf</span>(<span style="color:#a6d189">&#34;Hello CGI&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
+<h2 id="example-取得環境參數" >
+<div>
+    <a href="#example-%e5%8f%96%e5%be%97%e7%92%b0%e5%a2%83%e5%8f%83%e6%95%b8">
+        #
+    </a>
+    Example: 取得環境參數
+</div>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#737994;font-style:italic">#include</span> <span style="color:#737994;font-weight:bold;font-style:italic">&lt;stdio.h&gt;</span><span style="color:#737994;font-style:italic">
+</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"></span>
+</span></span><span style="display:flex;"><span><span style="color:#e78284">int</span> <span style="color:#8caaee">main</span>(<span style="color:#e78284">int</span> argc, <span style="color:#e78284">char</span><span style="color:#99d1db;font-weight:bold">*</span> argv[], <span style="color:#e78284">char</span> <span style="color:#99d1db;font-weight:bold">*</span>envp[])
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#8caaee">printf</span>(<span style="color:#a6d189">&#34;Content-type: text/html</span><span style="color:#8caaee">\n\n</span><span style="color:#a6d189">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ca9ee6">for</span> (<span style="color:#e78284">int</span> i <span style="color:#99d1db;font-weight:bold">=</span> <span style="color:#ef9f76">0</span>; envp[i] <span style="color:#99d1db;font-weight:bold">!=</span> <span style="color:#99d1db">NULL</span>; <span style="color:#99d1db;font-weight:bold">++</span>i) {
+</span></span><span style="display:flex;"><span>        <span style="color:#8caaee">printf</span>(envp[i]);
+</span></span><span style="display:flex;"><span>        <span style="color:#8caaee">printf</span>(<span style="color:#a6d189">&#34;&lt;br&gt;&#34;</span>);
+</span></span><span style="display:flex;"><span>    } 
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
+<h2 id="example-getpost" >
+<div>
+    <a href="#example-getpost">
+        #
+    </a>
+    Example: GET/POST
+</div>
+</h2>
+<h3 id="indexhtml" >
+<div>
+    <a href="#indexhtml">
+        ##
+    </a>
+    index.html
+</div>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#ca9ee6">html</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#ca9ee6">head</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#ca9ee6">title</span>&gt;CGI Testing&lt;/<span style="color:#ca9ee6">title</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#ca9ee6">head</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#ca9ee6">body</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#ca9ee6">table</span> <span style="color:#8caaee">width</span><span style="color:#99d1db;font-weight:bold">=</span><span style="color:#a6d189">&#34;200&#34;</span> <span style="color:#8caaee">height</span><span style="color:#99d1db;font-weight:bold">=</span><span style="color:#a6d189">&#34;180&#34;</span> <span style="color:#8caaee">border</span><span style="color:#99d1db;font-weight:bold">=</span><span style="color:#a6d189">&#34;0&#34;</span> <span style="color:#8caaee">style</span><span style="color:#99d1db;font-weight:bold">=</span><span style="color:#a6d189">&#34;font-size:12px&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#ca9ee6">tr</span>&gt;&lt;<span style="color:#ca9ee6">td</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#ca9ee6">div</span> <span style="color:#8caaee">style</span><span style="color:#99d1db;font-weight:bold">=</span><span style="color:#a6d189">&#34;font-weight:bold; font-size:15px&#34;</span>&gt;CGI Method: GET&lt;/<span style="color:#ca9ee6">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#ca9ee6">form</span> <span style="color:#8caaee">method</span><span style="color:#99d1db;font-weight:bold">=</span><span style="color:#a6d189">&#34;get&#34;</span> <span style="color:#8caaee">action</span><span style="color:#99d1db;font-weight:bold">=</span><span style="color:#a6d189">&#34;./cgi-bin/get&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#ca9ee6">input</span> <span style="color:#8caaee">type</span><span style="color:#99d1db;font-weight:bold">=</span><span style="color:#a6d189">&#34;txt&#34;</span> <span style="color:#8caaee">size</span><span style="color:#99d1db;font-weight:bold">=</span><span style="color:#a6d189">&#34;3&#34;</span> <span style="color:#8caaee">name</span><span style="color:#99d1db;font-weight:bold">=</span><span style="color:#a6d189">&#34;a&#34;</span>&gt;+
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#ca9ee6">input</span> <span style="color:#8caaee">type</span><span style="color:#99d1db;font-weight:bold">=</span><span style="color:#a6d189">&#34;txt&#34;</span> <span style="color:#8caaee">size</span><span style="color:#99d1db;font-weight:bold">=</span><span style="color:#a6d189">&#34;3&#34;</span> <span style="color:#8caaee">name</span><span style="color:#99d1db;font-weight:bold">=</span><span style="color:#a6d189">&#34;b&#34;</span>&gt;=
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#ca9ee6">input</span> <span style="color:#8caaee">type</span><span style="color:#99d1db;font-weight:bold">=</span><span style="color:#a6d189">&#34;submit&#34;</span> <span style="color:#8caaee">value</span><span style="color:#99d1db;font-weight:bold">=</span><span style="color:#a6d189">&#34;sum&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#ca9ee6">form</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#ca9ee6">td</span>&gt;&lt;/<span style="color:#ca9ee6">tr</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#ca9ee6">tr</span>&gt;&lt;<span style="color:#ca9ee6">td</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#ca9ee6">div</span> <span style="color:#8caaee">style</span><span style="color:#99d1db;font-weight:bold">=</span><span style="color:#a6d189">&#34;font-weight:bold; font-size:15px&#34;</span>&gt;CGI Method: POST&lt;/<span style="color:#ca9ee6">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#ca9ee6">form</span> <span style="color:#8caaee">method</span><span style="color:#99d1db;font-weight:bold">=</span><span style="color:#a6d189">&#34;post&#34;</span> <span style="color:#8caaee">action</span><span style="color:#99d1db;font-weight:bold">=</span><span style="color:#a6d189">&#34;./cgi-bin/post&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#ca9ee6">input</span> <span style="color:#8caaee">type</span><span style="color:#99d1db;font-weight:bold">=</span><span style="color:#a6d189">&#34;txt&#34;</span> <span style="color:#8caaee">size</span><span style="color:#99d1db;font-weight:bold">=</span><span style="color:#a6d189">&#34;3&#34;</span> <span style="color:#8caaee">name</span><span style="color:#99d1db;font-weight:bold">=</span><span style="color:#a6d189">&#34;m&#34;</span>&gt;*
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#ca9ee6">input</span> <span style="color:#8caaee">type</span><span style="color:#99d1db;font-weight:bold">=</span><span style="color:#a6d189">&#34;txt&#34;</span> <span style="color:#8caaee">size</span><span style="color:#99d1db;font-weight:bold">=</span><span style="color:#a6d189">&#34;3&#34;</span> <span style="color:#8caaee">name</span><span style="color:#99d1db;font-weight:bold">=</span><span style="color:#a6d189">&#34;n&#34;</span>&gt;=
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#ca9ee6">input</span> <span style="color:#8caaee">type</span><span style="color:#99d1db;font-weight:bold">=</span><span style="color:#a6d189">&#34;submit&#34;</span> <span style="color:#8caaee">value</span><span style="color:#99d1db;font-weight:bold">=</span><span style="color:#a6d189">&#34;product&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#ca9ee6">form</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#ca9ee6">td</span>&gt;&lt;/<span style="color:#ca9ee6">tr</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#ca9ee6">tr</span>&gt;&lt;<span style="color:#ca9ee6">td</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#ca9ee6">inputtype</span><span style="color:#e78284">=&#34;</span><span style="color:#8caaee">button</span><span style="color:#e78284">&#34;</span> <span style="color:#8caaee">value</span><span style="color:#99d1db;font-weight:bold">=</span><span style="color:#a6d189">&#34;Back&#34;</span> <span style="color:#8caaee">onclick</span><span style="color:#99d1db;font-weight:bold">=</span><span style="color:#a6d189">&#39;javascript:window.location=&#34;./index.html&#34;&#39;</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#ca9ee6">td</span>&gt;&lt;/<span style="color:#ca9ee6">tr</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#ca9ee6">table</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#ca9ee6">body</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#ca9ee6">html</span>&gt;
+</span></span></code></pre></div><h3 id="get" >
+<div>
+    <a href="#get">
+        ##
+    </a>
+    GET
+</div>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#737994;font-style:italic">#include</span> <span style="color:#737994;font-weight:bold;font-style:italic">&lt;stdio.h&gt;</span><span style="color:#737994;font-style:italic">
+</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic">#include</span> <span style="color:#737994;font-weight:bold;font-style:italic">&lt;stdlib.h&gt;</span><span style="color:#737994;font-style:italic">
+</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"></span>
+</span></span><span style="display:flex;"><span><span style="color:#e78284">int</span> <span style="color:#8caaee">main</span>(<span style="color:#e78284">void</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#e78284">char</span> <span style="color:#99d1db;font-weight:bold">*</span>data;
+</span></span><span style="display:flex;"><span>    <span style="color:#e78284">char</span> a[<span style="color:#ef9f76">10</span>], b[<span style="color:#ef9f76">10</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8caaee">printf</span>(<span style="color:#a6d189">&#34;Content-Type:text/html</span><span style="color:#8caaee">\n\n</span><span style="color:#a6d189">&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#8caaee">printf</span>(<span style="color:#a6d189">&#34;&lt;HTML&gt;</span><span style="color:#8caaee">\n</span><span style="color:#a6d189">&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#8caaee">printf</span>(<span style="color:#a6d189">&#34;&lt;HEAD&gt;</span><span style="color:#8caaee">\n</span><span style="color:#a6d189">&lt;TITLE &gt;Get Method&lt;/TITLE&gt;</span><span style="color:#8caaee">\n</span><span style="color:#a6d189">&lt;/HEAD&gt;</span><span style="color:#8caaee">\n</span><span style="color:#a6d189">&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#8caaee">printf</span>(<span style="color:#a6d189">&#34;&lt;BODY&gt;</span><span style="color:#8caaee">\n</span><span style="color:#a6d189">&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#8caaee">printf</span>(<span style="color:#a6d189">&#34;&lt;div style=</span><span style="color:#8caaee">\&#34;</span><span style="color:#a6d189">font-size:12px</span><span style="color:#8caaee">\&#34;</span><span style="color:#a6d189">&gt;</span><span style="color:#8caaee">\n</span><span style="color:#a6d189">&#34;</span>);
+</span></span><span style="display:flex;"><span>    data <span style="color:#99d1db;font-weight:bold">=</span> <span style="color:#8caaee">getenv</span>(<span style="color:#a6d189">&#34;QUERY_STRING&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#8caaee">printf</span>(<span style="color:#a6d189">&#34;data:%s&#34;</span>,data);
+</span></span><span style="display:flex;"><span>    <span style="color:#ca9ee6">if</span> (<span style="color:#8caaee">sscanf</span>(data,<span style="color:#a6d189">&#34;a=%[^&amp;]&amp;b=%s&#34;</span>, a, b) <span style="color:#99d1db;font-weight:bold">!=</span> <span style="color:#ef9f76">2</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#8caaee">printf</span>(<span style="color:#a6d189">&#34;&lt;DIV STYLE=</span><span style="color:#8caaee">\&#34;</span><span style="color:#a6d189">COLOR:RED</span><span style="color:#8caaee">\&#34;</span><span style="color:#a6d189">&gt;Error: null parameters&lt; /DIV&gt;</span><span style="color:#8caaee">\n</span><span style="color:#a6d189">&#34;</span>);
+</span></span><span style="display:flex;"><span>    } <span style="color:#ca9ee6">else</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#8caaee">printf</span>(<span style="color:#a6d189">&#34;&lt;DIV STYLE=</span><span style="color:#8caaee">\&#34;</span><span style="color:#a6d189">COLOR:GREEN; font-size:15px;font-weight:bold</span><span style="color:#8caaee">\&#34;</span><span style="color:#a6d189">&gt;a + b =%d&lt;/DIV&gt;</span><span style="color:#8caaee">\n</span><span style="color:#a6d189">&#34;</span>,<span style="color:#8caaee">atoi</span>(a) <span style="color:#99d1db;font-weight:bold">+</span> <span style="color:#8caaee">atoi</span>(b));
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#8caaee">printf</span>(<span style="color:#a6d189">&#34;&lt;HR COLOR=</span><span style="color:#8caaee">\&#34;</span><span style="color:#a6d189">blue</span><span style="color:#8caaee">\&#34;</span><span style="color:#a6d189"> align=</span><span style="color:#8caaee">\&#34;</span><span style="color:#a6d189">left</span><span style="color:#8caaee">\&#34;</span><span style="color:#a6d189">width=</span><span style="color:#8caaee">\&#34;</span><span style="color:#a6d189">100</span><span style="color:#8caaee">\&#34;</span><span style="color:#a6d189">&gt;&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#8caaee">printf</span>(<span style="color:#a6d189">&#34;&lt;input type=</span><span style="color:#8caaee">\&#34;</span><span style="color:#a6d189">button</span><span style="color:#8caaee">\&#34;</span><span style="color:#a6d189"> value=</span><span style="color:#8caaee">\&#34;</span><span style="color:#a6d189">Back</span><span style="color:#8caaee">\&#34;</span><span style="color:#a6d189"> onclick=</span><span style="color:#8caaee">\&#34;</span><span style="color:#a6d189">javascript:window.location=&#39;../index.html&#39;</span><span style="color:#8caaee">\&#34;</span><span style="color:#a6d189">&gt;&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#8caaee">printf</span>(<span style="color:#a6d189">&#34;&lt;/div&gt;</span><span style="color:#8caaee">\n</span><span style="color:#a6d189">&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#8caaee">printf</span>(<span style="color:#a6d189">&#34;&lt;/BODY&gt;</span><span style="color:#8caaee">\n</span><span style="color:#a6d189">&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#8caaee">printf</span>(<span style="color:#a6d189">&#34;&lt;/HTML&gt;</span><span style="color:#8caaee">\n</span><span style="color:#a6d189">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ca9ee6">return</span> <span style="color:#ef9f76">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="post" >
+<div>
+    <a href="#post">
+        ##
+    </a>
+    POST
+</div>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#737994;font-style:italic">#include</span> <span style="color:#737994;font-weight:bold;font-style:italic">&lt;stdio.h&gt;</span><span style="color:#737994;font-style:italic">
+</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic">#include</span> <span style="color:#737994;font-weight:bold;font-style:italic">&lt;stdlib.h&gt;</span><span style="color:#737994;font-style:italic">
+</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"></span>
+</span></span><span style="display:flex;"><span><span style="color:#e78284">int</span> <span style="color:#8caaee">main</span>(<span style="color:#e78284">void</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#e78284">int</span> len;
+</span></span><span style="display:flex;"><span>    <span style="color:#e78284">char</span> <span style="color:#99d1db;font-weight:bold">*</span>lenstr, poststr[<span style="color:#ef9f76">20</span>];
+</span></span><span style="display:flex;"><span>    <span style="color:#e78284">char</span> m[<span style="color:#ef9f76">10</span>],n[<span style="color:#ef9f76">10</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8caaee">printf</span>(<span style="color:#a6d189">&#34;Content-Type:text/html</span><span style="color:#8caaee">\n\n</span><span style="color:#a6d189">&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#8caaee">printf</span>(<span style="color:#a6d189">&#34;&lt;HTML&gt;</span><span style="color:#8caaee">\n</span><span style="color:#a6d189">&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#8caaee">printf</span>(<span style="color:#a6d189">&#34;&lt;HEAD&gt;</span><span style="color:#8caaee">\n</span><span style="color:#a6d189">&lt;TITLE &gt;post Method&lt;/TITLE&gt;</span><span style="color:#8caaee">\n</span><span style="color:#a6d189">&lt;/HEAD&gt;</span><span style="color:#8caaee">\n</span><span style="color:#a6d189">&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#8caaee">printf</span>(<span style="color:#a6d189">&#34;&lt;BODY&gt;</span><span style="color:#8caaee">\n</span><span style="color:#a6d189">&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#8caaee">printf</span>(<span style="color:#a6d189">&#34;&lt;div style=</span><span style="color:#8caaee">\&#34;</span><span style="color:#a6d189">font-size:12px</span><span style="color:#8caaee">\&#34;</span><span style="color:#a6d189">&gt;</span><span style="color:#8caaee">\n</span><span style="color:#a6d189">&#34;</span>);
+</span></span><span style="display:flex;"><span>    lenstr <span style="color:#99d1db;font-weight:bold">=</span> <span style="color:#8caaee">getenv</span>(<span style="color:#a6d189">&#34;CONTENT_LENGTH&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#ca9ee6">if</span> (lenstr <span style="color:#99d1db;font-weight:bold">==</span> <span style="color:#99d1db">NULL</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#8caaee">printf</span>(<span style="color:#a6d189">&#34;&lt;DIV STYLE=</span><span style="color:#8caaee">\&#34;</span><span style="color:#a6d189">COLOR:RED</span><span style="color:#8caaee">\&#34;</span><span style="color:#a6d189">&gt;Error: null parameters&lt; /DIV&gt;</span><span style="color:#8caaee">\n</span><span style="color:#a6d189">&#34;</span>);
+</span></span><span style="display:flex;"><span>    } <span style="color:#ca9ee6">else</span> {
+</span></span><span style="display:flex;"><span>        len <span style="color:#99d1db;font-weight:bold">=</span> <span style="color:#8caaee">atoi</span>(lenstr);
+</span></span><span style="display:flex;"><span>        <span style="color:#8caaee">fgets</span>(poststr,len<span style="color:#99d1db;font-weight:bold">+</span><span style="color:#ef9f76">1</span>,stdin);
+</span></span><span style="display:flex;"><span>        <span style="color:#8caaee">printf</span>(<span style="color:#a6d189">&#34;%s</span><span style="color:#8caaee">\n</span><span style="color:#a6d189">&#34;</span>,poststr);
+</span></span><span style="display:flex;"><span>        <span style="color:#ca9ee6">if</span> (<span style="color:#8caaee">sscanf</span>(poststr,<span style="color:#a6d189">&#34;m=%[^&amp;]&amp;n=%s&#34;</span>,m,n) <span style="color:#99d1db;font-weight:bold">!=</span> <span style="color:#ef9f76">2</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#8caaee">printf</span>(<span style="color:#a6d189">&#34;&lt;DIV STYLE=</span><span style="color:#8caaee">\&#34;</span><span style="color:#a6d189">COLOR:RED</span><span style="color:#8caaee">\&#34;</span><span style="color:#a6d189">&gt;Error: invalid parameters&lt; /DIV&gt;</span><span style="color:#8caaee">\n</span><span style="color:#a6d189">&#34;</span>);
+</span></span><span style="display:flex;"><span>        } <span style="color:#ca9ee6">else</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#8caaee">printf</span>(<span style="color:#a6d189">&#34;&lt;DIV STYLE=</span><span style="color:#8caaee">\&#34;</span><span style="color:#a6d189">COLOR:GREEN; font-size:15px;font-weight:bold</span><span style="color:#8caaee">\&#34;</span><span style="color:#a6d189">&gt;m*n=%d&lt;/DIV&gt;</span><span style="color:#8caaee">\n</span><span style="color:#a6d189">&#34;</span>, <span style="color:#8caaee">atoi</span>(m) <span style="color:#99d1db;font-weight:bold">*</span> <span style="color:#8caaee">atoi</span>(n));
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#8caaee">printf</span>(<span style="color:#a6d189">&#34;&lt;HR COLOR=</span><span style="color:#8caaee">\&#34;</span><span style="color:#a6d189">blue</span><span style="color:#8caaee">\&#34;</span><span style="color:#a6d189"> align=</span><span style="color:#8caaee">\&#34;</span><span style="color:#a6d189">left</span><span style="color:#8caaee">\&#34;</span><span style="color:#a6d189">width=</span><span style="color:#8caaee">\&#34;</span><span style="color:#a6d189">100</span><span style="color:#8caaee">\&#34;</span><span style="color:#a6d189">&gt;&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#8caaee">printf</span>(<span style="color:#a6d189">&#34;&lt;input type=</span><span style="color:#8caaee">\&#34;</span><span style="color:#a6d189">button</span><span style="color:#8caaee">\&#34;</span><span style="color:#a6d189"> value=</span><span style="color:#8caaee">\&#34;</span><span style="color:#a6d189">Back</span><span style="color:#8caaee">\&#34;</span><span style="color:#a6d189"> onclick=</span><span style="color:#8caaee">\&#34;</span><span style="color:#a6d189">javascript:window.location=&#39;../index.html&#39;</span><span style="color:#8caaee">\&#34;</span><span style="color:#a6d189">&gt;&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#8caaee">printf</span>(<span style="color:#a6d189">&#34;&lt;/div&gt;</span><span style="color:#8caaee">\n</span><span style="color:#a6d189">&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#8caaee">printf</span>(<span style="color:#a6d189">&#34;&lt;/BODY&gt;</span><span style="color:#8caaee">\n</span><span style="color:#a6d189">&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#8caaee">printf</span>(<span style="color:#a6d189">&#34;&lt;/HTML&gt;</span><span style="color:#8caaee">\n</span><span style="color:#a6d189">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8caaee">fflush</span>(stdout);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ca9ee6">return</span> <span style="color:#ef9f76">0</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
+<h2 id="references" >
+<div>
+    <a href="#references">
+        #
+    </a>
+    References
+</div>
+</h2>
+        </div>
+
+    </article>
+
+    
+    
+        
+    
+
+    
+        
+        
+    
+
+    
+        
+    
+    
+    <div class="pagination post-pagination">
+        <div class="left pagination-item ">
+            
+                <a href="/posts/prog/c/c_syntax/">C Programming Syntax</a>
+            
+        </div>
+        <div class="right pagination-item ">
+            
+                <a href="/posts/web/setup_lamp_lemp/">Set up LAMP and LEMP Stack</a>
+            
+        </div>
+    </div>
+
+
+
+
+
+    
+
+    
+        
+
+
+
+
+
+
+
+
+            
+
+<script>
+        function detectCurrentScheme2() {
+                const defaultTheme = "auto";
+                if (localStorage !== null && localStorage.getItem("user-color-scheme")) {
+                        return localStorage.getItem("user-color-scheme");
+                }
+                if (defaultTheme === "dark" || defaultTheme === "light") {
+                        return defaultTheme;
+                }
+                return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+
+        let giscusTheme = detectCurrentScheme2();
+        let giscusAttributes = {
+                src: "https://giscus.app/client.js",
+                "data-repo": "Vitaceae\/vitaceae.github.io",
+                "data-repo-id": "R_kgDOOLku4g",
+                "data-category": "General",
+                "data-category-id": "DIC_kwDOOLku4s4CoQfG",
+                "data-mapping": "pathname",
+                "data-strict": "0",
+                "data-reactions-enabled": "1",
+                "data-emit-metadata": "0",
+                "data-input-position": "bottom",
+                "data-theme": giscusTheme,
+                "data-lang": "zh-TW",
+                crossorigin: "anonymous",
+                lazyload: "false",
+                async: true,
+        };
+        let main = document.querySelector("main");
+        let giscusScript = document.createElement("script");
+        Object.entries(giscusAttributes).forEach(([key, value]) => giscusScript.setAttribute(key, value));
+        main.appendChild(giscusScript);
+</script>
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+        </main>
+        
+            <footer class="common-footer noselect">
+    
+    
+
+    <div class="common-footer-bottom">
+        
+
+        <div style="display: flex; align-items: center; gap:8px">
+            ©  Mike Chang,  2025
+            
+            <a aria-label="Check statistics data" style="display: flex; align-items: center; border-bottom: none; cursor: pointer; color: var(--pagination-link-color)" href="https://cloud.umami.is/share/biHOZBHqeGeBgHVS/vitaceae.github.io"><svg xmlns="http://www.w3.org/2000/svg"  width="16"  height="16"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-report-analytics"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" /><path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" /><path d="M9 17v-5" /><path d="M12 17v-1" /><path d="M15 17v-3" /></svg></a>
+            
+        </div>
+        <div style="display:flex;align-items: center">
+            
+            
+            
+            
+            
+            
+        </div>
+        <div>
+            Powered by <a target="_blank" rel="noopener noreferrer" href="https://gohugo.io/">Hugo</a>, theme <a target="_blank" rel="noopener noreferrer" href="https://github.com/Junyi-99/hugo-theme-anubis2">Anubis2</a>.<br>
+            
+
+        </div>
+    </div>
+
+    <p class="h-card vcard">
+
+    <a href=https://vitaceae.github.io/ class="p-name u-url url fn" rel="me">map[email:i70170@hotmail.com location:Taiwan name:Mike Chang]</a>
+
+    
+
+    
+</p>
+
+</footer>
+
+        
+    </div>
+</body>
+</html>
