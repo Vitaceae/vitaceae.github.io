@@ -1441,7 +1441,8 @@ example of &lt;code&gt;cust-style2&lt;/code&gt;
       <pubDate>Sat, 02 Mar 2024 00:00:00 +0000</pubDate>
       <author>i70170@hotmail.com (Mike Chang)</author>
       <guid>/posts/web/website/</guid>
-      <description>&lt;h2 id=&#34;static-site&#34; &gt;
+      <description>&lt;hr&gt;
+&lt;h2 id=&#34;static-site&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#static-site&#34;&gt;
         #
@@ -1455,6 +1456,7 @@ example of &lt;code&gt;cust-style2&lt;/code&gt;
 &lt;li&gt;&lt;code&gt;Hexo&lt;/code&gt;: based on JavaScript; less build time&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;Hugo&lt;/code&gt;: based on Go; least build time; easy-install(binary)&lt;/li&gt;
 &lt;/ul&gt;
+&lt;hr&gt;
 &lt;h2 id=&#34;comments-system&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#comments-system&#34;&gt;
@@ -1475,6 +1477,7 @@ example of &lt;code&gt;cust-style2&lt;/code&gt;
 &lt;li&gt;facebook&lt;/li&gt;
 &lt;li&gt;telegram&lt;/li&gt;
 &lt;/ul&gt;
+&lt;hr&gt;
 &lt;h2 id=&#34;analytics&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#analytics&#34;&gt;
@@ -1498,6 +1501,31 @@ example of &lt;code&gt;cust-style2&lt;/code&gt;
 &lt;li&gt;Railway&lt;/li&gt;
 &lt;li&gt;Vercel + TiDB Cloud&lt;/li&gt;
 &lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;search&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#search&#34;&gt;
+        #
+    &lt;/a&gt;
+    Search
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;h3 id=&#34;google-search-console&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#google-search-console&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Google Search Console
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;提交站點 sitemap, 以期使用 Google Search 找到網站&lt;/p&gt;
+&lt;p&gt;搜尋 site:vitaceae.github.io 失敗範例&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://vitaceae.github.io/posts/web/inc/website/google_search_failed.jpg&#34; alt=&#34;Google Search failed&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;點擊圖中 &lt;a href=&#34;https://www.google.com/webmasters/tools/home#utm_source=zh-TW-wmxmsg&amp;amp;utm_medium=wmxmsg&amp;amp;utm_campaign=bm&amp;amp;authuser=0&#34;&gt;Google Search Console&lt;/a&gt;&lt;br&gt;
+免費仔使用 GitHub Pages 選擇網址前置字元; 申請過 Google Analytics 會自動通過驗證&lt;br&gt;
+並在 &lt;a href=&#34;https://search.google.com/search-console?resource_id=https%3A%2F%2Fvitaceae.github.io%2F&#34;&gt;Search Console&lt;/a&gt; 中提交 sitemap&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://vitaceae.github.io/posts/web/inc/website/google_search_consle-1.jpg&#34; alt=&#34;Google Search Console-1&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://vitaceae.github.io/posts/web/inc/website/google_search_consle-2.jpg&#34; alt=&#34;Google Search Console-2&#34;/&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;references&#34; &gt;
 &lt;div&gt;
