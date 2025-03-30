@@ -328,20 +328,12 @@ Apache 做為後端: 處理 Concurrent Queue 時效能優於 FastCGI(Nginx 需�
     </item>
     
     <item>
-      <title>Analytics Tools</title>
+      <title>Website Analytics Tools</title>
       <link>/posts/web/analytics_tools/</link>
       <pubDate>Mon, 18 Mar 2024 00:00:00 +0000</pubDate>
       <author>i70170@hotmail.com (Mike Chang)</author>
       <guid>/posts/web/analytics_tools/</guid>
-      <description>&lt;h2 id=&#34;website-analytics-tools&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#website-analytics-tools&#34;&gt;
-        #
-    &lt;/a&gt;
-    Website Analytics Tools
-&lt;/div&gt;
-&lt;/h2&gt;
-&lt;table&gt;
+      <description>&lt;table&gt;
   &lt;thead&gt;
       &lt;tr&gt;
           &lt;th style=&#34;text-align: center&#34;&gt;Platform&lt;/th&gt;
@@ -427,14 +419,15 @@ Apache 做為後端: 處理 Concurrent Queue 時效能優於 FastCGI(Nginx 需�
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;hugo-做法&#34; &gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;hugo-做法&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#hugo-%e5%81%9a%e6%b3%95&#34;&gt;
-        ##
+        #
     &lt;/a&gt;
     Hugo 做法
 &lt;/div&gt;
-&lt;/h3&gt;
+&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;在主題模板的 layouts/partials/head.html 中插入&lt;/li&gt;
 &lt;/ol&gt;
@@ -447,14 +440,49 @@ Apache 做為後端: 處理 Concurrent Queue 時效能優於 FastCGI(Nginx 需�
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{{ if (.Site.Params.UmamiAnalytics.enabled ) }}
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {{ partial &amp;#34;umami_analytics.html&amp;#34; . }}
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{{ end }}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;update-history&#34; &gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;google-analytics&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#google-analytics&#34;&gt;
+        #
+    &lt;/a&gt;
+    Google Analytics
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;建立 &lt;a href=&#34;https://analytics.google.com/&#34;&gt;Google Analytics 帳戶&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;帳戶名稱: (任意)&lt;/li&gt;
+&lt;li&gt;屬性名稱: Github account(任意)&lt;/li&gt;
+&lt;li&gt;&amp;hellip;&lt;/li&gt;
+&lt;li&gt;平台類型選擇「網站」&lt;/li&gt;
+&lt;li&gt;網站網址: &lt;a href=&#34;https://vitaceae.github.io&#34;&gt;https://vitaceae.github.io&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;串流名稱: Mike&amp;rsquo;s Blog(任意)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;取得 Google Analytics 追蹤碼&lt;br&gt;
+&lt;img src=&#34;https://vitaceae.github.io/posts/web/inc/tools/google_analytics_code.jpg&#34; alt=&#34;Google Analytics verification code&#34;/&gt;&lt;/li&gt;
+&lt;li&gt;覆蓋 Hugo 主題設定
+&lt;ul&gt;
+&lt;li&gt;嵌入 gtag.js 到 anubis2 主題路徑 layouts/partials/google_analytics.html&lt;/li&gt;
+&lt;li&gt;hugo.toml
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;[&lt;/span&gt;params.GoogleAnalytics&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;enabled&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#99d1db&#34;&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;gtag&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;G-P1Z223FHVN&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;update-history&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#update-history&#34;&gt;
-        ##
+        #
     &lt;/a&gt;
     Update History
 &lt;/div&gt;
-&lt;/h3&gt;
+&lt;/h2&gt;
+&lt;p&gt;2025/03/30 Steps to enable Google Analytics&lt;/p&gt;
 </description>
     </item>
     

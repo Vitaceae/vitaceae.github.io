@@ -172,6 +172,17 @@
 
 
 
+ 
+    
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P1Z223FHVN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P1Z223FHVN');
+</script>
+
 
 
 
@@ -541,7 +552,7 @@
             
             
             <h1 class="p-name post-title ">
-                <a class="u-url" href="/posts/web/analytics_tools/">Analytics Tools</a>
+                <a class="u-url" href="/posts/web/analytics_tools/">Website Analytics Tools</a>
             </h1>
         </header>
         
@@ -550,15 +561,7 @@
 
     
         <div class="content post-summary p-summary">
-            <h2 id="website-analytics-tools" >
-<div>
-    <a href="#website-analytics-tools">
-        #
-    </a>
-    Website Analytics Tools
-</div>
-</h2>
-<table>
+            <table>
   <thead>
       <tr>
           <th style="text-align: center">Platform</th>
@@ -644,14 +647,15 @@
 </ul>
 </li>
 </ul>
-<h3 id="hugo-做法" >
+<hr>
+<h2 id="hugo-做法" >
 <div>
     <a href="#hugo-%e5%81%9a%e6%b3%95">
-        ##
+        #
     </a>
     Hugo 做法
 </div>
-</h3>
+</h2>
 <ol>
 <li>在主題模板的 layouts/partials/head.html 中插入</li>
 </ol>
@@ -664,14 +668,49 @@
 </span></span><span style="display:flex;"><span>{{ if (.Site.Params.UmamiAnalytics.enabled ) }}
 </span></span><span style="display:flex;"><span>    {{ partial &#34;umami_analytics.html&#34; . }}
 </span></span><span style="display:flex;"><span>{{ end }}
-</span></span></code></pre></div><h3 id="update-history" >
+</span></span></code></pre></div><hr>
+<h2 id="google-analytics" >
+<div>
+    <a href="#google-analytics">
+        #
+    </a>
+    Google Analytics
+</div>
+</h2>
+<ol>
+<li>建立 <a href="https://analytics.google.com/">Google Analytics 帳戶</a>
+<ul>
+<li>帳戶名稱: (任意)</li>
+<li>屬性名稱: Github account(任意)</li>
+<li>&hellip;</li>
+<li>平台類型選擇「網站」</li>
+<li>網站網址: <a href="https://vitaceae.github.io">https://vitaceae.github.io</a></li>
+<li>串流名稱: Mike&rsquo;s Blog(任意)</li>
+</ul>
+</li>
+<li>取得 Google Analytics 追蹤碼<br>
+<img src="/posts/web/inc/tools/google_analytics_code.jpg" alt="Google Analytics verification code"/></li>
+<li>覆蓋 Hugo 主題設定
+<ul>
+<li>嵌入 gtag.js 到 anubis2 主題路徑 layouts/partials/google_analytics.html</li>
+<li>hugo.toml
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#99d1db;font-weight:bold">[</span>params.GoogleAnalytics<span style="color:#99d1db;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#f2d5cf">enabled</span> <span style="color:#99d1db;font-weight:bold">=</span> <span style="color:#99d1db">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#f2d5cf">gtag</span> <span style="color:#99d1db;font-weight:bold">=</span> <span style="color:#a6d189">&#34;G-P1Z223FHVN&#34;</span>
+</span></span></code></pre></div></li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="update-history" >
 <div>
     <a href="#update-history">
-        ##
+        #
     </a>
     Update History
 </div>
-</h3>
+</h2>
+<p>2025/03/30 Steps to enable Google Analytics</p>
         </div>
     
 
