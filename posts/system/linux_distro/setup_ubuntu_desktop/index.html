@@ -10,9 +10,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer-when-downgrade">
 
-<title>Hugo - Mike&rsquo;s Cheatsheet</title>
+<title>Ubuntu Desktop Setup - Mike&rsquo;s Cheatsheet</title>
 
-<meta name="description" content="Tutorial for Hugo Newbies">
+<meta name="description" content="Ubuntu Desktop Setup">
 
 
 
@@ -451,7 +451,7 @@
     <article class="post h-entry">
         <div class="post-header">
             <header>
-                <h1 class="p-name post-title">Hugo</h1>
+                <h1 class="p-name post-title">Ubuntu Desktop Setup</h1>
                 
 
             </header>
@@ -464,12 +464,12 @@
 <div class="post-info noselect">
     
         <div class="post-date dt-published">
-            <time datetime="2024-03-02">2024-03-02</time>
+            <time datetime="2025-05-01">2025-05-01</time>
             
         </div>
     
 
-    <a class="post-hidden-url u-url" href="/posts/web/hugo/">/posts/web/hugo/</a>
+    <a class="post-hidden-url u-url" href="/posts/system/linux_distro/setup_ubuntu_desktop/">/posts/system/linux_distro/setup_ubuntu_desktop/</a>
     <a href="https://vitaceae.github.io/" class="p-name p-author post-hidden-author h-card" rel="me">Mike</a>
 
 
@@ -478,7 +478,7 @@
             <ul class="post-categories">
                 
                     
-                    <li><a href="/categories/web/">Web</a></li>
+                    <li><a href="/categories/setup/">Setup</a></li>
                 
             </ul>
         
@@ -486,10 +486,7 @@
             <ul class="post-tags">
                 
                     
-                    <li><a href="/tags/website/">#Website</a></li>
-                
-                    
-                    <li><a href="/tags/hugo/">#Hugo</a></li>
+                    <li><a href="/tags/ubuntu/">#Ubuntu</a></li>
                 
             </ul>
         
@@ -513,21 +510,18 @@
     <summary>Table of Contents</summary>
     <div class="inner"><nav id="TableOfContents">
   <ul>
-    <li><a href="#installation">Installation</a>
+    <li><a href="#ubuntu-desktop-setup">Ubuntu Desktop Setup</a>
       <ul>
-        <li><a href="#windows">Windows</a></li>
-        <li><a href="#linux">Linux</a></li>
+        <li><a href="#gparted">Gparted</a></li>
+        <li><a href="#chewing">Chewing</a></li>
+        <li><a href="#notepad">Notepad++</a></li>
+        <li><a href="#kolourpaint">kolourpaint</a></li>
+        <li><a href="#onedrive">Onedrive</a></li>
+        <li><a href="#steam">Steam</a></li>
+        <li><a href="#trivial-customization">Trivial Customization</a></li>
+        <li><a href="#references">References</a></li>
       </ul>
     </li>
-    <li><a href="#directory-structure">Directory structure</a></li>
-    <li><a href="#quick-start">Quick Start</a>
-      <ul>
-        <li><a href="#create-a-demo-site-on-wsl">Create a demo site on WSL</a></li>
-        <li><a href="#host-on-github-pages">Host on GitHub Pages</a></li>
-        <li><a href="#problems">Problems</a></li>
-      </ul>
-    </li>
-    <li><a href="#references">References</a></li>
   </ul>
 </nav></div>
   </details>
@@ -554,186 +548,210 @@
 </script>
 
         <div class="content e-content">
-            <h2 id="installation" >
+            <h2 id="ubuntu-desktop-setup" >
 <div>
-    <a href="#installation">
+    <a href="#ubuntu-desktop-setup">
         #
     </a>
-    Installation
+    Ubuntu Desktop Setup
 </div>
 </h2>
-<h3 id="windows" >
+<p>Windows 11 更新卡死又要求 TPM 才能重新安裝, 怒而放生重拾 Ubuntu 20.04LTS Desktop<br>
+紀錄方便日後重新部署</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Hotkeys</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">PrtScn</td>
+          <td style="text-align: left">開啟截圖工具</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Alt + PrtScn</td>
+          <td style="text-align: left">視窗截圖</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Window + Space</td>
+          <td style="text-align: left">切換輸入法</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Alt + Num</td>
+          <td style="text-align: left">terminal 切換 page</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="gparted" >
 <div>
-    <a href="#windows">
+    <a href="#gparted">
         ##
     </a>
-    Windows
+    Gparted
 </div>
 </h3>
-<ul>
-<li>install <a href="https://docs.chocolatey.org/en-us/choco/setup/#install-with-powershellexe">chocolatey</a>
-<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>&gt; <span style="color:#99d1db">Set-ExecutionPolicy</span> Bypass -Scope <span style="color:#ca9ee6">Process</span> -Force; [<span style="color:#e5c890">System.Net.ServicePointManager</span>]::SecurityProtocol = [<span style="color:#e5c890">System.Net.ServicePointManager</span>]::SecurityProtocol <span style="color:#99d1db;font-weight:bold">-bor</span> <span style="color:#ef9f76">3072</span>; <span style="color:#99d1db">iex </span>((<span style="color:#99d1db">New-Object</span> System.<span style="color:#ef9f76">Net</span>.WebClient).<span style="color:#ef9f76">DownloadString</span>(<span style="color:#a6d189">&#39;https://community.chocolatey.org/install.ps1&#39;</span>))
-</span></span></code></pre></div></li>
-<li>install Go stable version: to build Hugo from source and use the Hugo Modules feature
-<ul>
-<li>from <a href="https://go.dev/dl/">binary</a></li>
-<li>from choco command
-<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>&gt; choco install golang sass <span style="color:#99d1db">hugo-extended</span>
-</span></span></code></pre></div></li>
-</ul>
-</li>
-<li>install Dart Sass: to transpile Sass to CSS</li>
-<li>install Hugo
-<ul>
-<li>from <a href="https://github.com/gohugoio/hugo/releases/latest">prebuilt-binary</a>
-<ul>
-<li>add this directory to <code>PATH</code> variable</li>
-</ul>
-</li>
-<li>from choco command</li>
-</ul>
-</li>
-</ul>
-<h3 id="linux" >
+<p>建立分割區並格式化, 懶得用 fdisk 等命令列工具<br>
+但不支援管理 LLM 或 RAID</p>
+<p><img src="/posts/system/linux_distro/inc/ubuntu_setup/gparted.png" alt="GParted"/></p>
+<h3 id="chewing" >
 <div>
-    <a href="#linux">
+    <a href="#chewing">
         ##
     </a>
-    Linux
+    Chewing
 </div>
 </h3>
-<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo snap install hugo
+<p>安裝新酷音輸入法</p>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo apt install ibus-chewing
+</span></span><span style="display:flex;"><span>$ reboot
+</span></span></code></pre></div><p>進入設定: <code>Keyboard</code> &gt; <code>Input Sources</code><br>
+按 + 新增 Chinese (Chewing)</p>
+<p>更改中英輸入切換快捷鍵</p>
+<p><img src="/posts/system/linux_distro/inc/ubuntu_setup/chewing_switch_to_eng.png" alt="Chewing to Eng"/></p>
+<h3 id="notepad" >
+<div>
+    <a href="#notepad">
+        ##
+    </a>
+    Notepad++
+</div>
+</h3>
+<h4 id="調整-menu-bar-功能表字體大小" >
+<div>
+    <a href="#%e8%aa%bf%e6%95%b4-menu-bar-%e5%8a%9f%e8%83%bd%e8%a1%a8%e5%ad%97%e9%ab%94%e5%a4%a7%e5%b0%8f">
+        ###
+    </a>
+    調整 menu bar 功能表字體大小
+</div>
+</h4>
+<p>預設字體太小十分傷眼<br>
+Notepad++ 非 Linux 原生應用程式而是透過 Wine 啟動, 所以要調整 Wine pixel 設定</p>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ notepad-plus-plus.wine winecfg
+</span></span></code></pre></div><p><img src="/posts/system/linux_distro/inc/ubuntu_setup/wine_font_size.png" alt="Wine Font Size"/></p>
+<h4 id="調整文字編輯區預設字型" >
+<div>
+    <a href="#%e8%aa%bf%e6%95%b4%e6%96%87%e5%ad%97%e7%b7%a8%e8%bc%af%e5%8d%80%e9%a0%90%e8%a8%ad%e5%ad%97%e5%9e%8b">
+        ###
+    </a>
+    調整文字編輯區預設字型
+</div>
+</h4>
+<p>安裝 Consolas 字型: 參考 <a href="https://gist.github.com/sigoden/d01ad118da677f796bab01781b7eae23">sigoden/install-consolas-ubuntu</a><br>
+另存成 script 執行後 reboot</p>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget -O /tmp/YaHei.Consolas.1.12.zip https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/uigroupcode/YaHei.Consolas.1.12.zip
+</span></span><span style="display:flex;"><span>unzip /tmp/YaHei.Consolas.1.12.zip
+</span></span><span style="display:flex;"><span>sudo mkdir -p /usr/share/fonts/consolas
+</span></span><span style="display:flex;"><span>sudo mv YaHei.Consolas.1.12.ttf /usr/share/fonts/consolas/
+</span></span><span style="display:flex;"><span>sudo chmod <span style="color:#ef9f76">644</span> /usr/share/fonts/consolas/YaHei.Consolas.1.12.ttf
+</span></span><span style="display:flex;"><span><span style="color:#99d1db">cd</span> /usr/share/fonts/consolas
+</span></span><span style="display:flex;"><span>sudo mkfontscale <span style="color:#99d1db;font-weight:bold">&amp;&amp;</span> sudo mkfontdir <span style="color:#99d1db;font-weight:bold">&amp;&amp;</span> sudo fc-cache -fv
+</span></span></code></pre></div><p>另一個字體來源</p>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ wget https://img.yangsihan.com/YaHeiConsolas.tar.gz
+</span></span></code></pre></div><h3 id="kolourpaint" >
+<div>
+    <a href="#kolourpaint">
+        ##
+    </a>
+    kolourpaint
+</div>
+</h3>
+<p>取代 Windows 小畫家</p>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo apt install kolourpaint
+</span></span></code></pre></div><h3 id="onedrive" >
+<div>
+    <a href="#onedrive">
+        ##
+    </a>
+    Onedrive
+</div>
+</h3>
+<p>預設來源的 oedrive 版本太舊</p>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ apt install onedrive 
+</span></span></code></pre></div><p>refer to <a href="https://github.com/abraunegg/onedrive/blob/master/docs/ubuntu-package-install.md#distribution-ubuntu-2404">Installation of &lsquo;onedrive&rsquo; package on Debian and Ubuntu</a><br>
+採用新來源安裝</p>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#737994;font-style:italic"># Add the OpenSuSE Build Service repository release key</span>
+</span></span><span style="display:flex;"><span>$ wget -qO - https://download.opensuse.org/repositories/home:/npreining:/debian-ubuntu-onedrive/xUbuntu_24.10/Release.key | gpg --dearmor | sudo tee /usr/share/keyrings/obs-onedrive.gpg &gt; /dev/null
+</span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"># Add the OpenSuSE Build Service repository</span>
+</span></span><span style="display:flex;"><span>$ <span style="color:#99d1db">echo</span> <span style="color:#a6d189">&#34;deb [arch=</span><span style="color:#ca9ee6">$(</span>dpkg --print-architecture<span style="color:#ca9ee6">)</span><span style="color:#a6d189"> signed-by=/usr/share/keyrings/obs-onedrive.gpg] https://download.opensuse.org/repositories/home:/npreining:/debian-ubuntu-onedrive/xUbuntu_24.10/ ./&#34;</span> | sudo tee /etc/apt/sources.list.d/onedrive.list
+</span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"># Update your apt package cache</span>
+</span></span><span style="display:flex;"><span>$ sudo apt-get update
+</span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"># Install onedrive</span>
+</span></span><span style="display:flex;"><span>$ sudo apt install --no-install-recommends --no-install-suggests onedrive
+</span></span></code></pre></div><p>授權存取</p>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ onedrive
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"># enable/revoke access to removable media</span>
-</span></span><span style="display:flex;"><span>$ sudo snap connect hugo:removable-media
-</span></span><span style="display:flex;"><span>$ sudo snap disconnect hugo:removable-media
+</span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"># 以瀏覽器開啟系統顯示的 URL, 登錄 Microsoft 帳戶並授權 OneDrive client</span>
+</span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"># 將產生的程式碼貼到 terminal</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"># enable/revoke access to SSH keys</span>
-</span></span><span style="display:flex;"><span>$ sudo snap connect hugo:ssh-keys
-</span></span><span style="display:flex;"><span>$ sudo snap disconnect hugo:ssh-keys
+</span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"># once there&#39;s SLL error</span>
+</span></span><span style="display:flex;"><span>$ onedrive --force-http-11
+</span></span><span style="display:flex;"><span>$ sudo update-ca-certificates
+</span></span></code></pre></div><p>設定目錄</p>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ vi ~/.config/onedrive/config
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f2d5cf">sync_dir</span> <span style="color:#99d1db;font-weight:bold">=</span> <span style="color:#a6d189">&#34;backup/onedrive&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f2d5cf">log_dir</span> <span style="color:#99d1db;font-weight:bold">=</span> <span style="color:#a6d189">&#34;~/.config/onedrive/logs&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"># sec</span>
+</span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic">#monitor_interval = &#34;3600&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic">#monitor_fullscan_frequency = &#34;12&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"># deprecated?</span>
+</span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic">#no_remote_delete = &#34;true&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic">#upload_only = &#34;false&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f2d5cf">download_only</span> <span style="color:#99d1db;font-weight:bold">=</span> <span style="color:#a6d189">&#34;true&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic">#rate_limit = &#34;0&#34; #KB/s</span>
+</span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic">#skip_file_prefixes = &#34;~,.~,.~lock.&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic">#skip_file_suffixes = &#34;.tmp,.temp,.swp&#34;</span>
+</span></span></code></pre></div><p>設定需要同步的目錄(optional; case-sensitive)</p>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ vi ~/.config/onedrive/sync_list
+</span></span></code></pre></div><p>onedrive 命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#737994;font-style:italic"># 測試</span>
+</span></span><span style="display:flex;"><span>$ onedrive --dry-run --synchronize
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"># 同步</span>
+</span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"># opt:</span>
+</span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic">#   --local-first: 先上傳後下載</span>
+</span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic">#   --single-directory &#39;My_Dir&#39;: 同步指定目錄 My_Dir</span>
+</span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic">#   --synchronize --upload-only: 僅上傳</span>
+</span></span><span style="display:flex;"><span>$ onedrive --synchronize <span style="color:#99d1db;font-weight:bold">[</span>opt<span style="color:#99d1db;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>自動啟動服務
+</span></span><span style="display:flex;"><span>$ systemctl --user <span style="color:#99d1db">enable</span> onedrive
+</span></span><span style="display:flex;"><span>$ systemctl --user start onedrive
+</span></span><span style="display:flex;"><span>$ loginctl enable-linger <span style="color:#f2d5cf">$USER</span>
+</span></span></code></pre></div><h3 id="steam" >
+<div>
+    <a href="#steam">
+        ##
+    </a>
+    Steam
+</div>
+</h3>
+<p>download <code>steam_latest.deb</code> from <a href="https://store.steampowered.com/about/">Steam website</a></p>
+<p><img src="/posts/system/linux_distro/inc/ubuntu_setup/steam_installer.png" alt="download steam installer"/></p>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo apt install ~/Downloads/steam_latest.deb
+</span></span></code></pre></div><h3 id="trivial-customization" >
+<div>
+    <a href="#trivial-customization">
+        ##
+    </a>
+    Trivial Customization
+</div>
+</h3>
+<p>menu bar 顯示目前時間</p>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo apt-get install indicator-datetime
+</span></span><span style="display:flex;"><span>$ sudo dpkg-reconfigure --frontend noninteractive tzdata
 </span></span></code></pre></div><hr>
-<h2 id="directory-structure" >
-<div>
-    <a href="#directory-structure">
-        #
-    </a>
-    Directory structure
-</div>
-</h2>
-<ul>
-<li><a href="https://gohugo.io/content-management/organization/">Hugo: Content organization</a></li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>.
-</span></span><span style="display:flex;"><span>├── archetypes  # templates for new content
-</span></span><span style="display:flex;"><span>├── assets      # pipeline which global resources typically passed through
-</span></span><span style="display:flex;"><span>│                 (images, CSS, Sass, JavaScript, and TypeScript...)
-</span></span><span style="display:flex;"><span>├── config      # (optional)site configuration
-</span></span><span style="display:flex;"><span>│   ├── _default
-</span></span><span style="display:flex;"><span>│   │   ├── hugo.toml
-</span></span><span style="display:flex;"><span>│   │   ├── languages.toml
-</span></span><span style="display:flex;"><span>│   │   ├── menus.en.toml
-</span></span><span style="display:flex;"><span>│   │   └── params.toml
-</span></span><span style="display:flex;"><span>│   ├── production
-</span></span><span style="display:flex;"><span>│   │   ├── hugo.toml
-</span></span><span style="display:flex;"><span>│   │   └── params.toml
-</span></span><span style="display:flex;"><span>│   └── staging
-</span></span><span style="display:flex;"><span>│       └── ...
-</span></span><span style="display:flex;"><span>├── content     # markup files (typically markdown)
-</span></span><span style="display:flex;"><span>├── data        # JSON, TOML, YAML, or XML; accessible as a map in the .Site.Data variable
-</span></span><span style="display:flex;"><span>├── layouts     # templates to transform content, data, and resources into a complete website
-</span></span><span style="display:flex;"><span>├── resources   # cached output from Hugo&#39;s asset pipelines
-</span></span><span style="display:flex;"><span>├── static      # files that will be copied to the public directory
-</span></span><span style="display:flex;"><span>├── themes
-</span></span><span style="display:flex;"><span>└── hugo.toml
-</span></span></code></pre></div><hr>
-<h2 id="quick-start" >
-<div>
-    <a href="#quick-start">
-        #
-    </a>
-    Quick Start
-</div>
-</h2>
-<ul>
-<li><a href="https://gohugo.io/getting-started/usage/">Hugo: Basic usage</a></li>
-<li>Windows user: run commands from PowerShell(not Windows PowerShell), WSL or Git Bash</li>
-</ul>
-<h3 id="create-a-demo-site-on-wsl" >
-<div>
-    <a href="#create-a-demo-site-on-wsl">
-        ##
-    </a>
-    Create a demo site on WSL
-</div>
-</h3>
-<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ <span style="color:#f2d5cf">SITE_NAME</span><span style="color:#99d1db;font-weight:bold">=</span>hugo_site
-</span></span><span style="display:flex;"><span>$ hugo new site <span style="color:#f2d5cf">$SITE_NAME</span>
-</span></span><span style="display:flex;"><span>$ <span style="color:#99d1db">cd</span> <span style="color:#f2d5cf">$SITE_NAME</span>
-</span></span><span style="display:flex;"><span>$ git init
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"># add a new theme</span>
-</span></span><span style="display:flex;"><span>$ git submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke
-</span></span><span style="display:flex;"><span>$ <span style="color:#99d1db">echo</span> <span style="color:#a6d189">&#34;theme = &#39;ananke&#39;&#34;</span> &gt;&gt; hugo.toml
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"># write a new post; set &#39;draft = false&#39; in the .md file when done</span>
-</span></span><span style="display:flex;"><span>$ hugo new posts/new_post.md
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"># need to find the WSL&#39;s LAN IP; add an alias function in bash.rc</span>
-</span></span><span style="display:flex;"><span><span style="color:#ca9ee6">function</span> hugo_server<span style="color:#99d1db;font-weight:bold">()</span> <span style="color:#99d1db;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f2d5cf">WSL_IP</span><span style="color:#99d1db;font-weight:bold">=</span><span style="color:#ca9ee6">$(</span>ip addr show eth0 | grep <span style="color:#a6d189">&#34;inet\b&#34;</span> | awk <span style="color:#a6d189">&#39;{print $2}&#39;</span> | cut -d/ -f1<span style="color:#ca9ee6">)</span>
-</span></span><span style="display:flex;"><span>    hugo server --bind <span style="color:#f2d5cf">$WSL_IP</span> --baseURL<span style="color:#99d1db;font-weight:bold">=</span>http://<span style="color:#f2d5cf">$WSL_IP</span> -D -F --gc -w
-</span></span><span style="display:flex;"><span><span style="color:#99d1db;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"># run local web server(changes take effect on the fly)</span>
-</span></span><span style="display:flex;"><span>$ hugo_server
-</span></span></code></pre></div><h3 id="host-on-github-pages" >
-<div>
-    <a href="#host-on-github-pages">
-        ##
-    </a>
-    Host on GitHub Pages
-</div>
-</h3>
-<p>Publish to GitHub Pages (there&rsquo;s rendering problem following the official method)</p>
-<ol>
-<li>add <a href="/inc/hugo/hugo.yaml">.github/workflows/hugo.yaml</a></li>
-<li>create a repo named <code>github_user_name</code>.github.io</li>
-<li>run <code>hugo</code> and push the contents in <code>public</code> to the repo</li>
-<li>GitHub repo::Settings::Pages::Github Actions::<code>Deploy from a branch</code><br>
-<img src="/posts/web//inc/hugo/publish_to_github_pages.png" alt="publish_to_github_pages"/></li>
-<li>run https://<code>github_user_name</code>.github.io in web browser</li>
-</ol>
-<h3 id="problems" >
-<div>
-    <a href="#problems">
-        ##
-    </a>
-    Problems
-</div>
-</h3>
-<blockquote>
-<p>Error: error building site: html/template:_partials/disqus.html:1:12: no such template &ldquo;_internal/disqus.html&rdquo;</p></blockquote>
-<ul>
-<li>Hugo v0.147.0</li>
-<li>refer to <a href="https://github.com/halogenica/beautifulhugo/issues/531">Embedded templates error #531</a></li>
-</ul>
-<p>workaround</p>
-<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ grep -rli <span style="color:#a6d189">&#39;{{ template &#34;_internal/disqus.html&#34; . }}&#39;</span> * | xargs -i@ sed -i <span style="color:#a6d189">&#39;s#{{ template &#34;_internal/disqus.html&#34; . }}#{{ partial &#34;disqus.html&#34; . }}#g&#39;</span> @
-</span></span></code></pre></div><hr>
-<h2 id="references" >
+<h3 id="references" >
 <div>
     <a href="#references">
-        #
+        ##
     </a>
     References
 </div>
-</h2>
-<p><a href="https://gohugo.io/">Official: Hugo</a><br>
-<a href="https://gohugo.io/installation/windows/">Official: Install Hugo on Windows</a><br>
-<a href="https://gohugo.io/installation/linux/">Official: Install Hugo on Linux</a><br>
-<a href="https://gohugo.io/getting-started/directory-structure/">Official: Directory structure</a><br>
-<a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/">Official: Host on GitHub Pages</a><br>
-<a href="https://themes.gohugo.io/">Official: Hugo themes</a></p>
+</h3>
+
         </div>
 
     </article>
@@ -746,15 +764,6 @@
     
         
         
-            <h3 class="read-next-title noselect">Read next</h3>
-            <ul class="read-next-posts noselect">
-                
-                <li><a href="/posts/web/hugo_diagram/">Hugo Diagram</a></li>
-                
-                <li><a href="/posts/web/website/">Website</a></li>
-                
-            </ul>
-        
     
 
     
@@ -762,14 +771,12 @@
     
     
     <div class="pagination post-pagination">
-        <div class="left pagination-item ">
-            
-                <a href="/posts/web/hugo_style/">Hugo-Style</a>
+        <div class="left pagination-item disabled">
             
         </div>
         <div class="right pagination-item ">
             
-                <a href="/posts/web/hugo_diagram/">Hugo Diagram</a>
+                <a href="/posts/prog/c/c_optimization/">C Programming Optimization</a>
             
         </div>
     </div>

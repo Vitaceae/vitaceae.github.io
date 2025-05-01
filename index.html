@@ -3,7 +3,7 @@
 
 <html lang="en-us" data-theme="">
 <head>
-	<meta name="generator" content="Hugo 0.145.0">
+	<meta name="generator" content="Hugo 0.147.0">
     
         
 <meta charset="utf-8">
@@ -462,6 +462,134 @@
             
             
             <h1 class="p-name post-title ">
+                <a class="u-url" href="/posts/system/linux_distro/setup_ubuntu_desktop/">Ubuntu Desktop Setup</a>
+            </h1>
+        </header>
+        
+
+    </div>
+
+    
+        <div class="content post-summary p-summary">
+            <h2 id="ubuntu-desktop-setup" >
+<div>
+    <a href="#ubuntu-desktop-setup">
+        #
+    </a>
+    Ubuntu Desktop Setup
+</div>
+</h2>
+<p>Windows 11 更新卡死又要求 TPM 才能重新安裝, 怒而放生重拾 Ubuntu 20.04LTS Desktop<br>
+紀錄方便日後重新部署</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Hotkeys</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">PrtScn</td>
+          <td style="text-align: left">開啟截圖工具</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Alt + PrtScn</td>
+          <td style="text-align: left">視窗截圖</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Window + Space</td>
+          <td style="text-align: left">切換輸入法</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Alt + Num</td>
+          <td style="text-align: left">terminal 切換 page</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="gparted" >
+<div>
+    <a href="#gparted">
+        ##
+    </a>
+    Gparted
+</div>
+</h3>
+<p>建立分割區並格式化, 懶得用 fdisk 等命令列工具<br>
+但不支援管理 LLM 或 RAID</p>
+<p><img src="/posts/system/linux_distro/inc/ubuntu_setup/gparted.png" alt="GParted"/></p>
+<h3 id="chewing" >
+<div>
+    <a href="#chewing">
+        ##
+    </a>
+    Chewing
+</div>
+</h3>
+<p>安裝新酷音輸入法</p>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo apt install ibus-chewing
+</span></span><span style="display:flex;"><span>$ reboot
+</span></span></code></pre></div><p>進入設定: <code>Keyboard</code> &gt; <code>Input Sources</code><br>
+按 + 新增 Chinese (Chewing)</p>
+<p>更改中英輸入切換快捷鍵</p>
+        </div>
+    
+
+    
+    
+    
+    
+    
+
+    
+
+    
+
+
+
+<div class="post-info noselect">
+    
+        <div class="post-date dt-published">
+            <time datetime="2025-05-01">2025-05-01</time>
+            
+        </div>
+    
+
+    <a class="post-hidden-url u-url" href="/posts/system/linux_distro/setup_ubuntu_desktop/">/posts/system/linux_distro/setup_ubuntu_desktop/</a>
+    <a href="https://vitaceae.github.io/" class="p-name p-author post-hidden-author h-card" rel="me">Mike</a>
+
+
+    <div class="post-taxonomies">
+        
+            <ul class="post-categories">
+                
+                    
+                    <li><a href="/categories/setup/">Setup</a></li>
+                
+            </ul>
+        
+        
+            <ul class="post-tags">
+                
+                    
+                    <li><a href="/tags/ubuntu/">#Ubuntu</a></li>
+                
+            </ul>
+        
+        
+    </div>
+</div>
+
+</article>
+
+        
+            <article class="post-list h-feed post-card">
+    <div class="post-header">
+        <header>
+            
+            
+            
+            <h1 class="p-name post-title ">
                 <a class="u-url" href="/posts/prog/c/c_optimization/">C Programming Optimization</a>
             </h1>
         </header>
@@ -813,98 +941,6 @@
                 
                     
                     <li><a href="/tags/lemp/">#LEMP</a></li>
-                
-            </ul>
-        
-        
-    </div>
-</div>
-
-</article>
-
-        
-            <article class="post-list h-feed post-card">
-    <div class="post-header">
-        <header>
-            
-            
-            
-            <h1 class="p-name post-title ">
-                <a class="u-url" href="/posts/prog/c/c/">C Programming</a>
-            </h1>
-        </header>
-        
-
-    </div>
-
-    
-        <div class="content post-summary p-summary">
-            <hr>
-<h2 id="data-io" >
-<div>
-    <a href="#data-io">
-        #
-    </a>
-    Data I/O
-</div>
-</h2>
-<h3 id="use-fgets-over-scanf" >
-<div>
-    <a href="#use-fgets-over-scanf">
-        ##
-    </a>
-    Use fgets() over scanf()
-</div>
-</h3>
-<ol>
-<li>scanf() 使用者不需管理 buffer size (預設值 100 bytes?), 但可能導致 buffer overflow 或 stack overflow</li>
-<li>scanf() 惡意使用者可能插入 function pointer 或 executable code</li>
-<li>fgets() 相對強健(robust), *nix 系統上的資料來源可以是 sockets, streams 或實際檔案</li>
-<li>fgets() 需指定緩衝區長度, 可避免溢出式攻擊</li>
-<li>fgets() I/O 問題可使用 ferror() 做為 error-handling</li>
-</ol>
-<p>&hellip;</p>
-        </div>
-    
-
-    
-    
-    
-    
-    
-
-    
-
-    
-
-
-
-<div class="post-info noselect">
-    
-        <div class="post-date dt-published">
-            <time datetime="2024-03-21">2024-03-21</time>
-            
-        </div>
-    
-
-    <a class="post-hidden-url u-url" href="/posts/prog/c/c/">/posts/prog/c/c/</a>
-    <a href="https://vitaceae.github.io/" class="p-name p-author post-hidden-author h-card" rel="me">Mike</a>
-
-
-    <div class="post-taxonomies">
-        
-            <ul class="post-categories">
-                
-                    
-                    <li><a href="/categories/programming/">Programming</a></li>
-                
-            </ul>
-        
-        
-            <ul class="post-tags">
-                
-                    
-                    <li><a href="/tags/c-prog/">#C-Prog</a></li>
                 
             </ul>
         

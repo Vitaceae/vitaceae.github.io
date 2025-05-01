@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ubuntu on Mike&#39;s Cheatsheet</title>
+    <link>/tags/ubuntu/</link>
+    <description>Mike&#39;s Cheatsheet (Ubuntu)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    
+      
+        <managingEditor>i70170@hotmail.com
+          
+            (Mike Chang)
+          
+        </managingEditor>
+      
+
+      
+    
+
+    
+    <lastBuildDate>Thu, 01 May 2025 00:00:00 +0000</lastBuildDate>
+    
+    <atom:link href="/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Ubuntu Desktop Setup</title>
+      <link>/posts/system/linux_distro/setup_ubuntu_desktop/</link>
+      <pubDate>Thu, 01 May 2025 00:00:00 +0000</pubDate>
+      <author>i70170@hotmail.com (Mike Chang)</author>
+      <guid>/posts/system/linux_distro/setup_ubuntu_desktop/</guid>
+      <description>&lt;h2 id=&#34;ubuntu-desktop-setup&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#ubuntu-desktop-setup&#34;&gt;
+        #
+    &lt;/a&gt;
+    Ubuntu Desktop Setup
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;Windows 11 更新卡死又要求 TPM 才能重新安裝, 怒而放生重拾 Ubuntu 20.04LTS Desktop&lt;br&gt;
+紀錄方便日後重新部署&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Hotkeys&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Description&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;PrtScn&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;開啟截圖工具&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Alt + PrtScn&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;視窗截圖&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Window + Space&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;切換輸入法&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Alt + Num&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;terminal 切換 page&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;gparted&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#gparted&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Gparted
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;建立分割區並格式化, 懶得用 fdisk 等命令列工具&lt;br&gt;
+但不支援管理 LLM 或 RAID&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://vitaceae.github.io/posts/system/linux_distro/inc/ubuntu_setup/gparted.png&#34; alt=&#34;GParted&#34;/&gt;&lt;/p&gt;
+&lt;h3 id=&#34;chewing&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#chewing&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Chewing
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;安裝新酷音輸入法&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo apt install ibus-chewing
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ reboot
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;進入設定: &lt;code&gt;Keyboard&lt;/code&gt; &amp;gt; &lt;code&gt;Input Sources&lt;/code&gt;&lt;br&gt;
+按 + 新增 Chinese (Chewing)&lt;/p&gt;
+&lt;p&gt;更改中英輸入切換快捷鍵&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://vitaceae.github.io/posts/system/linux_distro/inc/ubuntu_setup/chewing_switch_to_eng.png&#34; alt=&#34;Chewing to Eng&#34;/&gt;&lt;/p&gt;
+&lt;h3 id=&#34;notepad&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#notepad&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Notepad++
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;h4 id=&#34;調整-menu-bar-功能表字體大小&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#%e8%aa%bf%e6%95%b4-menu-bar-%e5%8a%9f%e8%83%bd%e8%a1%a8%e5%ad%97%e9%ab%94%e5%a4%a7%e5%b0%8f&#34;&gt;
+        ###
+    &lt;/a&gt;
+    調整 menu bar 功能表字體大小
+&lt;/div&gt;
+&lt;/h4&gt;
+&lt;p&gt;預設字體太小十分傷眼&lt;br&gt;
+Notepad++ 非 Linux 原生應用程式而是透過 Wine 啟動, 所以要調整 Wine pixel 設定&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ notepad-plus-plus.wine winecfg
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://vitaceae.github.io/posts/system/linux_distro/inc/ubuntu_setup/wine_font_size.png&#34; alt=&#34;Wine Font Size&#34;/&gt;&lt;/p&gt;
+&lt;h4 id=&#34;調整文字編輯區預設字型&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#%e8%aa%bf%e6%95%b4%e6%96%87%e5%ad%97%e7%b7%a8%e8%bc%af%e5%8d%80%e9%a0%90%e8%a8%ad%e5%ad%97%e5%9e%8b&#34;&gt;
+        ###
+    &lt;/a&gt;
+    調整文字編輯區預設字型
+&lt;/div&gt;
+&lt;/h4&gt;
+&lt;p&gt;安裝 Consolas 字型: 參考 &lt;a href=&#34;https://gist.github.com/sigoden/d01ad118da677f796bab01781b7eae23&#34;&gt;sigoden/install-consolas-ubuntu&lt;/a&gt;&lt;br&gt;
+另存成 script 執行後 reboot&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wget -O /tmp/YaHei.Consolas.1.12.zip https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/uigroupcode/YaHei.Consolas.1.12.zip
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;unzip /tmp/YaHei.Consolas.1.12.zip
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo mkdir -p /usr/share/fonts/consolas
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo mv YaHei.Consolas.1.12.ttf /usr/share/fonts/consolas/
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo chmod &lt;span style=&#34;color:#ef9f76&#34;&gt;644&lt;/span&gt; /usr/share/fonts/consolas/YaHei.Consolas.1.12.ttf
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#99d1db&#34;&gt;cd&lt;/span&gt; /usr/share/fonts/consolas
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo mkfontscale &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo mkfontdir &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo fc-cache -fv
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;另一個字體來源&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ wget https://img.yangsihan.com/YaHeiConsolas.tar.gz
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;kolourpaint&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#kolourpaint&#34;&gt;
+        ##
+    &lt;/a&gt;
+    kolourpaint
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;取代 Windows 小畫家&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo apt install kolourpaint
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;onedrive&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#onedrive&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Onedrive
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;預設來源的 oedrive 版本太舊&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ apt install onedrive 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;refer to &lt;a href=&#34;https://github.com/abraunegg/onedrive/blob/master/docs/ubuntu-package-install.md#distribution-ubuntu-2404&#34;&gt;Installation of &amp;lsquo;onedrive&amp;rsquo; package on Debian and Ubuntu&lt;/a&gt;&lt;br&gt;
+採用新來源安裝&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# Add the OpenSuSE Build Service repository release key&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ wget -qO - https://download.opensuse.org/repositories/home:/npreining:/debian-ubuntu-onedrive/xUbuntu_24.10/Release.key | gpg --dearmor | sudo tee /usr/share/keyrings/obs-onedrive.gpg &amp;gt; /dev/null
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# Add the OpenSuSE Build Service repository&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ &lt;span style=&#34;color:#99d1db&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;deb [arch=&lt;/span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;$(&lt;/span&gt;dpkg --print-architecture&lt;span style=&#34;color:#ca9ee6&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt; signed-by=/usr/share/keyrings/obs-onedrive.gpg] https://download.opensuse.org/repositories/home:/npreining:/debian-ubuntu-onedrive/xUbuntu_24.10/ ./&amp;#34;&lt;/span&gt; | sudo tee /etc/apt/sources.list.d/onedrive.list
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# Update your apt package cache&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo apt-get update
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# Install onedrive&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo apt install --no-install-recommends --no-install-suggests onedrive
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;授權存取&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ onedrive
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# 以瀏覽器開啟系統顯示的 URL, 登錄 Microsoft 帳戶並授權 OneDrive client&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# 將產生的程式碼貼到 terminal&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# once there&amp;#39;s SLL error&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ onedrive --force-http-11
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo update-ca-certificates
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;設定目錄&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ vi ~/.config/onedrive/config
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;sync_dir&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;backup/onedrive&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;log_dir&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;~/.config/onedrive/logs&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# sec&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#monitor_interval = &amp;#34;3600&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#monitor_fullscan_frequency = &amp;#34;12&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# deprecated?&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#no_remote_delete = &amp;#34;true&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#upload_only = &amp;#34;false&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;download_only&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;true&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#rate_limit = &amp;#34;0&amp;#34; #KB/s&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#skip_file_prefixes = &amp;#34;~,.~,.~lock.&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#skip_file_suffixes = &amp;#34;.tmp,.temp,.swp&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;設定需要同步的目錄(optional; case-sensitive)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ vi ~/.config/onedrive/sync_list
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;onedrive 命令&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# 測試&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ onedrive --dry-run --synchronize
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# 同步&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# opt:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#   --local-first: 先上傳後下載&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#   --single-directory &amp;#39;My_Dir&amp;#39;: 同步指定目錄 My_Dir&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#   --synchronize --upload-only: 僅上傳&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ onedrive --synchronize &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;[&lt;/span&gt;opt&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;自動啟動服務
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ systemctl --user &lt;span style=&#34;color:#99d1db&#34;&gt;enable&lt;/span&gt; onedrive
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ systemctl --user start onedrive
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ loginctl enable-linger &lt;span style=&#34;color:#f2d5cf&#34;&gt;$USER&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;steam&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#steam&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Steam
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;download &lt;code&gt;steam_latest.deb&lt;/code&gt; from &lt;a href=&#34;https://store.steampowered.com/about/&#34;&gt;Steam website&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://vitaceae.github.io/posts/system/linux_distro/inc/ubuntu_setup/steam_installer.png&#34; alt=&#34;download steam installer&#34;/&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo apt install ~/Downloads/steam_latest.deb
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;trivial-customization&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#trivial-customization&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Trivial Customization
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;menu bar 顯示目前時間&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo apt-get install indicator-datetime
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo dpkg-reconfigure --frontend noninteractive tzdata
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h3 id=&#34;references&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#references&#34;&gt;
+        ##
+    &lt;/a&gt;
+    References
+&lt;/div&gt;
+&lt;/h3&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

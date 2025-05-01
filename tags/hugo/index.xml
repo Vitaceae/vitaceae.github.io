@@ -137,7 +137,7 @@
 &lt;/h3&gt;
 &lt;p&gt;to embed &lt;code&gt;https://www.youtube.com/watch?v=s-0ganwG284&lt;/code&gt;, use &lt;code&gt;{{&amp;lt; youtube s-0ganwG284 &amp;gt;}}&lt;/code&gt;&lt;/p&gt;
 &lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
-      &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; allowfullscreen=&#34;allowfullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube.com/embed/s-0ganwG284?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;&gt;&lt;/iframe&gt;
+      &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube.com/embed/s-0ganwG284?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;&gt;&lt;/iframe&gt;
     &lt;/div&gt;
 
 &lt;h3 id=&#34;x&#34; &gt;
@@ -162,31 +162,7 @@
 &lt;/div&gt;
 &lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;{{&amp;lt; vimeo_simple 572521128 &amp;gt;}}&lt;/code&gt;&lt;/p&gt;
-&lt;style&gt;
-.__h_video {
-   position: relative;
-   padding-bottom: 56.23%;
-   height: 0;
-   overflow: hidden;
-   width: 100%;
-   background: #000;
-}
-.__h_video img {
-   width: 100%;
-   height: auto;
-   color: #000;
-}
-.__h_video .play {
-   height: 72px;
-   width: 72px;
-   left: 50%;
-   top: 50%;
-   margin-left: -36px;
-   margin-top: -36px;
-   position: absolute;
-   cursor: pointer;
-}
-&lt;/style&gt;&lt;div class=&#34;s_video_simple __h_video&#34;&gt;
+&lt;div class=&#34;s_video_simple __h_video&#34;&gt;
           &lt;a href=&#34;https://vimeo.com/5.72521128e&amp;#43;08&#34; rel=&#34;noopener&#34; target=&#34;_blank&#34;&gt;
             &lt;img src=&#34;https://i.vimeocdn.com/video/1244087881-4978d076496e628dbccafaafce3724647520ac2e3e4ea66e8f1dd3d95427ef79-d_640&#34; srcset=&#34;https://i.vimeocdn.com/video/1244087881-4978d076496e628dbccafaafce3724647520ac2e3e4ea66e8f1dd3d95427ef79-d_640 1x, https://i.vimeocdn.com/video/1244087881-4978d076496e628dbccafaafce3724647520ac2e3e4ea66e8f1dd3d95427ef79-d_640 2x&#34; alt=&#34;Online Video Tutorial&#34;&gt;
             &lt;div class=&#34;play&#34;&gt;
@@ -728,7 +704,23 @@ example of &lt;code&gt;cust-style2&lt;/code&gt;
 &lt;img src=&#34;https://vitaceae.github.io/posts/web//inc/hugo/publish_to_github_pages.png&#34; alt=&#34;publish_to_github_pages&#34;/&gt;&lt;/li&gt;
 &lt;li&gt;run https://&lt;code&gt;github_user_name&lt;/code&gt;.github.io in web browser&lt;/li&gt;
 &lt;/ol&gt;
-&lt;hr&gt;
+&lt;h3 id=&#34;problems&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#problems&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Problems
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Error: error building site: html/template:_partials/disqus.html:1:12: no such template &amp;ldquo;_internal/disqus.html&amp;rdquo;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Hugo v0.147.0&lt;/li&gt;
+&lt;li&gt;refer to &lt;a href=&#34;https://github.com/halogenica/beautifulhugo/issues/531&#34;&gt;Embedded templates error #531&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;workaround&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ grep -rli &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#39;{{ template &amp;#34;_internal/disqus.html&amp;#34; . }}&amp;#39;&lt;/span&gt; * | xargs -i@ sed -i &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#39;s#{{ template &amp;#34;_internal/disqus.html&amp;#34; . }}#{{ partial &amp;#34;disqus.html&amp;#34; . }}#g&amp;#39;&lt;/span&gt; @
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
 &lt;h2 id=&#34;references&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#references&#34;&gt;
