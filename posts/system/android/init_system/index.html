@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+
+
+<html lang="en-us" data-theme="">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+        
+<meta charset="utf-8">
+<meta name="HandheldFriendly" content="True">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer-when-downgrade">
+
+<title>Android Init System - Mike&rsquo;s Cheatsheet</title>
+
+<meta name="description" content="Android System">
+
+
+
+
+
+<link rel="icon" type="image/x-icon" href="http://172.20.85.217:1313/favicon.ico">
+<link rel="apple-touch-icon-precomposed" href="http://172.20.85.217:1313/favicon.png">
+
+
+
+
+
+
+    
+
+
+
+    
+
+
+
+<style>
+  body {
+    visibility: hidden;
+    opacity: 0;
+  }
+</style>
+
+<noscript>
+  <style>
+    body {
+      visibility: visible;
+      opacity: 1;
+    }
+  </style>
+</noscript>
+
+
+
+
+    
+
+
+
+
+
+    
+    
+    
+
+    
+        <link rel="stylesheet" href="/css/style.4c42aa0abeac804c4933c54677c449cea1f723caae778425d031e98565a0cdef.css" integrity="sha256-TEKqCr6sgExJM8VGd8RJzqH3I8qud4Ql0DHphWWgze8=">
+    
+
+
+
+
+
+    
+
+
+
+
+
+    
+    
+    
+
+    
+        <link rel="stylesheet" href="/css/style.9c1888ebff42c0224ce04dac10cb2c401f1b77f54f78e8d87d73c3bed781c263.css" integrity="sha256-nBiI6/9CwCJM4E2sEMssQB8bd/VPeOjYfXPDvteBwmM=">
+    
+
+
+
+
+
+    
+
+
+
+
+
+    
+    
+    
+
+    
+        <link rel="stylesheet" href="/css/style.acd606c0fce58853afe0248d37bb41acbbcdd8b1aca2412b6c0fa760da0137f3.css" integrity="sha256-rNYGwPzliFOv4CSNN7tBrLvN2LGsokErbA&#43;nYNoBN/M=">
+    
+
+
+
+
+
+
+
+    
+    
+      
+    
+
+    
+      
+        <link rel="stylesheet" href="/css/style.min.220fef57dded2a519c4c1295a11e3e15c4e531d51640b089d6f68e32429e6cfd.css" integrity="sha256-Ig/vV93tKlGcTBKVoR4&#43;FcTlMdUWQLCJ1vaOMkKebP0=" crossorigin="anonymous">
+      
+    
+
+    
+    
+      
+    
+
+    
+      
+        <link rel="stylesheet" href="/css/style.min.27cdeadf5ff7cf7ed35a3243b1afc90f8ed58cda71a9aadcf4f06b02b71716fa.css" integrity="sha256-J83q31/3z37TWjJDsa/JD47VjNpxqarc9PBrArcXFvo=" crossorigin="anonymous">
+      
+    
+
+
+
+
+
+
+    
+
+    
+
+
+
+
+
+    
+    
+    
+
+    
+        <script src="/js/script.672e2309c296e07c18bcd08b28d797a56222ff941d65f308fba3158c44885b14.js" type="text/javascript" charset="utf-8" integrity="sha256-Zy4jCcKW4HwYvNCLKNeXpWIi/5QdZfMI&#43;6MVjESIWxQ="></script>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+    
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P1Z223FHVN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P1Z223FHVN');
+</script>
+
+
+
+
+    
+
+<script async defer data-website-id="6701f641-f034-45b0-8693-d2095318465a" data-cache="false" data-do-not-track="false" src="https://cloud.umami.is/script.js"></script>
+
+
+
+
+
+
+    
+</head>
+<body>
+    <a class="skip-main" href="#main">Skip to main content</a>
+    <div class="container">
+        <header class="common-header">
+            
+                <div class="header-top">
+    <div class="header-top-left">
+        <h1 class="site-title noselect">
+    <a href="/">Mike&#39;s Cheatsheet</a>
+</h1>
+
+        
+
+
+
+    
+
+
+
+    
+
+
+
+    
+        <div class="theme-switcher">
+            <span class="inline-svg">
+
+    
+
+
+    
+    
+    
+    
+    
+
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-sun-high"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14.828 14.828a4 4 0 1 0 -5.656 -5.656a4 4 0 0 0 5.656 5.656z" /><path d="M6.343 17.657l-1.414 1.414" /><path d="M6.343 6.343l-1.414 -1.414" /><path d="M17.657 6.343l1.414 -1.414" /><path d="M17.657 17.657l1.414 1.414" /><path d="M4 12h-2" /><path d="M12 4v-2" /><path d="M20 12h2" /><path d="M12 20v2" /></svg>
+
+
+</span>
+
+        </div>
+    
+
+    <script>
+        const STORAGE_KEY = 'user-color-scheme'
+        const defaultTheme = "auto"
+
+        let currentTheme
+        let switchButton
+        let autoDefinedScheme = window.matchMedia('(prefers-color-scheme: dark)')
+
+        function switchTheme(e) {
+            currentTheme = (currentTheme === 'dark') ? 'light' : 'dark';
+            if (localStorage) localStorage.setItem(STORAGE_KEY, currentTheme);
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            changeGiscusTheme(currentTheme);
+            document.body.dispatchEvent(new CustomEvent(currentTheme + "-theme-set"));
+        }
+
+        const autoChangeScheme = e => {
+            currentTheme = e.matches ? 'dark' : 'light'
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            changeGiscusTheme(currentTheme);
+            document.body.dispatchEvent(new CustomEvent(currentTheme + "-theme-set"));
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            switchButton = document.querySelector('.theme-switcher')
+            currentTheme = detectCurrentScheme()
+
+            if (currentTheme === 'auto') {
+                autoChangeScheme(autoDefinedScheme);
+                autoDefinedScheme.addListener(autoChangeScheme);
+            } else {
+                document.documentElement.setAttribute('data-theme', currentTheme)
+            }
+
+            if (switchButton) {
+                switchButton.addEventListener('click', switchTheme, false)
+            }
+
+            showContent();
+        })
+
+        function detectCurrentScheme() {
+            if (localStorage !== null && localStorage.getItem(STORAGE_KEY)) {
+                return localStorage.getItem(STORAGE_KEY)
+            }
+            if (defaultTheme) {
+                return defaultTheme
+            }
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        function showContent() {
+            document.body.style.visibility = 'visible';
+            document.body.style.opacity = 1;
+        }
+
+        function changeGiscusTheme (theme) {
+            function sendMessage(message) {
+              const iframe = document.querySelector('iframe.giscus-frame');
+              if (!iframe) return;
+              iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+            }
+
+            sendMessage({
+              setConfig: {
+                theme: theme
+              }
+            });
+        }
+    </script>
+
+
+        <ul class="social-icons noselect">
+
+
+    
+        <li>
+            <a href="https://github.com/Vitaceae" title="Github" rel="me">
+            <span class="inline-svg">
+
+    
+
+
+    
+    
+    
+    
+    
+
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-github"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" /></svg>
+
+
+</span>
+
+            </a>
+        </li>
+    
+
+    
+        <li>
+            <a href="https://www.linkedin.com/in/mingke-chang-375a5684/" title="Linkedin" rel="me">
+            <span class="inline-svg">
+
+    
+
+
+    
+    
+    
+    
+    
+
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-linkedin"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" /><path d="M8 11l0 5" /><path d="M8 8l0 .01" /><path d="M12 16l0 -5" /><path d="M16 16v-3a2 2 0 0 0 -4 0" /></svg>
+
+
+</span>
+
+            </a>
+        </li>
+    
+
+    
+        <li>
+            <a href="i70170@hotmail.com" title="Email" rel="me">
+            <span class="inline-svg">
+
+    
+
+
+    
+    
+    
+    
+    
+
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-mail"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" /><path d="M3 7l9 6l9 -6" /></svg>
+
+
+</span>
+
+            </a>
+        </li>
+    
+
+
+
+
+
+
+    <li>
+            <a href="/index.xml" title="RSS" rel="me">
+            <span class="inline-svg">
+
+    
+
+
+    
+    
+    
+    
+    
+
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-rss"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M4 4a16 16 0 0 1 16 16" /><path d="M4 11a9 9 0 0 1 9 9" /></svg>
+
+
+</span>
+
+            </a>
+        </li>
+    
+
+</ul>
+
+    </div>
+    <div class="header-top-right">
+
+    </div>
+</div>
+
+
+    <nav class="noselect">
+        
+        
+        <a class="" href="http://172.20.85.217:1313/" title="">Home</a>
+        
+        <a class="" href="http://172.20.85.217:1313/about/" title="">About</a>
+        
+        <a class="" href="http://172.20.85.217:1313/categories/" title="">Categories</a>
+        
+        <a class="" href="http://172.20.85.217:1313/tags/" title="">Tags</a>
+        
+        <a class="" href="http://172.20.85.217:1313/posts/" title="">Archive</a>
+        
+    </nav>
+
+
+
+
+
+
+
+
+            
+        </header>
+        <main id="main" tabindex="-1">
+            
+    
+
+    <article class="post h-entry">
+        <div class="post-header">
+            <header>
+                <h1 class="p-name post-title">Android Init System</h1>
+                
+
+            </header>
+            
+
+    
+
+
+
+<div class="post-info noselect">
+    
+        <div class="post-date dt-published">
+            <time datetime="2024-06-03">2024-06-03</time>
+            
+        </div>
+    
+
+    <a class="post-hidden-url u-url" href="/posts/system/android/init_system/">/posts/system/android/init_system/</a>
+    <a href="http://172.20.85.217:1313/" class="p-name p-author post-hidden-author h-card" rel="me">Mike</a>
+
+
+    <div class="post-taxonomies">
+        
+            <ul class="post-categories">
+                
+                    
+                    <li><a href="/categories/android/">Android</a></li>
+                
+            </ul>
+        
+        
+            <ul class="post-tags">
+                
+                    
+                    <li><a href="/tags/init-system/">#Init System</a></li>
+                
+            </ul>
+        
+        
+    </div>
+</div>
+
+        </div>
+        
+
+  
+  
+
+
+
+
+  
+  
+  
+  <details class="toc noselect">
+    <summary>Table of Contents</summary>
+    <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#bootloader">Bootloader</a></li>
+    <li><a href="#linux-kernel">Linux kernel</a></li>
+    <li><a href="#init-system">Init System</a></li>
+    <li><a href="#init-system-main">Init System: main()</a></li>
+    <li><a href="#init-system-firststagemain">Init System: FirstStageMain()</a></li>
+    <li><a href="#init-system-setupselinux">Init System: SetupSelinux()</a></li>
+    <li><a href="#init-system-secondstagemain">Init System: SecondStageMain()</a>
+      <ul>
+        <li><a href="#ail-android-init-language">AIL, Android Init Language</a></li>
+        <li><a href="#parser-解析器">Parser 解析器</a></li>
+        <li><a href="#trigger-觸發">Trigger 觸發</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+  </details>
+  
+
+
+
+<script>
+  var toc = document.querySelector(".toc");
+  if (toc) {
+    toc.addEventListener("click", function () {
+      if (event.target.tagName !== "A") {
+        event.preventDefault();
+        if (this.open) {
+          this.open = false;
+          this.classList.remove("expanded");
+        } else {
+          this.open = true;
+          this.classList.add("expanded");
+        }
+      }
+    });
+  }
+</script>
+
+        <div class="content e-content">
+            <p>Android <strong>15.0.0_r36</strong> 系統初始化流程</p>
+<h2 id="bootloader" >
+<div>
+    <a href="#bootloader">
+        #
+    </a>
+    Bootloader
+</div>
+</h2>
+<p>Load and start Linux kernel</p>
+<h2 id="linux-kernel" >
+<div>
+    <a href="#linux-kernel">
+        #
+    </a>
+    Linux kernel
+</div>
+</h2>
+<p>PID 0 最終經由 init_idle_bootup_task() 退化為 idle process(cpu_idle)，負責 idle 排程。<br>
+此外產生 PID 1 的 init process 執行 <code>/init</code>，帶起 Android 的入口 main()</p>
+<p>kernel/init/main.c</p>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Linux Kernel
+</span></span><span style="display:flex;"><span>    start_kernel()
+</span></span><span style="display:flex;"><span>        ↓           [init thread]       [kthreadd thread]
+</span></span><span style="display:flex;"><span>    rest_init() →   kernel_init() +     kthreadd()
+</span></span><span style="display:flex;"><span>                        ↓                   ↓
+</span></span><span style="display:flex;"><span>                    do_basic_setup()    kernel threads
+</span></span><span style="display:flex;"><span>                        ↓
+</span></span><span style="display:flex;"><span>                    run_init_process()
+</span></span><span style="display:flex;"><span>------------------------↓-------------------------------------------------------
+</span></span><span style="display:flex;"><span>Android             main() →            [Zygote Process]
+</span></span><span style="display:flex;"><span>                        ↓               zygote
+</span></span><span style="display:flex;"><span>                    [Local Process]         ↓
+</span></span><span style="display:flex;"><span>                    ADB                 System Server
+</span></span><span style="display:flex;"><span>                    Service Manager         ↓
+</span></span><span style="display:flex;"><span>                    Surface Flinger     Acrtivity Manager
+</span></span><span style="display:flex;"><span>                    ...                 Package Manager
+</span></span><span style="display:flex;"><span>                                        ...
+</span></span></code></pre></div><p>查看 init process 的 PID:</p>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ adb shell ps -A | grep init
+</span></span></code></pre></div><h2 id="init-system" >
+<div>
+    <a href="#init-system">
+        #
+    </a>
+    Init System
+</div>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>    main()
+</span></span><span style="display:flex;"><span>        ↓
+</span></span><span style="display:flex;"><span>    FirstStageMain()
+</span></span><span style="display:flex;"><span>        ↓
+</span></span><span style="display:flex;"><span>    SetupSelinux()
+</span></span><span style="display:flex;"><span>        ↓
+</span></span><span style="display:flex;"><span>    SecondStageMain()
+</span></span></code></pre></div><h2 id="init-system-main" >
+<div>
+    <a href="#init-system-main">
+        #
+    </a>
+    Init System: main()
+</div>
+</h2>
+<ul>
+<li><a href="https://android.googlesource.com/platform/system/core/&#43;/refs/tags/android-15.0.0_r36/init/main.cpp">main.cpp</a></li>
+<li>透過輸入參數選擇 FirstStage 、 SetupSelinux 或 SecondStage。
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>  <span style="color:#ca9ee6">if</span> (argc <span style="color:#99d1db;font-weight:bold">&gt;</span> <span style="color:#ef9f76">1</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#ca9ee6">if</span> (<span style="color:#99d1db;font-weight:bold">!</span>strcmp(argv[<span style="color:#ef9f76">1</span>], <span style="color:#a6d189">&#34;subcontext&#34;</span>)) {
+</span></span><span style="display:flex;"><span>          ...
+</span></span><span style="display:flex;"><span>          <span style="color:#ca9ee6">return</span> SubcontextMain(argc, argv, <span style="color:#99d1db;font-weight:bold">&amp;</span>function_map);
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ca9ee6">if</span> (<span style="color:#99d1db;font-weight:bold">!</span>strcmp(argv[<span style="color:#ef9f76">1</span>], <span style="color:#a6d189">&#34;selinux_setup&#34;</span>)) {
+</span></span><span style="display:flex;"><span>          <span style="color:#ca9ee6">return</span> <span style="color:#8caaee">SetupSelinux</span>(argv);
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ca9ee6">if</span> (<span style="color:#99d1db;font-weight:bold">!</span>strcmp(argv[<span style="color:#ef9f76">1</span>], <span style="color:#a6d189">&#34;second_stage&#34;</span>)) {
+</span></span><span style="display:flex;"><span>          <span style="color:#ca9ee6">return</span> <span style="color:#8caaee">SecondStageMain</span>(argc, argv);
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ca9ee6">return</span> <span style="color:#8caaee">FirstStageMain</span>(argc, argv);
+</span></span></code></pre></div></li>
+</ul>
+<h2 id="init-system-firststagemain" >
+<div>
+    <a href="#init-system-firststagemain">
+        #
+    </a>
+    Init System: FirstStageMain()
+</div>
+</h2>
+<ul>
+<li><a href="https://android.googlesource.com/platform/system/core/&#43;/refs/heads/main/init/first_stage_init.cpp">first_stage_init.cpp</a></li>
+<li>設定輸入參數後使用 <code>execv</code> 保留 PID 重新載入 main，執行 SetupSelinux
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>  <span style="color:#ca9ee6">const</span> <span style="color:#e78284">char</span><span style="color:#99d1db;font-weight:bold">*</span> path <span style="color:#99d1db;font-weight:bold">=</span> <span style="color:#a6d189">&#34;/system/bin/init&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ca9ee6">const</span> <span style="color:#e78284">char</span><span style="color:#99d1db;font-weight:bold">*</span> args[] <span style="color:#99d1db;font-weight:bold">=</span> {path, <span style="color:#a6d189">&#34;selinux_setup&#34;</span>, <span style="color:#ca9ee6">nullptr</span>};
+</span></span><span style="display:flex;"><span>  ...
+</span></span><span style="display:flex;"><span>  execv(path, <span style="color:#ca9ee6">const_cast</span><span style="color:#99d1db;font-weight:bold">&lt;</span><span style="color:#e78284">char</span><span style="color:#99d1db;font-weight:bold">**&gt;</span>(args));
+</span></span></code></pre></div></li>
+</ul>
+<p>簡易流程:</p>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>    InstallRebootSignalHandlers(): 處理異常 signal
+</span></span><span style="display:flex;"><span>        ↓
+</span></span><span style="display:flex;"><span>    mount, mkdir, chmod, setgroups, mknod: 掛載基礎檔案系統 ramdisk: tmpfs, devpts, proc, sysfs
+</span></span><span style="display:flex;"><span>        ↓
+</span></span><span style="display:flex;"><span>    InitKernelLogging(): 開啟 log
+</span></span><span style="display:flex;"><span>        ↓
+</span></span><span style="display:flex;"><span>    DoFirstStageMount(): 掛載特定分區
+</span></span><span style="display:flex;"><span>        ↓
+</span></span><span style="display:flex;"><span>    execv(): 執行 SetupSelinux
+</span></span></code></pre></div><h2 id="init-system-setupselinux" >
+<div>
+    <a href="#init-system-setupselinux">
+        #
+    </a>
+    Init System: SetupSelinux()
+</div>
+</h2>
+<ul>
+<li><a href="https://android.googlesource.com/platform/system/core/&#43;/refs/heads/main/init/selinux.cpp">selinux.cpp</a></li>
+<li>掛載 SELinux 權限系統
+<ul>
+<li>/sys/fs/selinux/enforce 檔案 0 代表 permissive，1 代表 enforcing<br>
+permissive mode: 允許任何操作，不存在 MAC(Mandatory Access Control)。若違反權限仍會紀錄到 log，多用於 Engineering Mode。<br>
+enforcing mode: 任何操作都會檢查權限。屬於一般 User Mode 或 User-debug Mode</li>
+</ul>
+</li>
+<li>使用 execv 保留 PID 重新載入 main，執行 SecondStageMain</li>
+</ul>
+<h2 id="init-system-secondstagemain" >
+<div>
+    <a href="#init-system-secondstagemain">
+        #
+    </a>
+    Init System: SecondStageMain()
+</div>
+</h2>
+<ul>
+<li><a href="https://android.googlesource.com/platform/system/core/&#43;/refs/tags/android-15.0.0_r36/init/init.cpp">init.cpp</a></li>
+<li>分析 init.rc
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>  ActionManager<span style="color:#99d1db;font-weight:bold">&amp;</span> am <span style="color:#99d1db;font-weight:bold">=</span> ActionManager<span style="color:#99d1db;font-weight:bold">::</span>GetInstance();
+</span></span><span style="display:flex;"><span>  ServiceList<span style="color:#99d1db;font-weight:bold">&amp;</span> sm <span style="color:#99d1db;font-weight:bold">=</span> ServiceList<span style="color:#99d1db;font-weight:bold">::</span>GetInstance();
+</span></span><span style="display:flex;"><span>  LoadBootScripts(am, sm);
+</span></span></code></pre></div></li>
+<li>建立 Zygote 行程</li>
+</ul>
+<p>簡易流程:</p>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>    InstallRebootSignalHandlers(): 處理異常 signal
+</span></span><span style="display:flex;"><span>        ↓
+</span></span><span style="display:flex;"><span>    InitKernelLogging(): 開啟 log
+</span></span><span style="display:flex;"><span>        ↓
+</span></span><span style="display:flex;"><span>    PropertyInit(): 屬性服務解析 .prop 檔案
+</span></span><span style="display:flex;"><span>        ↓
+</span></span><span style="display:flex;"><span>    MountExtraFilesystems()
+</span></span><span style="display:flex;"><span>        ↓
+</span></span><span style="display:flex;"><span>    SelabelInitialize(), SelinuxRestoreContext(): 設定 SELinux
+</span></span><span style="display:flex;"><span>        ↓
+</span></span><span style="display:flex;"><span>    Epoll epoll: 使用 epoll 監聽 socket
+</span></span><span style="display:flex;"><span>        ↓
+</span></span><span style="display:flex;"><span>    StartPropertyService()
+</span></span><span style="display:flex;"><span>        ↓
+</span></span><span style="display:flex;"><span>    LoadBootScripts(): 使用解析器處理 .rc 腳本
+</span></span><span style="display:flex;"><span>        ↓
+</span></span><span style="display:flex;"><span>    Trigger &#34;early-init&#34;
+</span></span><span style="display:flex;"><span>        ↓
+</span></span><span style="display:flex;"><span>    Trigger &#34;init&#34;
+</span></span><span style="display:flex;"><span>        ↓
+</span></span><span style="display:flex;"><span>    bootmode == &#34;charger&#34;?
+</span></span><span style="display:flex;"><span>        ↓
+</span></span><span style="display:flex;"><span>    &lt;YES&gt; Trigger &#34;charger&#34; | &lt;NO&gt; Trigger &#34;late-init&#34;
+</span></span><span style="display:flex;"><span>        ↓
+</span></span><span style="display:flex;"><span>    queue_property_triggers
+</span></span></code></pre></div><h3 id="ail-android-init-language" >
+<div>
+    <a href="#ail-android-init-language">
+        ##
+    </a>
+    AIL, Android Init Language
+</div>
+</h3>
+<p>詳細格式參考 <a href="https://android.googlesource.com/platform/system/core/&#43;/refs/heads/main/init/README.md">system/core/init/README.md</a> 。</p>
+<p>init.rc 包含五種類型宣告:</p>
+<ul>
+<li>Action
+<ul>
+<li>以 Section 形式表達。直到下一個 Section 開頭為止構成完整描述；沒有結束標記。</li>
+<li>重複的 Action 會被合併。</li>
+<li>以關鍵字 on 開頭的範例
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>  on early-init                           <span style="color:#737994;font-style:italic"># Action 類型宣告; 觸發器為字串 &#34;early-init&#34;</span>
+</span></span><span style="display:flex;"><span>      write /proc/1/oom_score_adj -1000   <span style="color:#737994;font-style:italic"># Command</span>
+</span></span></code></pre></div></li>
+<li>trigger(觸發器): 可使用字串如 &ldquo;early-init&rdquo; 或屬性 <code>property:sys.boot_from_charger_mode=1</code>；以 <code>&amp;&amp;</code> 連接</li>
+</ul>
+</li>
+<li>Command
+<ul>
+<li>常與 Action 併用；實際 Linux 操作命令。</li>
+<li><a href="https://android.googlesource.com/platform/system/core/&#43;/refs/tags/android-15.0.0_r36/init/builtins.cpp">builtins.cpp</a><br>
+GetBuiltinFunctionMap() 定義可用命令
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>  <span style="color:#ca9ee6">static</span> <span style="color:#ca9ee6">const</span> BuiltinFunctionMap builtin_functions <span style="color:#99d1db;font-weight:bold">=</span> {
+</span></span><span style="display:flex;"><span>      {<span style="color:#a6d189">&#34;bootchart&#34;</span>,               {<span style="color:#ef9f76">1</span>,     <span style="color:#ef9f76">1</span>,    {<span style="color:#99d1db">false</span>,  do_bootchart}}},
+</span></span><span style="display:flex;"><span>      ...
+</span></span><span style="display:flex;"><span>  };
+</span></span></code></pre></div></li>
+</ul>
+</li>
+<li>Service
+<ul>
+<li>以 Section 形式表達。直到下一個 Section 開頭為止構成完整描述；沒有結束標記。</li>
+<li>不允許使用重複的 Service 名稱。</li>
+<li>以關鍵字 service 開頭的範例
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>  service ueventd /sbin/ueventd           <span style="color:#737994;font-style:italic"># Service 類型宣告; 包含服務名稱與執行路徑，透過 start 命令執行</span>
+</span></span><span style="display:flex;"><span>      class core                          <span style="color:#737994;font-style:italic"># Option 修飾服務; 可包含複數敘述</span>
+</span></span><span style="display:flex;"><span>      critical
+</span></span></code></pre></div></li>
+</ul>
+</li>
+<li>Options
+<ul>
+<li>Service 的啟動參數與設定</li>
+</ul>
+</li>
+<li>Import
+<ul>
+<li>關聯其他 .rc 檔
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>  import /init.<span style="color:#a6d189">${</span><span style="color:#f2d5cf">ro</span>.hardware<span style="color:#a6d189">}</span>.rc
+</span></span></code></pre></div></li>
+</ul>
+</li>
+</ul>
+<h3 id="parser-解析器" >
+<div>
+    <a href="#parser-%e8%a7%a3%e6%9e%90%e5%99%a8">
+        ##
+    </a>
+    Parser 解析器
+</div>
+</h3>
+<p>init.cpp 中建立並使用 Parser</p>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>    Parser parser <span style="color:#99d1db;font-weight:bold">=</span> CreateParser(action_manager, service_list);
+</span></span><span style="display:flex;"><span>    parser.ParseConfig(...)
+</span></span></code></pre></div><p>ActionParser, ImportParser, ServiceParser 解析對應 section</p>
+<ul>
+<li><a href="https://android.googlesource.com/platform/system/core/&#43;/refs/tags/android-15.0.0_r36/init/parser.cpp">parser.cpp</a>, <a href="https://android.googlesource.com/platform/system/core/&#43;/refs/tags/android-15.0.0_r36/init/parser.h">parser.h</a></li>
+<li><a href="https://android.googlesource.com/platform/system/core/&#43;/refs/tags/android-15.0.0_r36/init/action_parser.cpp">action_parser.cpp</a>, <a href="https://android.googlesource.com/platform/system/core/&#43;/refs/tags/android-15.0.0_r36/init/action_parser.h">action_parser.h</a>
+<ul>
+<li>解析結果存放在 <code>std::unique_ptr&lt;Action&gt; action_</code></li>
+</ul>
+</li>
+<li><a href="https://android.googlesource.com/platform/system/core/&#43;/refs/tags/android-15.0.0_r36/init/import_parser.cpp">import_parser.cpp</a>, <a href="https://android.googlesource.com/platform/system/core/&#43;/refs/tags/android-15.0.0_r36/init/import_parser.h">import_parser.h</a>
+<ul>
+<li>解析結果存放在 <code>std::vector&lt;std::pair&lt;std::string, int&gt;&gt; imports_</code></li>
+</ul>
+</li>
+<li><a href="https://android.googlesource.com/platform/system/core/&#43;/refs/tags/android-15.0.0_r36/init/service_parser.cpp">service_parser.cpp</a>, <a href="https://android.googlesource.com/platform/system/core/&#43;/refs/tags/android-15.0.0_r36/init/service_parser.h">service_parser.h</a>
+<ul>
+<li>解析結果存放在 <code>std::unique_ptr&lt;Service&gt; service_</code></li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>    Parser::ParseConfigFile() → ParseData() → &lt;Action?&gt;     → ActionParser::ParseLineSection() 將 command 加入 Action
+</span></span><span style="display:flex;"><span>                                            → &lt;Import?&gt;     → ImportParser
+</span></span><span style="display:flex;"><span>                                            → &lt;Service?&gt;    → ServiceParser::ParseLineSection() 將 option 加入 Service
+</span></span></code></pre></div><h3 id="trigger-觸發" >
+<div>
+    <a href="#trigger-%e8%a7%b8%e7%99%bc">
+        ##
+    </a>
+    Trigger 觸發
+</div>
+</h3>
+<ul>
+<li><a href="https://android.googlesource.com/platform/system/core/&#43;/refs/tags/android-15.0.0_r36/init/action_manager.cpp">action_manager.cpp</a></li>
+<li><code>QueueEventTrigger()</code> 將 trigger 字串加入 <code>event_queue_</code></li>
+<li><code>QueueBuiltinAction()</code> 建立 Action 物件並附加 command 後加入 <code>event_queue_</code></li>
+<li><code>event_queue_</code> 宣告在 ActionManager 類別中: <code>std::queue&lt;std::variant&lt;EventTrigger, PropertyChange, BuiltinAction&gt;&gt; event_queue_</code></li>
+</ul>
+<p><a href="https://android.googlesource.com/platform/system/core/&#43;/refs/tags/android-15.0.0_r36/rootdir/init.rc">init.rc</a> 中 Action 次序決定觸發順序，<br>
+而 SecondStageMain() 中的 LoadBootScripts() 決定 .rc 載入順序；相同目錄下經由 Parser::ParseConfigDir() 排序後以升冪順序執行。</p>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>    init.rc → import in init.rc → nested import → /system/etc/init/ → /vendor/etc/init/ → /odm/etc/init/
+</span></span><span style="display:flex;"><span>                      ↑                ↓
+</span></span><span style="display:flex;"><span>                      ←    recursive   ←
+</span></span></code></pre></div><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Path</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">/init.${ro.hardware}.rc</td>
+          <td style="text-align: left">hardware vendor 設定</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">/system/etc/init/hw/init.rc</td>
+          <td style="text-align: left">hardware vendor 設定</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">/system/etc/init</td>
+          <td style="text-align: left">Android 系統設定如 SurfaceFlinger, MediaService, logcatd</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">/vendor/etc/init</td>
+          <td style="text-align: left">SoC vendor 設定</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">/odm/etc/init</td>
+          <td style="text-align: left">ODM 設定</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">/product/etc/init</td>
+          <td style="text-align: left">個別產品設定</td>
+      </tr>
+  </tbody>
+</table>
+<p>SecondStageMain() 解析完 .rc 文件後使用 epoll 持續監聽事件與回收 zombie process，即最後的 while 迴圈:</p>
+<ul>
+<li>ActionManager::ExecuteOneCommand() 觸發屬性變化的對應 Action
+<ul>
+<li><a href="https://android.googlesource.com/platform/system/core/&#43;/refs/tags/android-15.0.0_r36/init/property_service.cpp">property_service.cpp</a></li>
+<li>使用 EPOLL 監控屬性變化事件
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>  <span style="color:#ca9ee6">static</span> <span style="color:#e78284">void</span> <span style="color:#8caaee">PropertyServiceThread</span>(<span style="color:#e78284">int</span> fd, <span style="color:#e78284">bool</span> listen_init) {
+</span></span><span style="display:flex;"><span>      ... epoll.RegisterHandler(fd, std<span style="color:#99d1db;font-weight:bold">::</span>bind(handle_property_set_fd, fd)) ...
+</span></span><span style="display:flex;"><span>      ... epoll.RegisterHandler(init_socket, HandleInitSocket) ...
+</span></span><span style="display:flex;"><span>      <span style="color:#ca9ee6">while</span> (<span style="color:#99d1db">true</span>) {
+</span></span><span style="display:flex;"><span>          ...
+</span></span><span style="display:flex;"><span>          ... epoll.Wait(std<span style="color:#99d1db;font-weight:bold">::</span>nullopt) ...
+</span></span><span style="display:flex;"><span>          ...
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e78284">void</span> <span style="color:#8caaee">StartThread</span>(...) {
+</span></span><span style="display:flex;"><span>      ...
+</span></span><span style="display:flex;"><span>      ... <span style="color:#ca9ee6">auto</span> result <span style="color:#99d1db;font-weight:bold">=</span> CreateSocket(name, SOCK_STREAM <span style="color:#99d1db;font-weight:bold">|</span> SOCK_CLOEXEC <span style="color:#99d1db;font-weight:bold">|</span> SOCK_NONBLOCK ...
+</span></span><span style="display:flex;"><span>          ...
+</span></span><span style="display:flex;"><span>          fd <span style="color:#99d1db;font-weight:bold">=</span> <span style="color:#99d1db;font-weight:bold">*</span>result;
+</span></span><span style="display:flex;"><span>      ...
+</span></span><span style="display:flex;"><span>      listen(fd, <span style="color:#ef9f76">8</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#ca9ee6">auto</span> new_thread <span style="color:#99d1db;font-weight:bold">=</span> std<span style="color:#99d1db;font-weight:bold">::</span><span style="color:#ca9ee6">thread</span>(PropertyServiceThread, fd, listen_init);
+</span></span><span style="display:flex;"><span>      ...
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e78284">void</span> <span style="color:#8caaee">StartPropertyService</span>(<span style="color:#e78284">int</span><span style="color:#99d1db;font-weight:bold">*</span> epoll_socket) {
+</span></span><span style="display:flex;"><span>      ...
+</span></span><span style="display:flex;"><span>      StartThread(PROP_SERVICE_NAME, <span style="color:#ef9f76">0666</span>, <span style="color:#ef9f76">0</span>, property_service_thread, <span style="color:#99d1db">false</span>);
+</span></span><span style="display:flex;"><span>      ...
+</span></span><span style="display:flex;"><span>  }
+</span></span></code></pre></div></li>
+<li>處理屬性變化事件: __system_property_update(), __system_property_add()
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>  <span style="color:#ca9ee6">static</span> std<span style="color:#99d1db;font-weight:bold">::</span>optional<span style="color:#99d1db;font-weight:bold">&lt;</span><span style="color:#e78284">uint32_t</span><span style="color:#99d1db;font-weight:bold">&gt;</span> PropertySet(...) {
+</span></span><span style="display:flex;"><span>      ...
+</span></span><span style="display:flex;"><span>          prop_info<span style="color:#99d1db;font-weight:bold">*</span> pi <span style="color:#99d1db;font-weight:bold">=</span> (prop_info<span style="color:#99d1db;font-weight:bold">*</span>)__system_property_find(name.c_str());
+</span></span><span style="display:flex;"><span>          <span style="color:#ca9ee6">if</span> (pi <span style="color:#99d1db;font-weight:bold">!=</span> <span style="color:#ca9ee6">nullptr</span>) {
+</span></span><span style="display:flex;"><span>              ...
+</span></span><span style="display:flex;"><span>              __system_property_update(pi, value.c_str(), valuelen);
+</span></span><span style="display:flex;"><span>          } <span style="color:#ca9ee6">else</span> {
+</span></span><span style="display:flex;"><span>              <span style="color:#e78284">int</span> rc <span style="color:#99d1db;font-weight:bold">=</span> __system_property_add(name.c_str(), name.size(), value.c_str(), valuelen);
+</span></span><span style="display:flex;"><span>              ...
+</span></span><span style="display:flex;"><span>          }
+</span></span><span style="display:flex;"><span>      ...
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  std<span style="color:#99d1db;font-weight:bold">::</span>optional<span style="color:#99d1db;font-weight:bold">&lt;</span><span style="color:#e78284">uint32_t</span><span style="color:#99d1db;font-weight:bold">&gt;</span> HandlePropertySet(...) {
+</span></span><span style="display:flex;"><span>      ...
+</span></span><span style="display:flex;"><span>      <span style="color:#ca9ee6">return</span> PropertySet(name, value, socket, error);
+</span></span><span style="display:flex;"><span>  }
+</span></span></code></pre></div></li>
+</ul>
+</li>
+<li>HandleSignalFd() 處理 SIGCHLD
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>  <span style="color:#737994;font-style:italic">//init.cpp
+</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"></span>  <span style="color:#737994;font-style:italic">//InstallSignalFdHandler() → RegisterSignalFd()
+</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"></span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ca9ee6">static</span> Result<span style="color:#99d1db;font-weight:bold">&lt;</span><span style="color:#e78284">void</span><span style="color:#99d1db;font-weight:bold">&gt;</span> RegisterSignalFd(Epoll<span style="color:#99d1db;font-weight:bold">*</span> epoll, <span style="color:#e78284">int</span> signal, <span style="color:#e78284">int</span> fd) {
+</span></span><span style="display:flex;"><span>      <span style="color:#ca9ee6">return</span> epoll<span style="color:#99d1db;font-weight:bold">-&gt;</span>RegisterHandler(fd, [signal]() { HandleSignalFd(signal); }, EPOLLIN <span style="color:#99d1db;font-weight:bold">|</span> EPOLLPRI);
+</span></span><span style="display:flex;"><span>  }
+</span></span></code></pre></div></li>
+<li>HandleKeychord() 處理鍵盤事件
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>  <span style="color:#737994;font-style:italic">//init.cpp
+</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"></span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e78284">int</span> <span style="color:#8caaee">SecondStageMain</span>(<span style="color:#e78284">int</span> argc, <span style="color:#e78284">char</span><span style="color:#99d1db;font-weight:bold">**</span> argv) {
+</span></span><span style="display:flex;"><span>      ...
+</span></span><span style="display:flex;"><span>      Keychords keychords;
+</span></span><span style="display:flex;"><span>      am.QueueBuiltinAction(
+</span></span><span style="display:flex;"><span>              [<span style="color:#99d1db;font-weight:bold">&amp;</span>epoll, <span style="color:#99d1db;font-weight:bold">&amp;</span>keychords](<span style="color:#ca9ee6">const</span> BuiltinArguments<span style="color:#99d1db;font-weight:bold">&amp;</span> args) <span style="color:#99d1db;font-weight:bold">-&gt;</span> Result<span style="color:#99d1db;font-weight:bold">&lt;</span><span style="color:#e78284">void</span><span style="color:#99d1db;font-weight:bold">&gt;</span> {
+</span></span><span style="display:flex;"><span>                  <span style="color:#ca9ee6">for</span> (<span style="color:#ca9ee6">const</span> <span style="color:#ca9ee6">auto</span><span style="color:#99d1db;font-weight:bold">&amp;</span> <span style="color:#99d1db">svc</span> : ServiceList<span style="color:#99d1db;font-weight:bold">::</span>GetInstance()) {
+</span></span><span style="display:flex;"><span>                      keychords.Register(svc<span style="color:#99d1db;font-weight:bold">-&gt;</span>keycodes());
+</span></span><span style="display:flex;"><span>                  }
+</span></span><span style="display:flex;"><span>                  keychords.Start(<span style="color:#99d1db;font-weight:bold">&amp;</span>epoll, HandleKeychord);
+</span></span><span style="display:flex;"><span>                  <span style="color:#ca9ee6">return</span> {};
+</span></span><span style="display:flex;"><span>              },
+</span></span><span style="display:flex;"><span>              <span style="color:#a6d189">&#34;KeychordInit&#34;</span>);
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>  }
+</span></span></code></pre></div></li>
+</ul>
+        </div>
+
+    </article>
+
+    
+    
+        
+    
+
+    
+        
+        
+    
+
+    
+        
+    
+    
+    <div class="pagination post-pagination">
+        <div class="left pagination-item ">
+            
+                <a href="/posts/system/linux/setup_ubuntu_desktop/">Ubuntu Desktop Setup</a>
+            
+        </div>
+        <div class="right pagination-item ">
+            
+                <a href="/posts/prog/c/c_lib/">C Library</a>
+            
+        </div>
+    </div>
+
+
+
+
+
+    
+
+    
+        
+
+
+
+
+
+
+
+
+            
+
+<script>
+        function detectCurrentScheme2() {
+                const defaultTheme = "auto";
+                if (localStorage !== null && localStorage.getItem("user-color-scheme")) {
+                        return localStorage.getItem("user-color-scheme");
+                }
+                if (defaultTheme === "dark" || defaultTheme === "light") {
+                        return defaultTheme;
+                }
+                return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+
+        let giscusTheme = detectCurrentScheme2();
+        let giscusAttributes = {
+                src: "https://giscus.app/client.js",
+                "data-repo": "Vitaceae\/vitaceae.github.io",
+                "data-repo-id": "R_kgDOOLku4g",
+                "data-category": "General",
+                "data-category-id": "DIC_kwDOOLku4s4CoQfG",
+                "data-mapping": "pathname",
+                "data-strict": "0",
+                "data-reactions-enabled": "1",
+                "data-emit-metadata": "0",
+                "data-input-position": "bottom",
+                "data-theme": giscusTheme,
+                "data-lang": "zh-TW",
+                crossorigin: "anonymous",
+                lazyload: "false",
+                async: true,
+        };
+        let main = document.querySelector("main");
+        let giscusScript = document.createElement("script");
+        Object.entries(giscusAttributes).forEach(([key, value]) => giscusScript.setAttribute(key, value));
+        main.appendChild(giscusScript);
+</script>
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+        </main>
+        
+            <footer class="common-footer noselect">
+    
+    
+
+    <div class="common-footer-bottom">
+        
+
+        <div style="display: flex; align-items: center; gap:8px">
+            ©  Mike Chang,  2025
+            
+            <a aria-label="Check statistics data" style="display: flex; align-items: center; border-bottom: none; cursor: pointer; color: var(--pagination-link-color)" href="https://cloud.umami.is/share/biHOZBHqeGeBgHVS/vitaceae.github.io"><svg xmlns="http://www.w3.org/2000/svg"  width="16"  height="16"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-report-analytics"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" /><path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" /><path d="M9 17v-5" /><path d="M12 17v-1" /><path d="M15 17v-3" /></svg></a>
+            
+        </div>
+        <div style="display:flex;align-items: center">
+            
+            
+            
+            
+            
+            
+        </div>
+        <div>
+            Powered by <a target="_blank" rel="noopener noreferrer" href="https://gohugo.io/">Hugo</a>, theme <a target="_blank" rel="noopener noreferrer" href="https://github.com/Junyi-99/hugo-theme-anubis2">Anubis2</a>.<br>
+            
+
+        </div>
+    </div>
+
+    <p class="h-card vcard">
+
+    <a href=http://172.20.85.217:1313/ class="p-name u-url url fn" rel="me">map[email:i70170@hotmail.com location:Taiwan name:Mike Chang]</a>
+
+    
+
+    
+</p>
+
+</footer>
+
+        
+    </div>
+</body>
+</html>

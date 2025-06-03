@@ -1,0 +1,1645 @@
+<!DOCTYPE html>
+
+
+<html lang="en-us" data-theme="">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+        
+<meta charset="utf-8">
+<meta name="HandheldFriendly" content="True">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer-when-downgrade">
+
+<title>C Traps and Pitfalls - Mike&rsquo;s Cheatsheet</title>
+
+<meta name="description" content="C Programming">
+
+
+
+
+
+<link rel="icon" type="image/x-icon" href="http://172.20.85.217:1313/favicon.ico">
+<link rel="apple-touch-icon-precomposed" href="http://172.20.85.217:1313/favicon.png">
+
+
+
+
+
+
+    
+
+
+
+    
+
+
+
+<style>
+  body {
+    visibility: hidden;
+    opacity: 0;
+  }
+</style>
+
+<noscript>
+  <style>
+    body {
+      visibility: visible;
+      opacity: 1;
+    }
+  </style>
+</noscript>
+
+
+
+
+    
+
+
+
+
+
+    
+    
+    
+
+    
+        <link rel="stylesheet" href="/css/style.4c42aa0abeac804c4933c54677c449cea1f723caae778425d031e98565a0cdef.css" integrity="sha256-TEKqCr6sgExJM8VGd8RJzqH3I8qud4Ql0DHphWWgze8=">
+    
+
+
+
+
+
+    
+
+
+
+
+
+    
+    
+    
+
+    
+        <link rel="stylesheet" href="/css/style.9c1888ebff42c0224ce04dac10cb2c401f1b77f54f78e8d87d73c3bed781c263.css" integrity="sha256-nBiI6/9CwCJM4E2sEMssQB8bd/VPeOjYfXPDvteBwmM=">
+    
+
+
+
+
+
+    
+
+
+
+
+
+    
+    
+    
+
+    
+        <link rel="stylesheet" href="/css/style.acd606c0fce58853afe0248d37bb41acbbcdd8b1aca2412b6c0fa760da0137f3.css" integrity="sha256-rNYGwPzliFOv4CSNN7tBrLvN2LGsokErbA&#43;nYNoBN/M=">
+    
+
+
+
+
+
+
+
+    
+    
+      
+    
+
+    
+      
+        <link rel="stylesheet" href="/css/style.min.220fef57dded2a519c4c1295a11e3e15c4e531d51640b089d6f68e32429e6cfd.css" integrity="sha256-Ig/vV93tKlGcTBKVoR4&#43;FcTlMdUWQLCJ1vaOMkKebP0=" crossorigin="anonymous">
+      
+    
+
+    
+    
+      
+    
+
+    
+      
+        <link rel="stylesheet" href="/css/style.min.27cdeadf5ff7cf7ed35a3243b1afc90f8ed58cda71a9aadcf4f06b02b71716fa.css" integrity="sha256-J83q31/3z37TWjJDsa/JD47VjNpxqarc9PBrArcXFvo=" crossorigin="anonymous">
+      
+    
+
+
+
+
+
+
+    
+
+    
+
+
+
+
+
+    
+    
+    
+
+    
+        <script src="/js/script.672e2309c296e07c18bcd08b28d797a56222ff941d65f308fba3158c44885b14.js" type="text/javascript" charset="utf-8" integrity="sha256-Zy4jCcKW4HwYvNCLKNeXpWIi/5QdZfMI&#43;6MVjESIWxQ="></script>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+    
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P1Z223FHVN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P1Z223FHVN');
+</script>
+
+
+
+
+    
+
+<script async defer data-website-id="6701f641-f034-45b0-8693-d2095318465a" data-cache="false" data-do-not-track="false" src="https://cloud.umami.is/script.js"></script>
+
+
+
+
+
+
+    
+</head>
+<body>
+    <a class="skip-main" href="#main">Skip to main content</a>
+    <div class="container">
+        <header class="common-header">
+            
+                <div class="header-top">
+    <div class="header-top-left">
+        <h1 class="site-title noselect">
+    <a href="/">Mike&#39;s Cheatsheet</a>
+</h1>
+
+        
+
+
+
+    
+
+
+
+    
+
+
+
+    
+        <div class="theme-switcher">
+            <span class="inline-svg">
+
+    
+
+
+    
+    
+    
+    
+    
+
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-sun-high"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14.828 14.828a4 4 0 1 0 -5.656 -5.656a4 4 0 0 0 5.656 5.656z" /><path d="M6.343 17.657l-1.414 1.414" /><path d="M6.343 6.343l-1.414 -1.414" /><path d="M17.657 6.343l1.414 -1.414" /><path d="M17.657 17.657l1.414 1.414" /><path d="M4 12h-2" /><path d="M12 4v-2" /><path d="M20 12h2" /><path d="M12 20v2" /></svg>
+
+
+</span>
+
+        </div>
+    
+
+    <script>
+        const STORAGE_KEY = 'user-color-scheme'
+        const defaultTheme = "auto"
+
+        let currentTheme
+        let switchButton
+        let autoDefinedScheme = window.matchMedia('(prefers-color-scheme: dark)')
+
+        function switchTheme(e) {
+            currentTheme = (currentTheme === 'dark') ? 'light' : 'dark';
+            if (localStorage) localStorage.setItem(STORAGE_KEY, currentTheme);
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            changeGiscusTheme(currentTheme);
+            document.body.dispatchEvent(new CustomEvent(currentTheme + "-theme-set"));
+        }
+
+        const autoChangeScheme = e => {
+            currentTheme = e.matches ? 'dark' : 'light'
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            changeGiscusTheme(currentTheme);
+            document.body.dispatchEvent(new CustomEvent(currentTheme + "-theme-set"));
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            switchButton = document.querySelector('.theme-switcher')
+            currentTheme = detectCurrentScheme()
+
+            if (currentTheme === 'auto') {
+                autoChangeScheme(autoDefinedScheme);
+                autoDefinedScheme.addListener(autoChangeScheme);
+            } else {
+                document.documentElement.setAttribute('data-theme', currentTheme)
+            }
+
+            if (switchButton) {
+                switchButton.addEventListener('click', switchTheme, false)
+            }
+
+            showContent();
+        })
+
+        function detectCurrentScheme() {
+            if (localStorage !== null && localStorage.getItem(STORAGE_KEY)) {
+                return localStorage.getItem(STORAGE_KEY)
+            }
+            if (defaultTheme) {
+                return defaultTheme
+            }
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        function showContent() {
+            document.body.style.visibility = 'visible';
+            document.body.style.opacity = 1;
+        }
+
+        function changeGiscusTheme (theme) {
+            function sendMessage(message) {
+              const iframe = document.querySelector('iframe.giscus-frame');
+              if (!iframe) return;
+              iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+            }
+
+            sendMessage({
+              setConfig: {
+                theme: theme
+              }
+            });
+        }
+    </script>
+
+
+        <ul class="social-icons noselect">
+
+
+    
+        <li>
+            <a href="https://github.com/Vitaceae" title="Github" rel="me">
+            <span class="inline-svg">
+
+    
+
+
+    
+    
+    
+    
+    
+
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-github"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" /></svg>
+
+
+</span>
+
+            </a>
+        </li>
+    
+
+    
+        <li>
+            <a href="https://www.linkedin.com/in/mingke-chang-375a5684/" title="Linkedin" rel="me">
+            <span class="inline-svg">
+
+    
+
+
+    
+    
+    
+    
+    
+
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-linkedin"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" /><path d="M8 11l0 5" /><path d="M8 8l0 .01" /><path d="M12 16l0 -5" /><path d="M16 16v-3a2 2 0 0 0 -4 0" /></svg>
+
+
+</span>
+
+            </a>
+        </li>
+    
+
+    
+        <li>
+            <a href="i70170@hotmail.com" title="Email" rel="me">
+            <span class="inline-svg">
+
+    
+
+
+    
+    
+    
+    
+    
+
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-mail"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" /><path d="M3 7l9 6l9 -6" /></svg>
+
+
+</span>
+
+            </a>
+        </li>
+    
+
+
+
+
+
+
+    <li>
+            <a href="/index.xml" title="RSS" rel="me">
+            <span class="inline-svg">
+
+    
+
+
+    
+    
+    
+    
+    
+
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-rss"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M4 4a16 16 0 0 1 16 16" /><path d="M4 11a9 9 0 0 1 9 9" /></svg>
+
+
+</span>
+
+            </a>
+        </li>
+    
+
+</ul>
+
+    </div>
+    <div class="header-top-right">
+
+    </div>
+</div>
+
+
+    <nav class="noselect">
+        
+        
+        <a class="" href="http://172.20.85.217:1313/" title="">Home</a>
+        
+        <a class="" href="http://172.20.85.217:1313/about/" title="">About</a>
+        
+        <a class="" href="http://172.20.85.217:1313/categories/" title="">Categories</a>
+        
+        <a class="" href="http://172.20.85.217:1313/tags/" title="">Tags</a>
+        
+        <a class="" href="http://172.20.85.217:1313/posts/" title="">Archive</a>
+        
+    </nav>
+
+
+
+
+
+
+
+
+            
+        </header>
+        <main id="main" tabindex="-1">
+            
+    
+
+    <article class="post h-entry">
+        <div class="post-header">
+            <header>
+                <h1 class="p-name post-title">C Traps and Pitfalls</h1>
+                
+
+            </header>
+            
+
+    
+
+
+
+<div class="post-info noselect">
+    
+        <div class="post-date dt-published">
+            <time datetime="2024-05-23">2024-05-23</time>
+            
+        </div>
+    
+
+    <a class="post-hidden-url u-url" href="/posts/prog/c/c_misconception/">/posts/prog/c/c_misconception/</a>
+    <a href="http://172.20.85.217:1313/" class="p-name p-author post-hidden-author h-card" rel="me">Mike</a>
+
+
+    <div class="post-taxonomies">
+        
+            <ul class="post-categories">
+                
+                    
+                    <li><a href="/categories/programming/">Programming</a></li>
+                
+            </ul>
+        
+        
+            <ul class="post-tags">
+                
+                    
+                    <li><a href="/tags/c-prog/">#C-Prog</a></li>
+                
+            </ul>
+        
+        
+    </div>
+</div>
+
+        </div>
+        
+
+  
+  
+
+
+
+
+  
+  
+  
+  <details class="toc noselect">
+    <summary>Table of Contents</summary>
+    <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#pointers">Pointers</a>
+      <ul>
+        <li><a href="#function-pointer-就是記憶體中的位置">Function Pointer 就是記憶體中的位置?</a></li>
+        <li><a href="#null-pointer-不一定為-0">null pointer 不一定為 0</a></li>
+        <li><a href="#pointer-type-mismatch-errors">pointer type mismatch errors</a></li>
+        <li><a href="#指標都能轉型成-void--或-char-">指標都能轉型成 void * 或 char *?</a></li>
+        <li><a href="#指標必定可轉型成-int-long-intptr_t-或-uintptr_t">指標必定可轉型成 int, long, intptr_t 或 uintptr_t?</a></li>
+        <li><a href="#指標-p1--p2-轉型成-int-後其值也相等">指標 p1 == p2 轉型成 int 後其值也相等?</a></li>
+        <li><a href="#物件指標轉型成不同物件型態必定可存取">物件指標轉型成不同物件型態必定可存取?</a></li>
+        <li><a href="#printfp-p-必定印出函數位置">printf(&quot;%p&quot;, p) 必定印出函數位置?</a></li>
+        <li><a href="#null-型態是空指標">NULL 型態是空指標?</a></li>
+        <li><a href="#執行期的數值零必定可轉型為空指標">執行期的數值零必定可轉型為空指標?</a></li>
+        <li><a href="#全域變數-int-p-初始值為何">全域變數 int *p; 初始值為何?</a></li>
+        <li><a href="#相同型態的指標相減代表距離">相同型態的指標相減代表距離?</a></li>
+        <li><a href="#陣列常自動轉型成指標-將-int-x-理解成-int--const-會產生問題">陣列常自動轉型成指標, 將 int x[] 理解成 int * const 會產生問題?</a></li>
+      </ul>
+    </li>
+    <li><a href="#array-陣列">Array 陣列</a>
+      <ul>
+        <li><a href="#陣列索引使用負值存取結構內容-x-1">陣列索引使用負值存取結構內容 .x[-1]?</a></li>
+        <li><a href="#陣列-x-型態-int55-可以-x110-存取">陣列 x 型態 int[5][5], 可以 x[1][10] 存取?</a></li>
+      </ul>
+    </li>
+    <li><a href="#整數">整數</a>
+      <ul>
+        <li><a href="#trap-representation-陷阱表示法">Trap representation, 陷阱表示法</a></li>
+        <li><a href="#int-為-32-bit-short-為-16-bit-long-long-為-64-bit">int 為 32-bit? short 為 16-bit? long long 為 64-bit?</a></li>
+        <li><a href="#int-至少-32-bit">int 至少 32-bit?</a></li>
+        <li><a href="#malloc300--300--sizeofdouble-可能緩衝區溢位">malloc(300 * 300 * sizeof(double)) 可能緩衝區溢位?</a></li>
+        <li><a href="#整數-i-是否能用-memseti-0-sizeofi-清零">整數 i 是否能用 memset(&amp;i, 0, sizeof(i)) 清零?</a></li>
+        <li><a href="#相同整數型態-a-和-b-可否如此互換-ab-ba-ab-">相同整數型態 a 和 b 可否如此互換: a^=b; b^=a; a^=b; ?</a></li>
+        <li><a href="#unsigned-int-x-且-x-寬度為-32-a--32-結果必為-0">unsigned int x, 且 x 寬度為 32, (a &laquo; 32) 結果必為 0?</a></li>
+        <li><a href="#如何分辦-little-endianness-和-big-endianness">如何分辦 little-endianness 和 big-endianness</a></li>
+        <li><a href="#80000u-必為-unsigned-int">80000U 必為 unsigned int?</a></li>
+      </ul>
+    </li>
+    <li><a href="#execution-order-運算順序-最佳化-表達式">Execution Order 運算順序: 最佳化, 表達式</a>
+      <ul>
+        <li><a href="#x-y-中-x-一定先被運算">x++; y++; 中 x 一定先被運算?</a></li>
+        <li><a href="#int-a-a--b--c-fprintfstderr-donen-輸出訊息時-a-已更新">int a; a = b / c; fprintf(stderr, &ldquo;done\n&rdquo;); 輸出訊息時 a 已更新?</a></li>
+        <li><a href="#設計非同步訊號如何阻止編譯器改變運算順序">設計非同步訊號如何阻止編譯器改變運算順序?</a></li>
+        <li><a href="#int-i--f--g-哪個函式會先被呼叫">int i = f() + g(); 哪個函式會先被呼叫?</a></li>
+        <li><a href="#int-i--i-及-ai--i-和-fi-i-結果為">int i = i++; 及 a[i] = i++; 和 f(i++, i++) 結果為?</a></li>
+        <li><a href="#使用相同結構型態的指標直接參照存取">使用相同結構型態的指標直接參照存取?</a></li>
+        <li><a href="#union-初始化會被清空">union 初始化會被清空?</a></li>
+        <li><a href="#char-是有號數還是無號數">char 是有號數還是無號數?</a></li>
+        <li><a href="#char-必為-8-bit">char 必為 8-bit?</a></li>
+        <li><a href="#getchar-溢出">getchar() 溢出</a></li>
+        <li><a href="#字元編碼">字元編碼</a></li>
+      </ul>
+    </li>
+    <li><a href="#浮點數">浮點數</a>
+      <ul>
+        <li><a href="#轉換浮點數成最接近的整數">轉換浮點數成最接近的整數</a></li>
+      </ul>
+    </li>
+    <li><a href="#memory-access-violations">Memory Access Violations</a>
+      <ul>
+        <li><a href="#double-free">double free</a></li>
+        <li><a href="#free-after-free">free-after-free</a></li>
+        <li><a href="#use-after-return">Use-after-return</a></li>
+      </ul>
+    </li>
+    <li><a href="#others">Others</a>
+      <ul>
+        <li><a href="#main-可以遞迴">main() 可以遞迴?</a></li>
+        <li><a href="#main-可以回傳-void">main 可以回傳 void?</a></li>
+      </ul>
+    </li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav></div>
+  </details>
+  
+
+
+
+<script>
+  var toc = document.querySelector(".toc");
+  if (toc) {
+    toc.addEventListener("click", function () {
+      if (event.target.tagName !== "A") {
+        event.preventDefault();
+        if (this.open) {
+          this.open = false;
+          this.classList.remove("expanded");
+        } else {
+          this.open = true;
+          this.classList.add("expanded");
+        }
+      }
+    });
+  }
+</script>
+
+        <div class="content e-content">
+            <p>蒐集各種 C 語言陷阱與誤用</p>
+<h2 id="pointers" >
+<div>
+    <a href="#pointers">
+        #
+    </a>
+    Pointers
+</div>
+</h2>
+<h3 id="function-pointer-就是記憶體中的位置" >
+<div>
+    <a href="#function-pointer-%e5%b0%b1%e6%98%af%e8%a8%98%e6%86%b6%e9%ab%94%e4%b8%ad%e7%9a%84%e4%bd%8d%e7%bd%ae">
+        ##
+    </a>
+    Function Pointer 就是記憶體中的位置?
+</div>
+</h3>
+<p>C 依據變數型態位移記憶體位址<br>
+例如 int 指標遞增 n 時位移量為 4n bytes, 再使用運算子 * 取值<br>
+若非平面記憶體模型 (flat memory model)，即記憶體非連續表格時，假設不一定成立。</p>
+<h3 id="null-pointer-不一定為-0" >
+<div>
+    <a href="#null-pointer-%e4%b8%8d%e4%b8%80%e5%ae%9a%e7%82%ba-0">
+        ##
+    </a>
+    null pointer 不一定為 0
+</div>
+</h3>
+<p>以下架構 Null pointer 不為 0</p>
+<ul>
+<li>Prime 50 series(PL/I)
+<ul>
+<li>使用 segment 07777, offset 0</li>
+</ul>
+</li>
+<li>Honeywell-Bull mainframes
+<ul>
+<li>使用 bit pattern 06000</li>
+</ul>
+</li>
+<li>CDC Cyber 180 Series
+<ul>
+<li>使用 0xB00000000000</li>
+</ul>
+</li>
+<li>old CDC 1&rsquo;s complement 機種
+<ul>
+<li>使用 all-one-bits word 表示所有種類資料, 包含無效位址</li>
+</ul>
+</li>
+<li>Symbolics Lisp
+<ul>
+<li>tagged architecture</li>
+<li>不存在 numeric pointers, 使用 &lt;NIL, 0&gt; (不存在的 &lt;object, offset&gt; handle)</li>
+</ul>
+</li>
+</ul>
+<h3 id="pointer-type-mismatch-errors" >
+<div>
+    <a href="#pointer-type-mismatch-errors">
+        ##
+    </a>
+    pointer type mismatch errors
+</div>
+</h3>
+<ul>
+<li>word-addressed Prime machines
+<ul>
+<li>byte pointer 大於 word pointer</li>
+</ul>
+</li>
+<li>Data General 的 Eclipse MV series C compiler
+<ul>
+<li>用 byte pointers 表示 char * 和 void *</li>
+<li>用 word pointers 表示其餘</li>
+</ul>
+</li>
+<li>16-bit Nova 演進至 32-bit MV line 時 word/byte pointers 包含 offset, indirection, ring protection bits</li>
+<li>CDC Cyber 180 Series
+<ul>
+<li>48-bit pointers 含有 ring, segment, and offset</li>
+</ul>
+</li>
+<li>old HP 3000 series
+<ul>
+<li>byte/word addresses 的 addressing scheme 不同</li>
+<li>char * 和 void * 表示法不同</li>
+</ul>
+</li>
+<li>8086-family processors 使用 16-bit data pointers 和 32-bit function pointers</li>
+<li>部分 64-bit Cray machines 中 word 的低 48 位表示 int *, 高 16 位表示 char *</li>
+</ul>
+<h3 id="指標都能轉型成-void--或-char-" >
+<div>
+    <a href="#%e6%8c%87%e6%a8%99%e9%83%bd%e8%83%bd%e8%bd%89%e5%9e%8b%e6%88%90-void--%e6%88%96-char-">
+        ##
+    </a>
+    指標都能轉型成 void * 或 char *?
+</div>
+</h3>
+<ul>
+<li>refer to <code>N1256 6.3.2.3</code></li>
+<li><code>*</code> 只保證做為物件指標(object/data pointer); 將函式指標轉型成 <code>void *</code> 不保證 portable
+<ul>
+<li>某些平台函數地址長度可能大於物件指標</li>
+</ul>
+</li>
+<li>不同型態的 function pointer 保證可互相轉型, 如 <code>int (*)()</code> 和 <code>void (*)()</code></li>
+<li>考量可攜性, 若一定要交換存放函數/物件指標, 建議使用 union</li>
+</ul>
+<h3 id="指標必定可轉型成-int-long-intptr_t-或-uintptr_t" >
+<div>
+    <a href="#%e6%8c%87%e6%a8%99%e5%bf%85%e5%ae%9a%e5%8f%af%e8%bd%89%e5%9e%8b%e6%88%90-int-long-intptr_t-%e6%88%96-uintptr_t">
+        ##
+    </a>
+    指標必定可轉型成 int, long, intptr_t 或 uintptr_t?
+</div>
+</h3>
+<ul>
+<li>refer to <code>N1256 6.3.2.3</code></li>
+<li>即便非函式指標也不保證正確; 轉型後數值未必能直接讀取的情形:
+<ul>
+<li>指標長度大於數值, 如 64 位元指標</li>
+<li>AMD64 指令集下, Linux/Mac OS/Solaris/FreeBSD 等採用 LP64 模型裡的 int</li>
+<li>MS Windows X64 採用 LLP64 模型裡的 int 和 long</li>
+</ul>
+</li>
+<li>可攜轉型方式: 轉型成 void * (函式指標可能失敗) 再轉型成 intptr_t 或 uintptr_t.
+<ul>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#737994;font-style:italic">//函式指標可能失敗
+</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"></span><span style="color:#e78284">int</span> val;
+</span></span><span style="display:flex;"><span><span style="color:#e78284">int</span> <span style="color:#99d1db;font-weight:bold">*</span>p <span style="color:#99d1db;font-weight:bold">=</span> <span style="color:#99d1db;font-weight:bold">&amp;</span>val;
+</span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic">//轉型為 intptr_t
+</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"></span><span style="color:#e78284">intptr_t</span> i <span style="color:#99d1db;font-weight:bold">=</span> (<span style="color:#e78284">intptr_t</span>)(<span style="color:#e78284">void</span> <span style="color:#99d1db;font-weight:bold">*</span>)p;
+</span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic">//轉型回 int *
+</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"></span><span style="color:#e78284">int</span> <span style="color:#99d1db;font-weight:bold">*</span>pi <span style="color:#99d1db;font-weight:bold">=</span> (<span style="color:#e78284">int</span> <span style="color:#99d1db;font-weight:bold">*</span>)(<span style="color:#e78284">void</span> <span style="color:#99d1db;font-weight:bold">*</span>)i;
+</span></span></code></pre></div></li>
+<li>不保證提供 intptr_t</li>
+<li>部分平台上指標不以數字表示</li>
+<li>ref: N1256 7.18.1.4</li>
+</ul>
+</li>
+</ul>
+<h3 id="指標-p1--p2-轉型成-int-後其值也相等" >
+<div>
+    <a href="#%e6%8c%87%e6%a8%99-p1--p2-%e8%bd%89%e5%9e%8b%e6%88%90-int-%e5%be%8c%e5%85%b6%e5%80%bc%e4%b9%9f%e7%9b%b8%e7%ad%89">
+        ##
+    </a>
+    指標 p1 == p2 轉型成 int 後其值也相等?
+</div>
+</h3>
+<p>不保證; 建議轉型回原始指標型態再比較<br>
+例如 <a href="https://source.android.com/docs/security/test/tagged-pointers?hl=zh-tw">tagged-pointers</a><br>
+ARM 的 TBI, Top-byte Ignore 功能忽略指標的頂端位元組</p>
+<h3 id="物件指標轉型成不同物件型態必定可存取" >
+<div>
+    <a href="#%e7%89%a9%e4%bb%b6%e6%8c%87%e6%a8%99%e8%bd%89%e5%9e%8b%e6%88%90%e4%b8%8d%e5%90%8c%e7%89%a9%e4%bb%b6%e5%9e%8b%e6%85%8b%e5%bf%85%e5%ae%9a%e5%8f%af%e5%ad%98%e5%8f%96">
+        ##
+    </a>
+    物件指標轉型成不同物件型態必定可存取?
+</div>
+</h3>
+<ul>
+<li><code>Type-based aliasing rules</code>: 轉型成功不保證可存取
+<ul>
+<li>例如 short 指標不能指向 int 物件</li>
+</ul>
+</li>
+<li>編譯器最佳化時調整運算順序, 使不同型態的存取指向不同物件, 使結果不如預期
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>  <span style="color:#e78284">int</span> i <span style="color:#99d1db;font-weight:bold">=</span> <span style="color:#ef9f76">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#e78284">short</span> <span style="color:#99d1db;font-weight:bold">*</span>s <span style="color:#99d1db;font-weight:bold">=</span> (<span style="color:#e78284">short</span> <span style="color:#99d1db;font-weight:bold">*</span>)<span style="color:#99d1db;font-weight:bold">&amp;</span>i;
+</span></span><span style="display:flex;"><span>  i <span style="color:#99d1db;font-weight:bold">=</span> <span style="color:#ef9f76">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#99d1db;font-weight:bold">*</span>s <span style="color:#99d1db;font-weight:bold">=</span> <span style="color:#ef9f76">1</span>; <span style="color:#737994;font-style:italic">//i may eventually still be 0
+</span></span></span></code></pre></div><ul>
+<li>ref: N1256 6.5</li>
+<li><a href="https://lwn.net/Articles/316126/">Linus Torvalds 的抱怨</a>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>  <span style="color:#e78284">unsigned</span> <span style="color:#e78284">long</span> a;
+</span></span><span style="display:flex;"><span>  a <span style="color:#99d1db;font-weight:bold">=</span> <span style="color:#ef9f76">5</span>;                      <span style="color:#737994;font-style:italic">//gcc 後執行這行指令, 使下一行失效
+</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"></span>  <span style="color:#99d1db;font-weight:bold">*</span>(<span style="color:#e78284">unsigned</span> <span style="color:#e78284">short</span> <span style="color:#99d1db;font-weight:bold">*</span>)<span style="color:#99d1db;font-weight:bold">&amp;</span>a <span style="color:#99d1db;font-weight:bold">=</span> <span style="color:#ef9f76">4</span>;  <span style="color:#737994;font-style:italic">//gcc 先執行這行指令
+</span></span></span></code></pre></div></li>
+<li>gcc 可添加 <code>-fno-strict-aliasing</code> 避免上述行為</li>
+</ul>
+</li>
+</ul>
+<h3 id="printfp-p-必定印出函數位置" >
+<div>
+    <a href="#printfp-p-%e5%bf%85%e5%ae%9a%e5%8d%b0%e5%87%ba%e5%87%bd%e6%95%b8%e4%bd%8d%e7%bd%ae">
+        ##
+    </a>
+    printf(&quot;%p&quot;, p) 必定印出函數位置?
+</div>
+</h3>
+<ul>
+<li>printf 系列的 %p 只能列印指向 void 的指標, 故須先轉型成 void *
+<ul>
+<li>函式指標不一定能轉型</li>
+<li>建議使用
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#8caaee">printf</span>(<span style="color:#a6d189">&#34;%p&#34;</span>, (<span style="color:#e78284">void</span><span style="color:#99d1db;font-weight:bold">*</span>)p);
+</span></span></code></pre></div>或轉型成 intptr_t</li>
+</ul>
+</li>
+<li>指標列印結果視實作而定, 不一定是十六進位</li>
+<li>ref: N1256 7.19.6.1</li>
+</ul>
+<h3 id="null-型態是空指標" >
+<div>
+    <a href="#null-%e5%9e%8b%e6%85%8b%e6%98%af%e7%a9%ba%e6%8c%87%e6%a8%99">
+        ##
+    </a>
+    NULL 型態是空指標?
+</div>
+</h3>
+<ul>
+<li>NULL 是<code>空指標常數</code>, 但不保證是<code>空指標</code>
+<ul>
+<li>空指標常數保證可轉型成正確的空指標
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#8caaee">printf</span>(<span style="color:#a6d189">&#34;%p&#34;</span>, <span style="color:#99d1db">NULL</span>);         <span style="color:#737994;font-style:italic">//不符合標準(NULL 非空指標)
+</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"></span><span style="color:#8caaee">printf</span>(<span style="color:#a6d189">&#34;%p&#34;</span>, (<span style="color:#e78284">void</span> <span style="color:#99d1db;font-weight:bold">*</span>)<span style="color:#99d1db">NULL</span>); <span style="color:#737994;font-style:italic">//符合標準(NULL 轉型成指標時必為空指標)
+</span></span></span></code></pre></div></li>
+<li>空指標常數代表計算結果為零的整數常數表達式: 0, 0ULL</li>
+<li>空指標常數<strong>也可能</strong>是常數表達式的轉型如 (void *)(0U)</li>
+<li>使用 NULL 時(尤其是 C++)建議先轉型成適當型態如 (int *)NULL</li>
+<li>C99 規定<strong>空指標與空指標常數比較結果相等</strong>, 也可<strong>指派空指標常數給一個指標</strong> (編譯器會在編譯期適當轉換)
+<ul>
+<li>使用 NULL 替代 0 不會增加可攜性, 多出於寫作風格與除錯目的</li>
+<li>C99 中<strong>常數零一定是合法的空指標常數</strong>, <strong>一定可以轉型成空指標</strong>, <strong>一定可以和其他指標比較</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>C++03 中空指標常數只能是計算結果為零的整數常數表達式, overloading 時可能出現錯誤
+<ul>
+<li>編譯器不確定是整數 0 或 null pointer</li>
+<li>C++0x 引入 <code>nullptr</code> 以解決這個問題</li>
+<li>ref: <a href="http://en.wikibooks.org/wiki/More_C%2B%2B_Idioms/nullptr">More C++ Idioms/nullptr</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="執行期的數值零必定可轉型為空指標" >
+<div>
+    <a href="#%e5%9f%b7%e8%a1%8c%e6%9c%9f%e7%9a%84%e6%95%b8%e5%80%bc%e9%9b%b6%e5%bf%85%e5%ae%9a%e5%8f%af%e8%bd%89%e5%9e%8b%e7%82%ba%e7%a9%ba%e6%8c%87%e6%a8%99">
+        ##
+    </a>
+    執行期的數值零必定可轉型為空指標?
+</div>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#e78284">int</span> x <span style="color:#99d1db;font-weight:bold">=</span> <span style="color:#ef9f76">0</span>;
+</span></span><span style="display:flex;"><span><span style="color:#e78284">int</span> <span style="color:#99d1db;font-weight:bold">*</span>p <span style="color:#99d1db;font-weight:bold">=</span> (<span style="color:#e78284">int</span> <span style="color:#99d1db;font-weight:bold">*</span>)x;  <span style="color:#737994;font-style:italic">//not guaranteed to be a NULL pointer
+</span></span></span></code></pre></div><ul>
+<li>並非所有平台上的空指標都是零</li>
+<li><a href="https://c-faq.com/null/runtime0.html">comp.lang.c FAQ list · Question 5.18</a>: 若允許執行期轉換空指標, 需要檢查常數值是否為零</li>
+</ul>
+<h3 id="全域變數-int-p-初始值為何" >
+<div>
+    <a href="#%e5%85%a8%e5%9f%9f%e8%ae%8a%e6%95%b8-int-p-%e5%88%9d%e5%a7%8b%e5%80%bc%e7%82%ba%e4%bd%95">
+        ##
+    </a>
+    全域變數 int *p; 初始值為何?
+</div>
+</h3>
+<p>C99 保證初始化成空指標 (N1256 6.7.8)</p>
+<h3 id="相同型態的指標相減代表距離" >
+<div>
+    <a href="#%e7%9b%b8%e5%90%8c%e5%9e%8b%e6%85%8b%e7%9a%84%e6%8c%87%e6%a8%99%e7%9b%b8%e6%b8%9b%e4%bb%a3%e8%a1%a8%e8%b7%9d%e9%9b%a2">
+        ##
+    </a>
+    相同型態的指標相減代表距離?
+</div>
+</h3>
+<p>一般指向同一陣列的元素指標或該陣列末元素 +1 的位置才能相減比較<br>
+若陣列太大差值 ptrdiff_t 可能溢出, 需檢查 <code>PTRDIFF_MAX</code>, <code>PTRDIFF_MIN</code></p>
+<h3 id="陣列常自動轉型成指標-將-int-x-理解成-int--const-會產生問題" >
+<div>
+    <a href="#%e9%99%a3%e5%88%97%e5%b8%b8%e8%87%aa%e5%8b%95%e8%bd%89%e5%9e%8b%e6%88%90%e6%8c%87%e6%a8%99-%e5%b0%87-int-x-%e7%90%86%e8%a7%a3%e6%88%90-int--const-%e6%9c%83%e7%94%a2%e7%94%9f%e5%95%8f%e9%a1%8c">
+        ##
+    </a>
+    陣列常自動轉型成指標, 將 int x[] 理解成 int * const 會產生問題?
+</div>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#737994;font-style:italic">//file_1.c
+</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"></span><span style="color:#e78284">int</span> x[<span style="color:#ef9f76">10</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic">//file_2.c
+</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"></span><span style="color:#ca9ee6">extern</span> <span style="color:#e78284">int</span> <span style="color:#99d1db;font-weight:bold">*</span> <span style="color:#ca9ee6">const</span> x;   <span style="color:#737994;font-style:italic">//C99 不要求編譯器報錯; 部份實作於此 scope 中存取 *x 時會計算 *(int *)(x[0])
+</span></span></span></code></pre></div><h2 id="array-陣列" >
+<div>
+    <a href="#array-%e9%99%a3%e5%88%97">
+        #
+    </a>
+    Array 陣列
+</div>
+</h2>
+<h3 id="陣列索引使用負值存取結構內容-x-1" >
+<div>
+    <a href="#%e9%99%a3%e5%88%97%e7%b4%a2%e5%bc%95%e4%bd%bf%e7%94%a8%e8%b2%a0%e5%80%bc%e5%ad%98%e5%8f%96%e7%b5%90%e6%a7%8b%e5%85%a7%e5%ae%b9-x-1">
+        ##
+    </a>
+    陣列索引使用負值存取結構內容 .x[-1]?
+</div>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#ca9ee6">struct</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#e78284">int</span> heap[<span style="color:#ef9f76">1024</span>]; <span style="color:#737994;font-style:italic">// 依結構內對齊方式, 成員中間可能存在 gap
+</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"></span>    <span style="color:#e78284">int</span> stack[<span style="color:#ef9f76">1</span>];   <span style="color:#737994;font-style:italic">// 存取陣列時先運算指標再 dereference, 只允許在陣列範圍及範圍+1間移動
+</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"></span>                    <span style="color:#737994;font-style:italic">// 符合標準的編譯器可檢查陣列範圍
+</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"></span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.stack[<span style="color:#99d1db;font-weight:bold">-</span><span style="color:#ef9f76">1</span>]  <span style="color:#737994;font-style:italic">// 不合法; 存取陣列時先運算指標再 dereference, 只允許在陣列範圍及範圍+1間移動
+</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"></span>            <span style="color:#737994;font-style:italic">// 符合標準的編譯器可檢查陣列範圍
+</span></span></span></code></pre></div><h3 id="陣列-x-型態-int55-可以-x110-存取" >
+<div>
+    <a href="#%e9%99%a3%e5%88%97-x-%e5%9e%8b%e6%85%8b-int55-%e5%8f%af%e4%bb%a5-x110-%e5%ad%98%e5%8f%96">
+        ##
+    </a>
+    陣列 x 型態 int[5][5], 可以 x[1][10] 存取?
+</div>
+</h3>
+<p>即便陣列連續, 也不保證成功; 指標運算後解參照, 等價於 *( *(a + 1) + 10 ) 違反指標移動範圍限制<br>
+標準允許實作檢查指標是否超過範圍或用不同方法來表示陣列 (N1256 Annex J.2 Undeﬁned behavior)</p>
+<h2 id="整數" >
+<div>
+    <a href="#%e6%95%b4%e6%95%b8">
+        #
+    </a>
+    整數
+</div>
+</h2>
+<h3 id="trap-representation-陷阱表示法" >
+<div>
+    <a href="#trap-representation-%e9%99%b7%e9%98%b1%e8%a1%a8%e7%a4%ba%e6%b3%95">
+        ##
+    </a>
+    Trap representation, 陷阱表示法
+</div>
+</h3>
+<ul>
+<li>陷阱表示法: 並非所有位元組合都表示合理數字, 存取特定位元組合在特定平台上可能造成錯誤
+<ul>
+<li>除非使用位元運算或違反標準規定(如溢位), 一般運算不可能被 trap</li>
+<li>標準允許實作決定以下狀況是否表示陷阱 (6.2.6.2 Integer types Footnotes 44, 45)
+<ul>
+<li>有號整數的 sign/value 位元為特定組合</li>
+<li>padding 為特定組合</li>
+</ul>
+</li>
+<li>位元運算會忽略 padding bits, 所以<strong>無號整數可放心使用位元運算</strong>, 有號整數不建議使用位元運算</li>
+</ul>
+</li>
+<li>整數表示法包含的位元類型 (N1256 6.2.6.2)
+<ul>
+<li>無號整數: value, padding</li>
+<li>有號整數: value, padding, sign</li>
+</ul>
+</li>
+<li>sign/value 格式
+<ul>
+<li>2&rsquo;s complement</li>
+<li>1&rsquo;s complement</li>
+<li>sign and magnitude</li>
+</ul>
+</li>
+<li>若實作提供 <code>uintN_t</code> 和 <code>intN_t</code> 時保證以下性質 (N1256 7.18.1.1)
+<ul>
+<li>uintN_t 和 intN_t 沒有 padding bits</li>
+<li>intN_t 必為 2&rsquo;s complement</li>
+<li>intN_t 不可能有陷阱表示法</li>
+</ul>
+</li>
+</ul>
+<h3 id="int-為-32-bit-short-為-16-bit-long-long-為-64-bit" >
+<div>
+    <a href="#int-%e7%82%ba-32-bit-short-%e7%82%ba-16-bit-long-long-%e7%82%ba-64-bit">
+        ##
+    </a>
+    int 為 32-bit? short 為 16-bit? long long 為 64-bit?
+</div>
+</h3>
+<ul>
+<li>標準僅規定 int 需滿足特定數值範圍
+<ul>
+<li>除寬度外可能還有 padding bits</li>
+<li>int32_t 保證寬度為 32-bit</li>
+</ul>
+</li>
+<li>即便 sizeof(int) 為 4 或確定佔 32 位元, 也<strong>不保證 int 可以儲存此範圍上限的整數</strong>
+<ul>
+<li>位元組不一定是 8-bit</li>
+<li>可能有 padding bits</li>
+<li>格式可能不是 2&rsquo;s complement</li>
+<li>特定組合可能是陷阱表示法</li>
+<li><code>int32_t</code> 保證沒有以上問題, 但 <strong>sizeof(int32_t) 不一定為 4</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="int-至少-32-bit" >
+<div>
+    <a href="#int-%e8%87%b3%e5%b0%91-32-bit">
+        ##
+    </a>
+    int 至少 32-bit?
+</div>
+</h3>
+<ul>
+<li>int 只保證整數範圍<strong>至少</strong>為 -32767 到 32767, 使用 16-bit 已足夠</li>
+<li><code>int_least32_t</code> 和 <code>int_fast32_t</code> 保證範圍下限 32-bit, 但不保證是沒有陷阱表示法的 2&rsquo;s complement</li>
+<li>一般使用 <code>INT_MAX</code> 和 <code>INT_MIN</code> 確認範圍</li>
+</ul>
+<h3 id="malloc300--300--sizeofdouble-可能緩衝區溢位" >
+<div>
+    <a href="#malloc300--300--sizeofdouble-%e5%8f%af%e8%83%bd%e7%b7%a9%e8%a1%9d%e5%8d%80%e6%ba%a2%e4%bd%8d">
+        ##
+    </a>
+    malloc(300 * 300 * sizeof(double)) 可能緩衝區溢位?
+</div>
+</h3>
+<ul>
+<li>300 * 300 可能超過 INT_MAX</li>
+<li>300 * 300 * sizeof(double) 可能超過 SIZE_MAX 或 INT_MAX (依實作決定轉型成何者)</li>
+<li>建議使用型態 size_t 或範圍更大的無號整數, 且確保運算結果不超過 size_t 範圍
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>  <span style="color:#ca9ee6">if</span> (SIZE_MAX <span style="color:#99d1db;font-weight:bold">/</span> <span style="color:#ef9f76">300u</span> <span style="color:#99d1db;font-weight:bold">/</span> <span style="color:#ef9f76">300u</span> <span style="color:#99d1db;font-weight:bold">&lt;</span> <span style="color:#ca9ee6">sizeof</span>(<span style="color:#e78284">double</span>)) {
+</span></span><span style="display:flex;"><span>      p <span style="color:#99d1db;font-weight:bold">=</span> <span style="color:#99d1db">NULL</span>;
+</span></span><span style="display:flex;"><span>  } <span style="color:#ca9ee6">else</span> {
+</span></span><span style="display:flex;"><span>      p <span style="color:#99d1db;font-weight:bold">=</span> <span style="color:#8caaee">malloc</span>(<span style="color:#ca9ee6">sizeof</span>(<span style="color:#e78284">double</span>) <span style="color:#99d1db;font-weight:bold">*</span> <span style="color:#ef9f76">300u</span> <span style="color:#99d1db;font-weight:bold">*</span> <span style="color:#ef9f76">300u</span>) ;
+</span></span><span style="display:flex;"><span>  }
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="整數-i-是否能用-memseti-0-sizeofi-清零" >
+<div>
+    <a href="#%e6%95%b4%e6%95%b8-i-%e6%98%af%e5%90%a6%e8%83%bd%e7%94%a8-memseti-0-sizeofi-%e6%b8%85%e9%9b%b6">
+        ##
+    </a>
+    整數 i 是否能用 memset(&amp;i, 0, sizeof(i)) 清零?
+</div>
+</h3>
+<p>標準向實作妥協, <strong>只有 0 可以這樣操作</strong> (N1256 6.2.6.2)</p>
+<h3 id="相同整數型態-a-和-b-可否如此互換-ab-ba-ab-" >
+<div>
+    <a href="#%e7%9b%b8%e5%90%8c%e6%95%b4%e6%95%b8%e5%9e%8b%e6%85%8b-a-%e5%92%8c-b-%e5%8f%af%e5%90%a6%e5%a6%82%e6%ad%a4%e4%ba%92%e6%8f%9b-ab-ba-ab-">
+        ##
+    </a>
+    相同整數型態 a 和 b 可否如此互換: a^=b; b^=a; a^=b; ?
+</div>
+</h3>
+<p>不保證正確; a^b 可能產生陷阱表示法</p>
+<h3 id="unsigned-int-x-且-x-寬度為-32-a--32-結果必為-0" >
+<div>
+    <a href="#unsigned-int-x-%e4%b8%94-x-%e5%af%ac%e5%ba%a6%e7%82%ba-32-a--32-%e7%b5%90%e6%9e%9c%e5%bf%85%e7%82%ba-0">
+        ##
+    </a>
+    unsigned int x, 且 x 寬度為 32, (a &laquo; 32) 結果必為 0?
+</div>
+</h3>
+<p>有些處理器結果為 x, 因 (x &laquo; i) 被解釋為 (a &laquo; (i % 32)) (N1256 6.5.7)</p>
+<h3 id="如何分辦-little-endianness-和-big-endianness" >
+<div>
+    <a href="#%e5%a6%82%e4%bd%95%e5%88%86%e8%be%a6-little-endianness-%e5%92%8c-big-endianness">
+        ##
+    </a>
+    如何分辦 little-endianness 和 big-endianness
+</div>
+</h3>
+<p>平台可能不使用以上兩者, 沒有簡單可攜式寫法可以判斷<br>
+思考是否真有必要判斷; 網路傳輸可使用系統提供的轉換函數 (middle-endian, bi-endian)</p>
+<h3 id="80000u-必為-unsigned-int" >
+<div>
+    <a href="#80000u-%e5%bf%85%e7%82%ba-unsigned-int">
+        ##
+    </a>
+    80000U 必為 unsigned int?
+</div>
+</h3>
+<ul>
+<li>若 unsigned int 範圍只能表示到 65535, 會變成 unsigned long</li>
+<li>0x33FF 一定是有號整數, 因為可以 int 表示</li>
+<li>0xFFFFFF 則不一定是有號整數, 因為超出標準範圍</li>
+<li>若 int 表示上限為 2147483647, 2147483648 不會轉型成 unsigned int <!--tag: long?--></li>
+<li>規則 (N1256 6.4.4.1, C++03 2.13.1, C++1x N3242 2.14.2)
+<ul>
+<li>signed: 十進位無後綴 u, U</li>
+<li>unsigned: unsigned-suffix u, U</li>
+<li>both: octal/hexadecimal 無後綴 u,U</li>
+<li>Lv2 起算: 後綴 l, L</li>
+<li>Lv3 起算: 後綴 ll, LL</li>
+<li>選擇符合等級與數值範圍要求欄位中最左方者</li>
+<li>C++03 未規範 Lv3, Lv4; C++1x 同 C99
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left"></th>
+          <th style="text-align: center"></th>
+          <th style="text-align: center">Lv1</th>
+          <th style="text-align: center"></th>
+          <th style="text-align: center">Lv2</th>
+          <th style="text-align: center"></th>
+          <th style="text-align: center">Lv3</th>
+          <th style="text-align: center">Lv4</th>
+          <th style="text-align: center">unspecified</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">signed</td>
+          <td style="text-align: center">int</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">long</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">long long</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">extended type(if any)</td>
+          <td style="text-align: center">?</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">unsigned</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">unsigned int</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">unsigned long</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">unsigned long  long</td>
+          <td style="text-align: center">extended type(if any)</td>
+          <td style="text-align: center">?</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">both</td>
+          <td style="text-align: center">int</td>
+          <td style="text-align: center">unsigned int</td>
+          <td style="text-align: center">long</td>
+          <td style="text-align: center">unsigned long</td>
+          <td style="text-align: center">long long</td>
+          <td style="text-align: center">unsigned long  long</td>
+          <td style="text-align: center">extended type(if any)</td>
+          <td style="text-align: center">?</td>
+      </tr>
+  </tbody>
+</table>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="execution-order-運算順序-最佳化-表達式" >
+<div>
+    <a href="#execution-order-%e9%81%8b%e7%ae%97%e9%a0%86%e5%ba%8f-%e6%9c%80%e4%bd%b3%e5%8c%96-%e8%a1%a8%e9%81%94%e5%bc%8f">
+        #
+    </a>
+    Execution Order 運算順序: 最佳化, 表達式
+</div>
+</h2>
+<h3 id="x-y-中-x-一定先被運算" >
+<div>
+    <a href="#x-y-%e4%b8%ad-x-%e4%b8%80%e5%ae%9a%e5%85%88%e8%a2%ab%e9%81%8b%e7%ae%97">
+        ##
+    </a>
+    x++; y++; 中 x 一定先被運算?
+</div>
+</h3>
+<ul>
+<li>編譯器可能為了最佳化改變運算順序, 讓編譯器判斷為不相關的運算交錯進行 (N1256 5.1.2.3)</li>
+<li>C99 規範分號處有 sequential points(循序同步點), 副作用必須完結, 但屬於<strong>抽象機器行為</strong>,
+<ul>
+<li>編譯器不必維持真實機器與抽象機器間的對應關係 (N1256 5.1.2.3) <!--tag: read--></li>
+</ul>
+</li>
+</ul>
+<h3 id="int-a-a--b--c-fprintfstderr-donen-輸出訊息時-a-已更新" >
+<div>
+    <a href="#int-a-a--b--c-fprintfstderr-donen-%e8%bc%b8%e5%87%ba%e8%a8%8a%e6%81%af%e6%99%82-a-%e5%b7%b2%e6%9b%b4%e6%96%b0">
+        ##
+    </a>
+    int a; a = b / c; fprintf(stderr, &ldquo;done\n&rdquo;); 輸出訊息時 a 已更新?
+</div>
+</h3>
+<ul>
+<li>因 fprintf 未存取 a, 所以編譯器可能改變運算順序, 輸出後才運算 a (N1256 5.1.2.3)</li>
+<li>改寫 fprintf(stderr, &ldquo;done: %d\n&rdquo;, a); 也未必循原始碼順序執行, a 值可能從暫存器直接傳給 fprintf (N1256 5.1.2.3)
+<ul>
+<li>不同的最佳化設定可能導致不同的運算順序</li>
+<li>思考如何保證不受實作或最佳化影響</li>
+</ul>
+</li>
+<li>即使運算順序如同原始碼, 實際執行時也可能被現代處理器打亂
+<ul>
+<li>處理器為了加速同時執行複數指令或多層快取; ref: <code>out-of-order execution</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="設計非同步訊號如何阻止編譯器改變運算順序" >
+<div>
+    <a href="#%e8%a8%ad%e8%a8%88%e9%9d%9e%e5%90%8c%e6%ad%a5%e8%a8%8a%e8%99%9f%e5%a6%82%e4%bd%95%e9%98%bb%e6%ad%a2%e7%b7%a8%e8%ad%af%e5%99%a8%e6%94%b9%e8%ae%8a%e9%81%8b%e7%ae%97%e9%a0%86%e5%ba%8f">
+        ##
+    </a>
+    設計非同步訊號如何阻止編譯器改變運算順序?
+</div>
+</h3>
+<ul>
+<li>編譯器大多時刻都能改變運算順序或交錯運行</li>
+<li>可能解決方案
+<ul>
+<li>volatile</li>
+<li>sig_atomic_t</li>
+</ul>
+</li>
+<li>C1X 可能提供更多控制機制
+<ul>
+<li><a href="https://www.gnu.org/software/libc/manual/html_node/Atomic-Data-Access.html#Atomic-Data-Access">glibc 24.4.7: Atomic Data Access and Signal Handling</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Memory_barrier">Wiki: Memory barrier</a></li>
+<li><a href="https://gcc.gnu.org/onlinedocs/gcc/Volatiles.html">gcc 6.40: When is a Volatile Object Accessed</a></li>
+<li>N1256 5.1.2.3, 6.7.3, 7.14.1.1</li>
+</ul>
+</li>
+</ul>
+<h3 id="int-i--f--g-哪個函式會先被呼叫" >
+<div>
+    <a href="#int-i--f--g-%e5%93%aa%e5%80%8b%e5%87%bd%e5%bc%8f%e6%9c%83%e5%85%88%e8%a2%ab%e5%91%bc%e5%8f%ab">
+        ##
+    </a>
+    int i = f() + g(); 哪個函式會先被呼叫?
+</div>
+</h3>
+<p>不一定 (N1256 6.5)</p>
+<h3 id="int-i--i-及-ai--i-和-fi-i-結果為" >
+<div>
+    <a href="#int-i--i-%e5%8f%8a-ai--i-%e5%92%8c-fi-i-%e7%b5%90%e6%9e%9c%e7%82%ba">
+        ##
+    </a>
+    int i = i++; 及 a[i] = i++; 和 f(i++, i++) 結果為?
+</div>
+</h3>
+<p><strong>嚴重錯誤</strong></p>
+<ol>
+<li>缺少 sequential points 保護, 修改 i 值兩次 (N1256 6.5p2)</li>
+<li>a[i] 讀取 i 的值並非為了計算 i 的新值 (N1256 6.5p2)</li>
+</ol>
+<blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#ca9ee6">struct</span> _str {
+</span></span><span style="display:flex;"><span>    <span style="color:#e78284">size_t</span> length;
+</span></span><span style="display:flex;"><span>    <span style="color:#e78284">char</span> data[<span style="color:#ef9f76">0</span>];
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#ca9ee6">struct</span> _str <span style="color:#99d1db;font-weight:bold">*</span>str <span style="color:#99d1db;font-weight:bold">=</span> (<span style="color:#ca9ee6">struct</span> _str <span style="color:#99d1db;font-weight:bold">*</span>) <span style="color:#8caaee">malloc</span>(<span style="color:#ca9ee6">sizeof</span>(<span style="color:#ca9ee6">struct</span> _str) <span style="color:#99d1db;font-weight:bold">+</span> <span style="color:#ef9f76">100</span>);
+</span></span></code></pre></div><p>陣列長度為 0 是否有問題?</p></blockquote>
+<ul>
+<li>C99 及 C++03 都不允許宣告大小為 0 的陣列, 上述用法僅適用特定編譯器上</li>
+<li>C99 允許 struct 最後成員是大小未知的陣列(incomplete array type) (N1256 6.7.2.1p18)(gcc 6.17: Arrays of Length Zero)
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>  <span style="color:#ca9ee6">struct</span> _str {
+</span></span><span style="display:flex;"><span>      <span style="color:#e78284">size_t</span> length;
+</span></span><span style="display:flex;"><span>      <span style="color:#e78284">char</span> data[];
+</span></span><span style="display:flex;"><span>  };
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="使用相同結構型態的指標直接參照存取" >
+<div>
+    <a href="#%e4%bd%bf%e7%94%a8%e7%9b%b8%e5%90%8c%e7%b5%90%e6%a7%8b%e5%9e%8b%e6%85%8b%e7%9a%84%e6%8c%87%e6%a8%99%e7%9b%b4%e6%8e%a5%e5%8f%83%e7%85%a7%e5%ad%98%e5%8f%96">
+        ##
+    </a>
+    使用相同結構型態的指標直接參照存取?
+</div>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>    <span style="color:#ca9ee6">struct</span> t1 { <span style="color:#e78284">int</span> m; } a;
+</span></span><span style="display:flex;"><span>    <span style="color:#ca9ee6">struct</span> t2 { <span style="color:#e78284">int</span> m; } <span style="color:#99d1db;font-weight:bold">*</span>b;
+</span></span><span style="display:flex;"><span>    b <span style="color:#99d1db;font-weight:bold">=</span> (<span style="color:#ca9ee6">struct</span> t2 <span style="color:#99d1db;font-weight:bold">*</span>)<span style="color:#99d1db;font-weight:bold">&amp;</span>a;
+</span></span></code></pre></div><p>即使結構成員相同也不保證可用 b 去存取 a<br>
+即使所有已知的編譯器似乎都使用相同擺放方式<br>
+標籤不同, 結構型態就不相同也不相容<br>
+編譯器最佳化時可能假設 b 指向的物件和 a 不同(型態不同), 改變運算順序</p>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>    b<span style="color:#99d1db;font-weight:bold">-&gt;</span>m <span style="color:#99d1db;font-weight:bold">=</span> <span style="color:#ef9f76">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#737994;font-style:italic">//不保證為 1 (N1256 6.2.7p1)
+</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"></span>    a.m <span style="color:#99d1db;font-weight:bold">=</span> <span style="color:#ef9f76">1</span>;
+</span></span></code></pre></div><p>ref. N1256 6.5.2.3p5</p>
+<h3 id="union-初始化會被清空" >
+<div>
+    <a href="#union-%e5%88%9d%e5%a7%8b%e5%8c%96%e6%9c%83%e8%a2%ab%e6%b8%85%e7%a9%ba">
+        ##
+    </a>
+    union 初始化會被清空?
+</div>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>    <span style="color:#ca9ee6">union</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#e78284">char</span> c;
+</span></span><span style="display:flex;"><span>        <span style="color:#e78284">int</span> i;
+</span></span><span style="display:flex;"><span>    } u;
+</span></span></code></pre></div><p>union 只有第一個成員的值保證會被清空(不一定為 0; 不同型態的 &lsquo;0&rsquo; 可能有不同表示法) (N1256 6.7.8p10)</p>
+<h3 id="char-是有號數還是無號數" >
+<div>
+    <a href="#char-%e6%98%af%e6%9c%89%e8%99%9f%e6%95%b8%e9%82%84%e6%98%af%e7%84%a1%e8%99%9f%e6%95%b8">
+        ##
+    </a>
+    char 是有號數還是無號數?
+</div>
+</h3>
+<p>標準並未規定;<br>
+char, signed char 及 unsigned char 應視為三個不同型態 (N1256 Footnote 35)<br>
+標準僅規定 char 的表示法, 值範圍及行為必需和 signed char 或是 unsigned char <strong>其中之一</strong> 相同</p>
+<h3 id="char-必為-8-bit" >
+<div>
+    <a href="#char-%e5%bf%85%e7%82%ba-8-bit">
+        ##
+    </a>
+    char 必為 8-bit?
+</div>
+</h3>
+<p>char 長度至少 8 位元, 但不一定剛好 (N1256 5.2.4.2.1p1)<br>
+char 長度 16 位元不代表佔兩個位元組(bytes)<br>
+除了 bit field 特例, char 是最終記憶體單位, <strong>sizeof(char) 必為 1</strong>
+<a href="https://c-faq.com/charstring/wchar.html">comp.lang.c FAQ list · Question 8.10</a>: 標準定義 <code>wchar_t</code> 以處理寬字元</p>
+<h3 id="getchar-溢出" >
+<div>
+    <a href="#getchar-%e6%ba%a2%e5%87%ba">
+        ##
+    </a>
+    getchar() 溢出
+</div>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#e78284">char</span> c1;
+</span></span><span style="display:flex;"><span><span style="color:#ca9ee6">while</span> ((c1 <span style="color:#99d1db;font-weight:bold">=</span> <span style="color:#8caaee">getchar</span>()) <span style="color:#99d1db;font-weight:bold">!=</span> EOF) {}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e78284">int</span> c2;
+</span></span><span style="display:flex;"><span><span style="color:#ca9ee6">while</span> ((c2 <span style="color:#99d1db;font-weight:bold">=</span> <span style="color:#8caaee">getchar</span>()) <span style="color:#99d1db;font-weight:bold">!=</span> EOF) {}
+</span></span></code></pre></div><ol>
+<li>getchar() 回傳 int, char 可能裝不下 EOF</li>
+<li>當 int 只佔一個位元組時可能裝不下所有字元外加 EOF</li>
+<li>EOF 是負值, 但不一定是 -1, 建議比較回傳值與 EOF (N1256 7.19.1p3)</li>
+</ol>
+<h3 id="字元編碼" >
+<div>
+    <a href="#%e5%ad%97%e5%85%83%e7%b7%a8%e7%a2%bc">
+        ##
+    </a>
+    字元編碼
+</div>
+</h3>
+<p>C 標準並未規定字元編碼為 ASCII<br>
+C99 僅列舉一些基本字元, 表示編碼必須以一個字元容納 (N1256 5.2.1)<br>
+早期某些平台使用 ISO 646 或 EBCDIC 編碼, 所以 C 標準制定 trigraph<br>
+<a href="http://en.wikipedia.org/wiki/Digraphs_and_trigraphs#C">Wiki: Digraphs and trigraphs</a><br>
+&lsquo;a&rsquo; ~ &lsquo;z&rsquo; 或 &lsquo;A&rsquo; ~ &lsquo;Z&rsquo; 依採用的編碼而異, 不保證連續(e.g. EBCDIC)</p>
+<h2 id="浮點數" >
+<div>
+    <a href="#%e6%b5%ae%e9%bb%9e%e6%95%b8">
+        #
+    </a>
+    浮點數
+</div>
+</h2>
+<p>標準並未強制規定浮點數格式, 若定義 <code>__STDC_IEC_559__</code> 則要遵照 IEC 60559:1989 標準(同 ANSI/IEEE 754-1985) (N1256 Annex F):</p>
+<ul>
+<li>float, double 符合定義的單精倍浮點數和雙精倍浮點數</li>
+<li>long double 未強制規定 (N1256 Annex F.2)</li>
+</ul>
+<p>浮點數組合運算</p>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>a <span style="color:#99d1db;font-weight:bold">=</span> b;
+</span></span><span style="display:flex;"><span>a <span style="color:#99d1db;font-weight:bold">+=</span> c;
+</span></span><span style="display:flex;"><span>a <span style="color:#99d1db;font-weight:bold">+=</span> d;
+</span></span></code></pre></div><p>不保證等價</p>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>a <span style="color:#99d1db;font-weight:bold">=</span> b <span style="color:#99d1db;font-weight:bold">+</span> c <span style="color:#99d1db;font-weight:bold">+</span> d;
+</span></span></code></pre></div><p>(N1256 5.2.4.2.2p8)<br>
+計算 b + c + d 時可能使用精度更高的浮點數型態; 存回 a 時可能喪失額外精準度<br>
+編譯器若遵守標準, 不會將上例組合運算最佳化成一行<br>
+部分平台內建浮點數指令與專屬暫存器, 計算時為了符合標準而降低精度, 運算可能變慢</p>
+<p>若浮點數滿足 IEC 60559 標準<br>
+a == a 未必為真(a 為 NaN 時)</p>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#ca9ee6">if</span> (a <span style="color:#99d1db;font-weight:bold">&lt;</span> b) <span style="color:#8caaee">f</span>();
+</span></span><span style="display:flex;"><span><span style="color:#ca9ee6">else</span> <span style="color:#8caaee">g</span>();
+</span></span></code></pre></div><p>因可能存在 NaN, 未必等價</p>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#ca9ee6">if</span> (a <span style="color:#99d1db;font-weight:bold">&gt;=</span> b) <span style="color:#8caaee">g</span>();
+</span></span><span style="display:flex;"><span><span style="color:#ca9ee6">else</span> <span style="color:#8caaee">f</span>();
+</span></span></code></pre></div><h3 id="轉換浮點數成最接近的整數" >
+<div>
+    <a href="#%e8%bd%89%e6%8f%9b%e6%b5%ae%e9%bb%9e%e6%95%b8%e6%88%90%e6%9c%80%e6%8e%a5%e8%bf%91%e7%9a%84%e6%95%b4%e6%95%b8">
+        ##
+    </a>
+    轉換浮點數成最接近的整數
+</div>
+</h3>
+<ul>
+<li>C99 使用 lround 系列 (N1256 7.12.9.7)</li>
+<li>clc FAQ 的建議(可能不可靠?)
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#e78284">int</span> xi <span style="color:#99d1db;font-weight:bold">=</span> (<span style="color:#e78284">int</span>)(x <span style="color:#99d1db;font-weight:bold">&lt;</span> <span style="color:#ef9f76">0</span> <span style="color:#99d1db;font-weight:bold">?</span> x <span style="color:#99d1db;font-weight:bold">-</span> <span style="color:#ef9f76">0.5</span> <span style="color:#99d1db;font-weight:bold">:</span> x <span style="color:#99d1db;font-weight:bold">+</span> <span style="color:#ef9f76">0.5</span>);
+</span></span></code></pre></div></li>
+</ul>
+<h2 id="memory-access-violations" >
+<div>
+    <a href="#memory-access-violations">
+        #
+    </a>
+    Memory Access Violations
+</div>
+</h2>
+<h3 id="double-free" >
+<div>
+    <a href="#double-free">
+        ##
+    </a>
+    double free
+</div>
+</h3>
+<p>case 1</p>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>    <span style="color:#e78284">int</span> a <span style="color:#99d1db;font-weight:bold">=</span> <span style="color:#ef9f76">20</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#e78284">int</span> <span style="color:#99d1db;font-weight:bold">*</span>p <span style="color:#99d1db;font-weight:bold">=</span> (<span style="color:#e78284">int</span> <span style="color:#99d1db;font-weight:bold">*</span>)<span style="color:#8caaee">malloc</span>(<span style="color:#ca9ee6">sizeof</span>(<span style="color:#e78284">int</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#737994;font-style:italic">//some excecutions ...
+</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"></span>    <span style="color:#ca9ee6">if</span> (a <span style="color:#99d1db;font-weight:bold">&gt;</span> <span style="color:#ef9f76">0</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#8caaee">free</span>(p);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#737994;font-style:italic">//some excecutions ...
+</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"></span>    <span style="color:#8caaee">free</span>(p);    <span style="color:#737994;font-style:italic">//double free
+</span></span></span></code></pre></div><p>case 2</p>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#e78284">void</span> <span style="color:#8caaee">foo</span>(<span style="color:#e78284">int</span><span style="color:#99d1db;font-weight:bold">**</span> arr)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#8caaee">free</span>(<span style="color:#99d1db;font-weight:bold">*</span>arr);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e78284">int</span> <span style="color:#8caaee">main</span>(<span style="color:#e78284">int</span> argc, <span style="color:#e78284">char</span><span style="color:#99d1db;font-weight:bold">*</span> argv[])
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#e78284">int</span> <span style="color:#99d1db;font-weight:bold">*</span>arr <span style="color:#99d1db;font-weight:bold">=</span> <span style="color:#8caaee">malloc</span>(<span style="color:#ca9ee6">sizeof</span>(<span style="color:#e78284">int</span>) <span style="color:#99d1db;font-weight:bold">*</span> <span style="color:#ef9f76">10</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#8caaee">foo</span>(<span style="color:#99d1db;font-weight:bold">&amp;</span>arr);
+</span></span><span style="display:flex;"><span>    <span style="color:#8caaee">free</span>(arr);  <span style="color:#737994;font-style:italic">//double free
+</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"></span>    <span style="color:#ca9ee6">return</span> <span style="color:#ef9f76">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="free-after-free" >
+<div>
+    <a href="#free-after-free">
+        ##
+    </a>
+    free-after-free
+</div>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>    a <span style="color:#99d1db;font-weight:bold">=</span> <span style="color:#8caaee">malloc</span>(<span style="color:#ef9f76">8</span>);  <span style="color:#737994;font-style:italic">//suppose allocated to 0x00
+</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"></span>    b <span style="color:#99d1db;font-weight:bold">=</span> a;          <span style="color:#737994;font-style:italic">//b points to 0x00
+</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"></span>    <span style="color:#8caaee">free</span>(a);
+</span></span><span style="display:flex;"><span>    a <span style="color:#99d1db;font-weight:bold">=</span> <span style="color:#8caaee">malloc</span>(<span style="color:#ef9f76">8</span>);  <span style="color:#737994;font-style:italic">//re-allocated to 0x00
+</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"></span>    <span style="color:#8caaee">free</span>(b);        <span style="color:#737994;font-style:italic">//freed 0x00 but a is still in scope
+</span></span></span></code></pre></div><h3 id="use-after-return" >
+<div>
+    <a href="#use-after-return">
+        ##
+    </a>
+    Use-after-return
+</div>
+</h3>
+<ul>
+<li>dereference of deallocated stack object</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#e78284">char</span> <span style="color:#99d1db;font-weight:bold">*</span>p;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e78284">void</span> <span style="color:#8caaee">foo</span>(<span style="color:#e78284">void</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#e78284">char</span> buf[<span style="color:#ef9f76">8</span>];
+</span></span><span style="display:flex;"><span>    x <span style="color:#99d1db;font-weight:bold">=</span> <span style="color:#99d1db;font-weight:bold">&amp;</span>buf[<span style="color:#ef9f76">2</span>];
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e78284">int</span> <span style="color:#8caaee">main</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#8caaee">foo</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#99d1db;font-weight:bold">*</span>x <span style="color:#99d1db;font-weight:bold">=</span> <span style="color:#ef9f76">42</span>;    <span style="color:#737994;font-style:italic">//use-after-return
+</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"></span>    <span style="color:#ca9ee6">return</span> <span style="color:#ef9f76">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="others" >
+<div>
+    <a href="#others">
+        #
+    </a>
+    Others
+</div>
+</h2>
+<h3 id="main-可以遞迴" >
+<div>
+    <a href="#main-%e5%8f%af%e4%bb%a5%e9%81%9e%e8%bf%b4">
+        ##
+    </a>
+    main() 可以遞迴?
+</div>
+</h3>
+<p>C 未規範<br>
+C++03 規定不行(C++03 3.6.1p3, 5.2.2p9)</p>
+<h3 id="main-可以回傳-void" >
+<div>
+    <a href="#main-%e5%8f%af%e4%bb%a5%e5%9b%9e%e5%82%b3-void">
+        ##
+    </a>
+    main 可以回傳 void?
+</div>
+</h3>
+<p>C 允許實作自己增加新的形式 (N1256 5.1.2.2.1p1)<br>
+C++ 要求回傳 int (C++03 3.6.1p2)<br>
+C99 和 C++03 可以不回傳值 (C90 規定不同)<br>
+為了可攜性建議加上 return 0 或 return EXIT_SUCCESS (N1256 5.1.2.2.3, C++03 3.6.1p5)</p>
+<hr>
+<h2 id="references" >
+<div>
+    <a href="#references">
+        #
+    </a>
+    References
+</div>
+</h2>
+<p>ISO/IEC 9899:TC3(n1256.pdf)</p>
+        </div>
+
+    </article>
+
+    
+    
+        
+    
+
+    
+        
+        
+            <h3 class="read-next-title noselect">Read next</h3>
+            <ul class="read-next-posts noselect">
+                
+                <li><a href="/posts/prog/c/c_lib/">C Library</a></li>
+                
+                <li><a href="/posts/prog/c/c_sundries/">C Sundries</a></li>
+                
+            </ul>
+        
+    
+
+    
+        
+    
+    
+    <div class="pagination post-pagination">
+        <div class="left pagination-item ">
+            
+                <a href="/posts/prog/c/c_lib/">C Library</a>
+            
+        </div>
+        <div class="right pagination-item ">
+            
+                <a href="/posts/prog/c/c_sundries/">C Sundries</a>
+            
+        </div>
+    </div>
+
+
+
+
+
+    
+
+    
+        
+
+
+
+
+
+
+
+
+            
+
+<script>
+        function detectCurrentScheme2() {
+                const defaultTheme = "auto";
+                if (localStorage !== null && localStorage.getItem("user-color-scheme")) {
+                        return localStorage.getItem("user-color-scheme");
+                }
+                if (defaultTheme === "dark" || defaultTheme === "light") {
+                        return defaultTheme;
+                }
+                return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+
+        let giscusTheme = detectCurrentScheme2();
+        let giscusAttributes = {
+                src: "https://giscus.app/client.js",
+                "data-repo": "Vitaceae\/vitaceae.github.io",
+                "data-repo-id": "R_kgDOOLku4g",
+                "data-category": "General",
+                "data-category-id": "DIC_kwDOOLku4s4CoQfG",
+                "data-mapping": "pathname",
+                "data-strict": "0",
+                "data-reactions-enabled": "1",
+                "data-emit-metadata": "0",
+                "data-input-position": "bottom",
+                "data-theme": giscusTheme,
+                "data-lang": "zh-TW",
+                crossorigin: "anonymous",
+                lazyload: "false",
+                async: true,
+        };
+        let main = document.querySelector("main");
+        let giscusScript = document.createElement("script");
+        Object.entries(giscusAttributes).forEach(([key, value]) => giscusScript.setAttribute(key, value));
+        main.appendChild(giscusScript);
+</script>
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+        </main>
+        
+            <footer class="common-footer noselect">
+    
+    
+
+    <div class="common-footer-bottom">
+        
+
+        <div style="display: flex; align-items: center; gap:8px">
+            ©  Mike Chang,  2025
+            
+            <a aria-label="Check statistics data" style="display: flex; align-items: center; border-bottom: none; cursor: pointer; color: var(--pagination-link-color)" href="https://cloud.umami.is/share/biHOZBHqeGeBgHVS/vitaceae.github.io"><svg xmlns="http://www.w3.org/2000/svg"  width="16"  height="16"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-report-analytics"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" /><path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" /><path d="M9 17v-5" /><path d="M12 17v-1" /><path d="M15 17v-3" /></svg></a>
+            
+        </div>
+        <div style="display:flex;align-items: center">
+            
+            
+            
+            
+            
+            
+        </div>
+        <div>
+            Powered by <a target="_blank" rel="noopener noreferrer" href="https://gohugo.io/">Hugo</a>, theme <a target="_blank" rel="noopener noreferrer" href="https://github.com/Junyi-99/hugo-theme-anubis2">Anubis2</a>.<br>
+            
+
+        </div>
+    </div>
+
+    <p class="h-card vcard">
+
+    <a href=http://172.20.85.217:1313/ class="p-name u-url url fn" rel="me">map[email:i70170@hotmail.com location:Taiwan name:Mike Chang]</a>
+
+    
+
+    
+</p>
+
+</footer>
+
+        
+    </div>
+</body>
+</html>

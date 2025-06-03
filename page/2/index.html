@@ -3,7 +3,7 @@
 
 <html lang="en-us" data-theme="">
 <head>
-	<meta name="generator" content="Hugo 0.147.0">
+	<meta name="generator" content="Hugo 0.147.6"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     
         
 <meta charset="utf-8">
@@ -20,8 +20,8 @@
 
 
 <link rel="alternate" type="application/rss+xml" href="/index.xml" title="Mike's Cheatsheet" />
-<link rel="icon" type="image/x-icon" href="https://vitaceae.github.io/favicon.ico">
-<link rel="apple-touch-icon-precomposed" href="https://vitaceae.github.io/favicon.png">
+<link rel="icon" type="image/x-icon" href="http://172.20.85.217:1313/favicon.ico">
+<link rel="apple-touch-icon-precomposed" href="http://172.20.85.217:1313/favicon.png">
 
 
 
@@ -63,12 +63,10 @@
 
     
     
-        
-    
     
 
     
-        <link rel="stylesheet" href="/css/style.min.44f8240afd8df81b52565c4119ac5ae247776c77fc6d7ccf6e101a6c98abfa7a.css" integrity="sha256-RPgkCv2N&#43;BtSVlxBGaxa4kd3bHf8bXzPbhAabJir&#43;no=">
+        <link rel="stylesheet" href="/css/style.4c42aa0abeac804c4933c54677c449cea1f723caae778425d031e98565a0cdef.css" integrity="sha256-TEKqCr6sgExJM8VGd8RJzqH3I8qud4Ql0DHphWWgze8=">
     
 
 
@@ -83,12 +81,10 @@
 
     
     
-        
-    
     
 
     
-        <link rel="stylesheet" href="/css/style.min.c4c04b3ef88e3d619ad4c7ee5e03048422bc55c4fefdc1f07657c1133670aa22.css" integrity="sha256-xMBLPviOPWGa1MfuXgMEhCK8VcT&#43;/cHwdlfBEzZwqiI=">
+        <link rel="stylesheet" href="/css/style.9c1888ebff42c0224ce04dac10cb2c401f1b77f54f78e8d87d73c3bed781c263.css" integrity="sha256-nBiI6/9CwCJM4E2sEMssQB8bd/VPeOjYfXPDvteBwmM=">
     
 
 
@@ -103,12 +99,10 @@
 
     
     
-        
-    
     
 
     
-        <link rel="stylesheet" href="/css/style.min.21c5d8fe0a79d623b0adc1ce4bd4f6dd2c05cd939c9aaaa966ba7186b1464f4d.css" integrity="sha256-IcXY/gp51iOwrcHOS9T23SwFzZOcmqqpZrpxhrFGT00=">
+        <link rel="stylesheet" href="/css/style.acd606c0fce58853afe0248d37bb41acbbcdd8b1aca2412b6c0fa760da0137f3.css" integrity="sha256-rNYGwPzliFOv4CSNN7tBrLvN2LGsokErbA&#43;nYNoBN/M=">
     
 
 
@@ -154,12 +148,10 @@
 
     
     
-        
-    
     
 
     
-        <script src="/js/script.min.08f04d96386c73c9bf4d160333f8f448c05a6e01c06770542ee0e013954ce930.js" type="text/javascript" charset="utf-8" integrity="sha256-CPBNljhsc8m/TRYDM/j0SMBabgHAZ3BULuDgE5VM6TA="></script>
+        <script src="/js/script.672e2309c296e07c18bcd08b28d797a56222ff941d65f308fba3158c44885b14.js" type="text/javascript" charset="utf-8" integrity="sha256-Zy4jCcKW4HwYvNCLKNeXpWIi/5QdZfMI&#43;6MVjESIWxQ="></script>
     
 
 
@@ -425,15 +417,15 @@
     <nav class="noselect">
         
         
-        <a class="" href="https://vitaceae.github.io/" title="">Home</a>
+        <a class="" href="http://172.20.85.217:1313/" title="">Home</a>
         
-        <a class="" href="https://vitaceae.github.io/about/" title="">About</a>
+        <a class="" href="http://172.20.85.217:1313/about/" title="">About</a>
         
-        <a class="" href="https://vitaceae.github.io/categories/" title="">Categories</a>
+        <a class="" href="http://172.20.85.217:1313/categories/" title="">Categories</a>
         
-        <a class="" href="https://vitaceae.github.io/tags/" title="">Tags</a>
+        <a class="" href="http://172.20.85.217:1313/tags/" title="">Tags</a>
         
-        <a class="" href="https://vitaceae.github.io/posts/" title="">Archive</a>
+        <a class="" href="http://172.20.85.217:1313/posts/" title="">Archive</a>
         
     </nav>
 
@@ -462,7 +454,7 @@
             
             
             <h1 class="p-name post-title ">
-                <a class="u-url" href="/posts/prog/c/c/">C Programming</a>
+                <a class="u-url" href="/posts/prog/c/c_floating_points/">Floating Points in C</a>
             </h1>
         </header>
         
@@ -471,31 +463,7 @@
 
     
         <div class="content post-summary p-summary">
-            <hr>
-<h2 id="data-io" >
-<div>
-    <a href="#data-io">
-        #
-    </a>
-    Data I/O
-</div>
-</h2>
-<h3 id="use-fgets-over-scanf" >
-<div>
-    <a href="#use-fgets-over-scanf">
-        ##
-    </a>
-    Use fgets() over scanf()
-</div>
-</h3>
-<ol>
-<li>scanf() 使用者不需管理 buffer size (預設值 100 bytes?), 但可能導致 buffer overflow 或 stack overflow</li>
-<li>scanf() 惡意使用者可能插入 function pointer 或 executable code</li>
-<li>fgets() 相對強健(robust), *nix 系統上的資料來源可以是 sockets, streams 或實際檔案</li>
-<li>fgets() 需指定緩衝區長度, 可避免溢出式攻擊</li>
-<li>fgets() I/O 問題可使用 ferror() 做為 error-handling</li>
-</ol>
-<p>&hellip;</p>
+            <p>C 語言浮點數規範</p>
         </div>
     
 
@@ -514,13 +482,13 @@
 <div class="post-info noselect">
     
         <div class="post-date dt-published">
-            <time datetime="2024-03-21">2024-03-21</time>
+            <time datetime="2024-05-21">2024-05-21</time>
             
         </div>
     
 
-    <a class="post-hidden-url u-url" href="/posts/prog/c/c/">/posts/prog/c/c/</a>
-    <a href="https://vitaceae.github.io/" class="p-name p-author post-hidden-author h-card" rel="me">Mike</a>
+    <a class="post-hidden-url u-url" href="/posts/prog/c/c_floating_points/">/posts/prog/c/c_floating_points/</a>
+    <a href="http://172.20.85.217:1313/" class="p-name p-author post-hidden-author h-card" rel="me">Mike</a>
 
 
     <div class="post-taxonomies">
@@ -554,7 +522,7 @@
             
             
             <h1 class="p-name post-title ">
-                <a class="u-url" href="/posts/prog/programming/">Programming Languages</a>
+                <a class="u-url" href="/posts/prog/c/c_optimization/">C Optimization</a>
             </h1>
         </header>
         
@@ -563,7 +531,7 @@
 
     
         <div class="content post-summary p-summary">
-            <p>Summary of the programming languages used so far.</p>
+            <p>Mehtods that may be deprecated to optimize C program.</p>
         </div>
     
 
@@ -582,13 +550,13 @@
 <div class="post-info noselect">
     
         <div class="post-date dt-published">
-            <time datetime="2024-03-20">2024-03-20</time>
+            <time datetime="2024-03-27">2024-03-27</time>
             
         </div>
     
 
-    <a class="post-hidden-url u-url" href="/posts/prog/programming/">/posts/prog/programming/</a>
-    <a href="https://vitaceae.github.io/" class="p-name p-author post-hidden-author h-card" rel="me">Mike</a>
+    <a class="post-hidden-url u-url" href="/posts/prog/c/c_optimization/">/posts/prog/c/c_optimization/</a>
+    <a href="http://172.20.85.217:1313/" class="p-name p-author post-hidden-author h-card" rel="me">Mike</a>
 
 
     <div class="post-taxonomies">
@@ -604,7 +572,7 @@
             <ul class="post-tags">
                 
                     
-                    <li><a href="/tags/">#Tags</a></li>
+                    <li><a href="/tags/c-prog/">#C-Prog</a></li>
                 
             </ul>
         
@@ -621,8 +589,8 @@
             
             
             
-            <h1 class="p-name post-title ">
-                <a class="u-url" href="/posts/dev_platform/build_tools/">Build Tools</a>
+            <h1 class="p-name post-title draft ">
+                <a class="u-url" href="/posts/prog/c/c_macro/">C Programming Macro</a>
             </h1>
         </header>
         
@@ -631,156 +599,135 @@
 
     
         <div class="content post-summary p-summary">
-            <h2 id="build-tools" >
+            <h1 id="prevent-multiple-inclusion" >
 <div>
-    <a href="#build-tools">
-        #
-    </a>
-    Build Tools
-</div>
-</h2>
-<p><strong>目的</strong></p>
-<ul>
-<li>
-<p>編譯/交叉編譯應用程式</p>
-</li>
-<li>
-<p>將應用程式包裝成套件</p>
-</li>
-<li>
-<p>測試 binary ecosystem</p>
-</li>
-<li>
-<p>部署 image</p>
-</li>
-<li>
-<p><a href="https://buildroot.org/">Buildroot</a></p>
-<ul>
-<li>建置客製化且最精簡的嵌入式 Linux 系統</li>
-<li>支援 bootloader(e.g. U-Boot), Linux kernel(zImage or bzImage), BusyBox 管理</li>
-<li>套件管理器: 無; 建構期配置所需套件</li>
-<li>recipe 數量: 約 700</li>
-</ul>
-</li>
-<li>
-<p><a href="https://openwrt.org/">OpenWRT</a></p>
-<ul>
-<li>建置用於 router 和嵌入式網路設備的 Linux 發行版</li>
-<li>套件管理器: opkg</li>
-<li>提供豐富的網路和 router 相關函式庫以及驅動</li>
-</ul>
-</li>
-<li>
-<p><a href="https://www.yoctoproject.org/">Yocto/OpenEmbedded</a></p>
-<ul>
-<li>適合產生 distribution</li>
-<li>套件管理器: 無; 建構期配置所需套件</li>
-<li>提供各式通用函式庫以及驅動</li>
-<li>recipe 數量: 約 8000</li>
-</ul>
-</li>
-</ul>
-        </div>
-    
-
-    
-    
-    
-    
-    
-
-    
-
-    
-
-
-
-<div class="post-info noselect">
-    
-        <div class="post-date dt-published">
-            <time datetime="2024-03-19">2024-03-19</time>
-            
-        </div>
-    
-
-    <a class="post-hidden-url u-url" href="/posts/dev_platform/build_tools/">/posts/dev_platform/build_tools/</a>
-    <a href="https://vitaceae.github.io/" class="p-name p-author post-hidden-author h-card" rel="me">Mike</a>
-
-
-    <div class="post-taxonomies">
-        
-            <ul class="post-categories">
-                
-                    
-                    <li><a href="/categories/dev-platform/">Dev-Platform</a></li>
-                
-            </ul>
-        
-        
-            <ul class="post-tags">
-                
-                    
-                    <li><a href="/tags/yocto/">#Yocto</a></li>
-                
-                    
-                    <li><a href="/tags/buildroot/">#Buildroot</a></li>
-                
-                    
-                    <li><a href="/tags/openwrt/">#Openwrt</a></li>
-                
-            </ul>
-        
-        
-    </div>
-</div>
-
-</article>
-
-        
-            <article class="post-list h-feed post-card">
-    <div class="post-header">
-        <header>
-            
-            
-            
-            <h1 class="p-name post-title ">
-                <a class="u-url" href="/posts/dev_platform/rockchip/">Rockchip Development Platform</a>
-            </h1>
-        </header>
-        
-
-    </div>
-
-    
-        <div class="content post-summary p-summary">
-            <h2 id="rockchip-development-platform" >
-<div>
-    <a href="#rockchip-development-platform">
-        #
-    </a>
-    Rockchip Development Platform
-</div>
-</h2>
-<ul>
-<li>firefly-docs: official design documents</li>
-<li>firefly-tools
-<ul>
-<li>DriverAssistant: Windows USB driver</li>
-<li>AndroidTool: Windows download tool</li>
-<li>LinuxUpgradeTool: Linux download tool</li>
-<li>Android8.1UpgradeTool</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h3 id="build-images" >
-<div>
-    <a href="#build-images">
+    <a href="#prevent-multiple-inclusion">
         ##
     </a>
-    Build Images
+    prevent multiple inclusion
 </div>
-</h3>
+</h1>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#737994;font-style:italic">#ifndef COMDEF_H 
+</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic">#define COMDEF_H 
+</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"></span>
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic">#endif 
+</span></span></span></code></pre></div><h1 id="指定位址的-byteword" >
+<div>
+    <a href="#%e6%8c%87%e5%ae%9a%e4%bd%8d%e5%9d%80%e7%9a%84-byteword">
+        ##
+    </a>
+    指定位址的 byte/word
+</div>
+</h1>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#737994;font-style:italic">#define MEM_B(x)                        (*((byte *)(x)))
+</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic">#define MEM_W(x)                        (*((word *)(x)))
+</span></span></span></code></pre></div><h1 id="最大值最小值" >
+<div>
+    <a href="#%e6%9c%80%e5%a4%a7%e5%80%bc%e6%9c%80%e5%b0%8f%e5%80%bc">
+        ##
+    </a>
+    最大值/最小值
+</div>
+</h1>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#737994;font-style:italic">#define MAX(x, y)                       (((x) &gt; (y)) ? (x) : (y)) 
+</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic">#define MIN(x, y)                       (((x) &lt; (y)) ? (x) : (y)) 
+</span></span></span></code></pre></div><h1 id="struct-field-offset" >
+<div>
+    <a href="#struct-field-offset">
+        ##
+    </a>
+    struct field offset
+</div>
+</h1>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#737994;font-style:italic">#define FPOS(type, field)               ((dword) &amp;(( type *) 0)-&gt;field)
+</span></span></span></code></pre></div><h1 id="struct-field-size" >
+<div>
+    <a href="#struct-field-size">
+        ##
+    </a>
+    struct field size
+</div>
+</h1>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#737994;font-style:italic">#define FSIZ( type, field )             sizeof(((type *) 0)-&gt;field) 
+</span></span></span></code></pre></div><h1 id="bytes-to-wordlsb" >
+<div>
+    <a href="#bytes-to-wordlsb">
+        ##
+    </a>
+    bytes to word(LSB)
+</div>
+</h1>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#737994;font-style:italic">#define FLIPW(ray)                      ((((word)(ray)[0]) * 256) + (ray)[1])
+</span></span></span></code></pre></div><h1 id="word-to-byteslsb" >
+<div>
+    <a href="#word-to-byteslsb">
+        ##
+    </a>
+    word to bytes(LSB)
+</div>
+</h1>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#737994;font-style:italic">#define FLOPW( ray, val )               (ray)[0] = ((val) / 256); \
+</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic">                                        (ray)[1] = ((val) &amp; 0xFF) 
+</span></span></span></code></pre></div><h1 id="get-variable-address" >
+<div>
+    <a href="#get-variable-address">
+        ##
+    </a>
+    get variable address
+</div>
+</h1>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#737994;font-style:italic">#define B_PTR(var)                      ((byte *)(void *) &amp;(var))
+</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic">#define W_PTR(var)                      ((word *)(void *) &amp;(var))
+</span></span></span></code></pre></div><h1 id="highlow-byte-of-a-word" >
+<div>
+    <a href="#highlow-byte-of-a-word">
+        ##
+    </a>
+    High/Low byte of a word
+</div>
+</h1>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#737994;font-style:italic">#define WORD_LO(xxx)                    ((byte) ((word)(xxx) &amp; 255)) 
+</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic">#define WORD_HI(xxx)                    ((byte) ((word)(xxx) &gt;&gt; 8))
+</span></span></span></code></pre></div><h1 id="nearest-integer-to-base-8" >
+<div>
+    <a href="#nearest-integer-to-base-8">
+        ##
+    </a>
+    nearest integer to base 8
+</div>
+</h1>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#737994;font-style:italic">#define RND8(x)                         ((((x) + 7) / 8 ) * 8)
+</span></span></span></code></pre></div><h1 id="capitalize-a-letter" >
+<div>
+    <a href="#capitalize-a-letter">
+        ##
+    </a>
+    capitalize a letter
+</div>
+</h1>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#737994;font-style:italic">#define UPCASE(c)                       (((c) &gt;= &#39;a&#39; &amp;&amp; (c) &lt;= &#39;z&#39;) ? ((c) - 0x20) : (c)) 
+</span></span></span></code></pre></div><h1 id="prevent-overflow" >
+<div>
+    <a href="#prevent-overflow">
+        ##
+    </a>
+    prevent overflow
+</div>
+</h1>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#737994;font-style:italic">#define INC_SAT(val)                    (val = ((val)+1 &gt; (val)) ? (val)+1 : (val)) 
+</span></span></span></code></pre></div><h1 id="get-array-element-count" >
+<div>
+    <a href="#get-array-element-count">
+        ##
+    </a>
+    get array element count
+</div>
+</h1>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#737994;font-style:italic">#define ARR_SIZE(a)                     (sizeof((a)) / sizeof((a[0])))
+</span></span></span></code></pre></div><!--TODO-->  
+<p>17，返回一個無符號數n尾的值MOD_BY_POWER_OF_TWO(X,n)=X%(2^n)</p>
         </div>
     
 
@@ -799,13 +746,13 @@
 <div class="post-info noselect">
     
         <div class="post-date dt-published">
-            <time datetime="2024-03-19">2024-03-19</time>
+            <time datetime="2024-03-27">2024-03-27</time>
             
         </div>
     
 
-    <a class="post-hidden-url u-url" href="/posts/dev_platform/rockchip/">/posts/dev_platform/rockchip/</a>
-    <a href="https://vitaceae.github.io/" class="p-name p-author post-hidden-author h-card" rel="me">Mike</a>
+    <a class="post-hidden-url u-url" href="/posts/prog/c/c_macro/">/posts/prog/c/c_macro/</a>
+    <a href="http://172.20.85.217:1313/" class="p-name p-author post-hidden-author h-card" rel="me">Mike</a>
 
 
     <div class="post-taxonomies">
@@ -813,7 +760,7 @@
             <ul class="post-categories">
                 
                     
-                    <li><a href="/categories/dev-platform/">Dev-Platform</a></li>
+                    <li><a href="/categories/programming/">Programming</a></li>
                 
             </ul>
         
@@ -821,10 +768,158 @@
             <ul class="post-tags">
                 
                     
-                    <li><a href="/tags/rockchip/">#Rockchip</a></li>
+                    <li><a href="/tags/c-prog/">#C-Prog</a></li>
+                
+            </ul>
+        
+        
+    </div>
+</div>
+
+</article>
+
+        
+            <article class="post-list h-feed post-card">
+    <div class="post-header">
+        <header>
+            
+            
+            
+            <h1 class="p-name post-title draft ">
+                <a class="u-url" href="/posts/prog/c/c_misc/">C Programming Sundries</a>
+            </h1>
+        </header>
+        
+
+    </div>
+
+    
+        <div class="content post-summary p-summary">
+            <h1 id="sscanf" >
+<div>
+    <a href="#sscanf">
+        ##
+    </a>
+    sscanf
+</div>
+</h1>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#e78284">int</span> <span style="color:#8caaee">sscanf</span>(<span style="color:#ca9ee6">const</span> <span style="color:#e78284">char</span> <span style="color:#99d1db;font-weight:bold">*</span> str, <span style="color:#ca9ee6">const</span> <span style="color:#e78284">char</span> <span style="color:#99d1db;font-weight:bold">*</span> format, ...);
+</span></span></code></pre></div><h2 id="example" >
+<div>
+    <a href="#example">
+        #
+    </a>
+    Example
+</div>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#737994;font-style:italic">//string
+</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"></span><span style="color:#8caaee">sscanf</span>(<span style="color:#a6d189">&#34;name:john age:40 tel:082-313530&#34;</span>, <span style="color:#a6d189">&#34;%s&#34;</span>, res);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic">//string with length
+</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"></span><span style="color:#8caaee">sscanf</span>(<span style="color:#a6d189">&#34;name:john age:40 tel:082-313530&#34;</span>, <span style="color:#a6d189">&#34;%8s&#34;</span>, res);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic">//regex
+</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic">//res=name
+</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"></span><span style="color:#8caaee">sscanf</span>(<span style="color:#a6d189">&#34;name:john age:40 tel:082-313530&#34;</span>, <span style="color:#a6d189">&#34;%[^:]&#34;</span>, res);
+</span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic">//res=name john
+</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"></span><span style="color:#8caaee">sscanf</span>(<span style="color:#a6d189">&#34;name:john age:40 tel:082-313530&#34;</span>, <span style="color:#a6d189">&#34;%[^:]:%s&#34;</span>, field, res);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic">//mixed types
+</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic">//res=john res2=40 res3=082-313530
+</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"></span><span style="color:#8caaee">sscanf</span>(<span style="color:#a6d189">&#34;name:john age:40 tel:082-313530&#34;</span>, <span style="color:#a6d189">&#34;name:%s age:%d tel:%s&#34;</span>, res, <span style="color:#99d1db;font-weight:bold">&amp;</span>res2, res3);
+</span></span><span style="display:flex;"><span><span style="color:#8caaee">sscanf</span>(<span style="color:#a6d189">&#34;name:john age:40 tel:082-313530&#34;</span>, <span style="color:#a6d189">&#34;%*[^:]:%s %*[^:]:%d %*[^:]:%s&#34;</span>, name, <span style="color:#99d1db;font-weight:bold">&amp;</span>age, tel);
+</span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic">//protocol=http site=ccckmit.wikidot.com path=cp/list/hello.txt
+</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"></span><span style="color:#8caaee">sscanf</span>(<span style="color:#a6d189">&#34;http://ccckmit.wikidot.com/cp/list/hello.txt&#34;</span>, <span style="color:#a6d189">&#34;%[^:]:%*2[/]%[^/]/%[a-zA-Z0-9._/-]&#34;</span>, protocol, site, path);
+</span></span></code></pre></div><hr>
+<h1 id="file-processing" >
+<div>
+    <a href="#file-processing">
+        ##
+    </a>
+    File Processing
+</div>
+</h1>
+<h2 id="file-operation" >
+<div>
+    <a href="#file-operation">
+        #
+    </a>
+    File Operation
+</div>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#737994;font-style:italic">//create directory
+</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"></span><span style="color:#8caaee">mkdir</span>(dir_name, <span style="color:#ef9f76">0777</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic">//remove file
+</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"></span><span style="color:#8caaee">remove</span>(file_name);
+</span></span></code></pre></div><h2 id="file-permission" >
+<div>
+    <a href="#file-permission">
+        #
+    </a>
+    File Permission
+</div>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#737994;font-style:italic">#include</span> <span style="color:#737994;font-weight:bold;font-style:italic">&lt;sys/types.h&gt;</span><span style="color:#737994;font-style:italic">
+</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic">#include</span> <span style="color:#737994;font-weight:bold;font-style:italic">&lt;sys/stat.h&gt;</span><span style="color:#737994;font-style:italic">
+</span></span></span><span style="display:flex;"><span><span style="color:#737994;font-style:italic"></span>
+</span></span><span style="display:flex;"><span><span style="color:#e78284">mode_t</span> <span style="color:#8caaee">umask</span>(<span style="color:#e78284">mode_t</span> mask);
+</span></span></code></pre></div><ul>
+<li>umask(x) sets system umask value to (x &amp; 0777)</li>
+<li>real permission: (mode &amp; ~umask)</li>
+<li>example: mode = 0666, default umask = 022, real permission = (0666 &amp; ~022) = 0644, or rw-r&ndash;r&ndash;</li>
+</ul>
+<hr>
+<h1 id="calculate-md5" >
+<div>
+    <a href="#calculate-md5">
+        ##
+    </a>
+    Calculate MD5
+</div>
+</h1>
+<p><a href="https://hant-kb.kutu66.com/c/post_2198262">hash - 在C 中，如何計算大型文件的MD5哈希值？</a></p>
+        </div>
+    
+
+    
+    
+    
+    
+    
+
+    
+
+    
+
+
+
+<div class="post-info noselect">
+    
+        <div class="post-date dt-published">
+            <time datetime="2024-03-27">2024-03-27</time>
+            
+        </div>
+    
+
+    <a class="post-hidden-url u-url" href="/posts/prog/c/c_misc/">/posts/prog/c/c_misc/</a>
+    <a href="http://172.20.85.217:1313/" class="p-name p-author post-hidden-author h-card" rel="me">Mike</a>
+
+
+    <div class="post-taxonomies">
+        
+            <ul class="post-categories">
                 
                     
-                    <li><a href="/tags/yocto/">#Yocto</a></li>
+                    <li><a href="/categories/programming/">Programming</a></li>
+                
+            </ul>
+        
+        
+            <ul class="post-tags">
+                
+                    
+                    <li><a href="/tags/c-prog/">#C-Prog</a></li>
                 
             </ul>
         
@@ -842,7 +937,7 @@
             
             
             <h1 class="p-name post-title ">
-                <a class="u-url" href="/posts/dev_platform/yocto/">Yocto Development Platform</a>
+                <a class="u-url" href="/posts/prog/c/c_syntax/">C Programming Syntax</a>
             </h1>
         </header>
         
@@ -851,52 +946,26 @@
 
     
         <div class="content post-summary p-summary">
-            <h2 id="yocto-development-platform" >
+            <h2 id="union" >
 <div>
-    <a href="#yocto-development-platform">
+    <a href="#union">
         #
     </a>
-    Yocto Development Platform
+    union
 </div>
 </h2>
-<ul>
-<li>Prerequisites:
-<ul>
-<li>Yocto 3.0+</li>
-<li>Git 1.8.3.1+</li>
-<li>tar 1.27+</li>
-<li>Python 3.4.0+</li>
-</ul>
-</li>
-</ul>
-<p><img src="/posts/dev_platform/./inc/yocto/yocto_core_components.jpg" alt="Yocto Core Components"/></p>
-<p><strong>Core components</strong></p>
-<ul>
-<li><code>BitBake</code>: like GNU Make, used to parse scripts</li>
-<li><code>OpenEmbedded-Core</code>: handles metadata
-<ul>
-<li>meta-yocto</li>
-<li>meta-yocto-bsp</li>
-</ul>
-</li>
-<li><code>Poky</code></li>
-<li>BSP layer (layer names start with the string &ldquo;meta-&rdquo;)
-<ul>
-<li>meta-raspberry</li>
-<li>meta-fsl-arm</li>
-<li>&hellip;</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h3 id="set-up-build-host" >
-<div>
-    <a href="#set-up-build-host">
-        ##
-    </a>
-    Set up Build Host
-</div>
-</h3>
+<p>成員共用記憶體空間; 最大成員決定結構大小</p>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#ca9ee6">union</span> foo {
+</span></span><span style="display:flex;"><span>    <span style="color:#ca9ee6">struct</span> {
+</span></span><span style="display:flex;"><span>        unsinged <span style="color:#e78284">int</span> <span style="color:#99d1db">d1</span>: <span style="color:#ef9f76">4</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#e78284">unsigned</span> <span style="color:#e78284">int</span> <span style="color:#99d1db">d2</span>: <span style="color:#ef9f76">2</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#e78284">unsigned</span> <span style="color:#e78284">int</span> <span style="color:#99d1db">reserved</span>: <span style="color:#ef9f76">26</span>;
+</span></span><span style="display:flex;"><span>    } s;
+</span></span><span style="display:flex;"><span>    <span style="color:#e78284">unsigned</span> <span style="color:#e78284">char</span> c;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ca9ee6">typedef</span> <span style="color:#ca9ee6">union</span> foo               foo_u
+</span></span></code></pre></div><p>&hellip;</p>
         </div>
     
 
@@ -915,13 +984,13 @@
 <div class="post-info noselect">
     
         <div class="post-date dt-published">
-            <time datetime="2024-03-19">2024-03-19</time>
+            <time datetime="2024-03-27">2024-03-27</time>
             
         </div>
     
 
-    <a class="post-hidden-url u-url" href="/posts/dev_platform/yocto/">/posts/dev_platform/yocto/</a>
-    <a href="https://vitaceae.github.io/" class="p-name p-author post-hidden-author h-card" rel="me">Mike</a>
+    <a class="post-hidden-url u-url" href="/posts/prog/c/c_syntax/">/posts/prog/c/c_syntax/</a>
+    <a href="http://172.20.85.217:1313/" class="p-name p-author post-hidden-author h-card" rel="me">Mike</a>
 
 
     <div class="post-taxonomies">
@@ -929,7 +998,7 @@
             <ul class="post-categories">
                 
                     
-                    <li><a href="/categories/dev-platform/">Dev-Platform</a></li>
+                    <li><a href="/categories/programming/">Programming</a></li>
                 
             </ul>
         
@@ -937,10 +1006,7 @@
             <ul class="post-tags">
                 
                     
-                    <li><a href="/tags/yocto/">#Yocto</a></li>
-                
-                    
-                    <li><a href="/tags/todo/">#Todo</a></li>
+                    <li><a href="/tags/c-prog/">#C-Prog</a></li>
                 
             </ul>
         
@@ -1004,7 +1070,7 @@
 
     <p class="h-card vcard">
 
-    <a href=https://vitaceae.github.io/ class="p-name u-url url fn" rel="me">map[email:i70170@hotmail.com location:Taiwan name:Mike Chang]</a>
+    <a href=http://172.20.85.217:1313/ class="p-name u-url url fn" rel="me">map[email:i70170@hotmail.com location:Taiwan name:Mike Chang]</a>
 
     
 

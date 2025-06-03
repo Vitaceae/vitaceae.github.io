@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Android on Mike&#39;s Cheatsheet</title>
+    <link>/categories/android/</link>
+    <description>Mike&#39;s Cheatsheet (Android)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    
+      
+        <managingEditor>i70170@hotmail.com
+          
+            (Mike Chang)
+          
+        </managingEditor>
+      
+
+      
+    
+
+    
+    <lastBuildDate>Mon, 03 Jun 2024 00:00:00 +0000</lastBuildDate>
+    
+    <atom:link href="/categories/android/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Android Init System</title>
+      <link>/posts/system/android/init_system/</link>
+      <pubDate>Mon, 03 Jun 2024 00:00:00 +0000</pubDate>
+      <author>i70170@hotmail.com (Mike Chang)</author>
+      <guid>/posts/system/android/init_system/</guid>
+      <description>&lt;p&gt;Android &lt;strong&gt;15.0.0_r36&lt;/strong&gt; 系統初始化流程&lt;/p&gt;
+&lt;h2 id=&#34;bootloader&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#bootloader&#34;&gt;
+        #
+    &lt;/a&gt;
+    Bootloader
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;Load and start Linux kernel&lt;/p&gt;
+&lt;h2 id=&#34;linux-kernel&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#linux-kernel&#34;&gt;
+        #
+    &lt;/a&gt;
+    Linux kernel
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;PID 0 最終經由 init_idle_bootup_task() 退化為 idle process(cpu_idle)，負責 idle 排程。&lt;br&gt;
+此外產生 PID 1 的 init process 執行 &lt;code&gt;/init&lt;/code&gt;，帶起 Android 的入口 main()&lt;/p&gt;
+&lt;p&gt;kernel/init/main.c&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Linux Kernel
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    start_kernel()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ↓           [init thread]       [kthreadd thread]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    rest_init() →   kernel_init() +     kthreadd()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                        ↓                   ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    do_basic_setup()    kernel threads
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                        ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    run_init_process()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;------------------------↓-------------------------------------------------------
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Android             main() →            [Zygote Process]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                        ↓               zygote
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    [Local Process]         ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    ADB                 System Server
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    Service Manager         ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    Surface Flinger     Acrtivity Manager
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    ...                 Package Manager
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                        ...
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;查看 init process 的 PID:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ adb shell ps -A | grep init
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;init-system&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#init-system&#34;&gt;
+        #
+    &lt;/a&gt;
+    Init System
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    main()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    FirstStageMain()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    SetupSelinux()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    SecondStageMain()
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;init-system-main&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#init-system-main&#34;&gt;
+        #
+    &lt;/a&gt;
+    Init System: main()
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://android.googlesource.com/platform/system/core/&amp;#43;/refs/tags/android-15.0.0_r36/init/main.cpp&#34;&gt;main.cpp&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;透過輸入參數選擇 FirstStage 、 SetupSelinux 或 SecondStage。
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ca9ee6&#34;&gt;if&lt;/span&gt; (argc &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;1&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#ca9ee6&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;!&lt;/span&gt;strcmp(argv[&lt;span style=&#34;color:#ef9f76&#34;&gt;1&lt;/span&gt;], &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;subcontext&amp;#34;&lt;/span&gt;)) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          ...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#ca9ee6&#34;&gt;return&lt;/span&gt; SubcontextMain(argc, argv, &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt;function_map);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#ca9ee6&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;!&lt;/span&gt;strcmp(argv[&lt;span style=&#34;color:#ef9f76&#34;&gt;1&lt;/span&gt;], &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;selinux_setup&amp;#34;&lt;/span&gt;)) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#ca9ee6&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;SetupSelinux&lt;/span&gt;(argv);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#ca9ee6&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;!&lt;/span&gt;strcmp(argv[&lt;span style=&#34;color:#ef9f76&#34;&gt;1&lt;/span&gt;], &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;second_stage&amp;#34;&lt;/span&gt;)) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#ca9ee6&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;SecondStageMain&lt;/span&gt;(argc, argv);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ca9ee6&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;FirstStageMain&lt;/span&gt;(argc, argv);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;init-system-firststagemain&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#init-system-firststagemain&#34;&gt;
+        #
+    &lt;/a&gt;
+    Init System: FirstStageMain()
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://android.googlesource.com/platform/system/core/&amp;#43;/refs/heads/main/init/first_stage_init.cpp&#34;&gt;first_stage_init.cpp&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;設定輸入參數後使用 &lt;code&gt;execv&lt;/code&gt; 保留 PID 重新載入 main，執行 SetupSelinux
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ca9ee6&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#e78284&#34;&gt;char&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt; path &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;/system/bin/init&amp;#34;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ca9ee6&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#e78284&#34;&gt;char&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt; args[] &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; {path, &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;selinux_setup&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ca9ee6&#34;&gt;nullptr&lt;/span&gt;};
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  ...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  execv(path, &lt;span style=&#34;color:#ca9ee6&#34;&gt;const_cast&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;char&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;**&amp;gt;&lt;/span&gt;(args));
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;簡易流程:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    InstallRebootSignalHandlers(): 處理異常 signal
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    mount, mkdir, chmod, setgroups, mknod: 掛載基礎檔案系統 ramdisk: tmpfs, devpts, proc, sysfs
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    InitKernelLogging(): 開啟 log
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    DoFirstStageMount(): 掛載特定分區
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    execv(): 執行 SetupSelinux
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;init-system-setupselinux&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#init-system-setupselinux&#34;&gt;
+        #
+    &lt;/a&gt;
+    Init System: SetupSelinux()
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://android.googlesource.com/platform/system/core/&amp;#43;/refs/heads/main/init/selinux.cpp&#34;&gt;selinux.cpp&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;掛載 SELinux 權限系統
+&lt;ul&gt;
+&lt;li&gt;/sys/fs/selinux/enforce 檔案 0 代表 permissive，1 代表 enforcing&lt;br&gt;
+permissive mode: 允許任何操作，不存在 MAC(Mandatory Access Control)。若違反權限仍會紀錄到 log，多用於 Engineering Mode。&lt;br&gt;
+enforcing mode: 任何操作都會檢查權限。屬於一般 User Mode 或 User-debug Mode&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;使用 execv 保留 PID 重新載入 main，執行 SecondStageMain&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;init-system-secondstagemain&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#init-system-secondstagemain&#34;&gt;
+        #
+    &lt;/a&gt;
+    Init System: SecondStageMain()
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://android.googlesource.com/platform/system/core/&amp;#43;/refs/tags/android-15.0.0_r36/init/init.cpp&#34;&gt;init.cpp&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;分析 init.rc
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  ActionManager&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt; am &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; ActionManager&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;::&lt;/span&gt;GetInstance();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  ServiceList&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt; sm &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; ServiceList&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;::&lt;/span&gt;GetInstance();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  LoadBootScripts(am, sm);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;建立 Zygote 行程&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;簡易流程:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    InstallRebootSignalHandlers(): 處理異常 signal
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    InitKernelLogging(): 開啟 log
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    PropertyInit(): 屬性服務解析 .prop 檔案
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    MountExtraFilesystems()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    SelabelInitialize(), SelinuxRestoreContext(): 設定 SELinux
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    Epoll epoll: 使用 epoll 監聽 socket
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    StartPropertyService()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    LoadBootScripts(): 使用解析器處理 .rc 腳本
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    Trigger &amp;#34;early-init&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    Trigger &amp;#34;init&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    bootmode == &amp;#34;charger&amp;#34;?
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &amp;lt;YES&amp;gt; Trigger &amp;#34;charger&amp;#34; | &amp;lt;NO&amp;gt; Trigger &amp;#34;late-init&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    queue_property_triggers
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;ail-android-init-language&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#ail-android-init-language&#34;&gt;
+        ##
+    &lt;/a&gt;
+    AIL, Android Init Language
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;詳細格式參考 &lt;a href=&#34;https://android.googlesource.com/platform/system/core/&amp;#43;/refs/heads/main/init/README.md&#34;&gt;system/core/init/README.md&lt;/a&gt; 。&lt;/p&gt;
+&lt;p&gt;init.rc 包含五種類型宣告:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Action
+&lt;ul&gt;
+&lt;li&gt;以 Section 形式表達。直到下一個 Section 開頭為止構成完整描述；沒有結束標記。&lt;/li&gt;
+&lt;li&gt;重複的 Action 會被合併。&lt;/li&gt;
+&lt;li&gt;以關鍵字 on 開頭的範例
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  on early-init                           &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# Action 類型宣告; 觸發器為字串 &amp;#34;early-init&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      write /proc/1/oom_score_adj -1000   &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# Command&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;trigger(觸發器): 可使用字串如 &amp;ldquo;early-init&amp;rdquo; 或屬性 &lt;code&gt;property:sys.boot_from_charger_mode=1&lt;/code&gt;；以 &lt;code&gt;&amp;amp;&amp;amp;&lt;/code&gt; 連接&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Command
+&lt;ul&gt;
+&lt;li&gt;常與 Action 併用；實際 Linux 操作命令。&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://android.googlesource.com/platform/system/core/&amp;#43;/refs/tags/android-15.0.0_r36/init/builtins.cpp&#34;&gt;builtins.cpp&lt;/a&gt;&lt;br&gt;
+GetBuiltinFunctionMap() 定義可用命令
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ca9ee6&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#ca9ee6&#34;&gt;const&lt;/span&gt; BuiltinFunctionMap builtin_functions &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      {&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;bootchart&amp;#34;&lt;/span&gt;,               {&lt;span style=&#34;color:#ef9f76&#34;&gt;1&lt;/span&gt;,     &lt;span style=&#34;color:#ef9f76&#34;&gt;1&lt;/span&gt;,    {&lt;span style=&#34;color:#99d1db&#34;&gt;false&lt;/span&gt;,  do_bootchart}}},
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      ...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  };
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Service
+&lt;ul&gt;
+&lt;li&gt;以 Section 形式表達。直到下一個 Section 開頭為止構成完整描述；沒有結束標記。&lt;/li&gt;
+&lt;li&gt;不允許使用重複的 Service 名稱。&lt;/li&gt;
+&lt;li&gt;以關鍵字 service 開頭的範例
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  service ueventd /sbin/ueventd           &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# Service 類型宣告; 包含服務名稱與執行路徑，透過 start 命令執行&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      class core                          &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# Option 修飾服務; 可包含複數敘述&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      critical
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Options
+&lt;ul&gt;
+&lt;li&gt;Service 的啟動參數與設定&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Import
+&lt;ul&gt;
+&lt;li&gt;關聯其他 .rc 檔
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  import /init.&lt;span style=&#34;color:#a6d189&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;ro&lt;/span&gt;.hardware&lt;span style=&#34;color:#a6d189&#34;&gt;}&lt;/span&gt;.rc
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;parser-解析器&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#parser-%e8%a7%a3%e6%9e%90%e5%99%a8&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Parser 解析器
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;init.cpp 中建立並使用 Parser&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    Parser parser &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; CreateParser(action_manager, service_list);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    parser.ParseConfig(...)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;ActionParser, ImportParser, ServiceParser 解析對應 section&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://android.googlesource.com/platform/system/core/&amp;#43;/refs/tags/android-15.0.0_r36/init/parser.cpp&#34;&gt;parser.cpp&lt;/a&gt;, &lt;a href=&#34;https://android.googlesource.com/platform/system/core/&amp;#43;/refs/tags/android-15.0.0_r36/init/parser.h&#34;&gt;parser.h&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://android.googlesource.com/platform/system/core/&amp;#43;/refs/tags/android-15.0.0_r36/init/action_parser.cpp&#34;&gt;action_parser.cpp&lt;/a&gt;, &lt;a href=&#34;https://android.googlesource.com/platform/system/core/&amp;#43;/refs/tags/android-15.0.0_r36/init/action_parser.h&#34;&gt;action_parser.h&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;解析結果存放在 &lt;code&gt;std::unique_ptr&amp;lt;Action&amp;gt; action_&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://android.googlesource.com/platform/system/core/&amp;#43;/refs/tags/android-15.0.0_r36/init/import_parser.cpp&#34;&gt;import_parser.cpp&lt;/a&gt;, &lt;a href=&#34;https://android.googlesource.com/platform/system/core/&amp;#43;/refs/tags/android-15.0.0_r36/init/import_parser.h&#34;&gt;import_parser.h&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;解析結果存放在 &lt;code&gt;std::vector&amp;lt;std::pair&amp;lt;std::string, int&amp;gt;&amp;gt; imports_&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://android.googlesource.com/platform/system/core/&amp;#43;/refs/tags/android-15.0.0_r36/init/service_parser.cpp&#34;&gt;service_parser.cpp&lt;/a&gt;, &lt;a href=&#34;https://android.googlesource.com/platform/system/core/&amp;#43;/refs/tags/android-15.0.0_r36/init/service_parser.h&#34;&gt;service_parser.h&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;解析結果存放在 &lt;code&gt;std::unique_ptr&amp;lt;Service&amp;gt; service_&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    Parser::ParseConfigFile() → ParseData() → &amp;lt;Action?&amp;gt;     → ActionParser::ParseLineSection() 將 command 加入 Action
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                            → &amp;lt;Import?&amp;gt;     → ImportParser
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                            → &amp;lt;Service?&amp;gt;    → ServiceParser::ParseLineSection() 將 option 加入 Service
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;trigger-觸發&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#trigger-%e8%a7%b8%e7%99%bc&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Trigger 觸發
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://android.googlesource.com/platform/system/core/&amp;#43;/refs/tags/android-15.0.0_r36/init/action_manager.cpp&#34;&gt;action_manager.cpp&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;QueueEventTrigger()&lt;/code&gt; 將 trigger 字串加入 &lt;code&gt;event_queue_&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;QueueBuiltinAction()&lt;/code&gt; 建立 Action 物件並附加 command 後加入 &lt;code&gt;event_queue_&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;event_queue_&lt;/code&gt; 宣告在 ActionManager 類別中: &lt;code&gt;std::queue&amp;lt;std::variant&amp;lt;EventTrigger, PropertyChange, BuiltinAction&amp;gt;&amp;gt; event_queue_&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&#34;https://android.googlesource.com/platform/system/core/&amp;#43;/refs/tags/android-15.0.0_r36/rootdir/init.rc&#34;&gt;init.rc&lt;/a&gt; 中 Action 次序決定觸發順序，&lt;br&gt;
+而 SecondStageMain() 中的 LoadBootScripts() 決定 .rc 載入順序；相同目錄下經由 Parser::ParseConfigDir() 排序後以升冪順序執行。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    init.rc → import in init.rc → nested import → /system/etc/init/ → /vendor/etc/init/ → /odm/etc/init/
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                      ↑                ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                      ←    recursive   ←
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Path&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Description&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;/init.${ro.hardware}.rc&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;hardware vendor 設定&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;/system/etc/init/hw/init.rc&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;hardware vendor 設定&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;/system/etc/init&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Android 系統設定如 SurfaceFlinger, MediaService, logcatd&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;/vendor/etc/init&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;SoC vendor 設定&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;/odm/etc/init&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;ODM 設定&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;/product/etc/init&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;個別產品設定&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;SecondStageMain() 解析完 .rc 文件後使用 epoll 持續監聽事件與回收 zombie process，即最後的 while 迴圈:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ActionManager::ExecuteOneCommand() 觸發屬性變化的對應 Action
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://android.googlesource.com/platform/system/core/&amp;#43;/refs/tags/android-15.0.0_r36/init/property_service.cpp&#34;&gt;property_service.cpp&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;使用 EPOLL 監控屬性變化事件
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ca9ee6&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#e78284&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;PropertyServiceThread&lt;/span&gt;(&lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; fd, &lt;span style=&#34;color:#e78284&#34;&gt;bool&lt;/span&gt; listen_init) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      ... epoll.RegisterHandler(fd, std&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;::&lt;/span&gt;bind(handle_property_set_fd, fd)) ...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      ... epoll.RegisterHandler(init_socket, HandleInitSocket) ...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#ca9ee6&#34;&gt;while&lt;/span&gt; (&lt;span style=&#34;color:#99d1db&#34;&gt;true&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          ...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          ... epoll.Wait(std&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;::&lt;/span&gt;nullopt) ...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          ...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#e78284&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;StartThread&lt;/span&gt;(...) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      ...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      ... &lt;span style=&#34;color:#ca9ee6&#34;&gt;auto&lt;/span&gt; result &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; CreateSocket(name, SOCK_STREAM &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;|&lt;/span&gt; SOCK_CLOEXEC &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;|&lt;/span&gt; SOCK_NONBLOCK ...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          ...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          fd &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;result;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      ...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      listen(fd, &lt;span style=&#34;color:#ef9f76&#34;&gt;8&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#ca9ee6&#34;&gt;auto&lt;/span&gt; new_thread &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; std&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;thread&lt;/span&gt;(PropertyServiceThread, fd, listen_init);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      ...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#e78284&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;StartPropertyService&lt;/span&gt;(&lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt; epoll_socket) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      ...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      StartThread(PROP_SERVICE_NAME, &lt;span style=&#34;color:#ef9f76&#34;&gt;0666&lt;/span&gt;, &lt;span style=&#34;color:#ef9f76&#34;&gt;0&lt;/span&gt;, property_service_thread, &lt;span style=&#34;color:#99d1db&#34;&gt;false&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      ...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;處理屬性變化事件: __system_property_update(), __system_property_add()
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ca9ee6&#34;&gt;static&lt;/span&gt; std&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;::&lt;/span&gt;optional&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;uint32_t&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt; PropertySet(...) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      ...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          prop_info&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt; pi &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; (prop_info&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;)__system_property_find(name.c_str());
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#ca9ee6&#34;&gt;if&lt;/span&gt; (pi &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#ca9ee6&#34;&gt;nullptr&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;              ...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;              __system_property_update(pi, value.c_str(), valuelen);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          } &lt;span style=&#34;color:#ca9ee6&#34;&gt;else&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;              &lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; rc &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; __system_property_add(name.c_str(), name.size(), value.c_str(), valuelen);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;              ...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      ...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  std&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;::&lt;/span&gt;optional&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;uint32_t&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt; HandlePropertySet(...) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      ...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#ca9ee6&#34;&gt;return&lt;/span&gt; PropertySet(name, value, socket, error);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;HandleSignalFd() 處理 SIGCHLD
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//init.cpp
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;  &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//InstallSignalFdHandler() → RegisterSignalFd()
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ca9ee6&#34;&gt;static&lt;/span&gt; Result&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;void&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt; RegisterSignalFd(Epoll&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt; epoll, &lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; signal, &lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; fd) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#ca9ee6&#34;&gt;return&lt;/span&gt; epoll&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;-&amp;gt;&lt;/span&gt;RegisterHandler(fd, [signal]() { HandleSignalFd(signal); }, EPOLLIN &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;|&lt;/span&gt; EPOLLPRI);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;HandleKeychord() 處理鍵盤事件
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//init.cpp
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;SecondStageMain&lt;/span&gt;(&lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; argc, &lt;span style=&#34;color:#e78284&#34;&gt;char&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;**&lt;/span&gt; argv) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      ...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      Keychords keychords;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      am.QueueBuiltinAction(
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;              [&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt;epoll, &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt;keychords](&lt;span style=&#34;color:#ca9ee6&#34;&gt;const&lt;/span&gt; BuiltinArguments&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt; args) &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;-&amp;gt;&lt;/span&gt; Result&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;void&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                  &lt;span style=&#34;color:#ca9ee6&#34;&gt;for&lt;/span&gt; (&lt;span style=&#34;color:#ca9ee6&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#ca9ee6&#34;&gt;auto&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color:#99d1db&#34;&gt;svc&lt;/span&gt; : ServiceList&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;::&lt;/span&gt;GetInstance()) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                      keychords.Register(svc&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;-&amp;gt;&lt;/span&gt;keycodes());
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                  }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                  keychords.Start(&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt;epoll, HandleKeychord);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                  &lt;span style=&#34;color:#ca9ee6&#34;&gt;return&lt;/span&gt; {};
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;              },
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;              &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;KeychordInit&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -19,18 +19,1242 @@
     
 
     
-    <lastBuildDate>Wed, 27 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 23 May 2024 00:00:00 +0000</lastBuildDate>
     
     <atom:link href="/tags/c-prog/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>C Programming Optimization</title>
+      <title>C Library</title>
+      <link>/posts/prog/c/c_lib/</link>
+      <pubDate>Thu, 23 May 2024 00:00:00 +0000</pubDate>
+      <author>i70170@hotmail.com (Mike Chang)</author>
+      <guid>/posts/prog/c/c_lib/</guid>
+      <description>&lt;p&gt;C 函式庫小抄&lt;/p&gt;
+&lt;h2 id=&#34;stdio&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#stdio&#34;&gt;
+        #
+    &lt;/a&gt;
+    stdio
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;字串/數值轉換函數: atoi, atof, strtol, strtoll, strtod&lt;/p&gt;
+&lt;h3 id=&#34;scanf&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#scanf&#34;&gt;
+        ##
+    &lt;/a&gt;
+    scanf()
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;suggest to use &lt;strong&gt;fgets&lt;/strong&gt; instead&lt;/li&gt;
+&lt;li&gt;formatted string input 格式化輸入
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;%[a-z]&lt;/code&gt;: 輸入值範圍為 a 到 z 字元, 遇到例外則停止; 如 &lt;code&gt;%[ny]&lt;/code&gt; 僅接受輸入值為 n 或 y&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;^&lt;/code&gt;: negates the succeeding characters; 例如 &lt;code&gt;%[^.]&lt;/code&gt; 遇到 . 字元停止&lt;/li&gt;
+&lt;li&gt;&lt;code&gt; %[^\n]%*c&lt;/code&gt;: remove leading spaces; %*c discards succeeding garbage characters&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;若輸入緩衝區殘留值可能造成非預期結果, 掃描前後需注意清空&lt;br&gt;
+但使用 &lt;code&gt;fflush(stdin)&lt;/code&gt; 清空輸入緩衝區屬於非定義行為&lt;/p&gt;
+&lt;p&gt;輸入字串終止條件為 white space, tab 或 newline&lt;br&gt;
+&lt;code&gt;scanf(&amp;quot;%4s&amp;quot;, buf);&lt;/code&gt; 後輸入 &amp;lsquo;a bc&amp;rsquo; 結果為 &amp;lsquo;a&amp;rsquo;, 可改為 &lt;code&gt;%[^\n]%*c&lt;/code&gt; 處理&lt;/p&gt;
+&lt;p&gt;可能造成 buffer overflow: Segmentation fault 的例子:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;char&lt;/span&gt; buf[&lt;span style=&#34;color:#ef9f76&#34;&gt;4&lt;/span&gt;] &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; {&lt;span style=&#34;color:#ef9f76&#34;&gt;0&lt;/span&gt;};
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;scanf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;%s&amp;#34;&lt;/span&gt;, buf);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//user input &amp;#39;12345&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;fgets&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#fgets&#34;&gt;
+        ##
+    &lt;/a&gt;
+    fgets()
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;example: &lt;a href=&#34;inc/clib_fgets.c&#34;&gt;clib_fgets.c&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;sorting&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#sorting&#34;&gt;
+        #
+    &lt;/a&gt;
+    Sorting
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;h3 id=&#34;qsort&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#qsort&#34;&gt;
+        ##
+    &lt;/a&gt;
+    qsort
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;Prototype&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;qsort&lt;/span&gt;(&lt;span style=&#34;color:#e78284&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;base, &lt;span style=&#34;color:#e78284&#34;&gt;size_t&lt;/span&gt; n, &lt;span style=&#34;color:#e78284&#34;&gt;size_t&lt;/span&gt; size, &lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; (&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;cmp)(&lt;span style=&#34;color:#ca9ee6&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#e78284&#34;&gt;void&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;, &lt;span style=&#34;color:#ca9ee6&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#e78284&#34;&gt;void&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;));
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;example: &lt;a href=&#34;inc/clib_qsort.c&#34;&gt;clib_qsort.c&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;others&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#others&#34;&gt;
+        #
+    &lt;/a&gt;
+    Others
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;h3 id=&#34;linker-symbols&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#linker-symbols&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Linker Symbols
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;32-bit unsigned integer&lt;/li&gt;
+&lt;li&gt;function/variable/arbitrary addresses&lt;/li&gt;
+&lt;li&gt;TI uses &lt;code&gt;_symval()&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# function-equivalent(say sym_func=printf+100;)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;sym_func %lx&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#8caaee&#34;&gt;_symval&lt;/span&gt;(&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt;sym_func));
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;sym_func %lx&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&lt;/span&gt;, (&lt;span style=&#34;color:#e78284&#34;&gt;unsigned&lt;/span&gt; &lt;span style=&#34;color:#e78284&#34;&gt;long&lt;/span&gt;)&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt;sym_func);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# variable-equivalent(say sym_data=.data+100;)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;sym_data %p&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt;sym_data);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;sym_data %lx&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#8caaee&#34;&gt;_symval&lt;/span&gt;(&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt;sym_data));
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# arbitrary
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;abs_sym %lx&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#8caaee&#34;&gt;_symval&lt;/span&gt;(&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt;sym_abs));
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>C Traps and Pitfalls</title>
+      <link>/posts/prog/c/c_misconception/</link>
+      <pubDate>Thu, 23 May 2024 00:00:00 +0000</pubDate>
+      <author>i70170@hotmail.com (Mike Chang)</author>
+      <guid>/posts/prog/c/c_misconception/</guid>
+      <description>&lt;p&gt;蒐集各種 C 語言陷阱與誤用&lt;/p&gt;
+&lt;h2 id=&#34;pointers&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#pointers&#34;&gt;
+        #
+    &lt;/a&gt;
+    Pointers
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;h3 id=&#34;function-pointer-就是記憶體中的位置&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#function-pointer-%e5%b0%b1%e6%98%af%e8%a8%98%e6%86%b6%e9%ab%94%e4%b8%ad%e7%9a%84%e4%bd%8d%e7%bd%ae&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Function Pointer 就是記憶體中的位置?
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;C 依據變數型態位移記憶體位址&lt;br&gt;
+例如 int 指標遞增 n 時位移量為 4n bytes, 再使用運算子 * 取值&lt;br&gt;
+若非平面記憶體模型 (flat memory model)，即記憶體非連續表格時，假設不一定成立。&lt;/p&gt;
+&lt;h3 id=&#34;null-pointer-不一定為-0&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#null-pointer-%e4%b8%8d%e4%b8%80%e5%ae%9a%e7%82%ba-0&#34;&gt;
+        ##
+    &lt;/a&gt;
+    null pointer 不一定為 0
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;以下架構 Null pointer 不為 0&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Prime 50 series(PL/I)
+&lt;ul&gt;
+&lt;li&gt;使用 segment 07777, offset 0&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Honeywell-Bull mainframes
+&lt;ul&gt;
+&lt;li&gt;使用 bit pattern 06000&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;CDC Cyber 180 Series
+&lt;ul&gt;
+&lt;li&gt;使用 0xB00000000000&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;old CDC 1&amp;rsquo;s complement 機種
+&lt;ul&gt;
+&lt;li&gt;使用 all-one-bits word 表示所有種類資料, 包含無效位址&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Symbolics Lisp
+&lt;ul&gt;
+&lt;li&gt;tagged architecture&lt;/li&gt;
+&lt;li&gt;不存在 numeric pointers, 使用 &amp;lt;NIL, 0&amp;gt; (不存在的 &amp;lt;object, offset&amp;gt; handle)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;pointer-type-mismatch-errors&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#pointer-type-mismatch-errors&#34;&gt;
+        ##
+    &lt;/a&gt;
+    pointer type mismatch errors
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;word-addressed Prime machines
+&lt;ul&gt;
+&lt;li&gt;byte pointer 大於 word pointer&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Data General 的 Eclipse MV series C compiler
+&lt;ul&gt;
+&lt;li&gt;用 byte pointers 表示 char * 和 void *&lt;/li&gt;
+&lt;li&gt;用 word pointers 表示其餘&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;16-bit Nova 演進至 32-bit MV line 時 word/byte pointers 包含 offset, indirection, ring protection bits&lt;/li&gt;
+&lt;li&gt;CDC Cyber 180 Series
+&lt;ul&gt;
+&lt;li&gt;48-bit pointers 含有 ring, segment, and offset&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;old HP 3000 series
+&lt;ul&gt;
+&lt;li&gt;byte/word addresses 的 addressing scheme 不同&lt;/li&gt;
+&lt;li&gt;char * 和 void * 表示法不同&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;8086-family processors 使用 16-bit data pointers 和 32-bit function pointers&lt;/li&gt;
+&lt;li&gt;部分 64-bit Cray machines 中 word 的低 48 位表示 int *, 高 16 位表示 char *&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;指標都能轉型成-void--或-char-&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#%e6%8c%87%e6%a8%99%e9%83%bd%e8%83%bd%e8%bd%89%e5%9e%8b%e6%88%90-void--%e6%88%96-char-&#34;&gt;
+        ##
+    &lt;/a&gt;
+    指標都能轉型成 void * 或 char *?
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;refer to &lt;code&gt;N1256 6.3.2.3&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;*&lt;/code&gt; 只保證做為物件指標(object/data pointer); 將函式指標轉型成 &lt;code&gt;void *&lt;/code&gt; 不保證 portable
+&lt;ul&gt;
+&lt;li&gt;某些平台函數地址長度可能大於物件指標&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;不同型態的 function pointer 保證可互相轉型, 如 &lt;code&gt;int (*)()&lt;/code&gt; 和 &lt;code&gt;void (*)()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;考量可攜性, 若一定要交換存放函數/物件指標, 建議使用 union&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;指標必定可轉型成-int-long-intptr_t-或-uintptr_t&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#%e6%8c%87%e6%a8%99%e5%bf%85%e5%ae%9a%e5%8f%af%e8%bd%89%e5%9e%8b%e6%88%90-int-long-intptr_t-%e6%88%96-uintptr_t&#34;&gt;
+        ##
+    &lt;/a&gt;
+    指標必定可轉型成 int, long, intptr_t 或 uintptr_t?
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;refer to &lt;code&gt;N1256 6.3.2.3&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;即便非函式指標也不保證正確; 轉型後數值未必能直接讀取的情形:
+&lt;ul&gt;
+&lt;li&gt;指標長度大於數值, 如 64 位元指標&lt;/li&gt;
+&lt;li&gt;AMD64 指令集下, Linux/Mac OS/Solaris/FreeBSD 等採用 LP64 模型裡的 int&lt;/li&gt;
+&lt;li&gt;MS Windows X64 採用 LLP64 模型裡的 int 和 long&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;可攜轉型方式: 轉型成 void * (函式指標可能失敗) 再轉型成 intptr_t 或 uintptr_t.
+&lt;ul&gt;
+&lt;li&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//函式指標可能失敗
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; val;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;p &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt;val;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//轉型為 intptr_t
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;intptr_t&lt;/span&gt; i &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; (&lt;span style=&#34;color:#e78284&#34;&gt;intptr_t&lt;/span&gt;)(&lt;span style=&#34;color:#e78284&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;)p;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//轉型回 int *
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;pi &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; (&lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;)(&lt;span style=&#34;color:#e78284&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;)i;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;不保證提供 intptr_t&lt;/li&gt;
+&lt;li&gt;部分平台上指標不以數字表示&lt;/li&gt;
+&lt;li&gt;ref: N1256 7.18.1.4&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;指標-p1--p2-轉型成-int-後其值也相等&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#%e6%8c%87%e6%a8%99-p1--p2-%e8%bd%89%e5%9e%8b%e6%88%90-int-%e5%be%8c%e5%85%b6%e5%80%bc%e4%b9%9f%e7%9b%b8%e7%ad%89&#34;&gt;
+        ##
+    &lt;/a&gt;
+    指標 p1 == p2 轉型成 int 後其值也相等?
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;不保證; 建議轉型回原始指標型態再比較&lt;br&gt;
+例如 &lt;a href=&#34;https://source.android.com/docs/security/test/tagged-pointers?hl=zh-tw&#34;&gt;tagged-pointers&lt;/a&gt;&lt;br&gt;
+ARM 的 TBI, Top-byte Ignore 功能忽略指標的頂端位元組&lt;/p&gt;
+&lt;h3 id=&#34;物件指標轉型成不同物件型態必定可存取&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#%e7%89%a9%e4%bb%b6%e6%8c%87%e6%a8%99%e8%bd%89%e5%9e%8b%e6%88%90%e4%b8%8d%e5%90%8c%e7%89%a9%e4%bb%b6%e5%9e%8b%e6%85%8b%e5%bf%85%e5%ae%9a%e5%8f%af%e5%ad%98%e5%8f%96&#34;&gt;
+        ##
+    &lt;/a&gt;
+    物件指標轉型成不同物件型態必定可存取?
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Type-based aliasing rules&lt;/code&gt;: 轉型成功不保證可存取
+&lt;ul&gt;
+&lt;li&gt;例如 short 指標不能指向 int 物件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;編譯器最佳化時調整運算順序, 使不同型態的存取指向不同物件, 使結果不如預期
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;0&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#e78284&#34;&gt;short&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;s &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; (&lt;span style=&#34;color:#e78284&#34;&gt;short&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;)&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt;i;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  i &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;0&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;s &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;1&lt;/span&gt;; &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//i may eventually still be 0
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;ref: N1256 6.5&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://lwn.net/Articles/316126/&#34;&gt;Linus Torvalds 的抱怨&lt;/a&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#e78284&#34;&gt;unsigned&lt;/span&gt; &lt;span style=&#34;color:#e78284&#34;&gt;long&lt;/span&gt; a;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  a &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;5&lt;/span&gt;;                      &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//gcc 後執行這行指令, 使下一行失效
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;  &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;(&lt;span style=&#34;color:#e78284&#34;&gt;unsigned&lt;/span&gt; &lt;span style=&#34;color:#e78284&#34;&gt;short&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;)&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt;a &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;4&lt;/span&gt;;  &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//gcc 先執行這行指令
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;gcc 可添加 &lt;code&gt;-fno-strict-aliasing&lt;/code&gt; 避免上述行為&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;printfp-p-必定印出函數位置&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#printfp-p-%e5%bf%85%e5%ae%9a%e5%8d%b0%e5%87%ba%e5%87%bd%e6%95%b8%e4%bd%8d%e7%bd%ae&#34;&gt;
+        ##
+    &lt;/a&gt;
+    printf(&amp;quot;%p&amp;quot;, p) 必定印出函數位置?
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;printf 系列的 %p 只能列印指向 void 的指標, 故須先轉型成 void *
+&lt;ul&gt;
+&lt;li&gt;函式指標不一定能轉型&lt;/li&gt;
+&lt;li&gt;建議使用
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;%p&amp;#34;&lt;/span&gt;, (&lt;span style=&#34;color:#e78284&#34;&gt;void&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;)p);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;或轉型成 intptr_t&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;指標列印結果視實作而定, 不一定是十六進位&lt;/li&gt;
+&lt;li&gt;ref: N1256 7.19.6.1&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;null-型態是空指標&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#null-%e5%9e%8b%e6%85%8b%e6%98%af%e7%a9%ba%e6%8c%87%e6%a8%99&#34;&gt;
+        ##
+    &lt;/a&gt;
+    NULL 型態是空指標?
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;NULL 是&lt;code&gt;空指標常數&lt;/code&gt;, 但不保證是&lt;code&gt;空指標&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;空指標常數保證可轉型成正確的空指標
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;%p&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#99d1db&#34;&gt;NULL&lt;/span&gt;);         &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//不符合標準(NULL 非空指標)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;%p&amp;#34;&lt;/span&gt;, (&lt;span style=&#34;color:#e78284&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;)&lt;span style=&#34;color:#99d1db&#34;&gt;NULL&lt;/span&gt;); &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//符合標準(NULL 轉型成指標時必為空指標)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;空指標常數代表計算結果為零的整數常數表達式: 0, 0ULL&lt;/li&gt;
+&lt;li&gt;空指標常數&lt;strong&gt;也可能&lt;/strong&gt;是常數表達式的轉型如 (void *)(0U)&lt;/li&gt;
+&lt;li&gt;使用 NULL 時(尤其是 C++)建議先轉型成適當型態如 (int *)NULL&lt;/li&gt;
+&lt;li&gt;C99 規定&lt;strong&gt;空指標與空指標常數比較結果相等&lt;/strong&gt;, 也可&lt;strong&gt;指派空指標常數給一個指標&lt;/strong&gt; (編譯器會在編譯期適當轉換)
+&lt;ul&gt;
+&lt;li&gt;使用 NULL 替代 0 不會增加可攜性, 多出於寫作風格與除錯目的&lt;/li&gt;
+&lt;li&gt;C99 中&lt;strong&gt;常數零一定是合法的空指標常數&lt;/strong&gt;, &lt;strong&gt;一定可以轉型成空指標&lt;/strong&gt;, &lt;strong&gt;一定可以和其他指標比較&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;C++03 中空指標常數只能是計算結果為零的整數常數表達式, overloading 時可能出現錯誤
+&lt;ul&gt;
+&lt;li&gt;編譯器不確定是整數 0 或 null pointer&lt;/li&gt;
+&lt;li&gt;C++0x 引入 &lt;code&gt;nullptr&lt;/code&gt; 以解決這個問題&lt;/li&gt;
+&lt;li&gt;ref: &lt;a href=&#34;http://en.wikibooks.org/wiki/More_C%2B%2B_Idioms/nullptr&#34;&gt;More C++ Idioms/nullptr&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;執行期的數值零必定可轉型為空指標&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#%e5%9f%b7%e8%a1%8c%e6%9c%9f%e7%9a%84%e6%95%b8%e5%80%bc%e9%9b%b6%e5%bf%85%e5%ae%9a%e5%8f%af%e8%bd%89%e5%9e%8b%e7%82%ba%e7%a9%ba%e6%8c%87%e6%a8%99&#34;&gt;
+        ##
+    &lt;/a&gt;
+    執行期的數值零必定可轉型為空指標?
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; x &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;0&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;p &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; (&lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;)x;  &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//not guaranteed to be a NULL pointer
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;並非所有平台上的空指標都是零&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://c-faq.com/null/runtime0.html&#34;&gt;comp.lang.c FAQ list · Question 5.18&lt;/a&gt;: 若允許執行期轉換空指標, 需要檢查常數值是否為零&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;全域變數-int-p-初始值為何&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#%e5%85%a8%e5%9f%9f%e8%ae%8a%e6%95%b8-int-p-%e5%88%9d%e5%a7%8b%e5%80%bc%e7%82%ba%e4%bd%95&#34;&gt;
+        ##
+    &lt;/a&gt;
+    全域變數 int *p; 初始值為何?
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;C99 保證初始化成空指標 (N1256 6.7.8)&lt;/p&gt;
+&lt;h3 id=&#34;相同型態的指標相減代表距離&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#%e7%9b%b8%e5%90%8c%e5%9e%8b%e6%85%8b%e7%9a%84%e6%8c%87%e6%a8%99%e7%9b%b8%e6%b8%9b%e4%bb%a3%e8%a1%a8%e8%b7%9d%e9%9b%a2&#34;&gt;
+        ##
+    &lt;/a&gt;
+    相同型態的指標相減代表距離?
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;一般指向同一陣列的元素指標或該陣列末元素 +1 的位置才能相減比較&lt;br&gt;
+若陣列太大差值 ptrdiff_t 可能溢出, 需檢查 &lt;code&gt;PTRDIFF_MAX&lt;/code&gt;, &lt;code&gt;PTRDIFF_MIN&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;陣列常自動轉型成指標-將-int-x-理解成-int--const-會產生問題&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#%e9%99%a3%e5%88%97%e5%b8%b8%e8%87%aa%e5%8b%95%e8%bd%89%e5%9e%8b%e6%88%90%e6%8c%87%e6%a8%99-%e5%b0%87-int-x-%e7%90%86%e8%a7%a3%e6%88%90-int--const-%e6%9c%83%e7%94%a2%e7%94%9f%e5%95%8f%e9%a1%8c&#34;&gt;
+        ##
+    &lt;/a&gt;
+    陣列常自動轉型成指標, 將 int x[] 理解成 int * const 會產生問題?
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//file_1.c
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; x[&lt;span style=&#34;color:#ef9f76&#34;&gt;10&lt;/span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//file_2.c
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;extern&lt;/span&gt; &lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#ca9ee6&#34;&gt;const&lt;/span&gt; x;   &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//C99 不要求編譯器報錯; 部份實作於此 scope 中存取 *x 時會計算 *(int *)(x[0])
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;array-陣列&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#array-%e9%99%a3%e5%88%97&#34;&gt;
+        #
+    &lt;/a&gt;
+    Array 陣列
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;h3 id=&#34;陣列索引使用負值存取結構內容-x-1&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#%e9%99%a3%e5%88%97%e7%b4%a2%e5%bc%95%e4%bd%bf%e7%94%a8%e8%b2%a0%e5%80%bc%e5%ad%98%e5%8f%96%e7%b5%90%e6%a7%8b%e5%85%a7%e5%ae%b9-x-1&#34;&gt;
+        ##
+    &lt;/a&gt;
+    陣列索引使用負值存取結構內容 .x[-1]?
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;struct&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; heap[&lt;span style=&#34;color:#ef9f76&#34;&gt;1024&lt;/span&gt;]; &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;// 依結構內對齊方式, 成員中間可能存在 gap
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; stack[&lt;span style=&#34;color:#ef9f76&#34;&gt;1&lt;/span&gt;];   &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;// 存取陣列時先運算指標再 dereference, 只允許在陣列範圍及範圍+1間移動
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;                    &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;// 符合標準的編譯器可檢查陣列範圍
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;};
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;.stack[&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ef9f76&#34;&gt;1&lt;/span&gt;]  &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;// 不合法; 存取陣列時先運算指標再 dereference, 只允許在陣列範圍及範圍+1間移動
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;            &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;// 符合標準的編譯器可檢查陣列範圍
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;陣列-x-型態-int55-可以-x110-存取&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#%e9%99%a3%e5%88%97-x-%e5%9e%8b%e6%85%8b-int55-%e5%8f%af%e4%bb%a5-x110-%e5%ad%98%e5%8f%96&#34;&gt;
+        ##
+    &lt;/a&gt;
+    陣列 x 型態 int[5][5], 可以 x[1][10] 存取?
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;即便陣列連續, 也不保證成功; 指標運算後解參照, 等價於 *( *(a + 1) + 10 ) 違反指標移動範圍限制&lt;br&gt;
+標準允許實作檢查指標是否超過範圍或用不同方法來表示陣列 (N1256 Annex J.2 Undeﬁned behavior)&lt;/p&gt;
+&lt;h2 id=&#34;整數&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#%e6%95%b4%e6%95%b8&#34;&gt;
+        #
+    &lt;/a&gt;
+    整數
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;h3 id=&#34;trap-representation-陷阱表示法&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#trap-representation-%e9%99%b7%e9%98%b1%e8%a1%a8%e7%a4%ba%e6%b3%95&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Trap representation, 陷阱表示法
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;陷阱表示法: 並非所有位元組合都表示合理數字, 存取特定位元組合在特定平台上可能造成錯誤
+&lt;ul&gt;
+&lt;li&gt;除非使用位元運算或違反標準規定(如溢位), 一般運算不可能被 trap&lt;/li&gt;
+&lt;li&gt;標準允許實作決定以下狀況是否表示陷阱 (6.2.6.2 Integer types Footnotes 44, 45)
+&lt;ul&gt;
+&lt;li&gt;有號整數的 sign/value 位元為特定組合&lt;/li&gt;
+&lt;li&gt;padding 為特定組合&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;位元運算會忽略 padding bits, 所以&lt;strong&gt;無號整數可放心使用位元運算&lt;/strong&gt;, 有號整數不建議使用位元運算&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;整數表示法包含的位元類型 (N1256 6.2.6.2)
+&lt;ul&gt;
+&lt;li&gt;無號整數: value, padding&lt;/li&gt;
+&lt;li&gt;有號整數: value, padding, sign&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;sign/value 格式
+&lt;ul&gt;
+&lt;li&gt;2&amp;rsquo;s complement&lt;/li&gt;
+&lt;li&gt;1&amp;rsquo;s complement&lt;/li&gt;
+&lt;li&gt;sign and magnitude&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;若實作提供 &lt;code&gt;uintN_t&lt;/code&gt; 和 &lt;code&gt;intN_t&lt;/code&gt; 時保證以下性質 (N1256 7.18.1.1)
+&lt;ul&gt;
+&lt;li&gt;uintN_t 和 intN_t 沒有 padding bits&lt;/li&gt;
+&lt;li&gt;intN_t 必為 2&amp;rsquo;s complement&lt;/li&gt;
+&lt;li&gt;intN_t 不可能有陷阱表示法&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;int-為-32-bit-short-為-16-bit-long-long-為-64-bit&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#int-%e7%82%ba-32-bit-short-%e7%82%ba-16-bit-long-long-%e7%82%ba-64-bit&#34;&gt;
+        ##
+    &lt;/a&gt;
+    int 為 32-bit? short 為 16-bit? long long 為 64-bit?
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;標準僅規定 int 需滿足特定數值範圍
+&lt;ul&gt;
+&lt;li&gt;除寬度外可能還有 padding bits&lt;/li&gt;
+&lt;li&gt;int32_t 保證寬度為 32-bit&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;即便 sizeof(int) 為 4 或確定佔 32 位元, 也&lt;strong&gt;不保證 int 可以儲存此範圍上限的整數&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;位元組不一定是 8-bit&lt;/li&gt;
+&lt;li&gt;可能有 padding bits&lt;/li&gt;
+&lt;li&gt;格式可能不是 2&amp;rsquo;s complement&lt;/li&gt;
+&lt;li&gt;特定組合可能是陷阱表示法&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;int32_t&lt;/code&gt; 保證沒有以上問題, 但 &lt;strong&gt;sizeof(int32_t) 不一定為 4&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;int-至少-32-bit&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#int-%e8%87%b3%e5%b0%91-32-bit&#34;&gt;
+        ##
+    &lt;/a&gt;
+    int 至少 32-bit?
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;int 只保證整數範圍&lt;strong&gt;至少&lt;/strong&gt;為 -32767 到 32767, 使用 16-bit 已足夠&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;int_least32_t&lt;/code&gt; 和 &lt;code&gt;int_fast32_t&lt;/code&gt; 保證範圍下限 32-bit, 但不保證是沒有陷阱表示法的 2&amp;rsquo;s complement&lt;/li&gt;
+&lt;li&gt;一般使用 &lt;code&gt;INT_MAX&lt;/code&gt; 和 &lt;code&gt;INT_MIN&lt;/code&gt; 確認範圍&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;malloc300--300--sizeofdouble-可能緩衝區溢位&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#malloc300--300--sizeofdouble-%e5%8f%af%e8%83%bd%e7%b7%a9%e8%a1%9d%e5%8d%80%e6%ba%a2%e4%bd%8d&#34;&gt;
+        ##
+    &lt;/a&gt;
+    malloc(300 * 300 * sizeof(double)) 可能緩衝區溢位?
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;300 * 300 可能超過 INT_MAX&lt;/li&gt;
+&lt;li&gt;300 * 300 * sizeof(double) 可能超過 SIZE_MAX 或 INT_MAX (依實作決定轉型成何者)&lt;/li&gt;
+&lt;li&gt;建議使用型態 size_t 或範圍更大的無號整數, 且確保運算結果不超過 size_t 範圍
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ca9ee6&#34;&gt;if&lt;/span&gt; (SIZE_MAX &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;/&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;300u&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;/&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;300u&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#ca9ee6&#34;&gt;sizeof&lt;/span&gt;(&lt;span style=&#34;color:#e78284&#34;&gt;double&lt;/span&gt;)) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      p &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#99d1db&#34;&gt;NULL&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  } &lt;span style=&#34;color:#ca9ee6&#34;&gt;else&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      p &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;malloc&lt;/span&gt;(&lt;span style=&#34;color:#ca9ee6&#34;&gt;sizeof&lt;/span&gt;(&lt;span style=&#34;color:#e78284&#34;&gt;double&lt;/span&gt;) &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;300u&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;300u&lt;/span&gt;) ;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;整數-i-是否能用-memseti-0-sizeofi-清零&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#%e6%95%b4%e6%95%b8-i-%e6%98%af%e5%90%a6%e8%83%bd%e7%94%a8-memseti-0-sizeofi-%e6%b8%85%e9%9b%b6&#34;&gt;
+        ##
+    &lt;/a&gt;
+    整數 i 是否能用 memset(&amp;amp;i, 0, sizeof(i)) 清零?
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;標準向實作妥協, &lt;strong&gt;只有 0 可以這樣操作&lt;/strong&gt; (N1256 6.2.6.2)&lt;/p&gt;
+&lt;h3 id=&#34;相同整數型態-a-和-b-可否如此互換-ab-ba-ab-&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#%e7%9b%b8%e5%90%8c%e6%95%b4%e6%95%b8%e5%9e%8b%e6%85%8b-a-%e5%92%8c-b-%e5%8f%af%e5%90%a6%e5%a6%82%e6%ad%a4%e4%ba%92%e6%8f%9b-ab-ba-ab-&#34;&gt;
+        ##
+    &lt;/a&gt;
+    相同整數型態 a 和 b 可否如此互換: a^=b; b^=a; a^=b; ?
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;不保證正確; a^b 可能產生陷阱表示法&lt;/p&gt;
+&lt;h3 id=&#34;unsigned-int-x-且-x-寬度為-32-a--32-結果必為-0&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#unsigned-int-x-%e4%b8%94-x-%e5%af%ac%e5%ba%a6%e7%82%ba-32-a--32-%e7%b5%90%e6%9e%9c%e5%bf%85%e7%82%ba-0&#34;&gt;
+        ##
+    &lt;/a&gt;
+    unsigned int x, 且 x 寬度為 32, (a &amp;laquo; 32) 結果必為 0?
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;有些處理器結果為 x, 因 (x &amp;laquo; i) 被解釋為 (a &amp;laquo; (i % 32)) (N1256 6.5.7)&lt;/p&gt;
+&lt;h3 id=&#34;如何分辦-little-endianness-和-big-endianness&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#%e5%a6%82%e4%bd%95%e5%88%86%e8%be%a6-little-endianness-%e5%92%8c-big-endianness&#34;&gt;
+        ##
+    &lt;/a&gt;
+    如何分辦 little-endianness 和 big-endianness
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;平台可能不使用以上兩者, 沒有簡單可攜式寫法可以判斷&lt;br&gt;
+思考是否真有必要判斷; 網路傳輸可使用系統提供的轉換函數 (middle-endian, bi-endian)&lt;/p&gt;
+&lt;h3 id=&#34;80000u-必為-unsigned-int&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#80000u-%e5%bf%85%e7%82%ba-unsigned-int&#34;&gt;
+        ##
+    &lt;/a&gt;
+    80000U 必為 unsigned int?
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;若 unsigned int 範圍只能表示到 65535, 會變成 unsigned long&lt;/li&gt;
+&lt;li&gt;0x33FF 一定是有號整數, 因為可以 int 表示&lt;/li&gt;
+&lt;li&gt;0xFFFFFF 則不一定是有號整數, 因為超出標準範圍&lt;/li&gt;
+&lt;li&gt;若 int 表示上限為 2147483647, 2147483648 不會轉型成 unsigned int &lt;!--tag: long?--&gt;&lt;/li&gt;
+&lt;li&gt;規則 (N1256 6.4.4.1, C++03 2.13.1, C++1x N3242 2.14.2)
+&lt;ul&gt;
+&lt;li&gt;signed: 十進位無後綴 u, U&lt;/li&gt;
+&lt;li&gt;unsigned: unsigned-suffix u, U&lt;/li&gt;
+&lt;li&gt;both: octal/hexadecimal 無後綴 u,U&lt;/li&gt;
+&lt;li&gt;Lv2 起算: 後綴 l, L&lt;/li&gt;
+&lt;li&gt;Lv3 起算: 後綴 ll, LL&lt;/li&gt;
+&lt;li&gt;選擇符合等級與數值範圍要求欄位中最左方者&lt;/li&gt;
+&lt;li&gt;C++03 未規範 Lv3, Lv4; C++1x 同 C99
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;Lv1&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;Lv2&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;Lv3&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;Lv4&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;unspecified&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;signed&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;int&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;long&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;long long&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;extended type(if any)&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;?&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;unsigned&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;unsigned int&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;unsigned long&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;unsigned long  long&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;extended type(if any)&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;?&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;both&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;int&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;unsigned int&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;long&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;unsigned long&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;long long&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;unsigned long  long&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;extended type(if any)&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;?&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;execution-order-運算順序-最佳化-表達式&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#execution-order-%e9%81%8b%e7%ae%97%e9%a0%86%e5%ba%8f-%e6%9c%80%e4%bd%b3%e5%8c%96-%e8%a1%a8%e9%81%94%e5%bc%8f&#34;&gt;
+        #
+    &lt;/a&gt;
+    Execution Order 運算順序: 最佳化, 表達式
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;h3 id=&#34;x-y-中-x-一定先被運算&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#x-y-%e4%b8%ad-x-%e4%b8%80%e5%ae%9a%e5%85%88%e8%a2%ab%e9%81%8b%e7%ae%97&#34;&gt;
+        ##
+    &lt;/a&gt;
+    x++; y++; 中 x 一定先被運算?
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;編譯器可能為了最佳化改變運算順序, 讓編譯器判斷為不相關的運算交錯進行 (N1256 5.1.2.3)&lt;/li&gt;
+&lt;li&gt;C99 規範分號處有 sequential points(循序同步點), 副作用必須完結, 但屬於&lt;strong&gt;抽象機器行為&lt;/strong&gt;,
+&lt;ul&gt;
+&lt;li&gt;編譯器不必維持真實機器與抽象機器間的對應關係 (N1256 5.1.2.3) &lt;!--tag: read--&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;int-a-a--b--c-fprintfstderr-donen-輸出訊息時-a-已更新&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#int-a-a--b--c-fprintfstderr-donen-%e8%bc%b8%e5%87%ba%e8%a8%8a%e6%81%af%e6%99%82-a-%e5%b7%b2%e6%9b%b4%e6%96%b0&#34;&gt;
+        ##
+    &lt;/a&gt;
+    int a; a = b / c; fprintf(stderr, &amp;ldquo;done\n&amp;rdquo;); 輸出訊息時 a 已更新?
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;因 fprintf 未存取 a, 所以編譯器可能改變運算順序, 輸出後才運算 a (N1256 5.1.2.3)&lt;/li&gt;
+&lt;li&gt;改寫 fprintf(stderr, &amp;ldquo;done: %d\n&amp;rdquo;, a); 也未必循原始碼順序執行, a 值可能從暫存器直接傳給 fprintf (N1256 5.1.2.3)
+&lt;ul&gt;
+&lt;li&gt;不同的最佳化設定可能導致不同的運算順序&lt;/li&gt;
+&lt;li&gt;思考如何保證不受實作或最佳化影響&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;即使運算順序如同原始碼, 實際執行時也可能被現代處理器打亂
+&lt;ul&gt;
+&lt;li&gt;處理器為了加速同時執行複數指令或多層快取; ref: &lt;code&gt;out-of-order execution&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;設計非同步訊號如何阻止編譯器改變運算順序&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#%e8%a8%ad%e8%a8%88%e9%9d%9e%e5%90%8c%e6%ad%a5%e8%a8%8a%e8%99%9f%e5%a6%82%e4%bd%95%e9%98%bb%e6%ad%a2%e7%b7%a8%e8%ad%af%e5%99%a8%e6%94%b9%e8%ae%8a%e9%81%8b%e7%ae%97%e9%a0%86%e5%ba%8f&#34;&gt;
+        ##
+    &lt;/a&gt;
+    設計非同步訊號如何阻止編譯器改變運算順序?
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;編譯器大多時刻都能改變運算順序或交錯運行&lt;/li&gt;
+&lt;li&gt;可能解決方案
+&lt;ul&gt;
+&lt;li&gt;volatile&lt;/li&gt;
+&lt;li&gt;sig_atomic_t&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;C1X 可能提供更多控制機制
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.gnu.org/software/libc/manual/html_node/Atomic-Data-Access.html#Atomic-Data-Access&#34;&gt;glibc 24.4.7: Atomic Data Access and Signal Handling&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://en.wikipedia.org/wiki/Memory_barrier&#34;&gt;Wiki: Memory barrier&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gcc.gnu.org/onlinedocs/gcc/Volatiles.html&#34;&gt;gcc 6.40: When is a Volatile Object Accessed&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;N1256 5.1.2.3, 6.7.3, 7.14.1.1&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;int-i--f--g-哪個函式會先被呼叫&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#int-i--f--g-%e5%93%aa%e5%80%8b%e5%87%bd%e5%bc%8f%e6%9c%83%e5%85%88%e8%a2%ab%e5%91%bc%e5%8f%ab&#34;&gt;
+        ##
+    &lt;/a&gt;
+    int i = f() + g(); 哪個函式會先被呼叫?
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;不一定 (N1256 6.5)&lt;/p&gt;
+&lt;h3 id=&#34;int-i--i-及-ai--i-和-fi-i-結果為&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#int-i--i-%e5%8f%8a-ai--i-%e5%92%8c-fi-i-%e7%b5%90%e6%9e%9c%e7%82%ba&#34;&gt;
+        ##
+    &lt;/a&gt;
+    int i = i++; 及 a[i] = i++; 和 f(i++, i++) 結果為?
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;嚴重錯誤&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;缺少 sequential points 保護, 修改 i 值兩次 (N1256 6.5p2)&lt;/li&gt;
+&lt;li&gt;a[i] 讀取 i 的值並非為了計算 i 的新值 (N1256 6.5p2)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;struct&lt;/span&gt; _str {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e78284&#34;&gt;size_t&lt;/span&gt; length;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e78284&#34;&gt;char&lt;/span&gt; data[&lt;span style=&#34;color:#ef9f76&#34;&gt;0&lt;/span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;};
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;struct&lt;/span&gt; _str &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;str &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; (&lt;span style=&#34;color:#ca9ee6&#34;&gt;struct&lt;/span&gt; _str &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;) &lt;span style=&#34;color:#8caaee&#34;&gt;malloc&lt;/span&gt;(&lt;span style=&#34;color:#ca9ee6&#34;&gt;sizeof&lt;/span&gt;(&lt;span style=&#34;color:#ca9ee6&#34;&gt;struct&lt;/span&gt; _str) &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;100&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;陣列長度為 0 是否有問題?&lt;/p&gt;&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;C99 及 C++03 都不允許宣告大小為 0 的陣列, 上述用法僅適用特定編譯器上&lt;/li&gt;
+&lt;li&gt;C99 允許 struct 最後成員是大小未知的陣列(incomplete array type) (N1256 6.7.2.1p18)(gcc 6.17: Arrays of Length Zero)
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ca9ee6&#34;&gt;struct&lt;/span&gt; _str {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#e78284&#34;&gt;size_t&lt;/span&gt; length;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#e78284&#34;&gt;char&lt;/span&gt; data[];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  };
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;使用相同結構型態的指標直接參照存取&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#%e4%bd%bf%e7%94%a8%e7%9b%b8%e5%90%8c%e7%b5%90%e6%a7%8b%e5%9e%8b%e6%85%8b%e7%9a%84%e6%8c%87%e6%a8%99%e7%9b%b4%e6%8e%a5%e5%8f%83%e7%85%a7%e5%ad%98%e5%8f%96&#34;&gt;
+        ##
+    &lt;/a&gt;
+    使用相同結構型態的指標直接參照存取?
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ca9ee6&#34;&gt;struct&lt;/span&gt; t1 { &lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; m; } a;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ca9ee6&#34;&gt;struct&lt;/span&gt; t2 { &lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; m; } &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;b;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    b &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; (&lt;span style=&#34;color:#ca9ee6&#34;&gt;struct&lt;/span&gt; t2 &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;)&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt;a;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;即使結構成員相同也不保證可用 b 去存取 a&lt;br&gt;
+即使所有已知的編譯器似乎都使用相同擺放方式&lt;br&gt;
+標籤不同, 結構型態就不相同也不相容&lt;br&gt;
+編譯器最佳化時可能假設 b 指向的物件和 a 不同(型態不同), 改變運算順序&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    b&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;-&amp;gt;&lt;/span&gt;m &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;0&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//不保證為 1 (N1256 6.2.7p1)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;    a.m &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;1&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;ref. N1256 6.5.2.3p5&lt;/p&gt;
+&lt;h3 id=&#34;union-初始化會被清空&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#union-%e5%88%9d%e5%a7%8b%e5%8c%96%e6%9c%83%e8%a2%ab%e6%b8%85%e7%a9%ba&#34;&gt;
+        ##
+    &lt;/a&gt;
+    union 初始化會被清空?
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ca9ee6&#34;&gt;union&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#e78284&#34;&gt;char&lt;/span&gt; c;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; i;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    } u;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;union 只有第一個成員的值保證會被清空(不一定為 0; 不同型態的 &amp;lsquo;0&amp;rsquo; 可能有不同表示法) (N1256 6.7.8p10)&lt;/p&gt;
+&lt;h3 id=&#34;char-是有號數還是無號數&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#char-%e6%98%af%e6%9c%89%e8%99%9f%e6%95%b8%e9%82%84%e6%98%af%e7%84%a1%e8%99%9f%e6%95%b8&#34;&gt;
+        ##
+    &lt;/a&gt;
+    char 是有號數還是無號數?
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;標準並未規定;&lt;br&gt;
+char, signed char 及 unsigned char 應視為三個不同型態 (N1256 Footnote 35)&lt;br&gt;
+標準僅規定 char 的表示法, 值範圍及行為必需和 signed char 或是 unsigned char &lt;strong&gt;其中之一&lt;/strong&gt; 相同&lt;/p&gt;
+&lt;h3 id=&#34;char-必為-8-bit&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#char-%e5%bf%85%e7%82%ba-8-bit&#34;&gt;
+        ##
+    &lt;/a&gt;
+    char 必為 8-bit?
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;char 長度至少 8 位元, 但不一定剛好 (N1256 5.2.4.2.1p1)&lt;br&gt;
+char 長度 16 位元不代表佔兩個位元組(bytes)&lt;br&gt;
+除了 bit field 特例, char 是最終記憶體單位, &lt;strong&gt;sizeof(char) 必為 1&lt;/strong&gt;
+&lt;a href=&#34;https://c-faq.com/charstring/wchar.html&#34;&gt;comp.lang.c FAQ list · Question 8.10&lt;/a&gt;: 標準定義 &lt;code&gt;wchar_t&lt;/code&gt; 以處理寬字元&lt;/p&gt;
+&lt;h3 id=&#34;getchar-溢出&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#getchar-%e6%ba%a2%e5%87%ba&#34;&gt;
+        ##
+    &lt;/a&gt;
+    getchar() 溢出
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;char&lt;/span&gt; c1;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;while&lt;/span&gt; ((c1 &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;getchar&lt;/span&gt;()) &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;!=&lt;/span&gt; EOF) {}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; c2;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;while&lt;/span&gt; ((c2 &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;getchar&lt;/span&gt;()) &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;!=&lt;/span&gt; EOF) {}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol&gt;
+&lt;li&gt;getchar() 回傳 int, char 可能裝不下 EOF&lt;/li&gt;
+&lt;li&gt;當 int 只佔一個位元組時可能裝不下所有字元外加 EOF&lt;/li&gt;
+&lt;li&gt;EOF 是負值, 但不一定是 -1, 建議比較回傳值與 EOF (N1256 7.19.1p3)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;字元編碼&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#%e5%ad%97%e5%85%83%e7%b7%a8%e7%a2%bc&#34;&gt;
+        ##
+    &lt;/a&gt;
+    字元編碼
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;C 標準並未規定字元編碼為 ASCII&lt;br&gt;
+C99 僅列舉一些基本字元, 表示編碼必須以一個字元容納 (N1256 5.2.1)&lt;br&gt;
+早期某些平台使用 ISO 646 或 EBCDIC 編碼, 所以 C 標準制定 trigraph&lt;br&gt;
+&lt;a href=&#34;http://en.wikipedia.org/wiki/Digraphs_and_trigraphs#C&#34;&gt;Wiki: Digraphs and trigraphs&lt;/a&gt;&lt;br&gt;
+&amp;lsquo;a&amp;rsquo; ~ &amp;lsquo;z&amp;rsquo; 或 &amp;lsquo;A&amp;rsquo; ~ &amp;lsquo;Z&amp;rsquo; 依採用的編碼而異, 不保證連續(e.g. EBCDIC)&lt;/p&gt;
+&lt;h2 id=&#34;浮點數&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#%e6%b5%ae%e9%bb%9e%e6%95%b8&#34;&gt;
+        #
+    &lt;/a&gt;
+    浮點數
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;標準並未強制規定浮點數格式, 若定義 &lt;code&gt;__STDC_IEC_559__&lt;/code&gt; 則要遵照 IEC 60559:1989 標準(同 ANSI/IEEE 754-1985) (N1256 Annex F):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;float, double 符合定義的單精倍浮點數和雙精倍浮點數&lt;/li&gt;
+&lt;li&gt;long double 未強制規定 (N1256 Annex F.2)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;浮點數組合運算&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;a &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; b;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;a &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;+=&lt;/span&gt; c;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;a &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;+=&lt;/span&gt; d;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;不保證等價&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;a &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; b &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;+&lt;/span&gt; c &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;+&lt;/span&gt; d;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;(N1256 5.2.4.2.2p8)&lt;br&gt;
+計算 b + c + d 時可能使用精度更高的浮點數型態; 存回 a 時可能喪失額外精準度&lt;br&gt;
+編譯器若遵守標準, 不會將上例組合運算最佳化成一行&lt;br&gt;
+部分平台內建浮點數指令與專屬暫存器, 計算時為了符合標準而降低精度, 運算可能變慢&lt;/p&gt;
+&lt;p&gt;若浮點數滿足 IEC 60559 標準&lt;br&gt;
+a == a 未必為真(a 為 NaN 時)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;if&lt;/span&gt; (a &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&lt;/span&gt; b) &lt;span style=&#34;color:#8caaee&#34;&gt;f&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;else&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;g&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;因可能存在 NaN, 未必等價&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;if&lt;/span&gt; (a &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;gt;=&lt;/span&gt; b) &lt;span style=&#34;color:#8caaee&#34;&gt;g&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;else&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;f&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;轉換浮點數成最接近的整數&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#%e8%bd%89%e6%8f%9b%e6%b5%ae%e9%bb%9e%e6%95%b8%e6%88%90%e6%9c%80%e6%8e%a5%e8%bf%91%e7%9a%84%e6%95%b4%e6%95%b8&#34;&gt;
+        ##
+    &lt;/a&gt;
+    轉換浮點數成最接近的整數
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;C99 使用 lround 系列 (N1256 7.12.9.7)&lt;/li&gt;
+&lt;li&gt;clc FAQ 的建議(可能不可靠?)
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; xi &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; (&lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt;)(x &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;0&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;?&lt;/span&gt; x &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;0.5&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;:&lt;/span&gt; x &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;0.5&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;memory-access-violations&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#memory-access-violations&#34;&gt;
+        #
+    &lt;/a&gt;
+    Memory Access Violations
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;h3 id=&#34;double-free&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#double-free&#34;&gt;
+        ##
+    &lt;/a&gt;
+    double free
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;case 1&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; a &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;20&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;p &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; (&lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;)&lt;span style=&#34;color:#8caaee&#34;&gt;malloc&lt;/span&gt;(&lt;span style=&#34;color:#ca9ee6&#34;&gt;sizeof&lt;/span&gt;(&lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt;));
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//some excecutions ...
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#ca9ee6&#34;&gt;if&lt;/span&gt; (a &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;0&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#8caaee&#34;&gt;free&lt;/span&gt;(p);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//some excecutions ...
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#8caaee&#34;&gt;free&lt;/span&gt;(p);    &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//double free
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;case 2&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;foo&lt;/span&gt;(&lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;**&lt;/span&gt; arr)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8caaee&#34;&gt;free&lt;/span&gt;(&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;arr);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;main&lt;/span&gt;(&lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; argc, &lt;span style=&#34;color:#e78284&#34;&gt;char&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt; argv[])
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;arr &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;malloc&lt;/span&gt;(&lt;span style=&#34;color:#ca9ee6&#34;&gt;sizeof&lt;/span&gt;(&lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt;) &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;10&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8caaee&#34;&gt;foo&lt;/span&gt;(&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt;arr);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8caaee&#34;&gt;free&lt;/span&gt;(arr);  &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//double free
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#ca9ee6&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;0&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;free-after-free&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#free-after-free&#34;&gt;
+        ##
+    &lt;/a&gt;
+    free-after-free
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    a &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;malloc&lt;/span&gt;(&lt;span style=&#34;color:#ef9f76&#34;&gt;8&lt;/span&gt;);  &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//suppose allocated to 0x00
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;    b &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; a;          &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//b points to 0x00
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#8caaee&#34;&gt;free&lt;/span&gt;(a);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    a &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;malloc&lt;/span&gt;(&lt;span style=&#34;color:#ef9f76&#34;&gt;8&lt;/span&gt;);  &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//re-allocated to 0x00
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#8caaee&#34;&gt;free&lt;/span&gt;(b);        &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//freed 0x00 but a is still in scope
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;use-after-return&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#use-after-return&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Use-after-return
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;dereference of deallocated stack object&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;char&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;p;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;foo&lt;/span&gt;(&lt;span style=&#34;color:#e78284&#34;&gt;void&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e78284&#34;&gt;char&lt;/span&gt; buf[&lt;span style=&#34;color:#ef9f76&#34;&gt;8&lt;/span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    x &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt;buf[&lt;span style=&#34;color:#ef9f76&#34;&gt;2&lt;/span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;main&lt;/span&gt;()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8caaee&#34;&gt;foo&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;x &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;42&lt;/span&gt;;    &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//use-after-return
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#ca9ee6&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;0&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;others&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#others&#34;&gt;
+        #
+    &lt;/a&gt;
+    Others
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;h3 id=&#34;main-可以遞迴&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#main-%e5%8f%af%e4%bb%a5%e9%81%9e%e8%bf%b4&#34;&gt;
+        ##
+    &lt;/a&gt;
+    main() 可以遞迴?
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;C 未規範&lt;br&gt;
+C++03 規定不行(C++03 3.6.1p3, 5.2.2p9)&lt;/p&gt;
+&lt;h3 id=&#34;main-可以回傳-void&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#main-%e5%8f%af%e4%bb%a5%e5%9b%9e%e5%82%b3-void&#34;&gt;
+        ##
+    &lt;/a&gt;
+    main 可以回傳 void?
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;C 允許實作自己增加新的形式 (N1256 5.1.2.2.1p1)&lt;br&gt;
+C++ 要求回傳 int (C++03 3.6.1p2)&lt;br&gt;
+C99 和 C++03 可以不回傳值 (C90 規定不同)&lt;br&gt;
+為了可攜性建議加上 return 0 或 return EXIT_SUCCESS (N1256 5.1.2.2.3, C++03 3.6.1p5)&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;references&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#references&#34;&gt;
+        #
+    &lt;/a&gt;
+    References
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;ISO/IEC 9899:TC3(n1256.pdf)&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>C Sundries</title>
+      <link>/posts/prog/c/c_sundries/</link>
+      <pubDate>Tue, 21 May 2024 00:00:00 +0000</pubDate>
+      <author>i70170@hotmail.com (Mike Chang)</author>
+      <guid>/posts/prog/c/c_sundries/</guid>
+      <description>&lt;h2 id=&#34;use-fgets-over-scanf&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#use-fgets-over-scanf&#34;&gt;
+        #
+    &lt;/a&gt;
+    Use fgets() over scanf()
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;scanf() 使用者不需管理 buffer size (預設值 100 bytes?), 但可能導致 buffer overflow 或 stack overflow&lt;/li&gt;
+&lt;li&gt;scanf() 惡意使用者可能插入 function pointer 或 executable code&lt;/li&gt;
+&lt;li&gt;fgets() 相對強健(robust), *nix 系統上的資料來源可以是 sockets, streams 或實際檔案&lt;/li&gt;
+&lt;li&gt;fgets() 需指定緩衝區長度, 可避免溢出式攻擊&lt;/li&gt;
+&lt;li&gt;fgets() I/O 問題可使用 ferror() 做為 error-handling&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;clear-input-buffer&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#clear-input-buffer&#34;&gt;
+        #
+    &lt;/a&gt;
+    Clear Input Buffer
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//platform-dependent
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;fseek&lt;/span&gt;(stdin, &lt;span style=&#34;color:#ef9f76&#34;&gt;0&lt;/span&gt;, SEEK_END);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//portable
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;char&lt;/span&gt; c &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#99d1db&#34;&gt;NULL&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;while&lt;/span&gt; ((c &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;getchar&lt;/span&gt;()) &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#39;\n&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; c &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;!=&lt;/span&gt; EOF) {;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;/*do nothing*/&lt;/span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;system-call&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#system-call&#34;&gt;
+        #
+    &lt;/a&gt;
+    System Call
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;declaration&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;system&lt;/span&gt;(&lt;span style=&#34;color:#ca9ee6&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#e78284&#34;&gt;char&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;command);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;usage&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;char&lt;/span&gt; cmd[&lt;span style=&#34;color:#ef9f76&#34;&gt;64&lt;/span&gt;] &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; {&lt;span style=&#34;color:#ef9f76&#34;&gt;0&lt;/span&gt;};
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;sprintf&lt;/span&gt;(cmd, &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;dirname %s | xargs mkdir -p&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;/home/user/work&amp;#34;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;system&lt;/span&gt;(cmd);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;function-pointer&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#function-pointer&#34;&gt;
+        #
+    &lt;/a&gt;
+    Function pointer
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;Function pointer as input parameter&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;void&lt;/span&gt; (&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;foo[&lt;span style=&#34;color:#ef9f76&#34;&gt;10&lt;/span&gt;])(&lt;span style=&#34;color:#e78284&#34;&gt;void&lt;/span&gt; (&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;)());
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;/* equivalent */&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;typedef&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;void&lt;/span&gt; (&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;fptr_param)();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;typedef&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;void&lt;/span&gt; (&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;fptr)(fptr_param);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;fptr foo[&lt;span style=&#34;color:#ef9f76&#34;&gt;10&lt;/span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;references&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#references&#34;&gt;
+        #
+    &lt;/a&gt;
+    References
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;http://open-std.org/&#34;&gt;Open Standards&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;http://www.open-std.org/jtc1/sc22/wg14/www/standards&#34;&gt;Open Standards: C - Approved standards&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Floating Points in C</title>
+      <link>/posts/prog/c/c_floating_points/</link>
+      <pubDate>Tue, 21 May 2024 00:00:00 +0000</pubDate>
+      <author>i70170@hotmail.com (Mike Chang)</author>
+      <guid>/posts/prog/c/c_floating_points/</guid>
+      <description>&lt;p&gt;C 語言浮點數規範&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;format&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;precision&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;bytes&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;range&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Significant Figures&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;float&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;single&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;4&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;±3.4e-38~±3.4e+38&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;7-1&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;double&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;double&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;8&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;±1.79E-308 ~ ±1.79E+308&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;16-1&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;long double&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;long-double&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;16&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;±1.79E-308 ~ ±1.79E+308&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;19-1&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;sign(S) 符號數
+&lt;ul&gt;
+&lt;li&gt;1 bit: 0=positive, 1=negative&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;exponent(E) 指數
+&lt;ul&gt;
+&lt;li&gt;8 bits for biasing
+&lt;ul&gt;
+&lt;li&gt;exponents are signed values to represent both tiny and huge values&lt;/li&gt;
+&lt;li&gt;2&amp;rsquo;s complement makes comparison harder&lt;/li&gt;
+&lt;li&gt;add the bias when storing(unsigned); subtract the bias when interpreting&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;mantissa(M) 尾數
+&lt;ul&gt;
+&lt;li&gt;23 bits&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;NaN, Not a Number
+&lt;ul&gt;
+&lt;li&gt;E: all 1&lt;/li&gt;
+&lt;li&gt;M: not all 0&lt;/li&gt;
+&lt;li&gt;Quiet NaNs, QNaNs, 不確定值(0/0; Inf x 0)&lt;/li&gt;
+&lt;li&gt;Signaling NaNs, SNaNs, 無效操作&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Zero
+&lt;ul&gt;
+&lt;li&gt;E: all 0&lt;/li&gt;
+&lt;li&gt;M: all 0&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Infinite
+&lt;ul&gt;
+&lt;li&gt;E: all 1&lt;/li&gt;
+&lt;li&gt;M: all 0&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;subnormal, denormal, denormalized number
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -Inf    -Normalized   -Denormal    +Denormal   +Normalized    +Inf
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ├───┼─────────────┼────────────┼───────────┼─────────────┼───┤
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;NaN                                ^                               NaN
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                 -0 +0
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;E: all 0&lt;/li&gt;
+&lt;li&gt;M: not all 0&lt;/li&gt;
+&lt;li&gt;超過規格化表示範圍, 即 UFL, UnderFlow Level, 最小可表示數&lt;/li&gt;
+&lt;li&gt;ALU 僅能計算正規數, 非正規數一般觸發硬體中斷處理&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;example-of-a-32-bit-float&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#example-of-a-32-bit-float&#34;&gt;
+        #
+    &lt;/a&gt;
+    Example of a 32-bit float
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     S   E                M
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ├──┼────────────────┼──────────────────────────────────────────────┤
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    31 30               22                                             0
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    1b 8b               23b
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;NaN, Not a Number
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     x  1 1 1 1 1 1 1 1  n n n n n n n n n n n n n n n n n n n n n n n
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Zero
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     x  0 0 0 0 0 0 0 0  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Infinite
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     x  1 1 1 1 1 1 1 1  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;subnormal
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     x  0 0 0 0 0 0 0 0  n n n n n n n n n n n n n n n n n n n n n n n
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;convert 7.25 from decimal to binary:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     0  1 0 0 0 0 0 0 1  1 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     1. 7d = 111b
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     2. 0.25d = 0.01b:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            0.25 * 2 = 0.5  ...no carry, 1st digit is 0
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            0.5 * 2 = 1     ...with carry, 2nd digit is 1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    3. 7.25d = 111.01b
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    4. S=0 for positive
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    5. 111.01 shifts right by 2 places: 1.1101(IEEE standard: start by 1)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            E = (bias 127) + (2) = 129d = 10000001b
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    6. M = 1101000...b
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;convert from binary expression to dec: 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    S = 0, +1d
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    E = 10000001b=129d, 129 - 127 = 2d
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    M = 0.1101b + 1b = 1.1101b = 1d + 0.5d + 0.25d + 0.0625d = 1.8125d
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    S * M * 2^E = +1 * 1.8125 * 4 = 7.25d
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>C Optimization</title>
       <link>/posts/prog/c/c_optimization/</link>
       <pubDate>Wed, 27 Mar 2024 00:00:00 +0000</pubDate>
       <author>i70170@hotmail.com (Mike Chang)</author>
       <guid>/posts/prog/c/c_optimization/</guid>
-      <description>&lt;hr&gt;
+      <description>&lt;p&gt;Mehtods that may be deprecated to optimize C program.&lt;/p&gt;
 &lt;h2 id=&#34;arithmetic&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#arithmetic&#34;&gt;
@@ -59,16 +1283,836 @@
 &lt;li&gt;use &lt;code&gt;shift&lt;/code&gt; for (2^n)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;references&#34; &gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>C Programming Macro</title>
+      <link>/posts/prog/c/c_macro/</link>
+      <pubDate>Wed, 27 Mar 2024 00:00:00 +0000</pubDate>
+      <author>i70170@hotmail.com (Mike Chang)</author>
+      <guid>/posts/prog/c/c_macro/</guid>
+      <description>&lt;h1 id=&#34;prevent-multiple-inclusion&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#prevent-multiple-inclusion&#34;&gt;
+        ##
+    &lt;/a&gt;
+    prevent multiple inclusion
+&lt;/div&gt;
+&lt;/h1&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#ifndef COMDEF_H 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#define COMDEF_H 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#endif 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;指定位址的-byteword&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#%e6%8c%87%e5%ae%9a%e4%bd%8d%e5%9d%80%e7%9a%84-byteword&#34;&gt;
+        ##
+    &lt;/a&gt;
+    指定位址的 byte/word
+&lt;/div&gt;
+&lt;/h1&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#define MEM_B(x)                        (*((byte *)(x)))
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#define MEM_W(x)                        (*((word *)(x)))
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;最大值最小值&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#%e6%9c%80%e5%a4%a7%e5%80%bc%e6%9c%80%e5%b0%8f%e5%80%bc&#34;&gt;
+        ##
+    &lt;/a&gt;
+    最大值/最小值
+&lt;/div&gt;
+&lt;/h1&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#define MAX(x, y)                       (((x) &amp;gt; (y)) ? (x) : (y)) 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#define MIN(x, y)                       (((x) &amp;lt; (y)) ? (x) : (y)) 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;struct-field-offset&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#struct-field-offset&#34;&gt;
+        ##
+    &lt;/a&gt;
+    struct field offset
+&lt;/div&gt;
+&lt;/h1&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#define FPOS(type, field)               ((dword) &amp;amp;(( type *) 0)-&amp;gt;field)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;struct-field-size&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#struct-field-size&#34;&gt;
+        ##
+    &lt;/a&gt;
+    struct field size
+&lt;/div&gt;
+&lt;/h1&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#define FSIZ( type, field )             sizeof(((type *) 0)-&amp;gt;field) 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;bytes-to-wordlsb&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#bytes-to-wordlsb&#34;&gt;
+        ##
+    &lt;/a&gt;
+    bytes to word(LSB)
+&lt;/div&gt;
+&lt;/h1&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#define FLIPW(ray)                      ((((word)(ray)[0]) * 256) + (ray)[1])
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;word-to-byteslsb&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#word-to-byteslsb&#34;&gt;
+        ##
+    &lt;/a&gt;
+    word to bytes(LSB)
+&lt;/div&gt;
+&lt;/h1&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#define FLOPW( ray, val )               (ray)[0] = ((val) / 256); \
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;                                        (ray)[1] = ((val) &amp;amp; 0xFF) 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;get-variable-address&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#get-variable-address&#34;&gt;
+        ##
+    &lt;/a&gt;
+    get variable address
+&lt;/div&gt;
+&lt;/h1&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#define B_PTR(var)                      ((byte *)(void *) &amp;amp;(var))
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#define W_PTR(var)                      ((word *)(void *) &amp;amp;(var))
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;highlow-byte-of-a-word&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#highlow-byte-of-a-word&#34;&gt;
+        ##
+    &lt;/a&gt;
+    High/Low byte of a word
+&lt;/div&gt;
+&lt;/h1&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#define WORD_LO(xxx)                    ((byte) ((word)(xxx) &amp;amp; 255)) 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#define WORD_HI(xxx)                    ((byte) ((word)(xxx) &amp;gt;&amp;gt; 8))
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;nearest-integer-to-base-8&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#nearest-integer-to-base-8&#34;&gt;
+        ##
+    &lt;/a&gt;
+    nearest integer to base 8
+&lt;/div&gt;
+&lt;/h1&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#define RND8(x)                         ((((x) + 7) / 8 ) * 8)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;capitalize-a-letter&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#capitalize-a-letter&#34;&gt;
+        ##
+    &lt;/a&gt;
+    capitalize a letter
+&lt;/div&gt;
+&lt;/h1&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#define UPCASE(c)                       (((c) &amp;gt;= &amp;#39;a&amp;#39; &amp;amp;&amp;amp; (c) &amp;lt;= &amp;#39;z&amp;#39;) ? ((c) - 0x20) : (c)) 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;prevent-overflow&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#prevent-overflow&#34;&gt;
+        ##
+    &lt;/a&gt;
+    prevent overflow
+&lt;/div&gt;
+&lt;/h1&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#define INC_SAT(val)                    (val = ((val)+1 &amp;gt; (val)) ? (val)+1 : (val)) 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;get-array-element-count&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#get-array-element-count&#34;&gt;
+        ##
+    &lt;/a&gt;
+    get array element count
+&lt;/div&gt;
+&lt;/h1&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#define ARR_SIZE(a)                     (sizeof((a)) / sizeof((a[0])))
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;!--TODO--&gt;  
+&lt;p&gt;17，返回一個無符號數n尾的值MOD_BY_POWER_OF_TWO(X,n)=X%(2^n)&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;#define MOD_BY_POWER_OF_TWO( val, mod_by ) \ 
+
+( (dword)(val) &amp;amp; (dword)((mod_by)-1) ) 
+
+18，對於IO空間映射在存儲空間的結構，輸入輸出處理 
+
+#define inp(port) (*((volatile byte *) (port))) 
+
+#define inpw(port) (*((volatile word *) (port))) 
+
+#define inpdw(port) (*((volatile dword *)(port))) 
+
+#define outp(port, val) (*((volatile byte *) (port)) = ((byte) (val))) 
+
+#define outpw(port, val) (*((volatile word *) (port)) = ((word) (val))) 
+
+#define outpdw(port, val) (*((volatile dword *) (port)) = ((dword) (val))) 
+
+19,使用一些宏跟蹤調試 
+
+A N S I標準說明了五個預定義的宏名。它們是： 
+
+_ L I N E _ 
+
+_ F I L E _ 
+
+_ D A T E _ 
+
+_ T I M E _ 
+
+_ S T D C _ 
+
+如果編譯不是標準的，則可能僅支援以上宏名中的幾個，或根本不支持。記住編譯程序 
+
+也許還提供其他預定義的宏名。 
+
+_ L I N E _及_ F I L E _巨集指令在有關# l i n e的部分中已討論，這裏討論其餘的宏名。 
+
+_ D AT E _巨集指令含有形式為月/日/年的串，表示原始檔案被翻譯到代碼時的日期。 
+
+源代碼翻譯到目標代碼的時間作為串包含在_ T I M E _中。串形式為時：分：秒。 
+
+如果實現是標準的，則宏_ S T D C _含有十進位常量1。如果它含有任何其他數，則實現是 
+
+非標準的。 
+
+可以定義宏，例如: 
+
+當定義了_DEBUG，輸出資料資訊和所在檔所在行 
+
+#ifdef _DEBUG 
+
+#define DEBUGMSG(msg,date) printf(msg);printf(“%d%d%d”,date,_LINE_,_FILE_) 
+
+#else 
+
+#define DEBUGMSG(msg,date) 
+
+#endif 
+
+
+
+20，巨集定義防止使用是錯誤 
+
+用小括弧包含。 
+
+例如：#define ADD(a,b) （a+b） 
+
+用do{}while(0)語句包含多語句防止錯誤 
+
+例如：#difne DO(a,b) a+b;\ 
+
+a++; 
+
+應用時：if(….) 
+
+DO(a,b); //產生錯誤 
+
+else 
+
+
+
+解決方法: #difne DO(a,b) do{a+b;\ 
+
+a++;}while(0) 
+
+
+宏中&amp;#34;#&amp;#34;和&amp;#34;##&amp;#34;的用法 
+一、一般用法 
+我們使用#把巨集引數變為一個字串,用##把兩個巨集引數貼合在一起. 
+用法: 
+＃i nclude 
+＃i nclude 
+using namespace std; 
+
+#define STR(s) #s 
+#define CONS(a,b) int(a##e##b) 
+
+int main() 
+{ 
+printf(STR(vck)); // 輸出字串&amp;#34;vck&amp;#34; 
+printf(&amp;#34;%d\n&amp;#34;, CONS(2,3)); // 2e3 輸出:2000 
+return 0; 
+} 
+
+
+二、當巨集引數是另一個宏的時候 
+需要注意的是凡巨集定義裏有用&amp;#39;#&amp;#39;或&amp;#39;##&amp;#39;的地方巨集引數是不會再展開. 
+
+1, 非&amp;#39;#&amp;#39;和&amp;#39;##&amp;#39;的情況 
+#define TOW (2) 
+#define MUL(a,b) (a*b) 
+
+printf(&amp;#34;%d*%d=%d\n&amp;#34;, TOW, TOW, MUL(TOW,TOW)); 
+這行的宏會被展開為： 
+printf(&amp;#34;%d*%d=%d\n&amp;#34;, (2), (2), ((2)*(2))); 
+MUL裏的參數TOW會被展開為(2). 
+
+2, 當有&amp;#39;#&amp;#39;或&amp;#39;##&amp;#39;的時候 
+#define A (2) 
+#define STR(s) #s 
+#define CONS(a,b) int(a##e##b) 
+
+printf(&amp;#34;int max: %s\n&amp;#34;, STR(INT_MAX)); // INT_MAX ＃i nclude 
+這行會被展開為： 
+printf(&amp;#34;int max: %s\n&amp;#34;, &amp;#34;INT_MAX&amp;#34;); 
+
+printf(&amp;#34;%s\n&amp;#34;, CONS(A, A)); // compile error 
+這一行則是： 
+printf(&amp;#34;%s\n&amp;#34;, int(AeA)); 
+
+INT_MAX和A都不會再被展開, 然而解決這個問題的方法很簡單. 加多一層中間轉換宏. 
+加這層巨集的用意是把所有宏的參數在這層裏全部展開, 那麼在轉換巨集裏的那一個巨集(_STR)就能得到正確的巨集引數. 
+
+#define A (2) 
+#define _STR(s) #s 
+#define STR(s) _STR(s) // 轉換宏 
+#define _CONS(a,b) int(a##e##b) 
+#define CONS(a,b) _CONS(a,b) // 轉換宏 
+
+printf(&amp;#34;int max: %s\n&amp;#34;, STR(INT_MAX)); // INT_MAX,int型的最大值，為一個變數 ＃i nclude 
+輸出為: int max: 0x7fffffff 
+STR(INT_MAX) --&amp;gt; _STR(0x7fffffff) 然後再轉換成字串； 
+
+printf(&amp;#34;%d\n&amp;#34;, CONS(A, A)); 
+輸出為：200 
+CONS(A, A) --&amp;gt; _CONS((2), (2)) --&amp;gt; int((2)e(2)) 
+
+三、&amp;#39;#&amp;#39;和&amp;#39;##&amp;#39;的一些應用特例 
+1、合併匿名變數名 
+#define ___ANONYMOUS1(type, var, line) type var##line 
+#define __ANONYMOUS0(type, line) ___ANONYMOUS1(type, _anonymous, line) 
+#define ANONYMOUS(type) __ANONYMOUS0(type, __LINE__) 
+例：ANONYMOUS(static int); 即: static int _anonymous70; 70表示該行行號； 
+第一層：ANONYMOUS(static int); --&amp;gt; __ANONYMOUS0(static int, __LINE__); 
+第二層： --&amp;gt; ___ANONYMOUS1(static int, _anonymous, 70); 
+第三層： --&amp;gt; static int _anonymous70; 
+即每次只能解開當前層的宏，所以__LINE__在第二層才能被解開； 
+
+2、填充結構 
+#define FILL(a) {a, #a} 
+
+enum IDD{OPEN, CLOSE}; 
+typedef struct MSG{ 
+IDD id; 
+const char * msg; 
+}MSG; 
+
+MSG _msg[] = {FILL(OPEN), FILL(CLOSE)}; 
+相當於： 
+MSG _msg[] = {{OPEN, &amp;#34;OPEN&amp;#34;}, 
+{CLOSE, &amp;#34;CLOSE&amp;#34;}}; 
+
+3、記錄檔案名 
+#define _GET_FILE_NAME(f) #f 
+#define GET_FILE_NAME(f) _GET_FILE_NAME(f) 
+static char FILE_NAME[] = GET_FILE_NAME(__FILE__); 
+
+4、得到一個數值類型所對應的字串緩衝大小 
+#define _TYPE_BUF_SIZE(type) sizeof #type 
+#define TYPE_BUF_SIZE(type) _TYPE_BUF_SIZE(type) 
+char buf[TYPE_BUF_SIZE(INT_MAX)]; 
+--&amp;gt; char buf[_TYPE_BUF_SIZE(0x7fffffff)]; 
+--&amp;gt; char buf[sizeof &amp;#34;0x7fffffff&amp;#34;]; 
+這裏相當於： 
+char buf[11];
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;h1 id=&#34;references&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#references&#34;&gt;
-        #
+        ##
     &lt;/a&gt;
     References
 &lt;/div&gt;
+&lt;/h1&gt;
+&lt;!--TODO--&gt;  
+&lt;p&gt;&lt;a href=&#34;https://www.drdobbs.com/the-new-c-x-macros/184401387&#34;&gt;The New C: X Macros&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://blog.jaycetyle.com/2018/09/c-xmacro/&#34;&gt;enum to string 的方法實作 (X Macro)&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>C Programming Sundries</title>
+      <link>/posts/prog/c/c_misc/</link>
+      <pubDate>Wed, 27 Mar 2024 00:00:00 +0000</pubDate>
+      <author>i70170@hotmail.com (Mike Chang)</author>
+      <guid>/posts/prog/c/c_misc/</guid>
+      <description>&lt;h1 id=&#34;sscanf&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#sscanf&#34;&gt;
+        ##
+    &lt;/a&gt;
+    sscanf
+&lt;/div&gt;
+&lt;/h1&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;sscanf&lt;/span&gt;(&lt;span style=&#34;color:#ca9ee6&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#e78284&#34;&gt;char&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt; str, &lt;span style=&#34;color:#ca9ee6&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#e78284&#34;&gt;char&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt; format, ...);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;example&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#example&#34;&gt;
+        #
+    &lt;/a&gt;
+    Example
+&lt;/div&gt;
 &lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//string
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;sscanf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;name:john age:40 tel:082-313530&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;%s&amp;#34;&lt;/span&gt;, res);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//string with length
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;sscanf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;name:john age:40 tel:082-313530&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;%8s&amp;#34;&lt;/span&gt;, res);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//regex
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//res=name
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;sscanf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;name:john age:40 tel:082-313530&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;%[^:]&amp;#34;&lt;/span&gt;, res);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//res=name john
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;sscanf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;name:john age:40 tel:082-313530&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;%[^:]:%s&amp;#34;&lt;/span&gt;, field, res);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//mixed types
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//res=john res2=40 res3=082-313530
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;sscanf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;name:john age:40 tel:082-313530&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;name:%s age:%d tel:%s&amp;#34;&lt;/span&gt;, res, &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt;res2, res3);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;sscanf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;name:john age:40 tel:082-313530&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;%*[^:]:%s %*[^:]:%d %*[^:]:%s&amp;#34;&lt;/span&gt;, name, &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt;age, tel);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//protocol=http site=ccckmit.wikidot.com path=cp/list/hello.txt
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;sscanf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;http://ccckmit.wikidot.com/cp/list/hello.txt&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;%[^:]:%*2[/]%[^/]/%[a-zA-Z0-9._/-]&amp;#34;&lt;/span&gt;, protocol, site, path);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h1 id=&#34;file-processing&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#file-processing&#34;&gt;
+        ##
+    &lt;/a&gt;
+    File Processing
+&lt;/div&gt;
+&lt;/h1&gt;
+&lt;h2 id=&#34;file-operation&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#file-operation&#34;&gt;
+        #
+    &lt;/a&gt;
+    File Operation
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//create directory
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;mkdir&lt;/span&gt;(dir_name, &lt;span style=&#34;color:#ef9f76&#34;&gt;0777&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//remove file
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;remove&lt;/span&gt;(file_name);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;file-permission&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#file-permission&#34;&gt;
+        #
+    &lt;/a&gt;
+    File Permission
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#737994;font-weight:bold;font-style:italic&#34;&gt;&amp;lt;sys/types.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#737994;font-weight:bold;font-style:italic&#34;&gt;&amp;lt;sys/stat.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;mode_t&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;umask&lt;/span&gt;(&lt;span style=&#34;color:#e78284&#34;&gt;mode_t&lt;/span&gt; mask);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;umask(x) sets system umask value to (x &amp;amp; 0777)&lt;/li&gt;
+&lt;li&gt;real permission: (mode &amp;amp; ~umask)&lt;/li&gt;
+&lt;li&gt;example: mode = 0666, default umask = 022, real permission = (0666 &amp;amp; ~022) = 0644, or rw-r&amp;ndash;r&amp;ndash;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;calculate-md5&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#calculate-md5&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Calculate MD5
+&lt;/div&gt;
+&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://hant-kb.kutu66.com/c/post_2198262&#34;&gt;hash - 在C 中，如何計算大型文件的MD5哈希值？&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;inline&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#inline&#34;&gt;
+        ##
+    &lt;/a&gt;
+    inline
+&lt;/div&gt;
+&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;should be put in the header file
+&lt;ul&gt;
+&lt;li&gt;the scope of static function is within the &lt;code&gt;translation unit&lt;/code&gt;(.c and all the included .h)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;use &amp;lsquo;static inline&amp;rsquo; instead of &amp;lsquo;inline&amp;rsquo;
+&lt;ul&gt;
+&lt;li&gt;Guarantee that GNU will optimize it&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;When an inline function is not static, then the compiler must assume that
+there may be calls from other source files; since a global symbol can be
+defined only once in any program, the function must not be defined in the
+other source files, so the calls therein cannot be integrated. Therefore,
+a non-static inline function is always compiled on its own in the usual
+fashion.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;sizeof&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#sizeof&#34;&gt;
+        ##
+    &lt;/a&gt;
+    sizeof
+&lt;/div&gt;
+&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;not a function&lt;/li&gt;
+&lt;li&gt;a unary operator? NO!(does not support chaining operation)&lt;/li&gt;
+&lt;li&gt;determined at compile time&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cout &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#ca9ee6&#34;&gt;sizeof&lt;/span&gt;(&lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt;) &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; endl;    &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//int
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;cout &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#ca9ee6&#34;&gt;sizeof&lt;/span&gt;(&lt;span style=&#34;color:#ef9f76&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;2&lt;/span&gt;) &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; endl; &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//bool
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;cout &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#ca9ee6&#34;&gt;sizeof&lt;/span&gt;(a &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;3&lt;/span&gt;) &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; endl;  &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//type of lvalue: int
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;cout &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#ca9ee6&#34;&gt;sizeof&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;abcd&amp;#34;&lt;/span&gt;) &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; endl;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//translated in compile stage
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;cout &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;4&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt;endl; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cout &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt;endl; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cout &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;4&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt;endl;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cout &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;5&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt;endl;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;usage&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#usage&#34;&gt;
+        #
+    &lt;/a&gt;
+    Usage
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;sizeof&lt;/span&gt;(object)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;sizeof&lt;/span&gt; object
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;sizeof&lt;/span&gt;(&lt;span style=&#34;color:#ca9ee6&#34;&gt;typename&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;example:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;2&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;f1&lt;/span&gt;() {&lt;span style=&#34;color:#ca9ee6&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;0&lt;/span&gt;;};
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;double&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;f2&lt;/span&gt;() {&lt;span style=&#34;color:#ca9ee6&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;0.0&lt;/span&gt;;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;f3&lt;/span&gt;(){};
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cout &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#ca9ee6&#34;&gt;sizeof&lt;/span&gt;(i) &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; endl;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cout &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#ca9ee6&#34;&gt;sizeof&lt;/span&gt; i &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; endl;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cout &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#ca9ee6&#34;&gt;sizeof&lt;/span&gt;(&lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt;) &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt;endl;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cout &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#ca9ee6&#34;&gt;sizeof&lt;/span&gt;(f1()) &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt;endl;    &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//int 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;cout &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#ca9ee6&#34;&gt;sizeof&lt;/span&gt;(f2()) &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt;endl;    &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//double
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;cout &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#ca9ee6&#34;&gt;sizeof&lt;/span&gt;(f3()) &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt;endl;    &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//error: sizeof(void) is invalid
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;cout &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#ca9ee6&#34;&gt;sizeof&lt;/span&gt;(f1) &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt;endl;      &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//error: sizeof(function pointer) is invalid
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;cout &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#ca9ee6&#34;&gt;sizeof&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;f2 &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt;endl;      &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//sizeof(f2())
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;cout &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#ca9ee6&#34;&gt;sizeof&lt;/span&gt;(&lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;) &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt;endl;    &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//on 32-bit machine the address length is 4
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//C: small, middle, big mode
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//C++: flat mode; no [segment:offset]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h1 id=&#34;undefined-behavior-and-unspecified-behavior&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#undefined-behavior-and-unspecified-behavior&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Undefined Behavior and Unspecified Behavior
+&lt;/div&gt;
+&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;(Undefined Behavior)
+behavior, upon use of a nonportable or erroneous program construct or of erroneous data, for which this International Standard imposes no requirements&lt;/p&gt;&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;UB, Undefined Behavior
+&lt;ul&gt;
+&lt;li&gt;program behavior not defined in standards(ISO/IEC 9899&amp;hellip;)&lt;/li&gt;
+&lt;li&gt;compiler optimizes the UB in low-level language
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//rvalue may be optimized to be &amp;#39;x&amp;#39; if there&amp;#39;s no overflow
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;x &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;2&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;/&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Unspecified Behavior
+&lt;ul&gt;
+&lt;li&gt;example
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;func&lt;/span&gt;(&lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;x) {&lt;span style=&#34;color:#ca9ee6&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;x;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; n &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;0&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//depends on ABI calling conventions(void value)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;%d %d %d&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&lt;/span&gt;, n&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;++&lt;/span&gt;, n&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;++&lt;/span&gt;, n&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;++&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;%d %d %d&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#8caaee&#34;&gt;func&lt;/span&gt;(&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt;n), &lt;span style=&#34;color:#8caaee&#34;&gt;func&lt;/span&gt;(&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt;n), &lt;span style=&#34;color:#8caaee&#34;&gt;func&lt;/span&gt;(&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt;n));
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;optimization&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#optimization&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Optimization
+&lt;/div&gt;
+&lt;/h1&gt;
+&lt;h2 id=&#34;for-loop&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#for-loop&#34;&gt;
+        #
+    &lt;/a&gt;
+    for loop
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;use mathematical formula&lt;/li&gt;
+&lt;li&gt;use look-up table&lt;/li&gt;
+&lt;li&gt;compiler optimization, say &lt;code&gt;-o&lt;/code&gt; in gcc&lt;/li&gt;
+&lt;li&gt;utilize multi-core
+&lt;ul&gt;
+&lt;li&gt;OpenMP&lt;/li&gt;
+&lt;li&gt;POSIX Threads&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;use inline assembly&lt;/li&gt;
+&lt;li&gt;use unsigned int instead of int&lt;/li&gt;
+&lt;li&gt;loop unwinding&lt;/li&gt;
+&lt;li&gt;C++ Template Meta Programming
+&lt;ul&gt;
+&lt;li&gt;calculate at compile time other than at run time&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;hardware acceleration&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;for&lt;/span&gt; (i &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;0&lt;/span&gt;; i &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;100&lt;/span&gt;; i&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;++&lt;/span&gt;) {s &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; s &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;+&lt;/span&gt; i;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;example-multi-core&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#example-multi-core&#34;&gt;
+        ##
+    &lt;/a&gt;
+    example: multi-core
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//OpenMP
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//get core count:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//  omp_get_num_procs()
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//get thread count:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//  omp_get_num_threads()
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#pragma omp parallel for
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#ca9ee6&#34;&gt;for&lt;/span&gt;(i &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;0&lt;/span&gt;; i &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;100&lt;/span&gt;; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;++&lt;/span&gt;i) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//do something
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//equivalent to 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#pragma omp parallel
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#pragma omp for
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#ca9ee6&#34;&gt;for&lt;/span&gt;(&lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;0&lt;/span&gt;; i &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;100&lt;/span&gt;; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;++&lt;/span&gt; i) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//do something
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;example-loop-unwinding&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#example-loop-unwinding&#34;&gt;
+        ##
+    &lt;/a&gt;
+    example: loop unwinding
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//only 10 loops here
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#ca9ee6&#34;&gt;for&lt;/span&gt;(i &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;1&lt;/span&gt;; i &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;=&lt;/span&gt; n; i &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;+=&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;10&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        s &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;+=&lt;/span&gt; i;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        s &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;+=&lt;/span&gt; i &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;1&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        s &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;+=&lt;/span&gt; i &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;2&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        s &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;+=&lt;/span&gt; i &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;3&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        s &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;+=&lt;/span&gt; i &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;4&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        s &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;+=&lt;/span&gt; i &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;5&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        s &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;+=&lt;/span&gt; i &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;6&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        s &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;+=&lt;/span&gt; i &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;7&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        s &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;+=&lt;/span&gt; i &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;8&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        s &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;+=&lt;/span&gt; i &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;9&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;example-template-meta-programming&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#example-template-meta-programming&#34;&gt;
+        ##
+    &lt;/a&gt;
+    example: Template Meta Programming
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;template&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;unsigned&lt;/span&gt; n&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;struct&lt;/span&gt; &lt;span style=&#34;color:#e5c890&#34;&gt;foo&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ca9ee6&#34;&gt;enum&lt;/span&gt; { value &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; n &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;+&lt;/span&gt; foo&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&lt;/span&gt;n&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ef9f76&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;gt;::&lt;/span&gt;value };
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;};
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;template&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;struct&lt;/span&gt; &lt;span style=&#34;color:#e5c890&#34;&gt;foo&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#ef9f76&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ca9ee6&#34;&gt;enum&lt;/span&gt; { value &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;0&lt;/span&gt; };
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;};
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h1 id=&#34;bit-operation&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#bit-operation&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Bit Operation
+&lt;/div&gt;
+&lt;/h1&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//query bit state: bitwise AND
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;if&lt;/span&gt; (flags &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt; bit_mask) {...}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//turn bits on: bitwise OR
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;flags &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;|=&lt;/span&gt; bit_mask;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;flags &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;|=&lt;/span&gt; (bit_mask_1 &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;|&lt;/span&gt; bit_mask_2);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//turn bits off: bitwise AND with inverse bit
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;flags &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;amp;=&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;~&lt;/span&gt;bit_mask;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;flags &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;amp;=&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;~&lt;/span&gt;(bit_mask_1 &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;|&lt;/span&gt; bit_mask_2);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//toggle bit states: bitwise XOR
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;flags &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;^=&lt;/span&gt; bit_mask;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;flags &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;^=&lt;/span&gt; (bit_mask_1 &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;|&lt;/span&gt; bit_mask_2); &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//flip bit_mask_1 and bit_mask_2
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h1 id=&#34;traps&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#traps&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Traps
+&lt;/div&gt;
+&lt;/h1&gt;
+&lt;h2 id=&#34;execution-order-of-printf-right-to-left&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#execution-order-of-printf-right-to-left&#34;&gt;
+        #
+    &lt;/a&gt;
+    Execution Order of printf: right to left
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;volatile&lt;/span&gt; &lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; x &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;20&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;%d %d&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&lt;/span&gt;, x, x&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;++&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;x &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;20&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;%d %d&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&lt;/span&gt;, x&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;++&lt;/span&gt;, x);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;x &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;20&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;%d %d %d &amp;#34;&lt;/span&gt;, x, x&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;++&lt;/span&gt;, &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;++&lt;/span&gt;x);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//result:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//  21 20
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//  20 20
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//  22 21 21
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;sizeof-1&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#sizeof-1&#34;&gt;
+        #
+    &lt;/a&gt;
+    sizeof
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;%d, %d&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ca9ee6&#34;&gt;sizeof&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#39;J&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#ca9ee6&#34;&gt;sizeof&lt;/span&gt;(&lt;span style=&#34;color:#e78284&#34;&gt;char&lt;/span&gt;));
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//ANSI C: 4, 1
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//  sizeof(&amp;#39;J&amp;#39;): default to int; equivalent to &amp;#39;sizeof(int)&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//               multi-character &amp;#39;sizeof(L&amp;#39;J&amp;#39;)&amp;#39; may behaves differently
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//  sizeof(char): 1 size_t  
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//Cpp: 1, 1
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//  sizeof(&amp;#39;J&amp;#39;): equivalent to &amp;#39;sizeof(char)&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;struct&lt;/span&gt; Empty { } empty;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;sizeof(empty) = %d&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ca9ee6&#34;&gt;sizeof&lt;/span&gt;(empty));
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//ANSI C: 0
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//Cpp: 1
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//  C++ standards prohibits &amp;#39;zero-sized addressable objects&amp;#39;; &amp;#39;freestanding objects&amp;#39; MUST be of non-zero size
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h1 id=&#34;tricks&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#tricks&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Tricks
+&lt;/div&gt;
+&lt;/h1&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# test an even number
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;num &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;2&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;num &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;0x01&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;conceptual-but-not-practical&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#conceptual-but-not-practical&#34;&gt;
+        #
+    &lt;/a&gt;
+    Conceptual but not practical
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;h3 id=&#34;xor-swap&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#xor-swap&#34;&gt;
+        ##
+    &lt;/a&gt;
+    XOR Swap
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;僅透過 XOR 互換數值&lt;/li&gt;
+&lt;li&gt;XOR 目標值若與輸入值相同, 其結果為 0: XOR_SWAP(x, x) 結果為 0&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;NOT portable&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;對於現代 CPU 效率較差: 指令相依(輸出依賴之前輸入結果), 無法透過 pipeline 平行加速&lt;/li&gt;
+&lt;li&gt;XOR properties
+&lt;ul&gt;
+&lt;li&gt;involution or self-inverse 反元素: X ^ X = 0&lt;/li&gt;
+&lt;li&gt;commutative 交換性: A ^ B = B ^ A&lt;/li&gt;
+&lt;li&gt;associative 結合性 (A ^ B) ^ C = A ^ (B ^ C)&lt;/li&gt;
+&lt;li&gt;單位元 A ^ 0 = A&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;XOR Operation:&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;Value x&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;Value y&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;XOR result&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;0&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;0&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;0&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;0&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;1&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;1&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;1&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;0&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;1&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;1&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;1&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;0&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;/*
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;1. X = X ^ Y
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;2. Y = X ^ Y = (X ^ Y) ^ Y = X ^ (Y ^ Y) = X ^ 0 = X
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;3. X = X ^ Y = (X ^ Y) ^ X = (Y ^ X) ^ X = Y
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;*/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;#define XOR_SWAP(x, y)                  ((x) ^= (y), (y) ^= (x), (x) ^= (y))
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h1 id=&#34;references&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#references&#34;&gt;
+        ##
+    &lt;/a&gt;
+    References
+&lt;/div&gt;
+&lt;/h1&gt;
+&lt;!--TODO--&gt;
+&lt;p&gt;&lt;a href=&#34;http://blog.linux.org.tw/~jserv/archives/001876.html&#34;&gt;sizeof 在語言層面的陷阱&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://hackmd.io/@sysprog/c-programming&#34;&gt;你所不知道的 C 語言 系列講座&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://hackmd.io/@sysprog/c-oop&#34;&gt;你所不知道的 C 語言：物件導向程式設計篇&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;http://www.wl-chuang.com/blog/2011/06/04/gobject-primer-1/&#34;&gt;GObject 入門&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://www.twblogs.net/a/5baac4882b7177781a0e89f2&#34;&gt;hash表&amp;ndash;c語言 字符串鍵值配對&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://codertw.com/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/532456/&#34;&gt;C STL中雜湊表 hash_map從頭到尾詳細介紹&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://hackmd.io/@CynthiaChuang/Regular-Expressions-in-C&#34;&gt;C 使用 Regular Expressions&lt;/a&gt;&lt;/p&gt;
+&lt;!-- topic: C Python --&gt;  
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/qq_31342997/article/details/88368420&#34;&gt;C调用Python（传递数字、字符串、list数组（一维、二维），结构体）&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://www.itread01.com/content/1549418947.html&#34;&gt;Python使用struct模組轉換C語言結構體，打包、解包二進位制資料&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://codertw.com/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/515217/&#34;&gt;C/C 與python互相呼叫&lt;/a&gt;&lt;/p&gt;
+&lt;!-- topic: C Parser --&gt;
+&lt;p&gt;&lt;a href=&#34;https://sites.ualberta.ca/~delliott/ece492/appnotes/2015w/G6_Parsing_JSON_in_C/microjson_tutorial.html&#34;&gt;Parsing JSON in C using microjson&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;http://www.catb.org/~esr/microjson/microjson.html&#34;&gt;Building static JSON parsers with microjson&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://blog.csdn.net/mao_hui_fei/article/details/120202989&#34;&gt;Json-glib的使用&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://bestofcpp.com/repo/benhoyt-inih-cpp-configuration&#34;&gt;Simple .INI file parser in C, good for embedded systems&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -205,233 +2249,7 @@
 &lt;/h3&gt;
 &lt;p&gt;將 macro 定義放在 .c 開頭&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;g++ -E xxx.c
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
-&lt;h2 id=&#34;references&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#references&#34;&gt;
-        #
-    &lt;/a&gt;
-    References
-&lt;/div&gt;
-&lt;/h2&gt;</description>
-    </item>
-    
-    <item>
-      <title>C Programming</title>
-      <link>/posts/prog/c/c/</link>
-      <pubDate>Thu, 21 Mar 2024 00:00:00 +0000</pubDate>
-      <author>i70170@hotmail.com (Mike Chang)</author>
-      <guid>/posts/prog/c/c/</guid>
-      <description>&lt;hr&gt;
-&lt;h2 id=&#34;data-io&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#data-io&#34;&gt;
-        #
-    &lt;/a&gt;
-    Data I/O
-&lt;/div&gt;
-&lt;/h2&gt;
-&lt;h3 id=&#34;use-fgets-over-scanf&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#use-fgets-over-scanf&#34;&gt;
-        ##
-    &lt;/a&gt;
-    Use fgets() over scanf()
-&lt;/div&gt;
-&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;scanf() 使用者不需管理 buffer size (預設值 100 bytes?), 但可能導致 buffer overflow 或 stack overflow&lt;/li&gt;
-&lt;li&gt;scanf() 惡意使用者可能插入 function pointer 或 executable code&lt;/li&gt;
-&lt;li&gt;fgets() 相對強健(robust), *nix 系統上的資料來源可以是 sockets, streams 或實際檔案&lt;/li&gt;
-&lt;li&gt;fgets() 需指定緩衝區長度, 可避免溢出式攻擊&lt;/li&gt;
-&lt;li&gt;fgets() I/O 問題可使用 ferror() 做為 error-handling&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&amp;hellip;&lt;/p&gt;
-&lt;h3 id=&#34;clear-input-buffer&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#clear-input-buffer&#34;&gt;
-        ##
-    &lt;/a&gt;
-    Clear Input Buffer
-&lt;/div&gt;
-&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//platform-dependent
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;fseek&lt;/span&gt;(stdin, &lt;span style=&#34;color:#ef9f76&#34;&gt;0&lt;/span&gt;, SEEK_END);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//portable
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;char&lt;/span&gt; c &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#99d1db&#34;&gt;NULL&lt;/span&gt;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;while&lt;/span&gt; ((c &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;getchar&lt;/span&gt;()) &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#39;\n&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; c &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;!=&lt;/span&gt; EOF) {;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;/*do nothing*/&lt;/span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
-&lt;h2 id=&#34;floating-point&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#floating-point&#34;&gt;
-        #
-    &lt;/a&gt;
-    Floating Point
-&lt;/div&gt;
-&lt;/h2&gt;
-&lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th style=&#34;text-align: left&#34;&gt;format&lt;/th&gt;
-          &lt;th style=&#34;text-align: left&#34;&gt;precision&lt;/th&gt;
-          &lt;th style=&#34;text-align: left&#34;&gt;bytes&lt;/th&gt;
-          &lt;th style=&#34;text-align: left&#34;&gt;range&lt;/th&gt;
-          &lt;th style=&#34;text-align: left&#34;&gt;Significant Figures&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;float&lt;/td&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;single&lt;/td&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;4&lt;/td&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;±3.4e-38~±3.4e+38&lt;/td&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;7-1&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;double&lt;/td&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;double&lt;/td&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;8&lt;/td&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;±1.79E-308 ~ ±1.79E+308&lt;/td&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;16-1&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;long double&lt;/td&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;long-double&lt;/td&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;16&lt;/td&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;±1.79E-308 ~ ±1.79E+308&lt;/td&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;19-1&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;ul&gt;
-&lt;li&gt;sign(S) 符號數
-&lt;ul&gt;
-&lt;li&gt;1 bit: 0=positive, 1=negative&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;exponent(E) 指數
-&lt;ul&gt;
-&lt;li&gt;8 bits for biasing
-&lt;ul&gt;
-&lt;li&gt;exponents are signed values to represent both tiny and huge values&lt;/li&gt;
-&lt;li&gt;2&amp;rsquo;s complement makes comparison harder&lt;/li&gt;
-&lt;li&gt;add the bias when storing(unsigned); subtract the bias when interpreting&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;mantissa(M) 尾數
-&lt;ul&gt;
-&lt;li&gt;23 bits&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;NaN, Not a Number
-&lt;ul&gt;
-&lt;li&gt;E: all 1&lt;/li&gt;
-&lt;li&gt;M: not all 0&lt;/li&gt;
-&lt;li&gt;Quiet NaNs, QNaNs, 不確定值(0/0; Inf x 0)&lt;/li&gt;
-&lt;li&gt;Signaling NaNs, SNaNs, 無效操作&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Zero
-&lt;ul&gt;
-&lt;li&gt;E: all 0&lt;/li&gt;
-&lt;li&gt;M: all 0&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Infinite
-&lt;ul&gt;
-&lt;li&gt;E: all 1&lt;/li&gt;
-&lt;li&gt;M: all 0&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;subnormal, denormal, denormalized number
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -Inf    -Normalized   -Denormal    +Denormal   +Normalized    +Inf
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ├───┼─────────────┼────────────┼───────────┼─────────────┼───┤
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;NaN                                ^                               NaN
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                 -0 +0
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
-&lt;li&gt;E: all 0&lt;/li&gt;
-&lt;li&gt;M: not all 0&lt;/li&gt;
-&lt;li&gt;超過規格化表示範圍, 即 UFL, UnderFlow Level, 最小可表示數&lt;/li&gt;
-&lt;li&gt;ALU 僅能計算正規數, 非正規數一般觸發硬體中斷處理&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;example of a 32-bit float&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     S   E                M
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ├──┼────────────────┼──────────────────────────────────────────────┤
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    31 30               22                                             0
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    1b 8b               23b
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;NaN, Not a Number
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     x  1 1 1 1 1 1 1 1  n n n n n n n n n n n n n n n n n n n n n n n
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Zero
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     x  0 0 0 0 0 0 0 0  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Infinite
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     x  1 1 1 1 1 1 1 1  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;subnormal
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     x  0 0 0 0 0 0 0 0  n n n n n n n n n n n n n n n n n n n n n n n
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;convert 7.25 from decimal to binary:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     0  1 0 0 0 0 0 0 1  1 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     1. 7d = 111b
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     2. 0.25d = 0.01b:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            0.25 * 2 = 0.5  ...no carry, 1st digit is 0
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            0.5 * 2 = 1     ...with carry, 2nd digit is 1
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    3. 7.25d = 111.01b
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    4. S=0 for positive
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    5. 111.01 shifts right by 2 places: 1.1101(IEEE standard: start by 1)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            E = (bias 127) + (2) = 129d = 10000001b
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    6. M = 1101000...b
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;convert from binary expression to dec: 
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    S = 0, +1d
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    E = 10000001b=129d, 129 - 127 = 2d
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    M = 0.1101b + 1b = 1.1101b = 1d + 0.5d + 0.25d + 0.0625d = 1.8125d
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    S * M * 2^E = +1 * 1.8125 * 4 = 7.25d
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
-&lt;h2 id=&#34;system-call&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#system-call&#34;&gt;
-        #
-    &lt;/a&gt;
-    System Call
-&lt;/div&gt;
-&lt;/h2&gt;
-&lt;p&gt;declaration&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;system&lt;/span&gt;(&lt;span style=&#34;color:#ca9ee6&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#e78284&#34;&gt;char&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;command);
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;usage&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;char&lt;/span&gt; cmd[&lt;span style=&#34;color:#ef9f76&#34;&gt;64&lt;/span&gt;] &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; {&lt;span style=&#34;color:#ef9f76&#34;&gt;0&lt;/span&gt;};
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;sprintf&lt;/span&gt;(cmd, &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;dirname %s | xargs mkdir -p&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;/home/user/work&amp;#34;&lt;/span&gt;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8caaee&#34;&gt;system&lt;/span&gt;(cmd);
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
-&lt;h2 id=&#34;function-pointer&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#function-pointer&#34;&gt;
-        #
-    &lt;/a&gt;
-    Function pointer
-&lt;/div&gt;
-&lt;/h2&gt;
-&lt;p&gt;Function pointer as input parameter&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;void&lt;/span&gt; (&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;foo[&lt;span style=&#34;color:#ef9f76&#34;&gt;10&lt;/span&gt;])(&lt;span style=&#34;color:#e78284&#34;&gt;void&lt;/span&gt; (&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;)());
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;/* equivalent */&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;typedef&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;void&lt;/span&gt; (&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;fptr_param)();
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;typedef&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;void&lt;/span&gt; (&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;fptr)(fptr_param);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;fptr foo[&lt;span style=&#34;color:#ef9f76&#34;&gt;10&lt;/span&gt;];
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
-&lt;h2 id=&#34;references&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#references&#34;&gt;
-        #
-    &lt;/a&gt;
-    References
-&lt;/div&gt;
-&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;http://open-std.org/&#34;&gt;Open Standards&lt;/a&gt;&lt;br&gt;
-&lt;a href=&#34;http://www.open-std.org/jtc1/sc22/wg14/www/standards&#34;&gt;Open Standards: C - Approved standards&lt;/a&gt;&lt;/p&gt;</description>
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     
   </channel>
