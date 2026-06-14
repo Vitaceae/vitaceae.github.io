@@ -38,13 +38,19 @@
         <loc>https://vitaceae.github.io/about/</loc>
         <lastmod>2025-03-02T00:00:00+00:00</lastmod>
       </url><url>
+        <loc>https://vitaceae.github.io/tags/cpp-prog/</loc>
+        <lastmod>2024-08-18T00:00:00+00:00</lastmod>
+      </url><url>
+        <loc>https://vitaceae.github.io/posts/prog/cpp/cpp_overloading/</loc>
+        <lastmod>2024-08-18T00:00:00+00:00</lastmod>
+      </url><url>
+        <loc>https://vitaceae.github.io/categories/programming/</loc>
+        <lastmod>2024-08-18T00:00:00+00:00</lastmod>
+      </url><url>
         <loc>https://vitaceae.github.io/posts/prog/c/c_enum_to_string/</loc>
         <lastmod>2024-08-03T00:00:00+00:00</lastmod>
       </url><url>
         <loc>https://vitaceae.github.io/tags/c-prog-cpp-prog/</loc>
-        <lastmod>2024-08-03T00:00:00+00:00</lastmod>
-      </url><url>
-        <loc>https://vitaceae.github.io/categories/programming/</loc>
         <lastmod>2024-08-03T00:00:00+00:00</lastmod>
       </url><url>
         <loc>https://vitaceae.github.io/posts/prog/c/c_sundries/</loc>
@@ -188,7 +194,7 @@
         <loc>https://vitaceae.github.io/posts/web/website/</loc>
         <lastmod>2024-03-02T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>https://vitaceae.github.io/posts/prog/cpp/inc/template_make_cpp_vscode/readme/</loc>
+        <loc>https://vitaceae.github.io/posts/prog/cpp/inc/code/template_make_cpp_vscode/readme/</loc>
       </url><url>
         <loc>https://vitaceae.github.io/authors/</loc>
       </url><url>

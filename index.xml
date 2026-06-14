@@ -1167,6 +1167,89 @@ Hugo 主框架, 流量分析工具&lt;/p&gt;
     </item>
     
     <item>
+      <title>Overloading in C&#43;&#43;</title>
+      <link>/posts/prog/cpp/cpp_overloading/</link>
+      <pubDate>Sun, 18 Aug 2024 00:00:00 +0000</pubDate>
+      <author>i70170@hotmail.com (Mike Chang)</author>
+      <guid>/posts/prog/cpp/cpp_overloading/</guid>
+      <description>&lt;p&gt;Overloading 重載: 定義不同 input parameter 或 return type 的同名函數；參數不允許缺項。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//strictly typed
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;double&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;foo&lt;/span&gt;(&lt;span style=&#34;color:#e78284&#34;&gt;double&lt;/span&gt;, &lt;span style=&#34;color:#e78284&#34;&gt;double&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;double&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;foo&lt;/span&gt;(&lt;span style=&#34;color:#e78284&#34;&gt;double&lt;/span&gt;, &lt;span style=&#34;color:#e78284&#34;&gt;double&lt;/span&gt;, &lt;span style=&#34;color:#e78284&#34;&gt;double&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//with default arguments
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;double&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;foo&lt;/span&gt;(&lt;span style=&#34;color:#e78284&#34;&gt;double&lt;/span&gt; x, &lt;span style=&#34;color:#e78284&#34;&gt;double&lt;/span&gt; y &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;100.0&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;test&lt;/span&gt;(&lt;span style=&#34;color:#e78284&#34;&gt;void&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#e78284&#34;&gt;double&lt;/span&gt; bar1 &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; foo(&lt;span style=&#34;color:#ef9f76&#34;&gt;1.0&lt;/span&gt;, &lt;span style=&#34;color:#ef9f76&#34;&gt;2.0&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#e78284&#34;&gt;double&lt;/span&gt; bar2 &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; foo(&lt;span style=&#34;color:#ef9f76&#34;&gt;1.0&lt;/span&gt;, &lt;span style=&#34;color:#ef9f76&#34;&gt;2.0&lt;/span&gt;, &lt;span style=&#34;color:#ef9f76&#34;&gt;3.0&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#e78284&#34;&gt;double&lt;/span&gt; bar3 &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; foo(&lt;span style=&#34;color:#ef9f76&#34;&gt;1.0&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;operator-overloading-運算子重載&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#operator-overloading-%e9%81%8b%e7%ae%97%e5%ad%90%e9%87%8d%e8%bc%89&#34;&gt;
+        #
+    &lt;/a&gt;
+    Operator Overloading 運算子重載
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;Syntax:  &amp;lt;Class Type&amp;gt; &lt;code&gt;operator&lt;/code&gt; &amp;lt;operator symbol&amp;gt; (&amp;lt;operand(s)&amp;gt;) const&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;inc/code/overload_operator.cpp&#34;&gt;example: overload_operator.cpp&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;inc/cpp/overload_operator_complex.cpp&#34;&gt;example: overload_operator_complex.cpp&lt;/a&gt;&lt;br&gt;
+以建構子、解構子、複製建構子處理自定義的複數物件與複數運算、電路阻抗計算。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;member-function 風格: 以物件呼叫模式處理, ++x 轉譯為 x.operator++();&lt;/li&gt;
+&lt;li&gt;friend-function 風格: 以函式呼叫模式處理, ++x 轉譯為 operator++(x);&lt;/li&gt;
+&lt;li&gt;unary operator: one operand 一元運算子
+&lt;ul&gt;
+&lt;li&gt;prefix case 前綴: 先運算再回傳參照&lt;/li&gt;
+&lt;li&gt;postfix case 後綴: 先回傳現值再運算&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;binary operator: two operands 二元運算子&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;支援重載的運算子:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;+  -  *  /  %  ^  &amp;amp;  |  ~  !  =  &amp;lt;  &amp;gt;  +=  -=  *=  /=  %=  ^=  &amp;amp;=  |=  &amp;lt;&amp;lt;  &amp;gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt;&amp;gt;=  &amp;lt;&amp;lt;=  ==  !=  &amp;lt;=  &amp;gt;=  &amp;amp;&amp;amp;  ||  ++  --  ,  -&amp;gt;*  -&amp;gt;  ()  []
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;=&amp;gt; (since C++20)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;precedence 運算優先權以及 operand 運算元數量不可變更；重載對象須包含至少一個自定義物件，不能全為 built-in 資料型態。&lt;/p&gt;
+&lt;p&gt;使用 member function 重載運算子時左運算元必須是類別物件，不得為原生常數類別:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;OverloadOp &lt;span style=&#34;color:#8caaee&#34;&gt;d1&lt;/span&gt;(&lt;span style=&#34;color:#ef9f76&#34;&gt;2.0&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;d2 &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; d1 &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;1.0&lt;/span&gt;;  &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//valid
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;d2 &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;1.0&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;+&lt;/span&gt; d1;  &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//invalid
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;使用 friend function 可解決上述運算元順序問題(範例未實現)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#ca9ee6&#34;&gt;public&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ca9ee6&#34;&gt;friend&lt;/span&gt; OverloadOp &lt;span style=&#34;color:#ca9ee6&#34;&gt;operator&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;+&lt;/span&gt; (&lt;span style=&#34;color:#ca9ee6&#34;&gt;const&lt;/span&gt; OverloadOp&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt; left, &lt;span style=&#34;color:#e78284&#34;&gt;float&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ca9ee6&#34;&gt;friend&lt;/span&gt; OverloadOp &lt;span style=&#34;color:#ca9ee6&#34;&gt;operator&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;+&lt;/span&gt; (&lt;span style=&#34;color:#e78284&#34;&gt;float&lt;/span&gt;, &lt;span style=&#34;color:#ca9ee6&#34;&gt;const&lt;/span&gt; OverloadOp&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt; right);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;conversion-operator&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#conversion-operator&#34;&gt;
+        #
+    &lt;/a&gt;
+    Conversion Operator
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;inc/code/conversion_operator.cpp&#34;&gt;example: conversion_operator.cpp&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;將自定義物件轉換為基本資料型態；指派運算時使用&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;float&lt;/span&gt; a;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;OverloadOp &lt;span style=&#34;color:#8caaee&#34;&gt;b&lt;/span&gt;(&lt;span style=&#34;color:#ef9f76&#34;&gt;1.0&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;a &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; b; &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//custom conversion
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;Implicit Conversion 隱式轉換
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;operator&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;int&lt;/span&gt;() {&lt;span style=&#34;color:#ca9ee6&#34;&gt;return&lt;/span&gt; priv_value;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;Explicit Conversion 顯式轉換
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;explicit&lt;/span&gt; &lt;span style=&#34;color:#ca9ee6&#34;&gt;operator&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;int&lt;/span&gt;() {&lt;span style=&#34;color:#ca9ee6&#34;&gt;return&lt;/span&gt; priv_value;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;顯式轉換需要加 &lt;code&gt;static_cast&lt;/code&gt;，用於判斷式的 bool 型態除外。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>C Programming: enum to string</title>
       <link>/posts/prog/c/c_enum_to_string/</link>
       <pubDate>Sat, 03 Aug 2024 00:00:00 +0000</pubDate>
@@ -5923,10 +6006,10 @@ example of &lt;code&gt;cust-style2&lt;/code&gt;
     
     <item>
       <title></title>
-      <link>/posts/prog/cpp/inc/template_make_cpp_vscode/readme/</link>
+      <link>/posts/prog/cpp/inc/code/template_make_cpp_vscode/readme/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>i70170@hotmail.com (Mike Chang)</author>
-      <guid>/posts/prog/cpp/inc/template_make_cpp_vscode/readme/</guid>
+      <guid>/posts/prog/cpp/inc/code/template_make_cpp_vscode/readme/</guid>
       <description>&lt;h1 id=&#34;c-project-template-for-visual-studio-code--mingw-on-windows&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#c-project-template-for-visual-studio-code--mingw-on-windows&#34;&gt;
