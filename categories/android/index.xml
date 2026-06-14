@@ -5,7 +5,7 @@
     <link>/categories/android/</link>
     <description>Mike&#39;s Cheatsheet (Android)</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
+    <language>en-us</language>
     
       
         <managingEditor>i70170@hotmail.com
@@ -51,7 +51,7 @@
 &lt;p&gt;PID 0 最終經由 init_idle_bootup_task() 退化為 idle process(cpu_idle)，負責 idle 排程。&lt;br&gt;
 此外產生 PID 1 的 init process 執行 &lt;code&gt;/init&lt;/code&gt;，帶起 Android 的入口 main()&lt;/p&gt;
 &lt;p&gt;kernel/init/main.c&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Linux Kernel
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Linux Kernel
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    start_kernel()
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ↓           [init thread]       [kthreadd thread]
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    rest_init() →   kernel_init() +     kthreadd()
@@ -69,7 +69,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    ...                 Package Manager
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                        ...
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;查看 init process 的 PID:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ adb shell ps -A | grep init
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ adb shell ps -A | grep init
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;init-system&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#init-system&#34;&gt;
@@ -78,7 +78,7 @@
     Init System
 &lt;/div&gt;
 &lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    main()
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    main()
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ↓
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    FirstStageMain()
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ↓
@@ -96,7 +96,7 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://android.googlesource.com/platform/system/core/&amp;#43;/refs/tags/android-15.0.0_r36/init/main.cpp&#34;&gt;main.cpp&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;透過輸入參數選擇 FirstStage 、 SetupSelinux 或 SecondStage。
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ca9ee6&#34;&gt;if&lt;/span&gt; (argc &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;1&lt;/span&gt;) {
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ca9ee6&#34;&gt;if&lt;/span&gt; (argc &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#ef9f76&#34;&gt;1&lt;/span&gt;) {
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#ca9ee6&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;!&lt;/span&gt;strcmp(argv[&lt;span style=&#34;color:#ef9f76&#34;&gt;1&lt;/span&gt;], &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;subcontext&amp;#34;&lt;/span&gt;)) {
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          ...
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#ca9ee6&#34;&gt;return&lt;/span&gt; SubcontextMain(argc, argv, &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt;function_map);
@@ -125,14 +125,14 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://android.googlesource.com/platform/system/core/&amp;#43;/refs/heads/main/init/first_stage_init.cpp&#34;&gt;first_stage_init.cpp&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;設定輸入參數後使用 &lt;code&gt;execv&lt;/code&gt; 保留 PID 重新載入 main，執行 SetupSelinux
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ca9ee6&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#e78284&#34;&gt;char&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt; path &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;/system/bin/init&amp;#34;&lt;/span&gt;;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ca9ee6&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#e78284&#34;&gt;char&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt; path &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;/system/bin/init&amp;#34;&lt;/span&gt;;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ca9ee6&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#e78284&#34;&gt;char&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt; args[] &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; {path, &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;selinux_setup&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ca9ee6&#34;&gt;nullptr&lt;/span&gt;};
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  ...
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  execv(path, &lt;span style=&#34;color:#ca9ee6&#34;&gt;const_cast&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;char&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;**&amp;gt;&lt;/span&gt;(args));
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;簡易流程:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    InstallRebootSignalHandlers(): 處理異常 signal
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    InstallRebootSignalHandlers(): 處理異常 signal
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ↓
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    mount, mkdir, chmod, setgroups, mknod: 掛載基礎檔案系統 ramdisk: tmpfs, devpts, proc, sysfs
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ↓
@@ -171,14 +171,14 @@ enforcing mode: 任何操作都會檢查權限。屬於一般 User Mode 或 User
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://android.googlesource.com/platform/system/core/&amp;#43;/refs/tags/android-15.0.0_r36/init/init.cpp&#34;&gt;init.cpp&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;分析 init.rc
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  ActionManager&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt; am &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; ActionManager&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;::&lt;/span&gt;GetInstance();
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  ActionManager&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt; am &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; ActionManager&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;::&lt;/span&gt;GetInstance();
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  ServiceList&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt; sm &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; ServiceList&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;::&lt;/span&gt;GetInstance();
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  LoadBootScripts(am, sm);
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;建立 Zygote 行程&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;簡易流程:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    InstallRebootSignalHandlers(): 處理異常 signal
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    InstallRebootSignalHandlers(): 處理異常 signal
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ↓
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    InitKernelLogging(): 開啟 log
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ↓
@@ -219,7 +219,7 @@ enforcing mode: 任何操作都會檢查權限。屬於一般 User Mode 或 User
 &lt;li&gt;以 Section 形式表達。直到下一個 Section 開頭為止構成完整描述；沒有結束標記。&lt;/li&gt;
 &lt;li&gt;重複的 Action 會被合併。&lt;/li&gt;
 &lt;li&gt;以關鍵字 on 開頭的範例
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  on early-init                           &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# Action 類型宣告; 觸發器為字串 &amp;#34;early-init&amp;#34;&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  on early-init                           &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# Action 類型宣告; 觸發器為字串 &amp;#34;early-init&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      write /proc/1/oom_score_adj -1000   &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# Command&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;trigger(觸發器): 可使用字串如 &amp;ldquo;early-init&amp;rdquo; 或屬性 &lt;code&gt;property:sys.boot_from_charger_mode=1&lt;/code&gt;；以 &lt;code&gt;&amp;amp;&amp;amp;&lt;/code&gt; 連接&lt;/li&gt;
@@ -230,7 +230,7 @@ enforcing mode: 任何操作都會檢查權限。屬於一般 User Mode 或 User
 &lt;li&gt;常與 Action 併用；實際 Linux 操作命令。&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://android.googlesource.com/platform/system/core/&amp;#43;/refs/tags/android-15.0.0_r36/init/builtins.cpp&#34;&gt;builtins.cpp&lt;/a&gt;&lt;br&gt;
 GetBuiltinFunctionMap() 定義可用命令
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ca9ee6&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#ca9ee6&#34;&gt;const&lt;/span&gt; BuiltinFunctionMap builtin_functions &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; {
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ca9ee6&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#ca9ee6&#34;&gt;const&lt;/span&gt; BuiltinFunctionMap builtin_functions &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; {
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      {&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;bootchart&amp;#34;&lt;/span&gt;,               {&lt;span style=&#34;color:#ef9f76&#34;&gt;1&lt;/span&gt;,     &lt;span style=&#34;color:#ef9f76&#34;&gt;1&lt;/span&gt;,    {&lt;span style=&#34;color:#99d1db&#34;&gt;false&lt;/span&gt;,  do_bootchart}}},
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      ...
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  };
@@ -242,7 +242,7 @@ GetBuiltinFunctionMap() 定義可用命令
 &lt;li&gt;以 Section 形式表達。直到下一個 Section 開頭為止構成完整描述；沒有結束標記。&lt;/li&gt;
 &lt;li&gt;不允許使用重複的 Service 名稱。&lt;/li&gt;
 &lt;li&gt;以關鍵字 service 開頭的範例
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  service ueventd /sbin/ueventd           &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# Service 類型宣告; 包含服務名稱與執行路徑，透過 start 命令執行&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  service ueventd /sbin/ueventd           &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# Service 類型宣告; 包含服務名稱與執行路徑，透過 start 命令執行&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      class core                          &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# Option 修飾服務; 可包含複數敘述&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      critical
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
@@ -256,7 +256,7 @@ GetBuiltinFunctionMap() 定義可用命令
 &lt;li&gt;Import
 &lt;ul&gt;
 &lt;li&gt;關聯其他 .rc 檔
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  import /init.&lt;span style=&#34;color:#a6d189&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;ro&lt;/span&gt;.hardware&lt;span style=&#34;color:#a6d189&#34;&gt;}&lt;/span&gt;.rc
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  import /init.&lt;span style=&#34;color:#a6d189&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;ro&lt;/span&gt;.hardware&lt;span style=&#34;color:#a6d189&#34;&gt;}&lt;/span&gt;.rc
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
@@ -270,7 +270,7 @@ GetBuiltinFunctionMap() 定義可用命令
 &lt;/div&gt;
 &lt;/h3&gt;
 &lt;p&gt;init.cpp 中建立並使用 Parser&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    Parser parser &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; CreateParser(action_manager, service_list);
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    Parser parser &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; CreateParser(action_manager, service_list);
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    parser.ParseConfig(...)
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;ActionParser, ImportParser, ServiceParser 解析對應 section&lt;/p&gt;
 &lt;ul&gt;
@@ -291,7 +291,7 @@ GetBuiltinFunctionMap() 定義可用命令
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    Parser::ParseConfigFile() → ParseData() → &amp;lt;Action?&amp;gt;     → ActionParser::ParseLineSection() 將 command 加入 Action
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    Parser::ParseConfigFile() → ParseData() → &amp;lt;Action?&amp;gt;     → ActionParser::ParseLineSection() 將 command 加入 Action
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                            → &amp;lt;Import?&amp;gt;     → ImportParser
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                            → &amp;lt;Service?&amp;gt;    → ServiceParser::ParseLineSection() 將 option 加入 Service
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;trigger-觸發&#34; &gt;
@@ -310,42 +310,42 @@ GetBuiltinFunctionMap() 定義可用命令
 &lt;/ul&gt;
 &lt;p&gt;&lt;a href=&#34;https://android.googlesource.com/platform/system/core/&amp;#43;/refs/tags/android-15.0.0_r36/rootdir/init.rc&#34;&gt;init.rc&lt;/a&gt; 中 Action 次序決定觸發順序，&lt;br&gt;
 而 SecondStageMain() 中的 LoadBootScripts() 決定 .rc 載入順序；相同目錄下經由 Parser::ParseConfigDir() 排序後以升冪順序執行。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    init.rc → import in init.rc → nested import → /system/etc/init/ → /vendor/etc/init/ → /odm/etc/init/
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    init.rc → import in init.rc → nested import → /system/etc/init/ → /vendor/etc/init/ → /odm/etc/init/
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                      ↑                ↓
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                      ←    recursive   ←
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th style=&#34;text-align: left&#34;&gt;Path&lt;/th&gt;
-          &lt;th style=&#34;text-align: left&#34;&gt;Description&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;/init.${ro.hardware}.rc&lt;/td&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;hardware vendor 設定&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;/system/etc/init/hw/init.rc&lt;/td&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;hardware vendor 設定&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;/system/etc/init&lt;/td&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;Android 系統設定如 SurfaceFlinger, MediaService, logcatd&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;/vendor/etc/init&lt;/td&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;SoC vendor 設定&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;/odm/etc/init&lt;/td&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;ODM 設定&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;/product/etc/init&lt;/td&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;個別產品設定&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th style=&#34;text-align: left&#34;&gt;Path&lt;/th&gt;
+					&lt;th style=&#34;text-align: left&#34;&gt;Description&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;/init.${ro.hardware}.rc&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;hardware vendor 設定&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;/system/etc/init/hw/init.rc&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;hardware vendor 設定&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;/system/etc/init&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;Android 系統設定如 SurfaceFlinger, MediaService, logcatd&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;/vendor/etc/init&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;SoC vendor 設定&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;/odm/etc/init&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;ODM 設定&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;/product/etc/init&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;個別產品設定&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;SecondStageMain() 解析完 .rc 文件後使用 epoll 持續監聽事件與回收 zombie process，即最後的 while 迴圈:&lt;/p&gt;
 &lt;ul&gt;
@@ -353,7 +353,7 @@ GetBuiltinFunctionMap() 定義可用命令
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://android.googlesource.com/platform/system/core/&amp;#43;/refs/tags/android-15.0.0_r36/init/property_service.cpp&#34;&gt;property_service.cpp&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;使用 EPOLL 監控屬性變化事件
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ca9ee6&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#e78284&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;PropertyServiceThread&lt;/span&gt;(&lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; fd, &lt;span style=&#34;color:#e78284&#34;&gt;bool&lt;/span&gt; listen_init) {
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ca9ee6&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#e78284&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;PropertyServiceThread&lt;/span&gt;(&lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; fd, &lt;span style=&#34;color:#e78284&#34;&gt;bool&lt;/span&gt; listen_init) {
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      ... epoll.RegisterHandler(fd, std&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;::&lt;/span&gt;bind(handle_property_set_fd, fd)) ...
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      ... epoll.RegisterHandler(init_socket, HandleInitSocket) ...
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#ca9ee6&#34;&gt;while&lt;/span&gt; (&lt;span style=&#34;color:#99d1db&#34;&gt;true&lt;/span&gt;) {
@@ -381,7 +381,7 @@ GetBuiltinFunctionMap() 定義可用命令
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;處理屬性變化事件: __system_property_update(), __system_property_add()
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ca9ee6&#34;&gt;static&lt;/span&gt; std&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;::&lt;/span&gt;optional&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;uint32_t&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt; PropertySet(...) {
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ca9ee6&#34;&gt;static&lt;/span&gt; std&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;::&lt;/span&gt;optional&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;uint32_t&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt; PropertySet(...) {
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      ...
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          prop_info&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt; pi &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;=&lt;/span&gt; (prop_info&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt;)__system_property_find(name.c_str());
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#ca9ee6&#34;&gt;if&lt;/span&gt; (pi &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#ca9ee6&#34;&gt;nullptr&lt;/span&gt;) {
@@ -402,16 +402,16 @@ GetBuiltinFunctionMap() 定義可用命令
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;HandleSignalFd() 處理 SIGCHLD
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//init.cpp
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;  &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//InstallSignalFdHandler() → RegisterSignalFd()
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//init.cpp
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//InstallSignalFdHandler() → RegisterSignalFd()
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ca9ee6&#34;&gt;static&lt;/span&gt; Result&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#e78284&#34;&gt;void&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt; RegisterSignalFd(Epoll&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt; epoll, &lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; signal, &lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; fd) {
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#ca9ee6&#34;&gt;return&lt;/span&gt; epoll&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;-&amp;gt;&lt;/span&gt;RegisterHandler(fd, [signal]() { HandleSignalFd(signal); }, EPOLLIN &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;|&lt;/span&gt; EPOLLPRI);
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;HandleKeychord() 處理鍵盤事件
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//init.cpp
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;//init.cpp
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;SecondStageMain&lt;/span&gt;(&lt;span style=&#34;color:#e78284&#34;&gt;int&lt;/span&gt; argc, &lt;span style=&#34;color:#e78284&#34;&gt;char&lt;/span&gt;&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;**&lt;/span&gt; argv) {
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      ...
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      Keychords keychords;

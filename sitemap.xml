@@ -2,195 +2,194 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-        <loc>http://172.20.85.217:1313/</loc>
+        <loc>https://vitaceae.github.io/</loc>
+        <lastmod>2025-08-03T00:00:00+00:00</lastmod>
+      </url><url>
+        <loc>https://vitaceae.github.io/categories/</loc>
+        <lastmod>2025-08-03T00:00:00+00:00</lastmod>
+      </url><url>
+        <loc>https://vitaceae.github.io/tags/index/</loc>
+        <lastmod>2025-08-03T00:00:00+00:00</lastmod>
+      </url><url>
+        <loc>https://vitaceae.github.io/tags/mathjax/</loc>
+        <lastmod>2025-08-03T00:00:00+00:00</lastmod>
+      </url><url>
+        <loc>https://vitaceae.github.io/posts/web/mathjax/</loc>
+        <lastmod>2025-08-03T00:00:00+00:00</lastmod>
+      </url><url>
+        <loc>https://vitaceae.github.io/posts/</loc>
+        <lastmod>2025-08-03T00:00:00+00:00</lastmod>
+      </url><url>
+        <loc>https://vitaceae.github.io/tags/</loc>
+        <lastmod>2025-08-03T00:00:00+00:00</lastmod>
+      </url><url>
+        <loc>https://vitaceae.github.io/categories/web/</loc>
+        <lastmod>2025-08-03T00:00:00+00:00</lastmod>
+      </url><url>
+        <loc>https://vitaceae.github.io/categories/setup/</loc>
         <lastmod>2025-05-01T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>http://172.20.85.217:1313/categories/</loc>
+        <loc>https://vitaceae.github.io/tags/ubuntu/</loc>
         <lastmod>2025-05-01T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>http://172.20.85.217:1313/tags/index/</loc>
+        <loc>https://vitaceae.github.io/posts/system/linux/setup_ubuntu_desktop/</loc>
         <lastmod>2025-05-01T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>http://172.20.85.217:1313/posts/</loc>
-        <lastmod>2025-05-01T00:00:00+00:00</lastmod>
-      </url><url>
-        <loc>http://172.20.85.217:1313/categories/setup/</loc>
-        <lastmod>2025-05-01T00:00:00+00:00</lastmod>
-      </url><url>
-        <loc>http://172.20.85.217:1313/tags/</loc>
-        <lastmod>2025-05-01T00:00:00+00:00</lastmod>
-      </url><url>
-        <loc>http://172.20.85.217:1313/tags/ubuntu/</loc>
-        <lastmod>2025-05-01T00:00:00+00:00</lastmod>
-      </url><url>
-        <loc>http://172.20.85.217:1313/posts/system/linux/setup_ubuntu_desktop/</loc>
-        <lastmod>2025-05-01T00:00:00+00:00</lastmod>
-      </url><url>
-        <loc>http://172.20.85.217:1313/about/</loc>
+        <loc>https://vitaceae.github.io/about/</loc>
         <lastmod>2025-03-02T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>http://172.20.85.217:1313/categories/android/</loc>
+        <loc>https://vitaceae.github.io/posts/prog/c/c_enum_to_string/</loc>
+        <lastmod>2024-08-03T00:00:00+00:00</lastmod>
+      </url><url>
+        <loc>https://vitaceae.github.io/tags/c-prog-cpp-prog/</loc>
+        <lastmod>2024-08-03T00:00:00+00:00</lastmod>
+      </url><url>
+        <loc>https://vitaceae.github.io/categories/programming/</loc>
+        <lastmod>2024-08-03T00:00:00+00:00</lastmod>
+      </url><url>
+        <loc>https://vitaceae.github.io/posts/prog/c/c_sundries/</loc>
+        <lastmod>2024-06-25T00:00:00+00:00</lastmod>
+      </url><url>
+        <loc>https://vitaceae.github.io/tags/c-prog/</loc>
+        <lastmod>2024-06-25T00:00:00+00:00</lastmod>
+      </url><url>
+        <loc>https://vitaceae.github.io/categories/android/</loc>
         <lastmod>2024-06-03T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>http://172.20.85.217:1313/posts/system/android/init_system/</loc>
+        <loc>https://vitaceae.github.io/posts/system/android/init_system/</loc>
         <lastmod>2024-06-03T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>http://172.20.85.217:1313/tags/init-system/</loc>
+        <loc>https://vitaceae.github.io/tags/init-system/</loc>
         <lastmod>2024-06-03T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>http://172.20.85.217:1313/posts/prog/c/c_lib/</loc>
+        <loc>https://vitaceae.github.io/posts/prog/c/c_lib/</loc>
         <lastmod>2024-05-23T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>http://172.20.85.217:1313/posts/prog/c/c_misconception/</loc>
+        <loc>https://vitaceae.github.io/posts/prog/c/c_misconception/</loc>
         <lastmod>2024-05-23T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>http://172.20.85.217:1313/tags/c-prog/</loc>
-        <lastmod>2024-05-23T00:00:00+00:00</lastmod>
-      </url><url>
-        <loc>http://172.20.85.217:1313/categories/programming/</loc>
-        <lastmod>2024-05-23T00:00:00+00:00</lastmod>
-      </url><url>
-        <loc>http://172.20.85.217:1313/posts/prog/c/c_sundries/</loc>
+        <loc>https://vitaceae.github.io/posts/prog/c/c_floating_points/</loc>
         <lastmod>2024-05-21T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>http://172.20.85.217:1313/posts/prog/c/c_floating_points/</loc>
-        <lastmod>2024-05-21T00:00:00+00:00</lastmod>
-      </url><url>
-        <loc>http://172.20.85.217:1313/posts/prog/c/c_optimization/</loc>
+        <loc>https://vitaceae.github.io/posts/prog/c/c_syntax/</loc>
         <lastmod>2024-03-27T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>http://172.20.85.217:1313/posts/prog/c/c_macro/</loc>
+        <loc>https://vitaceae.github.io/posts/prog/c/c_macro/</loc>
         <lastmod>2024-03-27T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>http://172.20.85.217:1313/posts/prog/c/c_misc/</loc>
+        <loc>https://vitaceae.github.io/posts/prog/c/c_optimization/</loc>
         <lastmod>2024-03-27T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>http://172.20.85.217:1313/posts/prog/c/c_syntax/</loc>
-        <lastmod>2024-03-27T00:00:00+00:00</lastmod>
-      </url><url>
-        <loc>http://172.20.85.217:1313/tags/cgi/</loc>
+        <loc>https://vitaceae.github.io/tags/cgi/</loc>
         <lastmod>2024-03-26T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>http://172.20.85.217:1313/posts/prog/web/cgi_in_c/</loc>
+        <loc>https://vitaceae.github.io/posts/prog/web/cgi_in_c/</loc>
         <lastmod>2024-03-26T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>http://172.20.85.217:1313/tags/lamp/</loc>
+        <loc>https://vitaceae.github.io/tags/lamp/</loc>
         <lastmod>2024-03-26T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>http://172.20.85.217:1313/tags/lemp/</loc>
+        <loc>https://vitaceae.github.io/tags/lemp/</loc>
         <lastmod>2024-03-26T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>http://172.20.85.217:1313/tags/lnmp/</loc>
+        <loc>https://vitaceae.github.io/tags/lnmp/</loc>
         <lastmod>2024-03-26T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>http://172.20.85.217:1313/posts/web/setup_lamp_lemp/</loc>
+        <loc>https://vitaceae.github.io/posts/web/setup_lamp_lemp/</loc>
         <lastmod>2024-03-26T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>http://172.20.85.217:1313/categories/web/</loc>
+        <loc>https://vitaceae.github.io/categories/web-prog/</loc>
         <lastmod>2024-03-26T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>http://172.20.85.217:1313/categories/web-prog/</loc>
-        <lastmod>2024-03-26T00:00:00+00:00</lastmod>
-      </url><url>
-        <loc>http://172.20.85.217:1313/posts/prog/programming/</loc>
+        <loc>https://vitaceae.github.io/posts/prog/programming/</loc>
         <lastmod>2024-03-20T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>http://172.20.85.217:1313/tags/bitbake/</loc>
+        <loc>https://vitaceae.github.io/posts/platforms/build_tools/</loc>
         <lastmod>2024-03-19T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>http://172.20.85.217:1313/posts/platforms/build_tools/</loc>
+        <loc>https://vitaceae.github.io/tags/buildroot/</loc>
         <lastmod>2024-03-19T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>http://172.20.85.217:1313/tags/buildroot/</loc>
+        <loc>https://vitaceae.github.io/categories/dev-platform/</loc>
         <lastmod>2024-03-19T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>http://172.20.85.217:1313/categories/dev-platform/</loc>
+        <loc>https://vitaceae.github.io/tags/openwrt/</loc>
         <lastmod>2024-03-19T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>http://172.20.85.217:1313/tags/openwrt/</loc>
+        <loc>https://vitaceae.github.io/tags/rockchip/</loc>
         <lastmod>2024-03-19T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>http://172.20.85.217:1313/tags/rockchip/</loc>
+        <loc>https://vitaceae.github.io/posts/platforms/rockchip/</loc>
         <lastmod>2024-03-19T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>http://172.20.85.217:1313/posts/platforms/rockchip/</loc>
+        <loc>https://vitaceae.github.io/tags/yocto/</loc>
         <lastmod>2024-03-19T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>http://172.20.85.217:1313/tags/todo/</loc>
-        <lastmod>2024-03-19T00:00:00+00:00</lastmod>
-      </url><url>
-        <loc>http://172.20.85.217:1313/tags/yocto/</loc>
-        <lastmod>2024-03-19T00:00:00+00:00</lastmod>
-      </url><url>
-        <loc>http://172.20.85.217:1313/posts/platforms/bitbake/</loc>
-        <lastmod>2024-03-19T00:00:00+00:00</lastmod>
-      </url><url>
-        <loc>http://172.20.85.217:1313/posts/platforms/yocto/</loc>
-        <lastmod>2024-03-19T00:00:00+00:00</lastmod>
-      </url><url>
-        <loc>http://172.20.85.217:1313/tags/analytics/</loc>
+        <loc>https://vitaceae.github.io/tags/analytics/</loc>
         <lastmod>2024-03-18T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>http://172.20.85.217:1313/tags/website/</loc>
+        <loc>https://vitaceae.github.io/tags/website/</loc>
         <lastmod>2024-03-18T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>http://172.20.85.217:1313/posts/web/analytics_tools/</loc>
+        <loc>https://vitaceae.github.io/posts/web/analytics_tools/</loc>
         <lastmod>2024-03-18T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>http://172.20.85.217:1313/tags/css/</loc>
+        <loc>https://vitaceae.github.io/tags/css/</loc>
         <lastmod>2024-03-03T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>http://172.20.85.217:1313/tags/emoji/</loc>
+        <loc>https://vitaceae.github.io/tags/emoji/</loc>
         <lastmod>2024-03-03T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>http://172.20.85.217:1313/tags/giscus/</loc>
+        <loc>https://vitaceae.github.io/tags/giscus/</loc>
         <lastmod>2024-03-03T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>http://172.20.85.217:1313/tags/hugo/</loc>
+        <loc>https://vitaceae.github.io/tags/hugo/</loc>
         <lastmod>2024-03-03T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>http://172.20.85.217:1313/posts/web/hugo-advanced/</loc>
+        <loc>https://vitaceae.github.io/posts/web/hugo-advanced/</loc>
         <lastmod>2024-03-03T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>http://172.20.85.217:1313/posts/web/hugo_style/</loc>
+        <loc>https://vitaceae.github.io/posts/web/hugo_style/</loc>
         <lastmod>2024-03-03T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>http://172.20.85.217:1313/tags/icons/</loc>
+        <loc>https://vitaceae.github.io/tags/icons/</loc>
         <lastmod>2024-03-03T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>http://172.20.85.217:1313/tags/privacy/</loc>
+        <loc>https://vitaceae.github.io/tags/privacy/</loc>
         <lastmod>2024-03-03T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>http://172.20.85.217:1313/tags/shortcodes/</loc>
+        <loc>https://vitaceae.github.io/tags/shortcodes/</loc>
         <lastmod>2024-03-03T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>http://172.20.85.217:1313/tags/umami/</loc>
+        <loc>https://vitaceae.github.io/tags/umami/</loc>
         <lastmod>2024-03-03T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>http://172.20.85.217:1313/tags/comments-system/</loc>
+        <loc>https://vitaceae.github.io/tags/comments-system/</loc>
         <lastmod>2024-03-02T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>http://172.20.85.217:1313/tags/diagrams/</loc>
+        <loc>https://vitaceae.github.io/tags/diagrams/</loc>
         <lastmod>2024-03-02T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>http://172.20.85.217:1313/tags/goat/</loc>
+        <loc>https://vitaceae.github.io/tags/goat/</loc>
         <lastmod>2024-03-02T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>http://172.20.85.217:1313/posts/web/hugo/</loc>
+        <loc>https://vitaceae.github.io/posts/web/hugo/</loc>
         <lastmod>2024-03-02T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>http://172.20.85.217:1313/posts/web/hugo_diagram/</loc>
+        <loc>https://vitaceae.github.io/posts/web/hugo_diagram/</loc>
         <lastmod>2024-03-02T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>http://172.20.85.217:1313/tags/mermaid/</loc>
+        <loc>https://vitaceae.github.io/tags/mermaid/</loc>
         <lastmod>2024-03-02T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>http://172.20.85.217:1313/tags/static-site/</loc>
+        <loc>https://vitaceae.github.io/tags/static-site/</loc>
         <lastmod>2024-03-02T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>http://172.20.85.217:1313/posts/web/website/</loc>
+        <loc>https://vitaceae.github.io/posts/web/website/</loc>
         <lastmod>2024-03-02T00:00:00+00:00</lastmod>
       </url><url>
-        <loc>http://172.20.85.217:1313/authors/</loc>
+        <loc>https://vitaceae.github.io/posts/prog/cpp/inc/template_make_cpp_vscode/readme/</loc>
+      </url><url>
+        <loc>https://vitaceae.github.io/authors/</loc>
       </url>
 </urlset>

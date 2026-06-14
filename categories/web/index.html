@@ -2,7 +2,7 @@
 
 
 <html lang="en-us" data-theme="">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<head>
     
         
 <meta charset="utf-8">
@@ -19,8 +19,8 @@
 
 
 <link rel="alternate" type="application/rss+xml" href="/categories/web/index.xml" title="Mike's Cheatsheet" />
-<link rel="icon" type="image/x-icon" href="http://172.20.85.217:1313/favicon.ico">
-<link rel="apple-touch-icon-precomposed" href="http://172.20.85.217:1313/favicon.png">
+<link rel="icon" type="image/x-icon" href="https://vitaceae.github.io/favicon.ico">
+<link rel="apple-touch-icon-precomposed" href="https://vitaceae.github.io/favicon.png">
 
 
 
@@ -62,28 +62,12 @@
 
     
     
-    
-
-    
-        <link rel="stylesheet" href="/css/style.4c42aa0abeac804c4933c54677c449cea1f723caae778425d031e98565a0cdef.css" integrity="sha256-TEKqCr6sgExJM8VGd8RJzqH3I8qud4Ql0DHphWWgze8=">
-    
-
-
-
-
-
-    
-
-
-
-
-
-    
+        
     
     
 
     
-        <link rel="stylesheet" href="/css/style.9c1888ebff42c0224ce04dac10cb2c401f1b77f54f78e8d87d73c3bed781c263.css" integrity="sha256-nBiI6/9CwCJM4E2sEMssQB8bd/VPeOjYfXPDvteBwmM=">
+        <link rel="stylesheet" href="/css/style.min.44f8240afd8df81b52565c4119ac5ae247776c77fc6d7ccf6e101a6c98abfa7a.css" integrity="sha256-RPgkCv2N&#43;BtSVlxBGaxa4kd3bHf8bXzPbhAabJir&#43;no=">
     
 
 
@@ -98,10 +82,32 @@
 
     
     
+        
+    
     
 
     
-        <link rel="stylesheet" href="/css/style.acd606c0fce58853afe0248d37bb41acbbcdd8b1aca2412b6c0fa760da0137f3.css" integrity="sha256-rNYGwPzliFOv4CSNN7tBrLvN2LGsokErbA&#43;nYNoBN/M=">
+        <link rel="stylesheet" href="/css/style.min.c4c04b3ef88e3d619ad4c7ee5e03048422bc55c4fefdc1f07657c1133670aa22.css" integrity="sha256-xMBLPviOPWGa1MfuXgMEhCK8VcT&#43;/cHwdlfBEzZwqiI=">
+    
+
+
+
+
+
+    
+
+
+
+
+
+    
+    
+        
+    
+    
+
+    
+        <link rel="stylesheet" href="/css/style.min.21c5d8fe0a79d623b0adc1ce4bd4f6dd2c05cd939c9aaaa966ba7186b1464f4d.css" integrity="sha256-IcXY/gp51iOwrcHOS9T23SwFzZOcmqqpZrpxhrFGT00=">
     
 
 
@@ -147,10 +153,12 @@
 
     
     
+        
+    
     
 
     
-        <script src="/js/script.672e2309c296e07c18bcd08b28d797a56222ff941d65f308fba3158c44885b14.js" type="text/javascript" charset="utf-8" integrity="sha256-Zy4jCcKW4HwYvNCLKNeXpWIi/5QdZfMI&#43;6MVjESIWxQ="></script>
+        <script src="/js/script.min.08f04d96386c73c9bf4d160333f8f448c05a6e01c06770542ee0e013954ce930.js" type="text/javascript" charset="utf-8" integrity="sha256-CPBNljhsc8m/TRYDM/j0SMBabgHAZ3BULuDgE5VM6TA="></script>
     
 
 
@@ -416,15 +424,15 @@
     <nav class="noselect">
         
         
-        <a class="" href="http://172.20.85.217:1313/" title="">Home</a>
+        <a class="" href="https://vitaceae.github.io/" title="">Home</a>
         
-        <a class="" href="http://172.20.85.217:1313/about/" title="">About</a>
+        <a class="" href="https://vitaceae.github.io/about/" title="">About</a>
         
-        <a class="" href="http://172.20.85.217:1313/categories/" title="">Categories</a>
+        <a class="" href="https://vitaceae.github.io/categories/" title="">Categories</a>
         
-        <a class="" href="http://172.20.85.217:1313/tags/" title="">Tags</a>
+        <a class="" href="https://vitaceae.github.io/tags/" title="">Tags</a>
         
-        <a class="" href="http://172.20.85.217:1313/posts/" title="">Archive</a>
+        <a class="" href="https://vitaceae.github.io/posts/" title="">Archive</a>
         
     </nav>
 
@@ -444,6 +452,98 @@
         <a href="/categories/">To all categories</a>
     </div>
     
+    
+        <article class="post-list h-feed post-card">
+    <div class="post-header">
+        <header>
+            
+            
+            
+            <h1 class="p-name post-title ">
+                <a class="u-url" href="/posts/web/mathjax/">MathJax</a>
+            </h1>
+        </header>
+        
+
+    </div>
+
+    
+        <div class="content post-summary p-summary">
+            <p>MathJax 語法小抄</p>
+        </div>
+    
+
+    
+    
+    
+    
+    
+        <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+      document.querySelectorAll("mjx-container").forEach(function(x){
+        x.parentElement.classList += 'has-jax'})
+    });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    
+
+    
+
+    
+
+
+
+<div class="post-info noselect">
+    
+        <div class="post-date dt-published">
+            <time datetime="2025-08-03">2025-08-03</time>
+            
+        </div>
+    
+
+    <a class="post-hidden-url u-url" href="/posts/web/mathjax/">/posts/web/mathjax/</a>
+    <a href="https://vitaceae.github.io/" class="p-name p-author post-hidden-author h-card" rel="me">Mike</a>
+
+
+    <div class="post-taxonomies">
+        
+            <ul class="post-categories">
+                
+                    
+                    <li><a href="/categories/web/">Web</a></li>
+                
+            </ul>
+        
+        
+            <ul class="post-tags">
+                
+                    
+                    <li><a href="/tags/mathjax/">#Mathjax</a></li>
+                
+            </ul>
+        
+        
+    </div>
+</div>
+
+</article>
+
     
         <article class="post-list h-feed post-card">
     <div class="post-header">
@@ -494,7 +594,7 @@
     
 
     <a class="post-hidden-url u-url" href="/posts/web/setup_lamp_lemp/">/posts/web/setup_lamp_lemp/</a>
-    <a href="http://172.20.85.217:1313/" class="p-name p-author post-hidden-author h-card" rel="me">Mike</a>
+    <a href="https://vitaceae.github.io/" class="p-name p-author post-hidden-author h-card" rel="me">Mike</a>
 
 
     <div class="post-taxonomies">
@@ -545,64 +645,64 @@
         <div class="content post-summary p-summary">
             <p>網站分析工具彙整</p>
 <table>
-  <thead>
-      <tr>
-          <th style="text-align: center">Platform</th>
-          <th style="text-align: center">hosting</th>
-          <th style="text-align: center">charge</th>
-          <th style="text-align: center">data retention</th>
-          <th style="text-align: center">site limit</th>
-          <th style="text-align: center">user-friendly</th>
-          <th style="text-align: left">others</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td style="text-align: center">Umami</td>
-          <td style="text-align: center">cloud</td>
-          <td style="text-align: center">free</td>
-          <td style="text-align: center">1 year</td>
-          <td style="text-align: center">3</td>
-          <td style="text-align: center">v</td>
-          <td></td>
-      </tr>
-      <tr>
-          <td style="text-align: center">Google Analytics</td>
-          <td style="text-align: center">cloud</td>
-          <td style="text-align: center">free</td>
-          <td style="text-align: center"></td>
-          <td style="text-align: center"></td>
-          <td style="text-align: center"></td>
-          <td style="text-align: left">資料過於複雜, 減少依賴邪惡 Google</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">Netlify + Neon</td>
-          <td style="text-align: center">self</td>
-          <td style="text-align: center">free</td>
-          <td style="text-align: center">unlimited</td>
-          <td style="text-align: center"></td>
-          <td style="text-align: center">x</td>
-          <td></td>
-      </tr>
-      <tr>
-          <td style="text-align: center">Railway</td>
-          <td style="text-align: center">self</td>
-          <td style="text-align: center">$5+/month</td>
-          <td style="text-align: center">unlimited</td>
-          <td style="text-align: center"></td>
-          <td style="text-align: center">v</td>
-          <td></td>
-      </tr>
-      <tr>
-          <td style="text-align: center">Vercel + TiDB Cloud</td>
-          <td style="text-align: center">self</td>
-          <td style="text-align: center">free</td>
-          <td style="text-align: center">unlimited</td>
-          <td style="text-align: center">unlimited</td>
-          <td style="text-align: center">x</td>
-          <td style="text-align: left">custom domain name; free 5GB storage</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th style="text-align: center">Platform</th>
+					<th style="text-align: center">hosting</th>
+					<th style="text-align: center">charge</th>
+					<th style="text-align: center">data retention</th>
+					<th style="text-align: center">site limit</th>
+					<th style="text-align: center">user-friendly</th>
+					<th style="text-align: left">others</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td style="text-align: center">Umami</td>
+					<td style="text-align: center">cloud</td>
+					<td style="text-align: center">free</td>
+					<td style="text-align: center">1 year</td>
+					<td style="text-align: center">3</td>
+					<td style="text-align: center">v</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td style="text-align: center">Google Analytics</td>
+					<td style="text-align: center">cloud</td>
+					<td style="text-align: center">free</td>
+					<td style="text-align: center"></td>
+					<td style="text-align: center"></td>
+					<td style="text-align: center"></td>
+					<td style="text-align: left">資料過於複雜, 減少依賴邪惡 Google</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">Netlify + Neon</td>
+					<td style="text-align: center">self</td>
+					<td style="text-align: center">free</td>
+					<td style="text-align: center">unlimited</td>
+					<td style="text-align: center"></td>
+					<td style="text-align: center">x</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td style="text-align: center">Railway</td>
+					<td style="text-align: center">self</td>
+					<td style="text-align: center">$5+/month</td>
+					<td style="text-align: center">unlimited</td>
+					<td style="text-align: center"></td>
+					<td style="text-align: center">v</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td style="text-align: center">Vercel + TiDB Cloud</td>
+					<td style="text-align: center">self</td>
+					<td style="text-align: center">free</td>
+					<td style="text-align: center">unlimited</td>
+					<td style="text-align: center">unlimited</td>
+					<td style="text-align: center">x</td>
+					<td style="text-align: left">custom domain name; free 5GB storage</td>
+			</tr>
+	</tbody>
 </table>
         </div>
     
@@ -652,7 +752,7 @@
     
 
     <a class="post-hidden-url u-url" href="/posts/web/analytics_tools/">/posts/web/analytics_tools/</a>
-    <a href="http://172.20.85.217:1313/" class="p-name p-author post-hidden-author h-card" rel="me">Mike</a>
+    <a href="https://vitaceae.github.io/" class="p-name p-author post-hidden-author h-card" rel="me">Mike</a>
 
 
     <div class="post-taxonomies">
@@ -747,7 +847,7 @@
     
 
     <a class="post-hidden-url u-url" href="/posts/web/hugo-advanced/">/posts/web/hugo-advanced/</a>
-    <a href="http://172.20.85.217:1313/" class="p-name p-author post-hidden-author h-card" rel="me">Mike</a>
+    <a href="https://vitaceae.github.io/" class="p-name p-author post-hidden-author h-card" rel="me">Mike</a>
 
 
     <div class="post-taxonomies">
@@ -836,7 +936,7 @@
     
 
     <a class="post-hidden-url u-url" href="/posts/web/hugo_style/">/posts/web/hugo_style/</a>
-    <a href="http://172.20.85.217:1313/" class="p-name p-author post-hidden-author h-card" rel="me">Mike</a>
+    <a href="https://vitaceae.github.io/" class="p-name p-author post-hidden-author h-card" rel="me">Mike</a>
 
 
     <div class="post-taxonomies">
@@ -859,77 +959,6 @@
                 
                     
                     <li><a href="/tags/css/">#Css</a></li>
-                
-            </ul>
-        
-        
-    </div>
-</div>
-
-</article>
-
-    
-        <article class="post-list h-feed post-card">
-    <div class="post-header">
-        <header>
-            
-            
-            
-            <h1 class="p-name post-title ">
-                <a class="u-url" href="/posts/web/hugo/">Hugo</a>
-            </h1>
-        </header>
-        
-
-    </div>
-
-    
-        <div class="content post-summary p-summary">
-            <p>Hugo 靜態網站產生器</p>
-        </div>
-    
-
-    
-    
-    
-    
-    
-
-    
-
-    
-
-
-
-<div class="post-info noselect">
-    
-        <div class="post-date dt-published">
-            <time datetime="2024-03-02">2024-03-02</time>
-            
-        </div>
-    
-
-    <a class="post-hidden-url u-url" href="/posts/web/hugo/">/posts/web/hugo/</a>
-    <a href="http://172.20.85.217:1313/" class="p-name p-author post-hidden-author h-card" rel="me">Mike</a>
-
-
-    <div class="post-taxonomies">
-        
-            <ul class="post-categories">
-                
-                    
-                    <li><a href="/categories/web/">Web</a></li>
-                
-            </ul>
-        
-        
-            <ul class="post-tags">
-                
-                    
-                    <li><a href="/tags/website/">#Website</a></li>
-                
-                    
-                    <li><a href="/tags/hugo/">#Hugo</a></li>
                 
             </ul>
         
@@ -967,7 +996,7 @@
         
 
         <div style="display: flex; align-items: center; gap:8px">
-            ©  Mike Chang,  2025
+            ©  Mike Chang,  2026
             
             <a aria-label="Check statistics data" style="display: flex; align-items: center; border-bottom: none; cursor: pointer; color: var(--pagination-link-color)" href="https://cloud.umami.is/share/biHOZBHqeGeBgHVS/vitaceae.github.io"><svg xmlns="http://www.w3.org/2000/svg"  width="16"  height="16"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-report-analytics"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" /><path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" /><path d="M9 17v-5" /><path d="M12 17v-1" /><path d="M15 17v-3" /></svg></a>
             
@@ -989,7 +1018,7 @@
 
     <p class="h-card vcard">
 
-    <a href=http://172.20.85.217:1313/ class="p-name u-url url fn" rel="me">map[email:i70170@hotmail.com location:Taiwan name:Mike Chang]</a>
+    <a href=https://vitaceae.github.io/ class="p-name u-url url fn" rel="me">map[email:i70170@hotmail.com location:Taiwan name:Mike Chang]</a>
 
     
 

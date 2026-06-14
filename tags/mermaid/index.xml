@@ -5,7 +5,7 @@
     <link>/tags/mermaid/</link>
     <description>Mike&#39;s Cheatsheet (Mermaid)</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
+    <language>en-us</language>
     
       
         <managingEditor>i70170@hotmail.com
@@ -153,14 +153,14 @@
 
 
 &lt;div class=&#34;goat svg-container &#34;&gt;
-  
-    &lt;svg
-      xmlns=&#34;http://www.w3.org/2000/svg&#34;
-      font-family=&#34;Menlo,Lucida Console,monospace&#34;
-      
-        viewBox=&#34;0 0 680 121&#34;
-      &gt;
-      &lt;g transform=&#39;translate(8,16)&#39;&gt;
+	
+		&lt;svg
+			xmlns=&#34;http://www.w3.org/2000/svg&#34;
+			font-family=&#34;Menlo,Lucida Console,monospace&#34;
+			
+				viewBox=&#34;0 0 680 121&#34;
+			&gt;
+			&lt;g transform=&#39;translate(8,16)&#39;&gt;
 &lt;path d=&#39;M 440,0 L 464,0&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
 &lt;path d=&#39;M 576,0 L 584,0&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
 &lt;path d=&#39;M 408,16 L 440,16&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
@@ -251,8 +251,8 @@
 &lt;text text-anchor=&#39;middle&#39; x=&#39;664&#39; y=&#39;100&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;4&lt;/text&gt;
 &lt;/g&gt;
 
-    &lt;/svg&gt;
-  
+		&lt;/svg&gt;
+	
 &lt;/div&gt;</description>
     </item>
     
