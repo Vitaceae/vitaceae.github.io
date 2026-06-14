@@ -10,34 +10,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer-when-downgrade">
 
-<title>Mike&rsquo;s Cheatsheet</title>
+<title>Pre-commit hook - Mike&rsquo;s Cheatsheet</title>
 
-<meta name="description" content="
-
-    
-        ##
-    
-    C&#43;&#43; Project Template for Visual Studio Code &#43; MinGW on Windows
-
-
-
-install MinGW 6.3 to C:/MinGW/
-
-add &lsquo;C:/MinGW/bin&rsquo; to environment variable &lsquo;PATH&rsquo;
-restart VS Code
-
-
-open this repo as the working directory in VS Code
-
-C/C&#43;&#43; extension should be installed
-
-
-Press &lsquo;F5&rsquo; to start debugging
-
-all .cpp files will be compiled
-
-
-">
+<meta name="description" content="to improve code quality">
 
 
 
@@ -476,7 +451,7 @@ all .cpp files will be compiled
     <article class="post h-entry">
         <div class="post-header">
             <header>
-                <h1 class="p-name post-title"></h1>
+                <h1 class="p-name post-title">Pre-commit hook</h1>
                 
 
             </header>
@@ -489,12 +464,26 @@ all .cpp files will be compiled
 <div class="post-info noselect">
     
 
-    <a class="post-hidden-url u-url" href="/posts/prog/cpp/inc/template_make_cpp_vscode/readme/">/posts/prog/cpp/inc/template_make_cpp_vscode/readme/</a>
-    <a href="https://vitaceae.github.io/" class="p-name p-author post-hidden-author h-card" rel="me">map[email:i70170@hotmail.com location:Taiwan name:Mike Chang]</a>
+    <a class="post-hidden-url u-url" href="/posts/system/development/pre-commit/">/posts/system/development/pre-commit/</a>
+    <a href="https://vitaceae.github.io/" class="p-name p-author post-hidden-author h-card" rel="me">Mike</a>
 
 
     <div class="post-taxonomies">
         
+            <ul class="post-categories">
+                
+                    
+                    <li><a href="/categories/git/">Git</a></li>
+                
+            </ul>
+        
+        
+            <ul class="post-tags">
+                
+                    
+                    <li><a href="/tags/git/">#Git</a></li>
+                
+            </ul>
         
         
     </div>
@@ -510,6 +499,17 @@ all .cpp files will be compiled
 
 
   
+  
+  
+  <details class="toc noselect">
+    <summary>Table of Contents</summary>
+    <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#install-and-enable-pre-commit">Install and enable pre-commit</a></li>
+    <li><a href="#skip-code-checks">Skip code checks</a></li>
+  </ul>
+</nav></div>
+  </details>
   
 
 
@@ -533,33 +533,31 @@ all .cpp files will be compiled
 </script>
 
         <div class="content e-content">
-            <h1 id="c-project-template-for-visual-studio-code--mingw-on-windows" >
+            <p>使用 pre-commit hook 在建立 commit 時修正撰寫風格並檢查語法</p>
+<p>從 <a href="https://github.com/Vitaceae/playground/tree/pre-commit">playground</a> 搬運過來</p>
+<h2 id="install-and-enable-pre-commit" >
 <div>
-    <a href="#c-project-template-for-visual-studio-code--mingw-on-windows">
-        ##
+    <a href="#install-and-enable-pre-commit">
+        #
     </a>
-    C++ Project Template for Visual Studio Code + MinGW on Windows
+    Install and enable pre-commit
 </div>
-</h1>
-<ol>
-<li>install MinGW 6.3 to C:/MinGW/
-<ul>
-<li>add &lsquo;C:/MinGW/bin&rsquo; to environment variable &lsquo;PATH&rsquo;</li>
-<li>restart VS Code</li>
-</ul>
-</li>
-<li>open this repo as the working directory in VS Code
-<ul>
-<li>C/C++ extension should be installed</li>
-</ul>
-</li>
-<li>Press &lsquo;F5&rsquo; to start debugging
-<ul>
-<li>all .cpp files will be compiled</li>
-</ul>
-</li>
-</ol>
-
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ pip install pre-commit
+</span></span><span style="display:flex;"><span>$ pre-commit install
+</span></span></code></pre></div><h2 id="skip-code-checks" >
+<div>
+    <a href="#skip-code-checks">
+        #
+    </a>
+    Skip code checks
+</div>
+</h2>
+<p>停止 pre-commit hook</p>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ pre-commit uninstall
+</span></span></code></pre></div><p>單次忽略 pre-commit hook</p>
+<div class="highlight"><pre tabindex="0" style="color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git commit --no-verify
+</span></span></code></pre></div>
         </div>
 
     </article>
@@ -581,12 +579,10 @@ all .cpp files will be compiled
     <div class="pagination post-pagination">
         <div class="left pagination-item ">
             
-                <a href="/posts/web/website/">Website Development</a>
+                <a href="/posts/prog/cpp/inc/template_make_cpp_vscode/readme/">to new post</a>
             
         </div>
-        <div class="right pagination-item ">
-            
-                <a href="/posts/system/development/pre-commit/">Pre-commit hook</a>
+        <div class="right pagination-item disabled">
             
         </div>
     </div>

@@ -10,39 +10,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer-when-downgrade">
 
-<title>Mike&rsquo;s Cheatsheet</title>
+<title>Git - Mike&rsquo;s Cheatsheet</title>
 
-<meta name="description" content="
-
-    
-        ##
-    
-    C&#43;&#43; Project Template for Visual Studio Code &#43; MinGW on Windows
-
-
-
-install MinGW 6.3 to C:/MinGW/
-
-add &lsquo;C:/MinGW/bin&rsquo; to environment variable &lsquo;PATH&rsquo;
-restart VS Code
-
-
-open this repo as the working directory in VS Code
-
-C/C&#43;&#43; extension should be installed
-
-
-Press &lsquo;F5&rsquo; to start debugging
-
-all .cpp files will be compiled
-
-
-">
+<meta name="description" content="Personal tech blog for quick references">
 
 
 
 
 
+<link rel="alternate" type="application/rss+xml" href="/categories/git/index.xml" title="Mike's Cheatsheet" />
 <link rel="icon" type="image/x-icon" href="https://vitaceae.github.io/favicon.ico">
 <link rel="apple-touch-icon-precomposed" href="https://vitaceae.github.io/favicon.png">
 
@@ -471,16 +447,40 @@ all .cpp files will be compiled
         </header>
         <main id="main" tabindex="-1">
             
+    <h1>Category: Git</h1>
+    <div class="post-info">
+        <a href="/categories/">To all categories</a>
+    </div>
+    
+    
+        <article class="post-list h-feed post-card">
+    <div class="post-header">
+        <header>
+            
+            
+            
+            <h1 class="p-name post-title ">
+                <a class="u-url" href="/posts/system/development/pre-commit/">Pre-commit hook</a>
+            </h1>
+        </header>
+        
+
+    </div>
+
+    
+        <div class="content post-summary p-summary">
+            <p>使用 pre-commit hook 在建立 commit 時修正撰寫風格並檢查語法</p>
+<p>從 <a href="https://github.com/Vitaceae/playground/tree/pre-commit">playground</a> 搬運過來</p>
+        </div>
     
 
-    <article class="post h-entry">
-        <div class="post-header">
-            <header>
-                <h1 class="p-name post-title"></h1>
-                
+    
+    
+    
+    
+    
 
-            </header>
-            
+    
 
     
 
@@ -489,172 +489,37 @@ all .cpp files will be compiled
 <div class="post-info noselect">
     
 
-    <a class="post-hidden-url u-url" href="/posts/prog/cpp/inc/template_make_cpp_vscode/readme/">/posts/prog/cpp/inc/template_make_cpp_vscode/readme/</a>
-    <a href="https://vitaceae.github.io/" class="p-name p-author post-hidden-author h-card" rel="me">map[email:i70170@hotmail.com location:Taiwan name:Mike Chang]</a>
+    <a class="post-hidden-url u-url" href="/posts/system/development/pre-commit/">/posts/system/development/pre-commit/</a>
+    <a href="https://vitaceae.github.io/" class="p-name p-author post-hidden-author h-card" rel="me">Mike</a>
 
 
     <div class="post-taxonomies">
         
+            <ul class="post-categories">
+                
+                    
+                    <li><a href="/categories/git/">Git</a></li>
+                
+            </ul>
+        
+        
+            <ul class="post-tags">
+                
+                    
+                    <li><a href="/tags/git/">#Git</a></li>
+                
+            </ul>
         
         
     </div>
 </div>
 
-        </div>
-        
-
-  
-  
-
-
-
-
-  
-  
-
-
-
-<script>
-  var toc = document.querySelector(".toc");
-  if (toc) {
-    toc.addEventListener("click", function () {
-      if (event.target.tagName !== "A") {
-        event.preventDefault();
-        if (this.open) {
-          this.open = false;
-          this.classList.remove("expanded");
-        } else {
-          this.open = true;
-          this.classList.add("expanded");
-        }
-      }
-    });
-  }
-</script>
-
-        <div class="content e-content">
-            <h1 id="c-project-template-for-visual-studio-code--mingw-on-windows" >
-<div>
-    <a href="#c-project-template-for-visual-studio-code--mingw-on-windows">
-        ##
-    </a>
-    C++ Project Template for Visual Studio Code + MinGW on Windows
-</div>
-</h1>
-<ol>
-<li>install MinGW 6.3 to C:/MinGW/
-<ul>
-<li>add &lsquo;C:/MinGW/bin&rsquo; to environment variable &lsquo;PATH&rsquo;</li>
-<li>restart VS Code</li>
-</ul>
-</li>
-<li>open this repo as the working directory in VS Code
-<ul>
-<li>C/C++ extension should be installed</li>
-</ul>
-</li>
-<li>Press &lsquo;F5&rsquo; to start debugging
-<ul>
-<li>all .cpp files will be compiled</li>
-</ul>
-</li>
-</ol>
-
-        </div>
-
-    </article>
+</article>
 
     
     
-        
-    
-
-    
-        
-        
-    
-
-    
-        
-    
-    
-    <div class="pagination post-pagination">
-        <div class="left pagination-item ">
-            
-                <a href="/posts/web/website/">Website Development</a>
-            
-        </div>
-        <div class="right pagination-item ">
-            
-                <a href="/posts/system/development/pre-commit/">Pre-commit hook</a>
-            
-        </div>
-    </div>
 
 
-
-
-
-    
-
-    
-        
-
-
-
-
-
-
-
-
-            
-
-<script>
-        function detectCurrentScheme2() {
-                const defaultTheme = "auto";
-                if (localStorage !== null && localStorage.getItem("user-color-scheme")) {
-                        return localStorage.getItem("user-color-scheme");
-                }
-                if (defaultTheme === "dark" || defaultTheme === "light") {
-                        return defaultTheme;
-                }
-                return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-        }
-
-        let giscusTheme = detectCurrentScheme2();
-        let giscusAttributes = {
-                src: "https://giscus.app/client.js",
-                "data-repo": "Vitaceae\/vitaceae.github.io",
-                "data-repo-id": "R_kgDOOLku4g",
-                "data-category": "General",
-                "data-category-id": "DIC_kwDOOLku4s4CoQfG",
-                "data-mapping": "pathname",
-                "data-strict": "0",
-                "data-reactions-enabled": "1",
-                "data-emit-metadata": "0",
-                "data-input-position": "bottom",
-                "data-theme": giscusTheme,
-                "data-lang": "zh-TW",
-                crossorigin: "anonymous",
-                lazyload: "false",
-                async: true,
-        };
-        let main = document.querySelector("main");
-        let giscusScript = document.createElement("script");
-        Object.entries(giscusAttributes).forEach(([key, value]) => giscusScript.setAttribute(key, value));
-        main.appendChild(giscusScript);
-</script>
-
-
-
-
-    
-
-    
-
-    
-
-    
 
         </main>
         
