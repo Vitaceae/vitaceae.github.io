@@ -1160,6 +1160,7 @@ Carousel 輪播&lt;br&gt;
 Post Footer&lt;br&gt;
 TOC Sidebar&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;功能變更紀錄&lt;/strong&gt;&lt;br&gt;
+移除 polyfill 防止網頁攻擊
 移除多語系頁面選項&lt;br&gt;
 允許 Markdown 使用相對路徑連結&lt;br&gt;
 Hugo 主框架, 流量分析工具&lt;/p&gt;
