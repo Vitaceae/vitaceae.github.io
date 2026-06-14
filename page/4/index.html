@@ -462,7 +462,7 @@
             
             
             <h1 class="p-name post-title ">
-                <a class="u-url" href="/posts/platforms/build_tools/">Build Tools</a>
+                <a class="u-url" href="/posts/prog/c/c_macro/">C Programming: Macro</a>
             </h1>
         </header>
         
@@ -471,12 +471,7 @@
 
     
         <div class="content post-summary p-summary">
-            <ul>
-<li>編譯/交叉編譯應用程式</li>
-<li>將應用程式包裝成套件</li>
-<li>測試 binary ecosystem</li>
-<li>部署 image</li>
-</ul>
+            <p>C Macro 用法彙總</p>
         </div>
     
 
@@ -495,12 +490,12 @@
 <div class="post-info noselect">
     
         <div class="post-date dt-published">
-            <time datetime="2024-03-19">2024-03-19</time>
+            <time datetime="2024-03-27">2024-03-27</time>
             
         </div>
     
 
-    <a class="post-hidden-url u-url" href="/posts/platforms/build_tools/">/posts/platforms/build_tools/</a>
+    <a class="post-hidden-url u-url" href="/posts/prog/c/c_macro/">/posts/prog/c/c_macro/</a>
     <a href="https://vitaceae.github.io/" class="p-name p-author post-hidden-author h-card" rel="me">Mike</a>
 
 
@@ -509,7 +504,7 @@
             <ul class="post-categories">
                 
                     
-                    <li><a href="/categories/dev-platform/">Dev-Platform</a></li>
+                    <li><a href="/categories/programming/">Programming</a></li>
                 
             </ul>
         
@@ -517,13 +512,7 @@
             <ul class="post-tags">
                 
                     
-                    <li><a href="/tags/yocto/">#Yocto</a></li>
-                
-                    
-                    <li><a href="/tags/buildroot/">#Buildroot</a></li>
-                
-                    
-                    <li><a href="/tags/openwrt/">#Openwrt</a></li>
+                    <li><a href="">#c-prog, cpp-prog</a></li>
                 
             </ul>
         
@@ -541,7 +530,158 @@
             
             
             <h1 class="p-name post-title ">
-                <a class="u-url" href="/posts/platforms/rockchip/">Rockchip Development Platform</a>
+                <a class="u-url" href="/posts/prog/c/c_optimization/">C Programming: Optimization</a>
+            </h1>
+        </header>
+        
+
+    </div>
+
+    
+        <div class="content post-summary p-summary">
+            <p>程式最佳化技巧；有些或許過時，不適用現代架構。</p>
+<p>Mehtods that may be deprecated to optimize C program.</p>
+        </div>
+    
+
+    
+    
+    
+    
+    
+
+    
+
+    
+
+
+
+<div class="post-info noselect">
+    
+        <div class="post-date dt-published">
+            <time datetime="2024-03-27">2024-03-27</time>
+            
+        </div>
+    
+
+    <a class="post-hidden-url u-url" href="/posts/prog/c/c_optimization/">/posts/prog/c/c_optimization/</a>
+    <a href="https://vitaceae.github.io/" class="p-name p-author post-hidden-author h-card" rel="me">Mike</a>
+
+
+    <div class="post-taxonomies">
+        
+            <ul class="post-categories">
+                
+                    
+                    <li><a href="/categories/programming/">Programming</a></li>
+                
+            </ul>
+        
+        
+            <ul class="post-tags">
+                
+                    
+                    <li><a href="/tags/c-prog/">#C-Prog</a></li>
+                
+            </ul>
+        
+        
+    </div>
+</div>
+
+</article>
+
+        
+            <article class="post-list h-feed post-card">
+    <div class="post-header">
+        <header>
+            
+            
+            
+            <h1 class="p-name post-title ">
+                <a class="u-url" href="/posts/prog/web/cgi_in_c/">CGI in C</a>
+            </h1>
+        </header>
+        
+
+    </div>
+
+    
+        <div class="content post-summary p-summary">
+            <p><code>CGI</code>, Common Gateway Interface 協定: 外部應用程式與 Web 伺服器溝通的協議。CGI 在伺服器端執行並回傳動態生成的結果。</p>
+<ol>
+<li>將執行檔放在 Web server(IIS, Apache, &hellip;) 具執行權限的目錄下
+<ul>
+<li>Apache 主機參考 httpd.conf 設定, 常見預設值為 <strong>/usr/lib/cgi-bin/</strong> 以及 <strong>/var/www/cgi.index</strong></li>
+<li>IIS 主機啟動 IIS Service 並設定目錄權限</li>
+</ul>
+</li>
+<li>html 發送請求透過表單函數 GET/POST
+<ul>
+<li>GET 的 url 會改變, 能查看參數, 參數以 <em>&amp;</em> 區隔, 無法傳送大量資料且較不安全</li>
+<li>POST 傳送完整表單, 可傳送大量資料且較安全</li>
+</ul>
+</li>
+</ol>
+        </div>
+    
+
+    
+    
+    
+    
+    
+
+    
+
+    
+
+
+
+<div class="post-info noselect">
+    
+        <div class="post-date dt-published">
+            <time datetime="2024-03-26">2024-03-26</time>
+            
+        </div>
+    
+
+    <a class="post-hidden-url u-url" href="/posts/prog/web/cgi_in_c/">/posts/prog/web/cgi_in_c/</a>
+    <a href="https://vitaceae.github.io/" class="p-name p-author post-hidden-author h-card" rel="me">Mike</a>
+
+
+    <div class="post-taxonomies">
+        
+            <ul class="post-categories">
+                
+                    
+                    <li><a href="/categories/web-prog/">Web-Prog</a></li>
+                
+            </ul>
+        
+        
+            <ul class="post-tags">
+                
+                    
+                    <li><a href="/tags/cgi/">#Cgi</a></li>
+                
+            </ul>
+        
+        
+    </div>
+</div>
+
+</article>
+
+        
+            <article class="post-list h-feed post-card">
+    <div class="post-header">
+        <header>
+            
+            
+            
+            <h1 class="p-name post-title ">
+                <a class="u-url" href="/posts/web/setup_lamp_lemp/">Set up LAMP and LEMP Stack</a>
             </h1>
         </header>
         
@@ -551,13 +691,11 @@
     
         <div class="content post-summary p-summary">
             <ul>
-<li>firefly-docs: official design documents</li>
-<li>firefly-tools
+<li>測試環境: Ubuntu 24.04.2 on WSL</li>
+<li>LAMP: Linux OS, Apache web server, MySQL database, PHP programming language</li>
+<li>LEMP: Linux OS, Nginx web server, MySQL database, PHP programming language
 <ul>
-<li>DriverAssistant: Windows USB driver</li>
-<li>AndroidTool: Windows download tool</li>
-<li>LinuxUpgradeTool: Linux download tool</li>
-<li>Android8.1UpgradeTool</li>
+<li>中文圈或稱為 LNMP</li>
 </ul>
 </li>
 </ul>
@@ -579,166 +717,12 @@
 <div class="post-info noselect">
     
         <div class="post-date dt-published">
-            <time datetime="2024-03-19">2024-03-19</time>
+            <time datetime="2024-03-26">2024-03-26</time>
             
         </div>
     
 
-    <a class="post-hidden-url u-url" href="/posts/platforms/rockchip/">/posts/platforms/rockchip/</a>
-    <a href="https://vitaceae.github.io/" class="p-name p-author post-hidden-author h-card" rel="me">Mike</a>
-
-
-    <div class="post-taxonomies">
-        
-            <ul class="post-categories">
-                
-                    
-                    <li><a href="/categories/dev-platform/">Dev-Platform</a></li>
-                
-            </ul>
-        
-        
-            <ul class="post-tags">
-                
-                    
-                    <li><a href="/tags/rockchip/">#Rockchip</a></li>
-                
-                    
-                    <li><a href="/tags/yocto/">#Yocto</a></li>
-                
-            </ul>
-        
-        
-    </div>
-</div>
-
-</article>
-
-        
-            <article class="post-list h-feed post-card">
-    <div class="post-header">
-        <header>
-            
-            
-            
-            <h1 class="p-name post-title ">
-                <a class="u-url" href="/posts/web/analytics_tools/">Website Analytics Tools</a>
-            </h1>
-        </header>
-        
-
-    </div>
-
-    
-        <div class="content post-summary p-summary">
-            <p>網站分析工具彙整</p>
-<table>
-	<thead>
-			<tr>
-					<th style="text-align: center">Platform</th>
-					<th style="text-align: center">hosting</th>
-					<th style="text-align: center">charge</th>
-					<th style="text-align: center">data retention</th>
-					<th style="text-align: center">site limit</th>
-					<th style="text-align: center">user-friendly</th>
-					<th style="text-align: left">others</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td style="text-align: center">Umami</td>
-					<td style="text-align: center">cloud</td>
-					<td style="text-align: center">free</td>
-					<td style="text-align: center">1 year</td>
-					<td style="text-align: center">3</td>
-					<td style="text-align: center">v</td>
-					<td></td>
-			</tr>
-			<tr>
-					<td style="text-align: center">Google Analytics</td>
-					<td style="text-align: center">cloud</td>
-					<td style="text-align: center">free</td>
-					<td style="text-align: center"></td>
-					<td style="text-align: center"></td>
-					<td style="text-align: center"></td>
-					<td style="text-align: left">資料過於複雜, 減少依賴邪惡 Google</td>
-			</tr>
-			<tr>
-					<td style="text-align: center">Netlify + Neon</td>
-					<td style="text-align: center">self</td>
-					<td style="text-align: center">free</td>
-					<td style="text-align: center">unlimited</td>
-					<td style="text-align: center"></td>
-					<td style="text-align: center">x</td>
-					<td></td>
-			</tr>
-			<tr>
-					<td style="text-align: center">Railway</td>
-					<td style="text-align: center">self</td>
-					<td style="text-align: center">$5+/month</td>
-					<td style="text-align: center">unlimited</td>
-					<td style="text-align: center"></td>
-					<td style="text-align: center">v</td>
-					<td></td>
-			</tr>
-			<tr>
-					<td style="text-align: center">Vercel + TiDB Cloud</td>
-					<td style="text-align: center">self</td>
-					<td style="text-align: center">free</td>
-					<td style="text-align: center">unlimited</td>
-					<td style="text-align: center">unlimited</td>
-					<td style="text-align: center">x</td>
-					<td style="text-align: left">custom domain name; free 5GB storage</td>
-			</tr>
-	</tbody>
-</table>
-        </div>
-    
-
-    
-    
-    
-    
-    
-        <script>
-  MathJax = {
-    tex: {
-      inlineMath: [['$', '$'], ['\\(', '\\)']],
-      displayMath: [['$$','$$'], ['\\[', '\\]']],
-      processEscapes: true,
-      processEnvironments: true
-    },
-    options: {
-      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
-    }
-  };
-
-  window.addEventListener('load', (event) => {
-      document.querySelectorAll("mjx-container").forEach(function(x){
-        x.parentElement.classList += 'has-jax'})
-    });
-
-</script>
-<script type="text/javascript" id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
-    
-
-    
-
-    
-
-
-
-<div class="post-info noselect">
-    
-        <div class="post-date dt-published">
-            <time datetime="2024-03-18">2024-03-18</time>
-            
-        </div>
-    
-
-    <a class="post-hidden-url u-url" href="/posts/web/analytics_tools/">/posts/web/analytics_tools/</a>
+    <a class="post-hidden-url u-url" href="/posts/web/setup_lamp_lemp/">/posts/web/setup_lamp_lemp/</a>
     <a href="https://vitaceae.github.io/" class="p-name p-author post-hidden-author h-card" rel="me">Mike</a>
 
 
@@ -755,10 +739,13 @@
             <ul class="post-tags">
                 
                     
-                    <li><a href="/tags/website/">#Website</a></li>
+                    <li><a href="/tags/lamp/">#LAMP</a></li>
                 
                     
-                    <li><a href="/tags/analytics/">#Analytics</a></li>
+                    <li><a href="/tags/lnmp/">#LNMP</a></li>
+                
+                    
+                    <li><a href="/tags/lemp/">#LEMP</a></li>
                 
             </ul>
         
@@ -776,7 +763,7 @@
             
             
             <h1 class="p-name post-title ">
-                <a class="u-url" href="/posts/web/hugo-advanced/">Hugo Advanced</a>
+                <a class="u-url" href="/posts/prog/programming/">Programming Languages</a>
             </h1>
         </header>
         
@@ -785,119 +772,7 @@
 
     
         <div class="content post-summary p-summary">
-            <p>Hugo 靜態網站產生器進階用法</p>
-        </div>
-    
-
-    
-    
-    
-    
-    
-        <script>
-  MathJax = {
-    tex: {
-      inlineMath: [['$', '$'], ['\\(', '\\)']],
-      displayMath: [['$$','$$'], ['\\[', '\\]']],
-      processEscapes: true,
-      processEnvironments: true
-    },
-    options: {
-      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
-    }
-  };
-
-  window.addEventListener('load', (event) => {
-      document.querySelectorAll("mjx-container").forEach(function(x){
-        x.parentElement.classList += 'has-jax'})
-    });
-
-</script>
-<script type="text/javascript" id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
-    
-
-    
-
-    
-
-
-
-<div class="post-info noselect">
-    
-        <div class="post-date dt-published">
-            <time datetime="2024-03-03">2024-03-03</time>
-            
-        </div>
-    
-
-    <a class="post-hidden-url u-url" href="/posts/web/hugo-advanced/">/posts/web/hugo-advanced/</a>
-    <a href="https://vitaceae.github.io/" class="p-name p-author post-hidden-author h-card" rel="me">Mike</a>
-
-
-    <div class="post-taxonomies">
-        
-            <ul class="post-categories">
-                
-                    
-                    <li><a href="/categories/web/">Web</a></li>
-                
-            </ul>
-        
-        
-            <ul class="post-tags">
-                
-                    
-                    <li><a href="/tags/website/">#Website</a></li>
-                
-                    
-                    <li><a href="/tags/hugo/">#Hugo</a></li>
-                
-                    
-                    <li><a href="/tags/icons/">#Icons</a></li>
-                
-                    
-                    <li><a href="/tags/emoji/">#Emoji</a></li>
-                
-                    
-                    <li><a href="/tags/giscus/">#Giscus</a></li>
-                
-                    
-                    <li><a href="/tags/umami/">#Umami</a></li>
-                
-                    
-                    <li><a href="/tags/shortcodes/">#Shortcodes</a></li>
-                
-                    
-                    <li><a href="/tags/privacy/">#Privacy</a></li>
-                
-            </ul>
-        
-        
-    </div>
-</div>
-
-</article>
-
-        
-            <article class="post-list h-feed post-card">
-    <div class="post-header">
-        <header>
-            
-            
-            
-            <h1 class="p-name post-title ">
-                <a class="u-url" href="/posts/web/hugo_style/">Hugo-Style</a>
-            </h1>
-        </header>
-        
-
-    </div>
-
-    
-        <div class="content post-summary p-summary">
-            <p>Hugo 風格設計</p>
+            <p>Summary of the programming languages used so far.</p>
         </div>
     
 
@@ -916,12 +791,12 @@
 <div class="post-info noselect">
     
         <div class="post-date dt-published">
-            <time datetime="2024-03-03">2024-03-03</time>
+            <time datetime="2024-03-20">2024-03-20</time>
             
         </div>
     
 
-    <a class="post-hidden-url u-url" href="/posts/web/hugo_style/">/posts/web/hugo_style/</a>
+    <a class="post-hidden-url u-url" href="/posts/prog/programming/">/posts/prog/programming/</a>
     <a href="https://vitaceae.github.io/" class="p-name p-author post-hidden-author h-card" rel="me">Mike</a>
 
 
@@ -930,7 +805,7 @@
             <ul class="post-categories">
                 
                     
-                    <li><a href="/categories/web/">Web</a></li>
+                    <li><a href="/categories/programming/">Programming</a></li>
                 
             </ul>
         
@@ -938,13 +813,7 @@
             <ul class="post-tags">
                 
                     
-                    <li><a href="/tags/website/">#Website</a></li>
-                
-                    
-                    <li><a href="/tags/hugo/">#Hugo</a></li>
-                
-                    
-                    <li><a href="/tags/css/">#Css</a></li>
+                    <li><a href="/tags/">#Tags</a></li>
                 
             </ul>
         

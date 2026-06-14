@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Security on Mike&#39;s Cheatsheet</title>
+    <link>/categories/security/</link>
+    <description>Mike&#39;s Cheatsheet (Security)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+      
+        <managingEditor>i70170@hotmail.com
+          
+            (Mike Chang)
+          
+        </managingEditor>
+      
+
+      
+    
+
+    
+    <lastBuildDate>Sun, 14 Jun 2026 00:00:00 +0000</lastBuildDate>
+    
+    <atom:link href="/categories/security/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Authorized keys on Windows</title>
+      <link>/posts/system/development/auth-keys-on-windows/</link>
+      <pubDate>Sun, 14 Jun 2026 00:00:00 +0000</pubDate>
+      <author>i70170@hotmail.com (Mike Chang)</author>
+      <guid>/posts/system/development/auth-keys-on-windows/</guid>
+      <description>&lt;p&gt;Windows 匯入認證密鑰以建立 ssh 連線&lt;/p&gt;
+&lt;p&gt;將 &lt;code&gt;~/.ssh/foo.pub&lt;/code&gt; 複製到 &lt;code&gt;C:/ProgramData/ssh/administrators_authorized_keys&lt;/code&gt; (假定使用 foo.pub)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; &lt;span style=&#34;color:#f2d5cf&#34;&gt;$username&lt;/span&gt; = &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;my-account&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; &lt;span style=&#34;color:#f2d5cf&#34;&gt;$serve&lt;/span&gt;-name = &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;my-server&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; &lt;span style=&#34;color:#f2d5cf&#34;&gt;$authorizedKey&lt;/span&gt; = &lt;span style=&#34;color:#99d1db&#34;&gt;Get-Content&lt;/span&gt; -Path &lt;span style=&#34;color:#f2d5cf&#34;&gt;$env:USERPROFILE&lt;/span&gt;\.ssh\foo.&lt;span style=&#34;color:#ef9f76&#34;&gt;pub&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; &lt;span style=&#34;color:#f2d5cf&#34;&gt;$remotePowershell&lt;/span&gt; = &lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;powershell Add-Content -Force -Path &lt;/span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;$env:ProgramData&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;\ssh\administrators_authorized_keys -Value &amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;$authorizedKey&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#39;&amp;#39;&amp;#39;;icacls.exe &amp;#34;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f2d5cf&#34;&gt;$env:ProgramData&lt;/span&gt;&lt;span style=&#34;color:#a6d189&#34;&gt;\ssh\administrators_authorized_keys&amp;#34;&amp;#34; /inheritance:r /grant &amp;#34;&amp;#34;Administrators:F&amp;#34;&amp;#34; /grant &amp;#34;&amp;#34;SYSTEM:F&amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;# Connect to the server and run the PowerShell command by using the $remotePowerShell variable.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; ssh &lt;span style=&#34;color:#f2d5cf&#34;&gt;$username&lt;/span&gt;@&lt;span style=&#34;color:#f2d5cf&#34;&gt;$serve&lt;/span&gt;-name &lt;span style=&#34;color:#f2d5cf&#34;&gt;$remotePowershell&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
